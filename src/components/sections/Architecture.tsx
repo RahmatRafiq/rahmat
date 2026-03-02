@@ -11,6 +11,7 @@ import {
     LucideIcon
 } from 'lucide-react';
 import { cn } from '../../lib/utils';
+import { useTranslations } from 'next-intl';
 
 // Sliced Visual Components
 import DevFlowVisual from './architecture/visuals/DevFlowVisual';
@@ -26,38 +27,40 @@ interface ArchitectureFeature {
     Visual: React.FC;
 }
 
-const architectureFeatures: ArchitectureFeature[] = [
-    {
-        id: 'uml',
-        title: 'UML Design',
-        desc: 'Expertise in translating complex business requirements into clear Class, Sequence, and Flowchart diagrams.',
-        icon: ClipboardList,
-        Visual: DevFlowVisual,
-    },
-    {
-        id: 'modular',
-        title: 'Modular Architecture',
-        desc: 'Designing decoupled, maintainable codebases using Clean Architecture and Layered patterns.',
-        icon: Layers,
-        Visual: ModularVisual,
-    },
-    {
-        id: 'database',
-        title: 'Database Modeling',
-        desc: 'Optimizing relational schemas, implementing indexing strategies, and architecting multi-database support.',
-        icon: Network,
-        Visual: DatabaseVisual,
-    },
-    {
-        id: 'api',
-        title: 'API Orchestration',
-        desc: 'Designing scalable RESTful APIs with secure authentication flows and comprehensive documentation.',
-        icon: Share2,
-        Visual: APIVisual,
-    },
-];
-
 export default function Architecture() {
+    const t = useTranslations('Architecture');
+
+    const architectureFeatures: ArchitectureFeature[] = [
+        {
+            id: 'uml',
+            title: t('f1_title'),
+            desc: t('f1_desc'),
+            icon: ClipboardList,
+            Visual: DevFlowVisual,
+        },
+        {
+            id: 'modular',
+            title: t('f2_title'),
+            desc: t('f2_desc'),
+            icon: Layers,
+            Visual: ModularVisual,
+        },
+        {
+            id: 'database',
+            title: t('f3_title'),
+            desc: t('f3_desc'),
+            icon: Network,
+            Visual: DatabaseVisual,
+        },
+        {
+            id: 'api',
+            title: t('f4_title'),
+            desc: t('f4_desc'),
+            icon: Share2,
+            Visual: APIVisual,
+        },
+    ];
+
     const [activeTab, setActiveTab] = useState('uml');
     const [expandedMobileId, setExpandedMobileId] = useState<string | null>(null);
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -81,11 +84,10 @@ export default function Architecture() {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -z-10" />
 
             <div className="mb-16 flex flex-col items-center text-center">
-                <h2 className="text-3xl md:text-5xl font-bold mb-6 tracking-tight">System Architecture & Design</h2>
+                <h2 className="text-3xl md:text-5xl font-bold mb-6 tracking-tight">{t('title')}</h2>
                 <div className="h-1.5 w-24 bg-primary rounded-full mb-8 shadow-[0_0_15px_rgba(99,102,241,0.5)]" aria-hidden="true" />
                 <p className="text-muted-foreground max-w-2xl text-lg">
-                    I don&apos;t just write code; I architect systems. From UML modeling to
-                    API orchestration, I design for modularity, scalability, and performance.
+                    {t('description')}
                 </p>
             </div>
 

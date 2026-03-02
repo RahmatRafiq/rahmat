@@ -62,6 +62,7 @@
         "focus": "Fokus utama: <b>Golang</b> & <b>Clean Architecture</b> (2025).",
         "metric_time": "Total Waktu Dev Mingguan",
         "metric_daily": "Rata-rata Harian",
+        "metric_best_day": "Hari Terbaik",
         "metric_prs": "Pull Requests",
         "metric_contrib": "Kontribusi",
         "activityPulse": "Activity Pulse",

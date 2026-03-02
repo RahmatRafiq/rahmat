@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Code2, Flame, Timer, BarChart3, GitPullRequest, GitMerge, Zap, Loader2 } from 'lucide-react';
+import { Code2, Flame, Timer, BarChart3, GitPullRequest, GitMerge, Zap, Loader2, Trophy } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { useTranslations } from 'next-intl';
 
@@ -10,14 +10,19 @@ interface WakaStats {
     languages: Array<{ name: string; percent: number; color: string }>;
     daily_average: string;
     total_time: string;
-    activity: number;
+    best_day_text: string;
+    chart: number[];
+    chart_hours: string[];
+    total_prs: string | null;
+    recent_pushes: string | null;
 }
+
+const DAY_LABELS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
 export default function Stats() {
     const t = useTranslations('Stats');
     const [stats, setStats] = useState<WakaStats | null>(null);
     const [loading, setLoading] = useState(true);
-
 
     useEffect(() => {
         async function fetchStats() {
@@ -28,7 +33,6 @@ export default function Stats() {
                 setStats(data);
             } catch (err) {
                 console.error('Failed to fetch stats:', err);
-
             } finally {
                 setLoading(false);
             }
@@ -37,19 +41,50 @@ export default function Stats() {
     }, []);
 
     const defaultLanguages = [
-        { name: 'Golang', percent: 90, color: '#00ADD8' },
-        { name: 'PHP / Laravel', percent: 85, color: '#FF2D20' },
-        { name: 'TypeScript / React', percent: 80, color: '#3178C6' },
-        { name: 'MySQL / Postgres', percent: 88, color: '#4479A1' },
+        { name: 'Golang', percent: 73, color: '#00ADD8' },
+        { name: 'TypeScript', percent: 12, color: '#3178C6' },
+        { name: 'SQL', percent: 6, color: '#4479A1' },
+        { name: 'Bash', percent: 3, color: '#4EAA25' },
+        { name: 'PHP', percent: 6, color: '#FF2D20' },
     ];
 
-    const displayLanguages = stats?.languages || defaultLanguages;
+    const displayLanguages = stats?.languages?.length ? stats.languages : defaultLanguages;
+
+    // Chart data: use real data or flat placeholder
+    const chartData = stats?.chart?.length === 7 ? stats.chart : [40, 70, 50, 90, 60, 80, 45];
+    const chartHours = stats?.chart_hours?.length === 7 ? stats.chart_hours : chartData.map(h => `${(h / 100 * 8).toFixed(1)}`);
 
     const metrics = [
-        { label: t('metric_time'), value: stats?.total_time || '1,248h', icon: Timer, color: 'text-blue-400' },
-        { label: t('metric_daily'), value: stats?.daily_average || '4h 32m', icon: Flame, color: 'text-orange-500' },
-        { label: t('metric_prs'), value: '156', icon: GitMerge, color: 'text-purple-400' },
-        { label: t('metric_contrib'), value: '842', icon: GitPullRequest, color: 'text-emerald-400' },
+        {
+            label: t('metric_time'),
+            value: stats?.total_time ?? '—',
+            icon: Timer,
+            color: 'text-blue-400',
+        },
+        {
+            label: t('metric_daily'),
+            value: stats?.daily_average ?? '—',
+            icon: Flame,
+            color: 'text-orange-500',
+        },
+        {
+            label: t('metric_best_day'),
+            value: stats?.best_day_text ?? '—',
+            icon: Trophy,
+            color: 'text-yellow-400',
+        },
+        {
+            label: t('metric_prs'),
+            value: stats?.total_prs ?? '—',
+            icon: GitMerge,
+            color: 'text-purple-400',
+        },
+        {
+            label: t('metric_contrib'),
+            value: stats?.recent_pushes ?? '—',
+            icon: GitPullRequest,
+            color: 'text-emerald-400',
+        },
     ];
 
     return (
@@ -112,7 +147,7 @@ export default function Stats() {
                     </div>
                 </div>
 
-                {/* 2. Metrics (7 columns) */}
+                {/* 2. Metrics */}
                 <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
                     {metrics.map((metric, idx) => (
                         <motion.div
@@ -120,21 +155,21 @@ export default function Stats() {
                             initial={{ opacity: 0, scale: 0.95 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
-                            transition={{ delay: idx * 0.1 }}
+                            transition={{ delay: idx * 0.08 }}
                             className="glass p-8 rounded-[2rem] border border-border group hover:border-primary/50 transition-all flex flex-col justify-center relative overflow-hidden"
                         >
                             {loading && (
                                 <div className="absolute inset-0 bg-background/20 backdrop-blur-[2px] z-10" />
                             )}
-                            <metric.icon className={cn("w-10 h-10 mb-6 transition-transform group-hover:scale-110", metric.color)} />
+                            <metric.icon className={cn('w-10 h-10 mb-6 transition-transform group-hover:scale-110', metric.color)} />
                             <div className="text-3xl font-black mb-1 tracking-tight text-foreground">
-                                {loading ? '---' : metric.value}
+                                {loading ? '—' : metric.value}
                             </div>
                             <div className="text-xs uppercase tracking-widest font-bold text-muted-foreground">{metric.label}</div>
                         </motion.div>
                     ))}
 
-                    {/* 3. Styled WakaTime Graph */}
+                    {/* 3. Dynamic Activity Bar Chart */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -154,29 +189,29 @@ export default function Stats() {
                             <span className="text-[10px] font-bold bg-secondary px-3 py-1 rounded-full text-muted-foreground">{t('last7Days')}</span>
                         </div>
 
-                        {/* Native-looking stylized chart */}
+                        {/* Fully Dynamic Bar Chart */}
                         <div className="h-[120px] w-full flex items-end justify-between gap-2 px-2">
-                            {[45, 78, 52, 90, 65, 85, 40].map((h, idx) => (
+                            {chartData.map((h, idx) => (
                                 <motion.div
                                     key={idx}
                                     initial={{ height: 0 }}
-                                    whileInView={{ height: `${h}%` }}
-                                    transition={{ duration: 1, delay: 0.5 + (idx * 0.05) }}
+                                    whileInView={{ height: `${Math.max(h, 4)}%` }}
+                                    transition={{ duration: 0.8, delay: 0.4 + (idx * 0.06) }}
                                     className="flex-1 bg-gradient-to-t from-primary/50 to-primary rounded-t-lg relative group"
                                 >
-                                    <div className="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-indigo-600 text-white text-[10px] px-2 py-1 rounded font-bold">
-                                        {Math.floor((h / 100) * 8)}h
+                                    <div className="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-indigo-600 text-white text-[10px] px-2 py-1 rounded font-bold whitespace-nowrap">
+                                        {chartHours[idx]}h
                                     </div>
                                 </motion.div>
                             ))}
                         </div>
 
-                        <div className="mt-4 flex justify-between px-2 text-[10px] font-bold text-muted-foreground uppercase opacity-50">
-                            <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+                        <div className="mt-4 flex justify-between px-2 text-[10px] font-bold text-muted-foreground uppercase">
+                            {DAY_LABELS.map(d => <span key={d}>{d}</span>)}
                         </div>
 
                         {/* Faded background text */}
-                        <div className="absolute right-[-20px] bottom-[-20px] text-[100px] font-black opacity-[0.03] select-none italic pointer-events-none">
+                        <div aria-hidden="true" className="absolute right-[-20px] bottom-[-20px] text-[100px] font-black opacity-[0.03] select-none italic pointer-events-none">
                             WAKA
                         </div>
                     </motion.div>

@@ -62,6 +62,7 @@
         "focus": "Primary focus: <b>Golang</b> & <b>Clean Architecture</b> (2025).",
         "metric_time": "Weekly Total Dev Time",
         "metric_daily": "Daily Average",
+        "metric_best_day": "Best Day",
         "metric_prs": "Pull Requests",
         "metric_contrib": "Contributions",
         "activityPulse": "Activity Pulse",

@@ -70,11 +70,11 @@ export default function Stats() {
                     <div className="glass p-8 rounded-3xl border border-border h-full relative overflow-hidden">
                         {loading && (
                             <div className="absolute inset-0 bg-background/50 backdrop-blur-sm z-20 flex items-center justify-center">
-                                <Loader2 className="w-8 h-8 text-primary animate-spin" />
+                                <Loader2 className="w-8 h-8 text-indigo-400 animate-spin" />
                             </div>
                         )}
                         <h3 className="text-xl font-bold mb-8 flex items-center gap-2">
-                            <Code2 className="text-primary w-5 h-5" />
+                            <Code2 className="text-indigo-400 w-5 h-5" />
                             {t('languagePulse')}
                         </h3>
                         <div className="space-y-8">
@@ -82,7 +82,7 @@ export default function Stats() {
                                 <div key={lang.name} className="space-y-3">
                                     <div className="flex justify-between text-sm font-bold">
                                         <span className="text-muted-foreground">{lang.name}</span>
-                                        <span className="text-primary">{Math.round(lang.percent)}%</span>
+                                        <span className="text-indigo-400">{Math.round(lang.percent)}%</span>
                                     </div>
                                     <div className="h-2 w-full bg-secondary rounded-full overflow-hidden">
                                         <motion.div
@@ -147,7 +147,7 @@ export default function Stats() {
                         <div className="flex items-center justify-between mb-8">
                             <div className="flex items-center gap-3">
                                 <div className="p-2 rounded-lg bg-primary/10">
-                                    <BarChart3 className="w-5 h-5 text-primary" />
+                                    <BarChart3 className="w-5 h-5 text-indigo-400" />
                                 </div>
                                 <h3 className="font-bold text-xl uppercase tracking-wider">{t('activityPulse')}</h3>
                             </div>
@@ -164,7 +164,7 @@ export default function Stats() {
                                     transition={{ duration: 1, delay: 0.5 + (idx * 0.05) }}
                                     className="flex-1 bg-gradient-to-t from-primary/50 to-primary rounded-t-lg relative group"
                                 >
-                                    <div className="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-primary text-white text-[10px] px-2 py-1 rounded font-bold">
+                                    <div className="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-indigo-600 text-white text-[10px] px-2 py-1 rounded font-bold">
                                         {Math.floor((h / 100) * 8)}h
                                     </div>
                                 </motion.div>
@@ -197,10 +197,10 @@ export default function Stats() {
                 >
                     <div className="flex flex-col items-start leading-tight">
                         <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">{t('deepDive')}</span>
-                        <span className="text-sm font-bold group-hover:text-primary transition-colors">{t('fullProfile')}</span>
+                        <span className="text-sm font-bold group-hover:text-indigo-400 transition-colors">{t('fullProfile')}</span>
                     </div>
                     <div className="w-8 h-8 rounded-xl bg-background border border-border flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-all">
-                        <Zap className="w-4 h-4 text-primary group-hover:text-white" />
+                        <Zap className="w-4 h-4 text-indigo-400 group-hover:text-white" />
                     </div>
                 </a>
             </motion.div>

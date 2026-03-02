@@ -17,7 +17,7 @@ export default function Contact() {
                     <div>
                         <h2 className="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight">
                             {t('title1')} <br />
-                            <span className="text-primary italic">{t('title2')}</span> {t('title3')}
+                            <span className="text-indigo-400 italic">{t('title2')}</span> {t('title3')}
                         </h2>
                         <p className="text-lg text-muted-foreground mb-10 leading-relaxed max-w-md">
                             {t('description')}
@@ -26,7 +26,7 @@ export default function Contact() {
                         <div className="space-y-4">
                             <a
                                 href={`mailto:${siteConfig.email}`}
-                                className="flex items-center gap-4 group hover:text-primary transition-colors p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-primary/20"
+                                className="flex items-center gap-4 group hover:text-indigo-400 transition-colors p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-primary/20"
                             >
                                 <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all">
                                     <Mail className="w-5 h-5" />
@@ -41,7 +41,7 @@ export default function Contact() {
                                 href={siteConfig.links.linkedin}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center gap-4 group hover:text-primary transition-colors p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-primary/20"
+                                className="flex items-center gap-4 group hover:text-indigo-400 transition-colors p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-primary/20"
                             >
                                 <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all">
                                     <Linkedin className="w-5 h-5" />
@@ -74,7 +74,7 @@ export default function Contact() {
                                     </div>
                                 </div>
 
-                                <button className="w-full bg-primary hover:glow text-white font-bold py-4 rounded-2xl flex items-center justify-center gap-3 transition-all active:scale-[0.98]">
+                                <button className="w-full bg-indigo-600 hover:glow text-white font-bold py-4 rounded-2xl flex items-center justify-center gap-3 transition-all active:scale-[0.98]">
                                     <span>{t('sendBtn')}</span>
                                     <Send className="w-4 h-4" />
                                 </button>

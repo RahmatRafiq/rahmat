@@ -78,7 +78,7 @@ export default function Experience() {
                         <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2">
                             <div>
                                 <h3 className="text-xl font-bold text-foreground">{exp.role}</h3>
-                                <div className="flex items-center text-primary font-medium">
+                                <div className="flex items-center text-indigo-400 font-medium">
                                     <Briefcase className="w-4 h-4 mr-2" />
                                     {exp.company}
                                 </div>
@@ -98,7 +98,7 @@ export default function Experience() {
                         <ul className="space-y-3">
                             {exp.description.map((item, i) => (
                                 <li key={i} className="text-muted-foreground flex items-start">
-                                    <span className="text-primary mr-2 mt-1.5 h-1.5 w-1.5 rounded-full bg-primary shrink-0" />
+                                    <span className="text-indigo-400 mr-2 mt-1.5 h-1.5 w-1.5 rounded-full bg-primary shrink-0" />
                                     {item}
                                 </li>
                             ))}

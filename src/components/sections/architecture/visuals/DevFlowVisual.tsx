@@ -11,7 +11,7 @@ export default function DevFlowVisual() {
     return (
         <div className="w-full flex flex-col gap-8 relative">
             <div className="flex justify-center">
-                <span className="text-[10px] font-black tracking-widest text-primary opacity-50 uppercase">{t('title')}</span>
+                <span className="text-[10px] font-black tracking-widest text-indigo-400 opacity-50 uppercase">{t('title')}</span>
             </div>
 
             <div className="w-full flex flex-col items-center justify-center scale-[0.8] md:scale-100 origin-center">
@@ -26,7 +26,7 @@ export default function DevFlowVisual() {
                         ].map((actor, idx) => (
                             <div key={idx} className="flex flex-col items-center gap-2 relative z-10 w-[20%] group text-center">
                                 <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg md:rounded-xl bg-background border border-border flex items-center justify-center shadow-lg group-hover:border-primary transition-colors">
-                                    <actor.icon className="w-4 h-4 md:w-5 md:h-5 text-primary" />
+                                    <actor.icon className="w-4 h-4 md:w-5 md:h-5 text-indigo-400" />
                                 </div>
                                 <span className="text-[7px] md:text-[8px] uppercase font-bold text-foreground opacity-80">{actor.name}</span>
                                 {/* Vertical Centered Line */}
@@ -38,7 +38,7 @@ export default function DevFlowVisual() {
                     <div className="relative h-[240px] w-full mt-4">
                         {/* ALT Box for Design Feedback - Precise alignment */}
                         <div className="absolute top-[35px] left-[10.1%] bottom-[125px] right-[70.1%] border border-primary/20 bg-primary/5 rounded-lg z-0">
-                            <div className="absolute -top-2 left-1 bg-background border border-primary/20 px-1 py-0.5 rounded text-[5px] font-bold text-primary uppercase">{t('loop')}</div>
+                            <div className="absolute -top-2 left-1 bg-background border border-primary/20 px-1 py-0.5 rounded text-[5px] font-bold text-indigo-400 uppercase">{t('loop')}</div>
                         </div>
 
                         {/* ALT Box for Error Handling */}
@@ -47,7 +47,7 @@ export default function DevFlowVisual() {
                         </div>
 
                         {/* Flow: Client <-> Design */}
-                        <SequenceLine delay={0.2} top={20} left="10%" width="20%" label={t('seq1')} color="text-primary" arrow="right" />
+                        <SequenceLine delay={0.2} top={20} left="10%" width="20%" label={t('seq1')} color="text-indigo-400" arrow="right" />
                         <SequenceLine delay={1.0} top={50} right="70%" width="20%" label={t('seq2')} color="text-indigo-400" arrow="left" dashed />
                         <SequenceLine delay={1.8} top={80} left="10%" width="20%" label={t('seq3')} color="text-emerald-400" arrow="right" />
 
@@ -58,7 +58,7 @@ export default function DevFlowVisual() {
 
                         {/* Error / Feedback Loops */}
                         <SequenceLine delay={5.0} top={185} right="30%" width="20%" label={t('seq7')} color="text-red-400" arrow="left" dashed />
-                        <SequenceLine delay={5.8} top={220} right="10.1%" width="80.1%" label={t('seq8')} color="text-primary" arrow="left" dashed />
+                        <SequenceLine delay={5.8} top={220} right="10.1%" width="80.1%" label={t('seq8')} color="text-indigo-400" arrow="left" dashed />
                     </div>
                 </div>
             </div>

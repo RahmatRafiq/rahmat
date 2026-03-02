@@ -52,7 +52,7 @@ export default function Skills() {
                         className="glass p-8 rounded-2xl border border-border hover:border-primary/50 transition-colors group"
                     >
                         <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-                            <category.icon className="w-6 h-6 text-primary" />
+                            <category.icon className="w-6 h-6 text-indigo-400" />
                         </div>
                         <h3 className="text-base font-bold mb-4">{category.title}</h3>
                         <div className="flex flex-wrap gap-2">
@@ -91,7 +91,7 @@ export default function Skills() {
                             <div className="flex items-center gap-4">
                                 <div className={cn(
                                     "w-10 h-10 rounded-xl flex items-center justify-center transition-colors",
-                                    openIdx === idx ? "bg-primary text-white" : "bg-muted text-muted-foreground"
+                                    openIdx === idx ? "bg-indigo-600 text-white" : "bg-muted text-muted-foreground"
                                 )}>
                                     <category.icon className="w-5 h-5" />
                                 </div>

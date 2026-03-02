@@ -100,7 +100,7 @@ export default function Projects() {
                                 className={cn(
                                     'px-4 md:px-6 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-2',
                                     activeTab === cat
-                                        ? 'bg-primary text-white shadow-lg'
+                                        ? 'bg-indigo-600 text-white shadow-lg'
                                         : 'text-muted-foreground hover:text-foreground hover:bg-muted'
                                 )}
                             >
@@ -145,7 +145,7 @@ export default function Projects() {
                             </div>
 
                             <div className="p-6 flex flex-col flex-grow">
-                                <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
+                                <h3 className="text-xl font-bold mb-2 group-hover:text-indigo-400 transition-colors">
                                     {project.title}
                                 </h3>
                                 <p className="text-sm text-muted-foreground mb-6 line-clamp-3 leading-relaxed">
@@ -196,7 +196,7 @@ export default function Projects() {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className={cn(
-                                            "flex items-center text-sm font-semibold text-primary hover:underline",
+                                            "flex items-center text-sm font-semibold text-indigo-400 hover:underline",
                                             project.links.demo === '#' && "opacity-20 cursor-not-allowed pointer-events-none"
                                         )}
                                         aria-label={`${t('livePreview')} ${project.title}`}

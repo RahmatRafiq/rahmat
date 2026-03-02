@@ -76,7 +76,7 @@ export default function Hero() {
                     transition={{ duration: 1, delay: 0.8 }}
                     className="mb-10"
                 >
-                    <blockquote className="text-sm italic text-primary/80 font-medium">
+                    <blockquote className="text-sm italic text-indigo-400/80 font-medium">
                         {t('quote')}
                     </blockquote>
                 </motion.div>
@@ -89,7 +89,7 @@ export default function Hero() {
                 >
                     <Link
                         href="#projects"
-                        className="group relative px-8 py-3 bg-primary text-white rounded-lg font-medium overflow-hidden transition-all hover:glow"
+                        className="group relative px-8 py-3 bg-indigo-600 text-white rounded-lg font-medium overflow-hidden transition-all hover:glow"
                         aria-label="View Projects"
                     >
                         <span className="relative z-10 flex items-center">
@@ -120,7 +120,7 @@ export default function Hero() {
                         { icon: Database, title: t('feature3_title'), desc: t('feature3_desc') },
                     ].map((item, i) => (
                         <div key={i} className="flex flex-col items-center">
-                            <item.icon className="w-6 h-6 text-primary mb-3" aria-hidden="true" />
+                            <item.icon className="w-6 h-6 text-indigo-400 mb-3" aria-hidden="true" />
                             <h2 className="font-semibold text-sm mb-1">{item.title}</h2>
                             <p className="text-xs text-muted-foreground">{item.desc}</p>
                         </div>

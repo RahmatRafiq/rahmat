@@ -20,7 +20,7 @@ export default function DatabaseVisual() {
     return (
         <div className="relative w-full aspect-square max-w-[300px] scale-90 md:scale-100">
             <div className="absolute -top-6 left-1/2 -translate-x-1/2 whitespace-nowrap">
-                <span className="text-[10px] font-black tracking-widest text-primary opacity-50 uppercase">{t('title')}</span>
+                <span className="text-[10px] font-black tracking-widest text-indigo-400 opacity-50 uppercase">{t('title')}</span>
             </div>
             <Table title={t('tbl1')} fields={['id', 'email', 'pwd']} top="5%" left="0%" />
             <Table title={t('tbl2')} fields={['id', 'user_id', 'total']} top="60%" left="45%" />

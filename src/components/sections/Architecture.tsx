@@ -109,7 +109,7 @@ export default function Architecture() {
                             <div className="flex items-center gap-4 relative z-10">
                                 <div className={cn(
                                     'p-3 rounded-xl transition-colors duration-300',
-                                    activeTab === feature.id ? 'bg-primary text-white' : 'bg-muted text-muted-foreground group-hover:bg-primary/20 group-hover:text-primary'
+                                    activeTab === feature.id ? 'bg-indigo-600 text-white' : 'bg-muted text-muted-foreground group-hover:bg-primary/20 group-hover:text-indigo-400'
                                 )}>
                                     <feature.icon className="w-6 h-6" />
                                 </div>
@@ -168,7 +168,7 @@ export default function Architecture() {
                                 <div className="flex items-center gap-4">
                                     <div className={cn(
                                         "p-3 rounded-xl",
-                                        expandedMobileId === feature.id ? "bg-primary text-white" : "bg-muted text-muted-foreground"
+                                        expandedMobileId === feature.id ? "bg-indigo-600 text-white" : "bg-muted text-muted-foreground"
                                     )}>
                                         <feature.icon className="w-5 h-5" />
                                     </div>
@@ -211,7 +211,7 @@ export default function Architecture() {
                         >
                             <div className="space-y-4">
                                 <div className="flex items-center justify-between">
-                                    <span className="text-[10px] font-bold text-primary tracking-widest uppercase">Architecture Pulse</span>
+                                    <span className="text-[10px] font-bold text-indigo-400 tracking-widest uppercase">Architecture Pulse</span>
                                     <div className="flex gap-1.5">
                                         {architectureFeatures.map((_, idx) => (
                                             <div key={idx} className={cn("h-1 rounded-full transition-all", currentSlide === idx ? "w-4 bg-primary" : "w-1 bg-secondary")} />

@@ -22,7 +22,7 @@ export default function Footer() {
                     {/* Brand Section */}
                     <div className="md:col-span-5 space-y-6">
                         <Link href="/" className="text-2xl font-black tracking-tighter group">
-                            {siteConfig.name.toUpperCase()}<span className="text-primary group-hover:animate-pulse">.</span>
+                            {siteConfig.name.toUpperCase()}<span className="text-indigo-400 group-hover:animate-pulse">.</span>
                         </Link>
                         <p className="text-muted-foreground max-w-sm leading-relaxed text-sm">
                             {t('description')}
@@ -57,7 +57,7 @@ export default function Footer() {
                                     <Link
                                         key={item}
                                         href={`#${item.toLowerCase()}`}
-                                        className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors inline-flex items-center group"
+                                        className="text-sm font-medium text-muted-foreground hover:text-indigo-400 transition-colors inline-flex items-center group"
                                     >
                                         <span className="w-0 group-hover:w-4 h-[1px] bg-primary transition-all duration-300 mr-0 group-hover:mr-2" />
                                         {t(navKey)}
@@ -72,7 +72,7 @@ export default function Footer() {
                         <h2 className="text-xs font-black uppercase tracking-[0.2em] text-foreground/70">{t('contactTitle')}</h2>
                         <div className="space-y-4">
                             <a href={`mailto:${siteConfig.email}`} className="flex items-center gap-3 group">
-                                <div className="p-2.5 rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-all">
+                                <div className="p-2.5 rounded-xl bg-primary/10 text-indigo-400 group-hover:bg-primary group-hover:text-white transition-all">
                                     <Mail size={16} />
                                 </div>
                                 <span className="text-sm font-bold text-muted-foreground group-hover:text-foreground">{siteConfig.email}</span>
@@ -92,7 +92,7 @@ export default function Footer() {
 
                     <button
                         onClick={scrollToTop}
-                        className="group flex items-center gap-3 text-[10px] font-black uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors"
+                        className="group flex items-center gap-3 text-[10px] font-black uppercase tracking-widest text-muted-foreground hover:text-indigo-400 transition-colors"
                     >
                         <span>{t('backToTop')}</span>
                         <div className="w-8 h-8 rounded-full border border-border flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-all">

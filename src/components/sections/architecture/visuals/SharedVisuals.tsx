@@ -29,7 +29,7 @@ export function Table({ title, fields, top, left }: { title: string; fields: str
     return (
         <div className="absolute glass border border-border rounded-lg overflow-hidden w-24 md:w-32 shadow-xl" style={{ top, left }}>
             <div className="bg-primary/10 px-2 py-1 border-b border-border">
-                <span className="text-[8px] font-black font-mono text-primary uppercase">{title}</span>
+                <span className="text-[8px] font-black font-mono text-indigo-400 uppercase">{title}</span>
             </div>
             <div className="flex flex-col p-1.5 gap-1 bg-background/20">
                 {fields.map((f: string) => (
@@ -45,7 +45,7 @@ export function Table({ title, fields, top, left }: { title: string; fields: str
 export function ServiceMini({ name }: { name: string }) {
     return (
         <div className="px-3 py-1.5 glass rounded-lg border border-border flex items-center gap-2 group hover:border-primary/50 transition-all">
-            <Server className="w-2.5 h-2.5 text-primary" />
+            <Server className="w-2.5 h-2.5 text-indigo-400" />
             <span className="text-[8px] font-black tracking-widest uppercase">{name}</span>
         </div>
     );

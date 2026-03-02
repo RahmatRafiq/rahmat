@@ -111,7 +111,7 @@ export default function Navbar() {
                         href="/"
                         className="px-5 py-2 text-[15px] font-black tracking-tighter text-white/90 hover:text-white transition-colors select-none"
                     >
-                        {siteConfig.name.toUpperCase()}<span className="text-primary">.</span>
+                        {siteConfig.name.toUpperCase()}<span className="text-indigo-400">.</span>
                     </Link>
 
                     <div className="w-px h-6 mx-2 bg-white/10" />
@@ -139,7 +139,7 @@ export default function Navbar() {
                             onClick={() => router.replace(pathname, { locale: 'id', scroll: false })}
                             className={cn(
                                 "px-2.5 py-1 text-[11px] font-bold rounded-full transition-all",
-                                locale === 'id' ? "bg-primary text-white shadow-md" : "text-white/80 hover:text-white"
+                                locale === 'id' ? "bg-indigo-600 text-white shadow-md" : "text-white/80 hover:text-white"
                             )}
                             aria-label="Switch to Indonesian"
                         >
@@ -149,7 +149,7 @@ export default function Navbar() {
                             onClick={() => router.replace(pathname, { locale: 'en', scroll: false })}
                             className={cn(
                                 "px-2.5 py-1 text-[11px] font-bold rounded-full transition-all",
-                                locale === 'en' ? "bg-primary text-white shadow-md" : "text-white/80 hover:text-white"
+                                locale === 'en' ? "bg-indigo-600 text-white shadow-md" : "text-white/80 hover:text-white"
                             )}
                             aria-label="Switch to English"
                         >
@@ -201,7 +201,7 @@ export default function Navbar() {
                                                 onClick={(e) => { e.stopPropagation(); router.replace(pathname, { locale: 'id', scroll: false }); }}
                                                 className={cn(
                                                     "px-2 py-1 text-[10px] w-6 text-center font-bold rounded-full transition-all",
-                                                    locale === 'id' ? "bg-primary text-white shadow-md" : "text-white/80 hover:text-white"
+                                                    locale === 'id' ? "bg-indigo-600 text-white shadow-md" : "text-white/80 hover:text-white"
                                                 )}
                                                 aria-label="Switch to Indonesian"
                                             >
@@ -211,7 +211,7 @@ export default function Navbar() {
                                                 onClick={(e) => { e.stopPropagation(); router.replace(pathname, { locale: 'en', scroll: false }); }}
                                                 className={cn(
                                                     "px-2 py-1 text-[10px] w-6 text-center font-bold rounded-full transition-all",
-                                                    locale === 'en' ? "bg-primary text-white shadow-md" : "text-white/80 hover:text-white"
+                                                    locale === 'en' ? "bg-indigo-600 text-white shadow-md" : "text-white/80 hover:text-white"
                                                 )}
                                                 aria-label="Switch to English"
                                             >
@@ -241,7 +241,7 @@ export default function Navbar() {
                                         {/* Header inside open menu */}
                                         <div className="flex items-center justify-between w-full px-4 py-2 mb-1">
                                             <span className="text-base font-black tracking-tighter text-white">
-                                                {siteConfig.name.toUpperCase()}<span className="text-primary">.</span>
+                                                {siteConfig.name.toUpperCase()}<span className="text-indigo-400">.</span>
                                             </span>
                                             <button
                                                 onClick={() => { setIsOpen(false); resetHideTimer(); }}

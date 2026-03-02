@@ -10,7 +10,7 @@ export default function ModularVisual() {
     return (
         <div className="flex flex-col items-center gap-4 w-full max-w-[280px] relative">
             <div className="absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap">
-                <span className="text-[10px] font-black tracking-widest text-primary opacity-50 uppercase">{t('title')}</span>
+                <span className="text-[10px] font-black tracking-widest text-indigo-400 opacity-50 uppercase">{t('title')}</span>
             </div>
             {[
                 { name: t('layer1'), icon: Globe, color: 'text-indigo-400' },

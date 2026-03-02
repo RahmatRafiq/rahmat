@@ -1,9 +1,9 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Github, Linkedin, Mail } from 'lucide-react';
+import { Menu, X, Github, Linkedin } from 'lucide-react';
 import { cn } from '../lib/utils';
 
 const navLinks = [
@@ -16,92 +16,220 @@ const navLinks = [
     { name: 'Contact', href: '#contact' },
 ];
 
+const glassStyle: React.CSSProperties = {
+    background: 'rgba(255, 255, 255, 0.08)',
+    backdropFilter: 'blur(8px) saturate(160%)',
+    WebkitBackdropFilter: 'blur(8px) saturate(160%)',
+    border: '1px solid rgba(255, 255, 255, 0.15)',
+    boxShadow: [
+        '0 4px 30px rgba(0,0,0,0.35)',
+        'inset 0 1px 0 rgba(255,255,255,0.40)',
+        'inset 0 -1px 0 rgba(0,0,0,0.10)',
+    ].join(', '),
+    transform: 'translateZ(0)',
+    willChange: 'transform',
+};
+
+function GlassPill({
+    className,
+    style,
+    children,
+}: {
+    className?: string;
+    style?: React.CSSProperties;
+    children: React.ReactNode;
+}) {
+    return (
+        <div
+            className={cn('relative flex items-center gap-1 overflow-hidden', className)}
+            style={{ ...glassStyle, ...style }}
+        >
+            {/* Glare streak */}
+            <div
+                aria-hidden
+                className="pointer-events-none absolute inset-x-8 top-[1px] h-px"
+                style={{
+                    background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.85) 40%, rgba(255,255,255,0.85) 60%, transparent 100%)',
+                }}
+            />
+            {children}
+        </div>
+    );
+}
+
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
-    const [scrolled, setScrolled] = useState(false);
+    const [mobileVisible, setMobileVisible] = useState(true);
+    const hideTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+    const resetHideTimer = useCallback(() => {
+        setMobileVisible(true);
+        if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
+        if (!isOpen) {
+            hideTimerRef.current = setTimeout(() => setMobileVisible(false), 2000);
+        }
+    }, [isOpen]);
 
     useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 20);
+        resetHideTimer();
+        const events = ['touchstart', 'touchmove', 'scroll', 'pointermove'];
+        events.forEach((e) => window.addEventListener(e, resetHideTimer, { passive: true }));
+        return () => {
+            events.forEach((e) => window.removeEventListener(e, resetHideTimer));
+            if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
         };
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+    }, [resetHideTimer]);
+
+    useEffect(() => {
+        if (isOpen) {
+            if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
+            setMobileVisible(true);
+        } else {
+            resetHideTimer();
+        }
+    }, [isOpen, resetHideTimer]);
+
+    // Shared link styles — diperbesar (px-4 py-2, text-[13px])
+    const linkCls = 'px-4 py-2 rounded-full text-[13px] font-semibold tracking-wide text-white/60 hover:text-white hover:bg-white/10 active:bg-white/15 transition-all duration-150';
+    const iconCls = 'p-2.5 rounded-full text-white/50 hover:text-white hover:bg-white/10 transition-all duration-150';
 
     return (
-        <nav
-            className={cn(
-                'fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-transparent px-6 py-4',
-                scrolled && 'bg-background/80 backdrop-blur-md border-border py-3'
-            )}
-        >
-            <div className="max-w-7xl mx-auto flex items-center justify-between">
-                <Link href="/" className="text-xl font-bold tracking-tighter">
-                    RAHMAT<span className="text-primary">.</span>
-                </Link>
+        <>
+            {/* ══════════════════════════════════════════════════════
+                DESKTOP — centered floating pill, fixed top (Enlarged)
+            ══════════════════════════════════════════════════════ */}
+            <nav className="hidden md:flex fixed top-6 left-1/2 -translate-x-1/2 z-50">
+                <GlassPill className="px-3 py-2 gap-1.5 rounded-full">
+                    <Link
+                        href="/"
+                        className="px-5 py-2 text-[15px] font-black tracking-tighter text-white/90 hover:text-white transition-colors select-none"
+                    >
+                        RAHMAT<span className="text-primary">.</span>
+                    </Link>
 
-                {/* Desktop Nav */}
-                <div className="hidden md:flex items-center space-x-8">
+                    <div className="w-px h-6 mx-2 bg-white/10" />
+
                     {navLinks.map((link) => (
-                        <Link
-                            key={link.name}
-                            href={link.href}
-                            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-                        >
+                        <Link key={link.name} href={link.href} className={linkCls}>
                             {link.name}
                         </Link>
                     ))}
-                    <div className="flex items-center space-x-4 border-l border-border pl-8">
-                        <Link href="https://github.com/RahmatRafiq" target="_blank" className="text-muted-foreground hover:text-foreground">
-                            <Github size={20} />
-                        </Link>
-                        <Link href="https://www.linkedin.com/in/rahmat-r-079209247/" target="_blank" className="text-muted-foreground hover:text-foreground">
-                            <Linkedin size={20} />
-                        </Link>
-                    </div>
-                </div>
 
-                {/* Mobile Menu Button */}
-                <button onClick={() => setIsOpen(!isOpen)} className="md:hidden p-2 text-muted-foreground">
-                    {isOpen ? <X size={24} /> : <Menu size={24} />}
-                </button>
-            </div>
+                    <div className="w-px h-6 mx-2 bg-white/10" />
 
-            {/* Mobile Nav Overlay */}
+                    <Link href="https://github.com/RahmatRafiq" target="_blank" className={iconCls}>
+                        <Github size={16} />
+                    </Link>
+                    <Link href="https://www.linkedin.com/in/rahmat-r-079209247/" target="_blank" className={iconCls}>
+                        <Linkedin size={16} />
+                    </Link>
+                </GlassPill>
+            </nav>
+
+            {/* Mobile Blur Overlay for focus mode */}
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        className="absolute top-full left-0 right-0 bg-background border-b border-border md:hidden"
-                    >
-                        <div className="flex flex-col p-6 space-y-4">
-                            {navLinks.map((link) => (
-                                <Link
-                                    key={link.name}
-                                    href={link.href}
-                                    onClick={() => setIsOpen(false)}
-                                    className="text-lg font-medium text-muted-foreground"
-                                >
-                                    {link.name}
-                                </Link>
-                            ))}
-                            <div className="flex items-center space-x-6 pt-4 border-t border-border">
-                                <Link href="https://github.com/RahmatRafiq" target="_blank">
-                                    <Github size={24} />
-                                </Link>
-                                <Link href="https://www.linkedin.com/in/rahmat-rafiq-079209247/" target="_blank">
-                                    <Linkedin size={24} />
-                                </Link>
-                                <Link href="mailto:rahmatrafiq.1999@gmail.com">
-                                    <Mail size={24} />
-                                </Link>
-                            </div>
-                        </div>
-                    </motion.div>
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        onClick={() => setIsOpen(false)}
+                        className="md:hidden fixed inset-0 z-[40] bg-background/40 backdrop-blur-sm"
+                    />
                 )}
             </AnimatePresence>
-        </nav>
+
+            {/* ══════════════════════════════════════════════════════
+                MOBILE — floating button (closed) / menu (expanded) di BAWAH
+            ══════════════════════════════════════════════════════ */}
+            <AnimatePresence>
+                {mobileVisible && (
+                    <motion.nav
+                        key="mobile-nav"
+                        initial={{ y: 80, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        exit={{ y: 80, opacity: 0 }}
+                        transition={{ type: 'spring', stiffness: 380, damping: 32 }}
+                        className="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-[50]"
+                    >
+                        <AnimatePresence mode="wait">
+                            {!isOpen ? (
+                                /* Jika tertutup: Cukup tampilkan tombol (lingkaran) aja */
+                                <motion.div
+                                    key="closed-btn"
+                                    initial={{ scale: 0.8, opacity: 0 }}
+                                    animate={{ scale: 1, opacity: 1 }}
+                                    exit={{ scale: 0.8, opacity: 0 }}
+                                >
+                                    <GlassPill className="p-1.5 px-2 rounded-full">
+                                        <button
+                                            onClick={() => setIsOpen(true)}
+                                            className="px-4 py-2.5 rounded-full text-[14px] font-semibold text-white/90 hover:bg-white/10 transition-all flex items-center justify-center gap-2"
+                                        >
+                                            <Menu size={20} className="stroke-[2.5px]" />
+                                            Menu
+                                        </button>
+                                    </GlassPill>
+                                </motion.div>
+                            ) : (
+                                /* Jika terbuka: Tampilkan menu lengkap memanjang ke atas */
+                                <motion.div
+                                    key="expanded-menu"
+                                    initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                                    exit={{ opacity: 0, y: 20, scale: 0.95 }}
+                                    transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                                >
+                                    <GlassPill className="flex-col px-3 py-3 w-[260px] gap-1 rounded-3xl" style={{ borderRadius: '1.75rem' }}>
+                                        {/* Header inside open menu */}
+                                        <div className="flex items-center justify-between w-full px-4 py-2 mb-1">
+                                            <span className="text-base font-black tracking-tighter text-white">
+                                                RAHMAT<span className="text-primary">.</span>
+                                            </span>
+                                            <button
+                                                onClick={() => { setIsOpen(false); resetHideTimer(); }}
+                                                className="p-2 rounded-full text-white/60 hover:text-white hover:bg-white/10 transition-all bg-white/5"
+                                            >
+                                                <X size={18} />
+                                            </button>
+                                        </div>
+
+                                        <div className="w-full h-px mb-2 bg-white/10" />
+
+                                        {/* List Menu */}
+                                        <div className="flex flex-col gap-1 w-full max-h-[60vh] overflow-y-auto px-1 snap-y pb-2">
+                                            {navLinks.map((link) => (
+                                                <Link
+                                                    key={link.name}
+                                                    href={link.href}
+                                                    onClick={() => { setIsOpen(false); resetHideTimer(); }}
+                                                    className="w-full px-5 py-3.5 rounded-2xl text-[14px] font-semibold text-white/70 hover:text-white hover:bg-white/10 active:bg-white/15 transition-all flex items-center justify-between group"
+                                                >
+                                                    {link.name}
+                                                    <div className="w-1.5 h-1.5 rounded-full bg-white/10 group-hover:bg-primary/80 transition-colors" />
+                                                </Link>
+                                            ))}
+                                        </div>
+
+                                        <div className="w-full h-px my-1 bg-white/10" />
+
+                                        {/* Socials */}
+                                        <div className="flex items-center justify-center gap-3 w-full py-2">
+                                            <Link href="https://github.com/RahmatRafiq" target="_blank" className="p-3 bg-white/5 rounded-2xl text-white/60 hover:text-white hover:bg-white/15 transition-all">
+                                                <Github size={18} />
+                                            </Link>
+                                            <Link href="https://www.linkedin.com/in/rahmat-r-079209247/" target="_blank" className="p-3 bg-white/5 rounded-2xl text-white/60 hover:text-white hover:bg-white/15 transition-all">
+                                                <Linkedin size={18} />
+                                            </Link>
+                                        </div>
+                                    </GlassPill>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+                    </motion.nav>
+                )}
+            </AnimatePresence>
+        </>
     );
 }

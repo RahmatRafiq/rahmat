@@ -9,7 +9,7 @@ import Image from 'next/image';
 export default function Hero() {
     return (
         <section
-            className="relative min-h-[80vh] flex items-center justify-center px-6 overflow-hidden"
+            className="relative pt-32 pb-20 md:pt-40 md:pb-32 flex flex-col items-center justify-center px-6 overflow-hidden"
             aria-label="Introduction"
         >
             {/* Background Decorative Elements */}

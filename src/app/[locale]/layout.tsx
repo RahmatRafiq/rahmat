@@ -14,12 +14,12 @@ const appUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3001";
 export const metadata: Metadata = {
   metadataBase: new URL(appUrl),
   title: {
-    default: "Rahmat Rafiq | Full Stack & Golang Backend Engineer",
-    template: "%s | Rahmat Rafiq"
+    default: "Rahmat | Full Stack & Golang Backend Engineer",
+    template: "%s | Rahmat"
   },
-  description: "Portfolio Rahmat Rafiq, Full-Stack Software Engineer berpengalaman dalam membangun arsitektur backend scalable (Golang, Laravel) & modern frontend Next.js.",
+  description: "Portfolio Rahmat, Full-Stack Software Engineer berpengalaman dalam membangun arsitektur backend scalable (Golang, Laravel) & modern frontend Next.js.",
   keywords: [
-    "Rahmat Rafiq",
+    "Rahmat",
     "Full Stack Developer Indonesia",
     "Backend Engineer",
     "Golang Developer",
@@ -29,9 +29,9 @@ export const metadata: Metadata = {
     "System Design",
     "Software Engineer Portfolio"
   ],
-  authors: [{ name: "Rahmat Rafiq", url: appUrl }],
-  creator: "Rahmat Rafiq",
-  publisher: "Rahmat Rafiq",
+  authors: [{ name: "Rahmat", url: appUrl }],
+  creator: "Rahmat",
+  publisher: "Rahmat",
   alternates: {
     canonical: "/",
   },
@@ -50,21 +50,21 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: appUrl,
-    title: "Rahmat Rafiq | Full Stack & Backend Engineer",
+    title: "Rahmat | Full Stack & Backend Engineer",
     description: "Architecting scalable systems with Go, Laravel, and Next.js.",
-    siteName: "Rahmat Rafiq Portfolio",
+    siteName: "Rahmat Portfolio",
     images: [
       {
         url: "/rahmat.png",
         width: 800,
         height: 800,
-        alt: "Rahmat Rafiq Profile picture",
+        alt: "Rahmat Profile picture",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Rahmat Rafiq | Full Stack & Backend Engineer",
+    title: "Rahmat | Full Stack & Backend Engineer",
     description: "Architecting scalable systems with Go, Laravel, and Next.js.",
     creator: "@rahmatrafiq",
     images: ["/rahmat.png"],

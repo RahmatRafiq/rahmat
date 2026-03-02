@@ -29,7 +29,7 @@ export default function Hero() {
                     <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full border-2 border-primary/20 p-2 glass overflow-hidden">
                         <Image
                             src="/rahmat.png"
-                            alt="Rahmat Rafiq's Profile Picture"
+                            alt="Rahmat's Profile Picture"
                             width={160}
                             height={160}
                             priority

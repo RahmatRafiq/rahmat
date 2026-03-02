@@ -13,7 +13,7 @@ interface WakaStats {
     chart: number[];
     chart_hours: string[];
     total_prs: string | null;
-    recent_pushes: string | null;
+    contributions: string | null;
 }
 
 const DAY_LABELS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
@@ -165,7 +165,7 @@ export default function Stats() {
                         <StatCard icon={GitMerge} iconColor="text-purple-400" glow="border-purple-500/30"
                             value={stats?.total_prs} label={t('metric_prs')} loading={loading} delay={0.2} />
                         <StatCard icon={GitPullRequest} iconColor="text-emerald-400" glow="border-emerald-500/30"
-                            value={stats?.recent_pushes} label={t('metric_contrib')} loading={loading} delay={0.25} />
+                            value={stats?.contributions} label={t('metric_contrib')} loading={loading} delay={0.25} />
                     </div>
 
                     {/* Activity Pulse Chart */}

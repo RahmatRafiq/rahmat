@@ -19,11 +19,11 @@ interface WakaStats {
 const DAY_LABELS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
 const defaultLanguages = [
-    { name: 'TypeScript', percent: 73, color: '#3178C6' },
-    { name: 'Go', percent: 6, color: '#00ADD8' },
-    { name: 'SQL', percent: 6, color: '#4479A1' },
-    { name: 'Bash', percent: 3, color: '#4EAA25' },
-    { name: 'PHP', percent: 3, color: '#FF2D20' },
+    { name: 'TypeScript', percent: 42, color: '#3178C6' },
+    { name: 'Go', percent: 17, color: '#00ADD8' },
+    { name: 'PHP', percent: 14, color: '#FF2D20' },
+    { name: 'Markdown', percent: 7, color: '#083FA1' },
+    { name: 'Other', percent: 6, color: '#6366F1' },
 ];
 
 function StatCard({ icon: Icon, iconColor, glow, value, label, loading, delay = 0 }: {

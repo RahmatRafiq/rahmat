@@ -5,8 +5,10 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Terminal, Database, Code } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 
 export default function Hero() {
+    const t = useTranslations('Hero');
     return (
         <section
             className="relative pt-32 pb-20 md:pt-40 md:pb-32 flex flex-col items-center justify-center px-6 overflow-hidden"
@@ -46,7 +48,7 @@ export default function Hero() {
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                         <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
                     </span>
-                    <span>Available for new opportunities</span>
+                    <span>{t('available')}</span>
                 </motion.div>
 
                 <motion.h1
@@ -55,8 +57,8 @@ export default function Hero() {
                     transition={{ duration: 0.5, delay: 0.4 }}
                     className="text-4xl md:text-7xl font-bold tracking-tight mb-6"
                 >
-                    Crafting <span className="text-gradient">Scalable Systems</span> <br />
-                    & Seamless Experiences.
+                    {t('title_crafting')} <span className="text-gradient">{t('title_scalable')}</span> <br />
+                    {t('title_seamless')}
                 </motion.h1>
 
                 <motion.p
@@ -65,9 +67,7 @@ export default function Hero() {
                     transition={{ duration: 0.5, delay: 0.6 }}
                     className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed"
                 >
-                    I&apos;m <span className="text-foreground font-bold">Rahmat</span>, a Full Stack Engineer specialized in architecting
-                    robust backend infrastructures with <span className="text-foreground font-bold">Golang</span> & <span className="text-foreground font-bold">Laravel</span>{' '}
-                    and creating modern, data-driven interfaces with <span className="text-foreground font-bold">React</span> & <span className="text-foreground font-bold">Next.js</span>.
+                    {t.rich('subtitle', { b: (chunks) => <span className="text-foreground font-bold">{chunks}</span> })}
                 </motion.p>
 
                 <motion.div
@@ -77,7 +77,7 @@ export default function Hero() {
                     className="mb-10"
                 >
                     <blockquote className="text-sm italic text-primary/80 font-medium">
-                        &quot;Keep it clean, keep it scalable. Code is communication.&quot;
+                        {t('quote')}
                     </blockquote>
                 </motion.div>
 
@@ -93,7 +93,7 @@ export default function Hero() {
                         aria-label="View Projects"
                     >
                         <span className="relative z-10 flex items-center">
-                            View My Work
+                            {t('viewWork')}
                             <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
                         </span>
                         <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-violet-600 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -103,7 +103,7 @@ export default function Hero() {
                         className="px-8 py-3 bg-secondary text-foreground rounded-lg font-medium border border-border hover:bg-muted transition-colors"
                         aria-label="Contact Me"
                     >
-                        Get In Touch
+                        {t('getInTouch')}
                     </Link>
                 </motion.div>
 
@@ -115,9 +115,9 @@ export default function Hero() {
                     className="mt-20 grid grid-cols-2 md:grid-cols-3 gap-8 border-t border-border pt-12"
                 >
                     {[
-                        { icon: Terminal, title: 'Backend Mastery', desc: 'Golang, Laravel, Gin, GORM' },
-                        { icon: Code, title: 'Frontend Excellence', desc: 'Next.js, React, Tailwind CSS' },
-                        { icon: Database, title: 'Optimized Infrastructure', desc: 'PostgreSQL, Docker, CI/CD' },
+                        { icon: Terminal, title: t('feature1_title'), desc: t('feature1_desc') },
+                        { icon: Code, title: t('feature2_title'), desc: t('feature2_desc') },
+                        { icon: Database, title: t('feature3_title'), desc: t('feature3_desc') },
                     ].map((item, i) => (
                         <div key={i} className="flex flex-col items-center">
                             <item.icon className="w-6 h-6 text-primary mb-3" aria-hidden="true" />

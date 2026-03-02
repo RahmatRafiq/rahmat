@@ -3,59 +3,62 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Briefcase, Calendar, MapPin } from 'lucide-react';
-
-const experiences = [
-    {
-        company: 'Logistics Tech Company (Confidential)',
-        role: 'Full Stack Engineer',
-        location: 'Yogyakarta, Indonesia',
-        period: 'Oct 2025 - Jan 2026',
-        description: [
-            'Led the maintenance and feature development of a digital logistics aggregator platform.',
-            'Professional integration of multi-expedition shipping APIs using PHP, expanding service coverage.',
-            'Conducted performance tuning and bug fixes to support high-volume transaction data reliability.',
-        ],
-    },
-    {
-        company: 'Yayasan Pendidikan Gunungsari',
-        role: 'Full Stack Engineer',
-        location: 'Makassar, Indonesia',
-        period: 'May 2024 - Aug 2025',
-        description: [
-            'Architected a modular Golang REST API (Gin/GORM) with layered architecture for high scalability.',
-            'Developed a cross-platform Academic System (React + Capacitor) integrating real-time university data.',
-            'Built an MBKM management app using Laravel 11 with Spatie roles and complex media handling.',
-        ],
-    },
-    {
-        company: 'Project Based',
-        role: 'Back End Developer',
-        location: 'Indonesia',
-        period: 'Aug 2024 - Oct 2024',
-        description: [
-            'Delivered a retail supply chain application for distribution of agricultural equipment.',
-            'Implemented FIFO inventory management and stock replenishment recommendations.',
-            'Optimized database interactions using GORM and ensured secure authentication with JWT.',
-        ],
-    },
-    {
-        company: 'bangbeli.id',
-        role: 'Back-end Developer',
-        location: 'Malang, Indonesia',
-        period: 'Feb 2023 - Jun 2023',
-        description: [
-            'Refactored legacy code from PHP 5.6 to PHP 8.1 (Laravel 10).',
-            'Created API models, controllers, and CRUD operations for users, transactions, and products.',
-            'Collaborated in Agile/Scrum technical meetings and validated APIs using Postman.',
-        ],
-    },
-];
+import { useTranslations } from 'next-intl';
 
 export default function Experience() {
+    const t = useTranslations('Experience');
+
+    const experiences = [
+        {
+            company: 'Logistics Tech Company (Confidential)',
+            role: t('job1_role'),
+            location: 'Yogyakarta, Indonesia',
+            period: t('job1_period'),
+            description: [
+                t('job1_desc1'),
+                t('job1_desc2'),
+                t('job1_desc3'),
+            ],
+        },
+        {
+            company: 'Yayasan Pendidikan Gunungsari',
+            role: t('job2_role'),
+            location: 'Makassar, Indonesia',
+            period: t('job2_period'),
+            description: [
+                t('job2_desc1'),
+                t('job2_desc2'),
+                t('job2_desc3'),
+            ],
+        },
+        {
+            company: 'Project Based',
+            role: t('job3_role'),
+            location: 'Indonesia',
+            period: t('job3_period'),
+            description: [
+                t('job3_desc1'),
+                t('job3_desc2'),
+                t('job3_desc3'),
+            ],
+        },
+        {
+            company: 'bangbeli.id',
+            role: t('job4_role'),
+            location: 'Malang, Indonesia',
+            period: t('job4_period'),
+            description: [
+                t('job4_desc1'),
+                t('job4_desc2'),
+                t('job4_desc3'),
+            ],
+        },
+    ];
+
     return (
         <section id="experience" className="px-6 max-w-7xl mx-auto py-20 w-full" aria-label="Work Experience">
             <div className="mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold mb-4">Work Experience</h2>
+                <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('title')}</h2>
                 <div className="h-1 w-20 bg-primary rounded-full" aria-hidden="true" />
             </div>
 

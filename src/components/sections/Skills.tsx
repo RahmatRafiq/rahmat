@@ -4,37 +4,39 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Code2, Database, Webhook, Workflow, ChevronDown } from 'lucide-react';
 import { cn } from '../../lib/utils';
-
-const skillCategories = [
-    {
-        title: 'Languages & Frameworks',
-        icon: Code2,
-        skills: ['Golang (Gin, GORM)', 'PHP (Laravel)', 'TypeScript', 'React.js', 'Next.js', 'Inertia.js', 'Tailwind CSS'],
-    },
-    {
-        title: 'Database & Storage',
-        icon: Database,
-        skills: ['PostgreSQL', 'MySQL', 'Supabase', 'Redis'],
-    },
-    {
-        title: 'API & Dev Tools',
-        icon: Webhook,
-        skills: ['REST API Design', 'Swagger/OpenAPI', 'Postman', 'JWT Auth', 'Spatie Packages'],
-    },
-    {
-        title: 'DevOps & AI Workflows',
-        icon: Workflow,
-        skills: ['Docker', 'Linux (Kubuntu)', 'GitHub Actions', 'Automated Pipelines', 'AI-assisted Workflows', 'Model Context Protocol (MCP)'],
-    },
-];
+import { useTranslations } from 'next-intl';
 
 export default function Skills() {
+    const t = useTranslations('Skills');
     const [openIdx, setOpenIdx] = useState<number | null>(null);
+
+    const skillCategories = [
+        {
+            title: t('cat1_title'),
+            icon: Code2,
+            skills: ['Golang (Gin, GORM)', 'PHP (Laravel)', 'TypeScript', 'React.js', 'Next.js', 'Inertia.js', 'Tailwind CSS'],
+        },
+        {
+            title: t('cat2_title'),
+            icon: Database,
+            skills: ['PostgreSQL', 'MySQL', 'Supabase', 'Redis'],
+        },
+        {
+            title: t('cat3_title'),
+            icon: Webhook,
+            skills: ['REST API Design', 'Swagger/OpenAPI', 'Postman', 'JWT Auth', 'Spatie Packages'],
+        },
+        {
+            title: t('cat4_title'),
+            icon: Workflow,
+            skills: ['Docker', 'Linux (Kubuntu)', 'GitHub Actions', 'Automated Pipelines', 'AI-assisted Workflows', 'Model Context Protocol (MCP)'],
+        },
+    ];
 
     return (
         <section id="skills" className="px-6 max-w-7xl mx-auto py-20 w-full" aria-label="Technical Skills">
             <div className="mb-16 flex flex-col items-center">
-                <h2 className="text-3xl md:text-4xl font-bold mb-4">Technical Expertise</h2>
+                <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('title')}</h2>
                 <div className="h-1 w-20 bg-primary rounded-full" aria-hidden="true" />
             </div>
 

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Github, Code2, Flame, Timer, BarChart3, GitPullRequest, GitMerge, Zap, Loader2 } from 'lucide-react';
 import { cn } from '../../lib/utils';
+import { useTranslations } from 'next-intl';
 
 interface WakaStats {
     languages: Array<{ name: string; percent: number; color: string }>;
@@ -13,6 +14,7 @@ interface WakaStats {
 }
 
 export default function Stats() {
+    const t = useTranslations('Stats');
     const [stats, setStats] = useState<WakaStats | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
@@ -44,10 +46,10 @@ export default function Stats() {
     const displayLanguages = stats?.languages || defaultLanguages;
 
     const metrics = [
-        { label: 'Total Coding Time', value: stats?.total_time || '1,248h', icon: Timer, color: 'text-blue-400' },
-        { label: 'Daily Average', value: stats?.daily_average || '4h 32m', icon: Flame, color: 'text-orange-500' },
-        { label: 'PRs Merged', value: '156', icon: GitMerge, color: 'text-purple-400' }, // Kept static as requested/common
-        { label: 'Total Contributions', value: '842', icon: GitPullRequest, color: 'text-emerald-400' },
+        { label: t('metric_time'), value: stats?.total_time || '1,248h', icon: Timer, color: 'text-blue-400' },
+        { label: t('metric_daily'), value: stats?.daily_average || '4h 32m', icon: Flame, color: 'text-orange-500' },
+        { label: t('metric_prs'), value: '156', icon: GitMerge, color: 'text-purple-400' },
+        { label: t('metric_contrib'), value: '842', icon: GitPullRequest, color: 'text-emerald-400' },
     ];
 
     return (
@@ -55,11 +57,10 @@ export default function Stats() {
             <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/5 rounded-full blur-[100px] -z-10" />
 
             <div className="mb-16 flex flex-col items-center text-center">
-                <h2 className="text-3xl md:text-5xl font-bold mb-6 tracking-tight">Coding Data & Insights</h2>
+                <h2 className="text-3xl md:text-5xl font-bold mb-6 tracking-tight">{t('title')}</h2>
                 <div className="h-1.5 w-24 bg-primary rounded-full mb-8 shadow-[0_0_15px_rgba(99,102,241,0.5)]" />
                 <p className="text-muted-foreground max-w-2xl text-lg">
-                    Real-world metrics synced from my development workflow.
-                    A live representation of consistency, skill distribution, and impact.
+                    {t('description')}
                 </p>
             </div>
 
@@ -74,7 +75,7 @@ export default function Stats() {
                         )}
                         <h3 className="text-xl font-bold mb-8 flex items-center gap-2">
                             <Code2 className="text-primary w-5 h-5" />
-                            Language Pulse
+                            {t('languagePulse')}
                         </h3>
                         <div className="space-y-8">
                             {displayLanguages.map((lang) => (
@@ -105,7 +106,7 @@ export default function Stats() {
                         <div className="mt-12 flex items-center gap-3 p-4 bg-white/5 rounded-2xl border border-white/5">
                             <Zap className="w-5 h-5 text-yellow-500" />
                             <span className="text-xs text-muted-foreground leading-relaxed">
-                                Focusing heavily on <span className="font-bold text-foreground">Golang Native</span> and <span className="font-bold text-foreground">Clean Architecture</span> in 2025.
+                                {t.rich('focus', { b: (chunks) => <span className="font-bold text-foreground">{chunks}</span> })}
                             </span>
                         </div>
                     </div>
@@ -148,9 +149,9 @@ export default function Stats() {
                                 <div className="p-2 rounded-lg bg-primary/10">
                                     <BarChart3 className="w-5 h-5 text-primary" />
                                 </div>
-                                <h3 className="font-bold text-xl uppercase tracking-wider">Activity Pulse</h3>
+                                <h3 className="font-bold text-xl uppercase tracking-wider">{t('activityPulse')}</h3>
                             </div>
-                            <span className="text-[10px] font-bold bg-secondary px-3 py-1 rounded-full text-muted-foreground">LAST 7 DAYS</span>
+                            <span className="text-[10px] font-bold bg-secondary px-3 py-1 rounded-full text-muted-foreground">{t('last7Days')}</span>
                         </div>
 
                         {/* Native-looking stylized chart */}
@@ -195,8 +196,8 @@ export default function Stats() {
                     className="group flex items-center gap-4 px-6 py-3 rounded-2xl bg-secondary/50 border border-border hover:bg-muted transition-all"
                 >
                     <div className="flex flex-col items-start leading-tight">
-                        <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">Deep Dive</span>
-                        <span className="text-sm font-bold group-hover:text-primary transition-colors">Full WakaTime Profile</span>
+                        <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">{t('deepDive')}</span>
+                        <span className="text-sm font-bold group-hover:text-primary transition-colors">{t('fullProfile')}</span>
                     </div>
                     <div className="w-8 h-8 rounded-xl bg-background border border-border flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-all">
                         <Zap className="w-4 h-4 text-primary group-hover:text-white" />

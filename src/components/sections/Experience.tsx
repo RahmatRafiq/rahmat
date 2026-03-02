@@ -7,12 +7,12 @@ import { Briefcase, Calendar, MapPin } from 'lucide-react';
 const experiences = [
     {
         company: 'Logistics Tech Company (Confidential)',
-        role: 'Software Engineer',
+        role: 'Full Stack Engineer',
         location: 'Yogyakarta, Indonesia',
         period: 'Oct 2025 - Jan 2026',
         description: [
             'Led the maintenance and feature development of a digital logistics aggregator platform.',
-            'Successfully integrated multiple 3PL shipping APIs using JavaScript, expanding service coverage.',
+            'Professional integration of multi-expedition shipping APIs using PHP, expanding service coverage.',
             'Conducted performance tuning and bug fixes to support high-volume transaction data reliability.',
         ],
     },

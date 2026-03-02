@@ -66,7 +66,7 @@ export default function Hero() {
                     className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed"
                 >
                     I&apos;m <span className="text-foreground font-bold">Rahmat</span>, a Full Stack Engineer specialized in architecting
-                    robust backend infrastructures with <span className="text-foreground font-bold">Golang</span> & <span className="text-foreground font-bold">Laravel</span>
+                    robust backend infrastructures with <span className="text-foreground font-bold">Golang</span> & <span className="text-foreground font-bold">Laravel</span>{' '}
                     and creating modern, data-driven interfaces with <span className="text-foreground font-bold">React</span> & <span className="text-foreground font-bold">Next.js</span>.
                 </motion.p>
 

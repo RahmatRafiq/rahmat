@@ -9,14 +9,15 @@ import {
     ClipboardList,
     Database,
     Server,
+    Globe,
+    ChevronDown,
+    ArrowRight,
+    Code,
     User,
     ShieldCheck,
     Cpu,
     Webhook,
     Box,
-    Globe,
-    ChevronDown,
-    ArrowRight,
     LucideIcon
 } from 'lucide-react';
 import { cn } from '../../lib/utils';
@@ -35,7 +36,7 @@ const architectureFeatures: ArchitectureFeature[] = [
         title: 'UML Design',
         desc: 'Expertise in translating complex business requirements into clear Class, Sequence, and Flowchart diagrams.',
         icon: ClipboardList,
-        Visual: UMLVisual,
+        Visual: DevFlowVisual,
     },
     {
         id: 'modular',
@@ -244,33 +245,53 @@ export default function Architecture() {
 }
 
 // Visual components (Integrated labels, no separate header containers)
-function UMLVisual() {
+function DevFlowVisual() {
     return (
-        <div className="w-full max-w-sm flex flex-col gap-8 relative">
+        <div className="w-full flex flex-col gap-8 relative overflow-hidden">
             <div className="absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap">
-                <span className="text-[10px] font-black tracking-widest text-primary opacity-50 uppercase">UML SEQUENCE FLOW</span>
+                <span className="text-[10px] font-black tracking-widest text-primary opacity-50 uppercase">SYSTEM DEVELOPMENT LIFECYCLE</span>
             </div>
-            <div className="flex justify-between relative px-2">
-                {[
-                    { name: 'User', icon: User },
-                    { name: 'Auth', icon: ShieldCheck },
-                    { name: 'DB', icon: Database }
-                ].map((actor, idx) => (
-                    <div key={idx} className="flex flex-col items-center gap-2 relative z-10 w-16 md:w-20">
-                        <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg md:rounded-xl bg-background border border-border flex items-center justify-center shadow-lg">
-                            <actor.icon className="w-4 h-4 md:w-5 md:h-5 text-primary" />
-                        </div>
-                        <span className="text-[8px] md:text-[9px] uppercase font-bold text-muted-foreground">{actor.name}</span>
-                        <div className="absolute top-10 md:top-12 bottom-[-150px] w-px bg-primary/5 border-l border-dashed border-primary/20" />
+
+            {/* Visual Scaling for Mobile */}
+            <div className="w-full flex flex-col items-center justify-center scale-[0.85] md:scale-100 origin-center">
+                <div className="w-full max-w-[500px] md:max-w-full flex flex-col">
+                    <div className="flex justify-between relative px-2">
+                        {[
+                            { name: 'Client', icon: User, label: 'Req' },
+                            { name: 'Design', icon: ClipboardList, label: 'Arch' },
+                            { name: 'Code', icon: Code, label: 'Dev' },
+                            { name: 'QA', icon: ShieldCheck, label: 'Test' },
+                            { name: 'Prod', icon: Globe, label: 'Live' }
+                        ].map((actor, idx) => (
+                            <div key={idx} className="flex flex-col items-center gap-2 relative z-10 w-14 md:w-20">
+                                <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg md:rounded-xl bg-background border border-border flex items-center justify-center shadow-lg group-hover:border-primary transition-colors">
+                                    <actor.icon className="w-4 h-4 md:w-5 md:h-5 text-primary" />
+                                </div>
+                                <span className="text-[7px] md:text-[8px] uppercase font-bold text-foreground">{actor.name}</span>
+                                <div className="absolute top-10 md:top-12 bottom-[-180px] w-px bg-primary/5 border-l border-dashed border-primary/20" />
+                            </div>
+                        ))}
                     </div>
-                ))}
+
+                    <div className="relative h-[180px] w-full mt-4">
+                        {/* ALT Box for Conditional Logic */}
+                        <div className="absolute top-[100px] left-[35%] right-[5%] bottom-[10px] border border-red-500/20 bg-red-500/5 rounded-md z-0">
+                            <div className="absolute -top-2 left-2 bg-background border border-red-500/20 px-1.5 py-0.5 rounded text-[6px] font-bold text-red-400 uppercase">alt [error]</div>
+                        </div>
+
+                        <SequenceLine delay={0.2} top={20} left="10%" width="20%" label="REQUIREMENTS" color="text-primary" arrow="right" />
+                        <SequenceLine delay={1.2} top={50} left="30%" width="20%" label="ARCHITECT" color="text-indigo-400" arrow="right" />
+                        <SequenceLine delay={2.2} top={80} left="50%" width="20%" label="IMPLEMENT" color="text-violet-400" arrow="right" />
+                        <SequenceLine delay={3.2} top={110} left="70%" width="20%" label="VALIDATE" color="text-emerald-400" arrow="right" />
+
+                        {/* Error / Feedback Loops */}
+                        <SequenceLine delay={4.5} top={140} right="30%" width="20%" label="FIX / RETRY" color="text-red-400" arrow="left" dashed />
+                        <SequenceLine delay={5.5} top={170} right="10%" width="80%" label="DELIVERY" color="text-primary" arrow="left" dashed />
+                    </div>
+                </div>
             </div>
-            <div className="relative h-[150px] w-full">
-                <SequenceLine delay={0.2} top={20} left="15%" width="40%" label="POST /login" color="text-primary" arrow="right" />
-                <SequenceLine delay={1.2} top={60} left="55%" width="40%" label="FIND" color="text-violet-400" arrow="right" />
-                <SequenceLine delay={2.2} top={100} right="15%" width="40%" label="RECORD" color="text-emerald-400" arrow="left" dashed />
-                <SequenceLine delay={3.2} top={140} right="15%" width="85%" label="200 OK" color="text-primary" arrow="left" dashed />
-            </div>
+
+            <p className="text-[8px] text-center text-muted-foreground italic -mt-4 uppercase tracking-widest opacity-50">End-to-end flow sequence</p>
         </div>
     );
 }

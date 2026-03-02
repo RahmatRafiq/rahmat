@@ -60,7 +60,7 @@
         "description": "Metrik live yang menggambarkan ritme coding, area fokus, dan rekam jejak pengiriman saya.",
         "languagePulse": "Distribusi Bahasa",
         "focus": "Fokus utama: <b>Golang</b> & <b>Clean Architecture</b> (2025).",
-        "metric_time": "Total Waktu Dev",
+        "metric_time": "Total Waktu Dev Mingguan",
         "metric_daily": "Rata-rata Harian",
         "metric_prs": "Pull Requests",
         "metric_contrib": "Kontribusi",

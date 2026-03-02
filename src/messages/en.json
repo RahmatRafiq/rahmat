@@ -60,7 +60,7 @@
         "description": "Live-synced metrics that illustrate my coding cadence, focus areas, and delivery history.",
         "languagePulse": "Language Pulse",
         "focus": "Primary focus: <b>Golang</b> & <b>Clean Architecture</b> (2025).",
-        "metric_time": "Total Dev Time",
+        "metric_time_weekly_en": "Weekly Total Dev Time",
         "metric_daily": "Daily Average",
         "metric_prs": "Pull Requests",
         "metric_contrib": "Contributions",

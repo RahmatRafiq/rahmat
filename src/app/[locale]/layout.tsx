@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
-import Layout from "../components/Layout";
+import "../globals.css";
+import Layout from "../../components/Layout";
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages } from 'next-intl/server';
+import { notFound } from 'next/navigation';
+import { routing } from '../../i18n/routing';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,7 +33,7 @@ export const metadata: Metadata = {
   creator: "Rahmat Rafiq",
   publisher: "Rahmat Rafiq",
   alternates: {
-    canonical: "/", // Otomatis tersambung ke metadataBase
+    canonical: "/",
   },
   robots: {
     index: true,
@@ -44,14 +48,14 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    locale: "en_US", // Sesuai feedback
+    locale: "en_US",
     url: appUrl,
     title: "Rahmat Rafiq | Full Stack & Backend Engineer",
     description: "Architecting scalable systems with Go, Laravel, and Next.js.",
     siteName: "Rahmat Rafiq Portfolio",
     images: [
       {
-        url: "/rahmat.png", // Next.js otomatis menjadikannya absolut (appUrl + /rahmat.png)
+        url: "/rahmat.png",
         width: 800,
         height: 800,
         alt: "Rahmat Rafiq Profile picture",
@@ -67,15 +71,29 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
+  params
 }: Readonly<{
   children: React.ReactNode;
+  params: Promise<{ locale: string }>
 }>) {
+  const { locale } = await params;
+
+  // Ensure that the incoming `locale` is valid
+  if (!routing.locales.includes(locale as any)) {
+    notFound();
+  }
+
+  // Providing all messages to the client side
+  const messages = await getMessages();
+
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang={locale} className="scroll-smooth">
       <body className={`${inter.className} antialiased selection:bg-primary/30`}>
-        <Layout>{children}</Layout>
+        <NextIntlClientProvider messages={messages}>
+          <Layout>{children}</Layout>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

@@ -58,6 +58,9 @@ export const metadata: Metadata = {
     creator: siteConfig.links.twitter !== '#' ? siteConfig.links.twitter : `@${siteConfig.name.toLowerCase()}`,
     images: ["/rahmat.png"],
   },
+  verification: {
+    google: "km_q1pbpvPlUiJohpwzY7SMZ8wY3EeAnE5thD-ojNmo",
+  },
 };
 
 export default async function RootLayout({

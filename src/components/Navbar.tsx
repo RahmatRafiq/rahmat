@@ -97,8 +97,8 @@ export default function Navbar() {
     }, [isOpen, resetHideTimer]);
 
     // Shared link styles — diperbesar (px-4 py-2, text-[13px])
-    const linkCls = 'px-4 py-2 rounded-full text-[13px] font-semibold tracking-wide text-white/60 hover:text-white hover:bg-white/10 active:bg-white/15 transition-all duration-150';
-    const iconCls = 'p-2.5 rounded-full text-white/50 hover:text-white hover:bg-white/10 transition-all duration-150';
+    const linkCls = 'px-4 py-2 rounded-full text-[13px] font-semibold tracking-wide text-white/80 hover:text-white hover:bg-white/10 active:bg-white/15 transition-all duration-150';
+    const iconCls = 'p-2.5 rounded-full text-white/80 hover:text-white hover:bg-white/10 transition-all duration-150';
 
     return (
         <>
@@ -139,7 +139,7 @@ export default function Navbar() {
                             onClick={() => router.replace(pathname, { locale: 'id', scroll: false })}
                             className={cn(
                                 "px-2.5 py-1 text-[11px] font-bold rounded-full transition-all",
-                                locale === 'id' ? "bg-primary text-white shadow-md" : "text-white/50 hover:text-white"
+                                locale === 'id' ? "bg-primary text-white shadow-md" : "text-white/80 hover:text-white"
                             )}
                             aria-label="Switch to Indonesian"
                         >
@@ -149,7 +149,7 @@ export default function Navbar() {
                             onClick={() => router.replace(pathname, { locale: 'en', scroll: false })}
                             className={cn(
                                 "px-2.5 py-1 text-[11px] font-bold rounded-full transition-all",
-                                locale === 'en' ? "bg-primary text-white shadow-md" : "text-white/50 hover:text-white"
+                                locale === 'en' ? "bg-primary text-white shadow-md" : "text-white/80 hover:text-white"
                             )}
                             aria-label="Switch to English"
                         >
@@ -201,7 +201,7 @@ export default function Navbar() {
                                                 onClick={(e) => { e.stopPropagation(); router.replace(pathname, { locale: 'id', scroll: false }); }}
                                                 className={cn(
                                                     "px-2 py-1 text-[10px] w-6 text-center font-bold rounded-full transition-all",
-                                                    locale === 'id' ? "bg-primary text-white shadow-md" : "text-white/50 hover:text-white"
+                                                    locale === 'id' ? "bg-primary text-white shadow-md" : "text-white/80 hover:text-white"
                                                 )}
                                                 aria-label="Switch to Indonesian"
                                             >
@@ -211,7 +211,7 @@ export default function Navbar() {
                                                 onClick={(e) => { e.stopPropagation(); router.replace(pathname, { locale: 'en', scroll: false }); }}
                                                 className={cn(
                                                     "px-2 py-1 text-[10px] w-6 text-center font-bold rounded-full transition-all",
-                                                    locale === 'en' ? "bg-primary text-white shadow-md" : "text-white/50 hover:text-white"
+                                                    locale === 'en' ? "bg-primary text-white shadow-md" : "text-white/80 hover:text-white"
                                                 )}
                                                 aria-label="Switch to English"
                                             >
@@ -245,7 +245,7 @@ export default function Navbar() {
                                             </span>
                                             <button
                                                 onClick={() => { setIsOpen(false); resetHideTimer(); }}
-                                                className="p-2 rounded-full text-white/60 hover:text-white hover:bg-white/10 transition-all bg-white/5"
+                                                className="p-2 rounded-full text-white/80 hover:text-white hover:bg-white/10 transition-all bg-white/5"
                                                 aria-label="Close Menu"
                                             >
                                                 <X size={18} />
@@ -261,7 +261,7 @@ export default function Navbar() {
                                                     key={link.name}
                                                     href={link.href}
                                                     onClick={() => { setIsOpen(false); resetHideTimer(); }}
-                                                    className="w-full px-5 py-3.5 rounded-2xl text-[14px] font-semibold text-white/70 hover:text-white hover:bg-white/10 active:bg-white/15 transition-all flex items-center justify-between group"
+                                                    className="w-full px-5 py-3.5 rounded-2xl text-[14px] font-semibold text-white/80 hover:text-white hover:bg-white/10 active:bg-white/15 transition-all flex items-center justify-between group"
                                                 >
                                                     {link.name}
                                                     <div className="w-1.5 h-1.5 rounded-full bg-white/10 group-hover:bg-primary/80 transition-colors" />
@@ -271,12 +271,11 @@ export default function Navbar() {
 
                                         <div className="w-full h-px my-1 bg-white/10" />
 
-                                        {/* Socials */}
                                         <div className="flex items-center justify-center gap-3 w-full py-2">
-                                            <Link href={siteConfig.links.github} target="_blank" className="p-3 bg-white/5 rounded-2xl text-white/60 hover:text-white hover:bg-white/15 transition-all" aria-label="GitHub Profile">
+                                            <Link href={siteConfig.links.github} target="_blank" className="p-3 bg-white/5 rounded-2xl text-white/80 hover:text-white hover:bg-white/15 transition-all" aria-label="GitHub Profile">
                                                 <Github size={18} />
                                             </Link>
-                                            <Link href={siteConfig.links.linkedin} target="_blank" className="p-3 bg-white/5 rounded-2xl text-white/60 hover:text-white hover:bg-white/15 transition-all" aria-label="LinkedIn Profile">
+                                            <Link href={siteConfig.links.linkedin} target="_blank" className="p-3 bg-white/5 rounded-2xl text-white/80 hover:text-white hover:bg-white/15 transition-all" aria-label="LinkedIn Profile">
                                                 <Linkedin size={18} />
                                             </Link>
                                         </div>

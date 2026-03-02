@@ -49,7 +49,7 @@ export default function Footer() {
 
                     {/* Quick Links */}
                     <div className="md:col-span-3 space-y-6">
-                        <h4 className="text-xs font-black uppercase tracking-[0.2em] text-foreground/50">{t('navTitle')}</h4>
+                        <h2 className="text-xs font-black uppercase tracking-[0.2em] text-foreground/70">{t('navTitle')}</h2>
                         <nav className="flex flex-col gap-3">
                             {['About', 'Skills', 'Architecture', 'Experience', 'Projects'].map((item) => {
                                 const navKey = 'nav' + item;
@@ -69,7 +69,7 @@ export default function Footer() {
 
                     {/* Contact Info */}
                     <div className="md:col-span-4 space-y-6">
-                        <h4 className="text-xs font-black uppercase tracking-[0.2em] text-foreground/50">{t('contactTitle')}</h4>
+                        <h2 className="text-xs font-black uppercase tracking-[0.2em] text-foreground/70">{t('contactTitle')}</h2>
                         <div className="space-y-4">
                             <a href={`mailto:${siteConfig.email}`} className="flex items-center gap-3 group">
                                 <div className="p-2.5 rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-all">
@@ -78,7 +78,7 @@ export default function Footer() {
                                 <span className="text-sm font-bold text-muted-foreground group-hover:text-foreground">{siteConfig.email}</span>
                             </a>
                         </div>
-                        <p className="text-[10px] text-muted-foreground leading-relaxed uppercase tracking-widest font-bold opacity-30 pt-4">
+                        <p className="text-[10px] text-muted-foreground leading-relaxed uppercase tracking-widest font-bold pt-4 opacity-70">
                             {t('basedIn')}
                         </p>
                     </div>
@@ -86,7 +86,7 @@ export default function Footer() {
 
                 {/* Bottom Bar */}
                 <div className="pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-6">
-                    <p className="text-[10px] uppercase font-bold tracking-widest text-muted-foreground/60">
+                    <p className="text-[10px] uppercase font-bold tracking-widest text-muted-foreground/80">
                         {t('copyright', { year: new Date().getFullYear() })}
                     </p>
 

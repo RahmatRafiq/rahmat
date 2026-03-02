@@ -23,9 +23,6 @@ export const metadata: Metadata = {
   authors: [{ name: siteConfig.fullName, url: appUrl }],
   creator: siteConfig.fullName,
   publisher: siteConfig.fullName,
-  alternates: {
-    canonical: "/",
-  },
   robots: {
     index: true,
     follow: true,

@@ -84,7 +84,7 @@ export default function Stats() {
                     <div className="mt-12 flex items-center gap-3 p-4 bg-white/5 rounded-2xl border border-white/5">
                         <Zap className="w-5 h-5 text-yellow-500" />
                         <span className="text-xs text-muted-foreground leading-relaxed">
-                            Focusing heavily on <b>Golang Native</b> and <b>Clean Architecture</b> in 2025.
+                            Focusing heavily on <span className="font-bold text-foreground">Golang Native</span> and <span className="font-bold text-foreground">Clean Architecture</span> in 2025.
                         </span>
                     </div>
                 </div>

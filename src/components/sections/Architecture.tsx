@@ -180,12 +180,13 @@ export default function Architecture() {
                                 </motion.div>
                             </div>
 
-                            <AnimatePresence>
+                            <AnimatePresence initial={false}>
                                 {expandedMobileId === feature.id && (
                                     <motion.div
                                         initial={{ height: 0, opacity: 0 }}
                                         animate={{ height: "auto", opacity: 1 }}
                                         exit={{ height: 0, opacity: 0 }}
+                                        transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
                                         className="overflow-hidden"
                                     >
                                         <div className="pt-8 pb-4 flex items-center justify-center min-h-[250px]">

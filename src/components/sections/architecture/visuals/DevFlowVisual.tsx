@@ -6,9 +6,9 @@ import { SequenceLine } from './SharedVisuals';
 
 export default function DevFlowVisual() {
     return (
-        <div className="w-full flex flex-col gap-8 relative overflow-hidden">
-            <div className="absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap">
-                <span className="text-[10px] font-black tracking-widest text-primary opacity-50 uppercase tracking-widest">SYSTEM DEVELOPMENT LIFECYCLE</span>
+        <div className="w-full flex flex-col gap-8 relative">
+            <div className="flex justify-center">
+                <span className="text-[10px] font-black tracking-widest text-primary opacity-50 uppercase">SYSTEM DEVELOPMENT LIFECYCLE</span>
             </div>
 
             <div className="w-full flex flex-col items-center justify-center scale-[0.8] md:scale-100 origin-center">
@@ -55,7 +55,7 @@ export default function DevFlowVisual() {
 
                         {/* Error / Feedback Loops */}
                         <SequenceLine delay={5.0} top={185} right="30%" width="20%" label="FIX / RETRY" color="text-red-400" arrow="left" dashed />
-                        <SequenceLine delay={5.8} top={220} left="10.1%" width="80.1%" label="DELIVERY" color="text-primary" arrow="left" dashed />
+                        <SequenceLine delay={5.8} top={220} right="10.1%" width="80.1%" label="DELIVERY" color="text-primary" arrow="left" dashed />
                     </div>
                 </div>
             </div>

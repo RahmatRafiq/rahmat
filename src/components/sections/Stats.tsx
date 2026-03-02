@@ -1,76 +1,98 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Github, Code2, Flame, Timer, BarChart3, GitPullRequest, GitMerge, Zap } from 'lucide-react';
+import { Github, Code2, Flame, Timer, BarChart3, GitPullRequest, GitMerge, Zap, Loader2 } from 'lucide-react';
 import { cn } from '../../lib/utils';
 
-// Static extracted data for the "New Style" presentation
-const languageData = [
-    { name: 'Golang', percent: 38, color: 'bg-[#00ADD8]' },
-    { name: 'PHP/Laravel', percent: 28, color: 'bg-[#FF2D20]' },
-    { name: 'TypeScript', percent: 18, color: 'bg-[#3178C6]' },
-    { name: 'React/JS', percent: 12, color: 'bg-[#61DAFB]' },
-    { name: 'Other', percent: 4, color: 'bg-zinc-500' },
-];
-
-const mainMetrics = [
-    { label: 'Total Coding Time', value: '1,248h', icon: Timer, color: 'text-blue-400' },
-    { label: 'Current Streak', value: '42 Days', icon: Flame, color: 'text-orange-500' },
-    { label: 'PRs Merged', value: '156', icon: GitMerge, color: 'text-purple-400' },
-    { label: 'Total Contributions', value: '842', icon: GitPullRequest, color: 'text-emerald-400' },
-];
+interface WakaStats {
+    languages: Array<{ name: string; percent: number; color: string }>;
+    daily_average: string;
+    total_time: string;
+    activity: number;
+}
 
 export default function Stats() {
+    const [stats, setStats] = useState<WakaStats | null>(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
+
+    useEffect(() => {
+        async function fetchStats() {
+            try {
+                const res = await fetch('/api/stats');
+                if (!res.ok) throw new Error();
+                const data = await res.json();
+                setStats(data);
+            } catch (err) {
+                console.error('Failed to fetch stats:', err);
+                setError(true);
+            } finally {
+                setLoading(false);
+            }
+        }
+        fetchStats();
+    }, []);
+
+    const defaultLanguages = [
+        { name: 'Golang', percent: 90, color: '#00ADD8' },
+        { name: 'PHP / Laravel', percent: 85, color: '#FF2D20' },
+        { name: 'TypeScript / React', percent: 80, color: '#3178C6' },
+        { name: 'MySQL / Postgres', percent: 88, color: '#4479A1' },
+    ];
+
+    const displayLanguages = stats?.languages || defaultLanguages;
+
+    const metrics = [
+        { label: 'Total Coding Time', value: stats?.total_time || '1,248h', icon: Timer, color: 'text-blue-400' },
+        { label: 'Daily Average', value: stats?.daily_average || '4h 32m', icon: Flame, color: 'text-orange-500' },
+        { label: 'PRs Merged', value: '156', icon: GitMerge, color: 'text-purple-400' }, // Kept static as requested/common
+        { label: 'Total Contributions', value: '842', icon: GitPullRequest, color: 'text-emerald-400' },
+    ];
+
     return (
-        <section className="px-6 max-w-7xl mx-auto py-20 w-full relative">
+        <section id="stats" className="px-6 max-w-7xl mx-auto py-20 w-full relative">
             <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/5 rounded-full blur-[100px] -z-10" />
 
             <div className="mb-16 flex flex-col items-center text-center">
-                <h2 className="text-3xl md:text-4xl font-bold mb-4 italic tracking-tight">
-                    DATA <span className="text-primary tracking-normal not-italic">INSIGHTS</span>
-                </h2>
-                <div className="h-1 w-20 bg-primary rounded-full mb-6" />
-                <p className="text-muted-foreground max-w-2xl">
-                    Extracting real-world metrics from my development workflow.
-                    A native representation of consistency, skill distribution, and impact.
+                <h2 className="text-3xl md:text-5xl font-bold mb-6 tracking-tight">Coding Data & Insights</h2>
+                <div className="h-1.5 w-24 bg-primary rounded-full mb-8 shadow-[0_0_15px_rgba(99,102,241,0.5)]" />
+                <p className="text-muted-foreground max-w-2xl text-lg">
+                    Real-world metrics synced from my development workflow.
+                    A live representation of consistency, skill distribution, and impact.
                 </p>
-            </div>
-
-            <div className="mb-16 flex flex-col items-center">
-                <h2 className="text-3xl md:text-4xl font-bold mb-4">Coding Data & Insights</h2>
-                <div className="h-1 w-20 bg-primary rounded-full" aria-hidden="true" />
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
                 {/* Languages Side */}
                 <div className="lg:col-span-4 space-y-6">
-                    <div className="glass p-8 rounded-3xl border border-border h-full">
+                    <div className="glass p-8 rounded-3xl border border-border h-full relative overflow-hidden">
+                        {loading && (
+                            <div className="absolute inset-0 bg-background/50 backdrop-blur-sm z-20 flex items-center justify-center">
+                                <Loader2 className="w-8 h-8 text-primary animate-spin" />
+                            </div>
+                        )}
                         <h3 className="text-xl font-bold mb-8 flex items-center gap-2">
                             <Code2 className="text-primary w-5 h-5" />
                             Language Pulse
                         </h3>
                         <div className="space-y-8">
-                            {[
-                                { name: 'Golang', level: 90, color: 'bg-primary' },
-                                { name: 'PHP / Laravel', level: 85, color: 'bg-blue-500' },
-                                { name: 'TypeScript / React', level: 80, color: 'bg-violet-500' },
-                                { name: 'MySQL / Postgres', level: 88, color: 'bg-emerald-500' },
-                            ].map((lang) => (
+                            {displayLanguages.map((lang) => (
                                 <div key={lang.name} className="space-y-3">
                                     <div className="flex justify-between text-sm font-bold">
                                         <span className="text-muted-foreground">{lang.name}</span>
-                                        <span className="text-primary">{lang.level}%</span>
+                                        <span className="text-primary">{Math.round(lang.percent)}%</span>
                                     </div>
                                     <div className="h-2 w-full bg-secondary rounded-full overflow-hidden">
                                         <motion.div
                                             initial={{ width: 0 }}
-                                            whileInView={{ width: `${lang.level}%` }}
+                                            whileInView={{ width: `${lang.percent}%` }}
                                             viewport={{ once: true }}
                                             transition={{ duration: 1, delay: 0.5 }}
-                                            className={cn("h-full rounded-full transition-all duration-1000", lang.color)}
+                                            className="h-full rounded-full transition-all duration-1000"
+                                            style={{ backgroundColor: lang.color }}
                                             role="progressbar"
-                                            aria-valuenow={lang.level}
+                                            aria-valuenow={lang.percent}
                                             aria-valuemin={0}
                                             aria-valuemax={100}
                                             aria-label={`${lang.name} proficiency`}
@@ -79,40 +101,48 @@ export default function Stats() {
                                 </div>
                             ))}
                         </div>
-                    </div>
 
-                    <div className="mt-12 flex items-center gap-3 p-4 bg-white/5 rounded-2xl border border-white/5">
-                        <Zap className="w-5 h-5 text-yellow-500" />
-                        <span className="text-xs text-muted-foreground leading-relaxed">
-                            Focusing heavily on <span className="font-bold text-foreground">Golang Native</span> and <span className="font-bold text-foreground">Clean Architecture</span> in 2025.
-                        </span>
+                        <div className="mt-12 flex items-center gap-3 p-4 bg-white/5 rounded-2xl border border-white/5">
+                            <Zap className="w-5 h-5 text-yellow-500" />
+                            <span className="text-xs text-muted-foreground leading-relaxed">
+                                Focusing heavily on <span className="font-bold text-foreground">Golang Native</span> and <span className="font-bold text-foreground">Clean Architecture</span> in 2025.
+                            </span>
+                        </div>
                     </div>
                 </div>
 
                 {/* 2. Metrics (7 columns) */}
-                <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {mainMetrics.map((metric, idx) => (
+                <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {metrics.map((metric, idx) => (
                         <motion.div
                             key={metric.label}
                             initial={{ opacity: 0, scale: 0.95 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
                             transition={{ delay: idx * 0.1 }}
-                            className="glass p-8 rounded-[2rem] border border-border group hover:border-primary/50 transition-all"
+                            className="glass p-8 rounded-[2rem] border border-border group hover:border-primary/50 transition-all flex flex-col justify-center relative overflow-hidden"
                         >
+                            {loading && (
+                                <div className="absolute inset-0 bg-background/20 backdrop-blur-[2px] z-10" />
+                            )}
                             <metric.icon className={cn("w-10 h-10 mb-6 transition-transform group-hover:scale-110", metric.color)} />
-                            <div className="text-3xl font-black mb-1 tracking-tight">{metric.value}</div>
+                            <div className="text-3xl font-black mb-1 tracking-tight text-foreground">
+                                {loading ? '---' : metric.value}
+                            </div>
                             <div className="text-xs uppercase tracking-widest font-bold text-muted-foreground">{metric.label}</div>
                         </motion.div>
                     ))}
 
-                    {/* 3. Styled WakaTime Graph (spanning 2 cols in sub-grid) */}
+                    {/* 3. Styled WakaTime Graph */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         className="md:col-span-2 glass p-8 rounded-[2rem] border border-border overflow-hidden relative"
                     >
+                        {loading && (
+                            <div className="absolute inset-0 bg-background/20 backdrop-blur-[2px] z-10" />
+                        )}
                         <div className="flex items-center justify-between mb-8">
                             <div className="flex items-center gap-3">
                                 <div className="p-2 rounded-lg bg-primary/10">

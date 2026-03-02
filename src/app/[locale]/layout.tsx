@@ -6,32 +6,23 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '../../i18n/routing';
+import { siteConfig } from '../../config/site';
 
 const inter = Inter({ subsets: ["latin"] });
 
-const appUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3001";
+const appUrl = siteConfig.url;
 
 export const metadata: Metadata = {
   metadataBase: new URL(appUrl),
   title: {
-    default: "Rahmat | Full Stack & Golang Backend Engineer",
-    template: "%s | Rahmat"
+    default: `${siteConfig.name} | ${siteConfig.role}`,
+    template: `%s | ${siteConfig.name}`
   },
-  description: "Portfolio Rahmat, Full-Stack Software Engineer berpengalaman dalam membangun arsitektur backend scalable (Golang, Laravel) & modern frontend Next.js.",
-  keywords: [
-    "Rahmat",
-    "Full Stack Developer Indonesia",
-    "Backend Engineer",
-    "Golang Developer",
-    "Laravel Developer",
-    "React Next.js Expert",
-    "Clean Architecture",
-    "System Design",
-    "Software Engineer Portfolio"
-  ],
-  authors: [{ name: "Rahmat", url: appUrl }],
-  creator: "Rahmat",
-  publisher: "Rahmat",
+  description: siteConfig.description,
+  keywords: siteConfig.keywords,
+  authors: [{ name: siteConfig.fullName, url: appUrl }],
+  creator: siteConfig.fullName,
+  publisher: siteConfig.fullName,
   alternates: {
     canonical: "/",
   },
@@ -49,24 +40,25 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
+    alternateLocale: "id_ID",
     url: appUrl,
-    title: "Rahmat | Full Stack & Backend Engineer",
-    description: "Architecting scalable systems with Go, Laravel, and Next.js.",
-    siteName: "Rahmat Portfolio",
+    title: `${siteConfig.name} | ${siteConfig.role}`,
+    description: siteConfig.description,
+    siteName: `${siteConfig.name} Portfolio`,
     images: [
       {
         url: "/rahmat.png",
         width: 800,
         height: 800,
-        alt: "Rahmat Profile picture",
+        alt: `${siteConfig.name} Profile picture`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Rahmat | Full Stack & Backend Engineer",
-    description: "Architecting scalable systems with Go, Laravel, and Next.js.",
-    creator: "@rahmatrafiq",
+    title: `${siteConfig.name} | ${siteConfig.role}`,
+    description: siteConfig.description,
+    creator: siteConfig.links.twitter !== '#' ? siteConfig.links.twitter : `@${siteConfig.name.toLowerCase()}`,
     images: ["/rahmat.png"],
   },
 };
@@ -81,16 +73,35 @@ export default async function RootLayout({
   const { locale } = await params;
 
   // Ensure that the incoming `locale` is valid
-  if (!routing.locales.includes(locale as any)) {
+  if (!routing.locales.includes(locale as typeof routing.locales[number])) {
     notFound();
   }
 
   // Providing all messages to the client side
   const messages = await getMessages();
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: siteConfig.name,
+    jobTitle: siteConfig.role,
+    url: appUrl,
+    sameAs: [
+      siteConfig.links.github,
+      siteConfig.links.linkedin
+    ],
+    knowsAbout: [
+      'Golang', 'Laravel', 'Next.js', 'React', 'TypeScript', 'PostgreSQL', 'System Architecture'
+    ]
+  };
+
   return (
     <html lang={locale} className="scroll-smooth">
       <body className={`${inter.className} antialiased selection:bg-primary/30`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <NextIntlClientProvider messages={messages}>
           <Layout>{children}</Layout>
         </NextIntlClientProvider>

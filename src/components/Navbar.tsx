@@ -7,6 +7,7 @@ import { Menu, X, Github, Linkedin, Languages } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { useTranslations, useLocale } from 'next-intl';
 import { usePathname, useRouter } from '../i18n/routing';
+import { siteConfig } from '../config/site';
 
 const glassStyle: React.CSSProperties = {
     background: 'rgba(255, 255, 255, 0.08)',
@@ -110,7 +111,7 @@ export default function Navbar() {
                         href="/"
                         className="px-5 py-2 text-[15px] font-black tracking-tighter text-white/90 hover:text-white transition-colors select-none"
                     >
-                        RAHMAT<span className="text-primary">.</span>
+                        {siteConfig.name.toUpperCase()}<span className="text-primary">.</span>
                     </Link>
 
                     <div className="w-px h-6 mx-2 bg-white/10" />
@@ -123,10 +124,10 @@ export default function Navbar() {
 
                     <div className="w-px h-6 mx-2 bg-white/10" />
 
-                    <Link href="https://github.com/RahmatRafiq" target="_blank" className={iconCls}>
+                    <Link href={siteConfig.links.github} target="_blank" className={iconCls} aria-label="GitHub Profile">
                         <Github size={16} />
                     </Link>
-                    <Link href="https://www.linkedin.com/in/rahmat-r-079209247/" target="_blank" className={iconCls}>
+                    <Link href={siteConfig.links.linkedin} target="_blank" className={iconCls} aria-label="LinkedIn Profile">
                         <Linkedin size={16} />
                     </Link>
 
@@ -240,11 +241,12 @@ export default function Navbar() {
                                         {/* Header inside open menu */}
                                         <div className="flex items-center justify-between w-full px-4 py-2 mb-1">
                                             <span className="text-base font-black tracking-tighter text-white">
-                                                RAHMAT<span className="text-primary">.</span>
+                                                {siteConfig.name.toUpperCase()}<span className="text-primary">.</span>
                                             </span>
                                             <button
                                                 onClick={() => { setIsOpen(false); resetHideTimer(); }}
                                                 className="p-2 rounded-full text-white/60 hover:text-white hover:bg-white/10 transition-all bg-white/5"
+                                                aria-label="Close Menu"
                                             >
                                                 <X size={18} />
                                             </button>
@@ -271,10 +273,10 @@ export default function Navbar() {
 
                                         {/* Socials */}
                                         <div className="flex items-center justify-center gap-3 w-full py-2">
-                                            <Link href="https://github.com/RahmatRafiq" target="_blank" className="p-3 bg-white/5 rounded-2xl text-white/60 hover:text-white hover:bg-white/15 transition-all">
+                                            <Link href={siteConfig.links.github} target="_blank" className="p-3 bg-white/5 rounded-2xl text-white/60 hover:text-white hover:bg-white/15 transition-all" aria-label="GitHub Profile">
                                                 <Github size={18} />
                                             </Link>
-                                            <Link href="https://www.linkedin.com/in/rahmat-r-079209247/" target="_blank" className="p-3 bg-white/5 rounded-2xl text-white/60 hover:text-white hover:bg-white/15 transition-all">
+                                            <Link href={siteConfig.links.linkedin} target="_blank" className="p-3 bg-white/5 rounded-2xl text-white/60 hover:text-white hover:bg-white/15 transition-all" aria-label="LinkedIn Profile">
                                                 <Linkedin size={18} />
                                             </Link>
                                         </div>

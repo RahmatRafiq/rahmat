@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Github, Linkedin, Mail, Twitter, ArrowUp } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { siteConfig } from '../config/site';
 
 export default function Footer() {
     const t = useTranslations('Footer');
@@ -21,16 +22,16 @@ export default function Footer() {
                     {/* Brand Section */}
                     <div className="md:col-span-5 space-y-6">
                         <Link href="/" className="text-2xl font-black tracking-tighter group">
-                            RAHMAT<span className="text-primary group-hover:animate-pulse">.</span>
+                            {siteConfig.name.toUpperCase()}<span className="text-primary group-hover:animate-pulse">.</span>
                         </Link>
                         <p className="text-muted-foreground max-w-sm leading-relaxed text-sm">
                             {t('description')}
                         </p>
                         <div className="flex items-center gap-4">
                             {[
-                                { icon: Github, href: 'https://github.com/RahmatRafiq', label: 'GitHub' },
-                                { icon: Linkedin, href: 'https://www.linkedin.com/in/rahmat-r-079209247/', label: 'LinkedIn' },
-                                { icon: Twitter, href: '#', label: 'Twitter' },
+                                { icon: Github, href: siteConfig.links.github, label: 'GitHub' },
+                                { icon: Linkedin, href: siteConfig.links.linkedin, label: 'LinkedIn' },
+                                { icon: Twitter, href: siteConfig.links.twitter, label: 'Twitter' },
                             ].map((social, i) => (
                                 <a
                                     key={i}
@@ -70,11 +71,11 @@ export default function Footer() {
                     <div className="md:col-span-4 space-y-6">
                         <h4 className="text-xs font-black uppercase tracking-[0.2em] text-foreground/50">{t('contactTitle')}</h4>
                         <div className="space-y-4">
-                            <a href="mailto:rahmatrafiq.1999@gmail.com" className="flex items-center gap-3 group">
+                            <a href={`mailto:${siteConfig.email}`} className="flex items-center gap-3 group">
                                 <div className="p-2.5 rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-all">
                                     <Mail size={16} />
                                 </div>
-                                <span className="text-sm font-bold text-muted-foreground group-hover:text-foreground">rahmatrafiq.1999@gmail.com</span>
+                                <span className="text-sm font-bold text-muted-foreground group-hover:text-foreground">{siteConfig.email}</span>
                             </a>
                         </div>
                         <p className="text-[10px] text-muted-foreground leading-relaxed uppercase tracking-widest font-bold opacity-30 pt-4">

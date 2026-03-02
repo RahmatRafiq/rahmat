@@ -1,10 +1,12 @@
 import Hero from "../../components/sections/Hero";
-import Skills from "../../components/sections/Skills";
-import Architecture from "../../components/sections/Architecture";
-import Experience from "../../components/sections/Experience";
-import Stats from "../../components/sections/Stats";
-import Projects from "../../components/sections/Projects";
-import Contact from "../../components/sections/Contact";
+import dynamic from "next/dynamic";
+
+const Skills = dynamic(() => import("../../components/sections/Skills"), { ssr: true });
+const Architecture = dynamic(() => import("../../components/sections/Architecture"), { ssr: true });
+const Experience = dynamic(() => import("../../components/sections/Experience"), { ssr: true });
+const Stats = dynamic(() => import("../../components/sections/Stats"), { ssr: true });
+const Projects = dynamic(() => import("../../components/sections/Projects"), { ssr: true });
+const Contact = dynamic(() => import("../../components/sections/Contact"), { ssr: true });
 
 export default function Home() {
   return (

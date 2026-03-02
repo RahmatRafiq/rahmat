@@ -4,6 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Linkedin, Github, Send, MessageSquare } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { siteConfig } from '../../config/site';
 
 export default function Contact() {
     const t = useTranslations('Contact');
@@ -24,7 +25,7 @@ export default function Contact() {
 
                         <div className="space-y-4">
                             <a
-                                href="mailto:rahmatrafiq.1999@gmail.com"
+                                href={`mailto:${siteConfig.email}`}
                                 className="flex items-center gap-4 group hover:text-primary transition-colors p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-primary/20"
                             >
                                 <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all">
@@ -32,12 +33,12 @@ export default function Contact() {
                                 </div>
                                 <div>
                                     <div className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">{t('emailLabel')}</div>
-                                    <div className="text-sm font-bold">rahmatrafiq.1999@gmail.com</div>
+                                    <div className="text-sm font-bold">{siteConfig.email}</div>
                                 </div>
                             </a>
 
                             <a
-                                href="https://www.linkedin.com/in/rahmat-r-079209247/"
+                                href={siteConfig.links.linkedin}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="flex items-center gap-4 group hover:text-primary transition-colors p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-primary/20"
@@ -47,7 +48,7 @@ export default function Contact() {
                                 </div>
                                 <div>
                                     <div className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">{t('connectLabel')}</div>
-                                    <div className="text-sm font-bold">linkedin.com/in/rahmatrafiq</div>
+                                    <div className="text-sm font-bold">{siteConfig.links.linkedin.replace('https://www.', '')}</div>
                                 </div>
                             </a>
                         </div>

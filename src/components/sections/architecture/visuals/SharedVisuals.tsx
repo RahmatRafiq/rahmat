@@ -5,7 +5,7 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { Server } from 'lucide-react';
 import { cn } from '../../../../lib/utils';
 
-export function SequenceLine({ delay, top, left, right, width, label, color, arrow, dashed = false }: any) {
+export function SequenceLine({ delay, top, left, right, width, label, color, arrow, dashed = false }: { delay: number; top?: string | number; left?: string | number; right?: string | number; width: string | number; label: string; color: string; arrow: 'left' | 'right'; dashed?: boolean }) {
     const shouldReduce = useReducedMotion();
 
     return (
@@ -25,7 +25,7 @@ export function SequenceLine({ delay, top, left, right, width, label, color, arr
     );
 }
 
-export function Table({ title, fields, top, left }: any) {
+export function Table({ title, fields, top, left }: { title: string; fields: string[]; top?: string | number; left?: string | number }) {
     return (
         <div className="absolute glass border border-border rounded-lg overflow-hidden w-24 md:w-32 shadow-xl" style={{ top, left }}>
             <div className="bg-primary/10 px-2 py-1 border-b border-border">

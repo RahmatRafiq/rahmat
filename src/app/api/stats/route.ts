@@ -24,7 +24,7 @@ export async function GET() {
 
         // Transform data into the format expected by our UI
         const stats = {
-            languages: data.data.languages.slice(0, 5).map((lang: any) => ({
+            languages: data.data.languages.slice(0, 5).map((lang: { name: string; percent: number }) => ({
                 name: lang.name,
                 percent: lang.percent,
                 color: getLanguageColor(lang.name),

@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { ArrowRight, Terminal, Database, Code } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -19,10 +19,10 @@ export default function Hero() {
             <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-violet-500/10 rounded-full blur-[120px] -z-10" aria-hidden="true" />
 
             <div className="max-w-4xl mx-auto text-center">
-                <motion.div
+                <m.div
                     initial={{ opacity: 0, scale: 0.5 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5, type: 'spring', stiffness: 260, damping: 20 }}
+                    transition={{ duration: 0.4, type: 'spring', stiffness: 260, damping: 20 }}
                     className="relative mb-8 inline-block"
                 >
                     <div className="absolute inset-0 bg-primary blur-[40px] opacity-20 animate-pulse rounded-full" aria-hidden="true" />
@@ -36,12 +36,12 @@ export default function Hero() {
                             className="w-full h-full rounded-full object-cover"
                         />
                     </div>
-                </motion.div>
+                </m.div>
 
-                <motion.div
+                <m.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
+                    transition={{ duration: 0.4, delay: 0.1 }}
                     className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-muted border border-border text-xs font-medium text-muted-foreground mb-8"
                 >
                     <span className="relative flex h-2 w-2">
@@ -49,42 +49,42 @@ export default function Hero() {
                         <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
                     </span>
                     <span>{t('available')}</span>
-                </motion.div>
+                </m.div>
 
-                <motion.h1
+                <m.h1
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.4 }}
+                    transition={{ duration: 0.4, delay: 0.2 }}
                     className="text-4xl md:text-7xl font-bold tracking-tight mb-6"
                 >
                     {t('title_crafting')} <span className="text-gradient">{t('title_scalable')}</span> <br />
                     {t('title_seamless')}
-                </motion.h1>
+                </m.h1>
 
-                <motion.p
+                <m.p
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.6 }}
+                    transition={{ duration: 0.4, delay: 0.3 }}
                     className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed"
                 >
                     {t.rich('subtitle', { b: (chunks) => <span className="text-foreground font-bold">{chunks}</span> })}
-                </motion.p>
+                </m.p>
 
-                <motion.div
+                <m.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ duration: 1, delay: 0.8 }}
+                    transition={{ duration: 0.8, delay: 0.4 }}
                     className="mb-10"
                 >
                     <blockquote className="text-sm italic text-indigo-300 font-medium">
                         {t('quote')}
                     </blockquote>
-                </motion.div>
+                </m.div>
 
-                <motion.div
+                <m.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 1.0 }}
+                    transition={{ duration: 0.4, delay: 0.5 }}
                     className="flex flex-col md:flex-row items-center justify-center gap-4"
                 >
                     <Link
@@ -105,13 +105,13 @@ export default function Hero() {
                     >
                         {t('getInTouch')}
                     </Link>
-                </motion.div>
+                </m.div>
 
                 {/* Feature Tags */}
-                <motion.div
+                <m.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ duration: 1, delay: 1.2 }}
+                    transition={{ duration: 0.8, delay: 0.6 }}
                     className="mt-20 grid grid-cols-2 md:grid-cols-3 gap-8 border-t border-border pt-12"
                 >
                     {[
@@ -125,7 +125,7 @@ export default function Hero() {
                             <p className="text-xs text-muted-foreground">{item.desc}</p>
                         </div>
                     ))}
-                </motion.div>
+                </m.div>
             </div>
         </section>
     );

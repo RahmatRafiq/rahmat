@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { Code2, Database, Webhook, Workflow, ChevronDown } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { useTranslations } from 'next-intl';
@@ -43,7 +43,7 @@ export default function Skills() {
             {/* Desktop: 1x4 grid */}
             <div className="hidden lg:grid grid-cols-4 gap-6">
                 {skillCategories.map((category, idx) => (
-                    <motion.div
+                    <m.div
                         key={idx}
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -65,14 +65,14 @@ export default function Skills() {
                                 </span>
                             ))}
                         </div>
-                    </motion.div>
+                    </m.div>
                 ))}
             </div>
 
             {/* Mobile: Accordion */}
             <div className="lg:hidden flex flex-col gap-3">
                 {skillCategories.map((category, idx) => (
-                    <motion.div
+                    <m.div
                         key={idx}
                         initial={{ opacity: 0, y: 10 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -97,14 +97,14 @@ export default function Skills() {
                                 </div>
                                 <span className="font-bold text-sm">{category.title}</span>
                             </div>
-                            <motion.div animate={{ rotate: openIdx === idx ? 180 : 0 }} transition={{ duration: 0.2 }}>
+                            <m.div animate={{ rotate: openIdx === idx ? 180 : 0 }} transition={{ duration: 0.2 }}>
                                 <ChevronDown className="w-4 h-4 text-muted-foreground" />
-                            </motion.div>
+                            </m.div>
                         </button>
 
                         <AnimatePresence>
                             {openIdx === idx && (
-                                <motion.div
+                                <m.div
                                     initial={{ height: 0, opacity: 0 }}
                                     animate={{ height: 'auto', opacity: 1 }}
                                     exit={{ height: 0, opacity: 0 }}
@@ -121,10 +121,10 @@ export default function Skills() {
                                             </span>
                                         ))}
                                     </div>
-                                </motion.div>
+                                </m.div>
                             )}
                         </AnimatePresence>
-                    </motion.div>
+                    </m.div>
                 ))}
             </div>
         </section>

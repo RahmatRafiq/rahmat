@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import {
     Code2, Flame, Timer, BarChart3, GitPullRequest,
     GitMerge, Zap, Loader2, Trophy, ExternalLink,
@@ -48,7 +48,7 @@ function MetricCard({
     }
 
     return (
-        <motion.div
+        <m.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -64,7 +64,7 @@ function MetricCard({
                 </div>
                 <div className="text-[9px] uppercase tracking-widest font-bold text-muted-foreground mt-0.5 truncate">{label}</div>
             </div>
-        </motion.div>
+        </m.div>
     );
 }
 
@@ -107,7 +107,7 @@ export default function Stats() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-min">
 
                 {/* 1. Language Pulse - Spans 2 rows on Tablet and Desktop */}
-                <motion.div
+                <m.div
                     initial={{ opacity: 0, y: 16 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -139,7 +139,7 @@ export default function Stats() {
                                         </span>
                                     </div>
                                     <div className="h-1.5 w-full bg-secondary rounded-full overflow-hidden">
-                                        <motion.div
+                                        <m.div
                                             initial={{ width: 0 }}
                                             whileInView={{ width: `${lang.percent}%` }}
                                             viewport={{ once: true }}
@@ -162,7 +162,7 @@ export default function Stats() {
                         </span>
                     </div>
 
-                    <motion.a
+                    <m.a
                         href="https://wakatime.com/@RahmatRafiq"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -174,8 +174,8 @@ export default function Stats() {
                             <div className="text-sm font-bold group-hover:text-indigo-400 transition-colors">{t('fullProfile')}</div>
                         </div>
                         <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-indigo-400 transition-colors" />
-                    </motion.a>
-                </motion.div>
+                    </m.a>
+                </m.div>
 
                 {/* 2. Primary Metrics */}
                 <MetricCard icon={Timer} iconColor="text-blue-400"
@@ -202,7 +202,7 @@ export default function Stats() {
                 />
 
                 {/* 4. Activity Pulse Chart - Full Width on Mobile/Tablet, 2 cols on Desktop to fill gap */}
-                <motion.div
+                <m.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -231,7 +231,7 @@ export default function Stats() {
                         ) : (
                             chartData.map((h, i) => (
                                 <div key={i} className="flex-1 flex items-end h-full relative group cursor-default">
-                                    <motion.div
+                                    <m.div
                                         initial={{ height: 0 }}
                                         whileInView={{ height: `${Math.max(h, 8)}%` }}
                                         viewport={{ once: true }}
@@ -255,7 +255,7 @@ export default function Stats() {
                     <div aria-hidden="true" className="absolute right-6 bottom-4 text-[100px] font-black opacity-[0.03] select-none italic pointer-events-none leading-none">
                         WAKA
                     </div>
-                </motion.div>
+                </m.div>
             </div>
         </section>
     );

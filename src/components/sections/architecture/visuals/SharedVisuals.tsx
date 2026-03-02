@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
+import { m, useReducedMotion } from 'framer-motion';
 import { Server } from 'lucide-react';
 import { cn } from '../../../../lib/utils';
 
@@ -9,7 +9,7 @@ export function SequenceLine({ delay, top, left, right, width, label, color, arr
     const shouldReduce = useReducedMotion();
 
     return (
-        <motion.div
+        <m.div
             initial={{ width: 0 }}
             animate={{ width }}
             transition={shouldReduce
@@ -21,7 +21,7 @@ export function SequenceLine({ delay, top, left, right, width, label, color, arr
         >
             <div className={cn("absolute top-1/2 -translate-y-1/2 border-y-[4px] border-y-transparent", arrow === 'right' ? "right-0 border-l-[6px] border-l-current" : "left-0 border-r-[6px] border-r-current")} />
             <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 text-[7px] md:text-[8px] font-mono font-bold whitespace-nowrap opacity-60 uppercase">{label}</span>
-        </motion.div>
+        </m.div>
     );
 }
 

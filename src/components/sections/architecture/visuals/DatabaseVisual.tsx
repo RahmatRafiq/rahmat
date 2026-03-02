@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
+import { m, useReducedMotion } from 'framer-motion';
 import { Table } from './SharedVisuals';
 import { useTranslations } from 'next-intl';
 
@@ -29,10 +29,10 @@ export default function DatabaseVisual() {
             <Table title={t('tbl5')} fields={['id', 'order_id', 'status']} top="80%" left="5%" />
 
             <svg className="absolute inset-0 w-full h-full -z-10" viewBox="0 0 300 300">
-                <motion.path d="M 80 50 Q 150 120 180 180" fill="none" stroke="rgba(99, 102, 241, 0.2)" strokeWidth="1" strokeDasharray="4 4" {...pathProps(0)} />
-                <motion.path d="M 220 100 Q 200 140 190 180" fill="none" stroke="rgba(99, 102, 241, 0.2)" strokeWidth="1" strokeDasharray="4 4" {...pathProps(0.3)} />
-                <motion.path d="M 40 140 Q 150 100 220 50" fill="none" stroke="rgba(99, 102, 241, 0.2)" strokeWidth="1" strokeDasharray="4 4" {...pathProps(0.6)} />
-                <motion.path d="M 180 220 V 260" fill="none" stroke="rgba(99, 102, 241, 0.2)" strokeWidth="1" strokeDasharray="4 4" {...pathProps(0.9)} />
+                <m.path d="M 80 50 Q 150 120 180 180" fill="none" stroke="rgba(99, 102, 241, 0.2)" strokeWidth="1" strokeDasharray="4 4" {...pathProps(0)} />
+                <m.path d="M 220 100 Q 200 140 190 180" fill="none" stroke="rgba(99, 102, 241, 0.2)" strokeWidth="1" strokeDasharray="4 4" {...pathProps(0.3)} />
+                <m.path d="M 40 140 Q 150 100 220 50" fill="none" stroke="rgba(99, 102, 241, 0.2)" strokeWidth="1" strokeDasharray="4 4" {...pathProps(0.6)} />
+                <m.path d="M 180 220 V 260" fill="none" stroke="rgba(99, 102, 241, 0.2)" strokeWidth="1" strokeDasharray="4 4" {...pathProps(0.9)} />
             </svg>
         </div>
     );

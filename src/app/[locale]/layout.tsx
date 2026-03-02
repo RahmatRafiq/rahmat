@@ -7,8 +7,12 @@ import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '../../i18n/routing';
 import { siteConfig } from '../../config/site';
+import { FramerProvider } from "../../components/FramerProvider";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ["latin"],
+  display: 'swap',
+});
 
 const appUrl = siteConfig.url;
 
@@ -76,15 +80,12 @@ export default async function RootLayout({
 }>) {
   const { locale } = await params;
 
-  // Ensure that the incoming `locale` is valid
   if (!routing.locales.includes(locale as typeof routing.locales[number])) {
     notFound();
   }
 
-  // Enable static rendering
   setRequestLocale(locale);
 
-  // Providing all messages to the client side
   const messages = await getMessages();
 
   const jsonLd = {
@@ -110,7 +111,9 @@ export default async function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <NextIntlClientProvider messages={messages}>
-          <Layout>{children}</Layout>
+          <FramerProvider>
+            <Layout>{children}</Layout>
+          </FramerProvider>
         </NextIntlClientProvider>
       </body>
     </html>

@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Briefcase, Calendar, MapPin } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
@@ -64,7 +64,7 @@ export default function Experience() {
 
             <div className="space-y-12">
                 {experiences.map((exp, idx) => (
-                    <motion.div
+                    <m.div
                         key={idx}
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -103,7 +103,7 @@ export default function Experience() {
                                 </li>
                             ))}
                         </ul>
-                    </motion.div>
+                    </m.div>
                 ))}
             </div>
         </section>

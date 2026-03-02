@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { Menu, X, Github, Linkedin } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { useTranslations, useLocale } from 'next-intl';
@@ -162,7 +162,7 @@ export default function Navbar() {
             {/* Mobile Blur Overlay for focus mode */}
             <AnimatePresence>
                 {isOpen && (
-                    <motion.div
+                    <m.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
@@ -175,7 +175,7 @@ export default function Navbar() {
 
             <AnimatePresence>
                 {mobileVisible && (
-                    <motion.nav
+                    <m.nav
                         key="mobile-nav"
                         initial={{ y: 80, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
@@ -185,8 +185,7 @@ export default function Navbar() {
                     >
                         <AnimatePresence mode="wait">
                             {!isOpen ? (
-                                /* Jika tertutup: Cukup tampilkan tombol (lingkaran) aja */
-                                <motion.div
+                                <m.div
                                     key="closed-btn"
                                     initial={{ scale: 0.8, opacity: 0 }}
                                     animate={{ scale: 1, opacity: 1 }}
@@ -224,10 +223,9 @@ export default function Navbar() {
                                             {t('menu')}
                                         </button>
                                     </GlassPill>
-                                </motion.div>
+                                </m.div>
                             ) : (
-                                /* Jika terbuka: Tampilkan menu lengkap memanjang ke atas */
-                                <motion.div
+                                <m.div
                                     key="expanded-menu"
                                     initial={{ opacity: 0, y: 20, scale: 0.95 }}
                                     animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -235,7 +233,6 @@ export default function Navbar() {
                                     transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                                 >
                                     <GlassPill className="flex-col px-3 py-3 w-[260px] gap-1 rounded-3xl" style={{ borderRadius: '1.75rem' }}>
-                                        {/* Header inside open menu */}
                                         <div className="flex items-center justify-between w-full px-4 py-2 mb-1">
                                             <span className="text-base font-black tracking-tighter text-white">
                                                 {siteConfig.name.toUpperCase()}<span className="text-indigo-400">.</span>
@@ -251,7 +248,6 @@ export default function Navbar() {
 
                                         <div className="w-full h-px mb-2 bg-white/10" />
 
-                                        {/* List Menu */}
                                         <div className="flex flex-col gap-1 w-full max-h-[60vh] overflow-y-auto px-1 snap-y pb-2">
                                             {navLinks.map((link) => (
                                                 <Link
@@ -277,10 +273,10 @@ export default function Navbar() {
                                             </Link>
                                         </div>
                                     </GlassPill>
-                                </motion.div>
+                                </m.div>
                             )}
                         </AnimatePresence>
-                    </motion.nav>
+                    </m.nav>
                 )}
             </AnimatePresence>
         </>

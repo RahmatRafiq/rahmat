@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import {
     Network,
     Layers,
@@ -124,7 +124,7 @@ export default function Architecture() {
                                 </div>
                             </div>
                             {activeTab === feature.id && (
-                                <motion.div layoutId="active-indicator" className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent -z-10" />
+                                <m.div layoutId="active-indicator" className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent -z-10" />
                             )}
                         </button>
                     ))}
@@ -134,7 +134,7 @@ export default function Architecture() {
                 <div className="col-span-9 glass rounded-[2.5rem] border border-border p-16 relative flex flex-col items-center justify-center overflow-hidden bg-white/[0.01]">
                     <div className="flex-grow flex items-center justify-center w-full scale-125">
                         <AnimatePresence mode="wait">
-                            <motion.div
+                            <m.div
                                 key={activeTab}
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 animate={{ opacity: 1, scale: 1 }}
@@ -143,7 +143,7 @@ export default function Architecture() {
                                 className="w-full flex items-center justify-center"
                             >
                                 {React.createElement(architectureFeatures.find(f => f.id === activeTab)!.Visual)}
-                            </motion.div>
+                            </m.div>
                         </AnimatePresence>
                     </div>
                     {/* Integrated background label for aesthetic */}
@@ -177,14 +177,14 @@ export default function Architecture() {
                                         <p className="text-[10px] text-muted-foreground line-clamp-1">{feature.desc}</p>
                                     </div>
                                 </div>
-                                <motion.div animate={{ rotate: expandedMobileId === feature.id ? 180 : 0 }}>
+                                <m.div animate={{ rotate: expandedMobileId === feature.id ? 180 : 0 }}>
                                     <ChevronDown className="w-4 h-4 text-muted-foreground" />
-                                </motion.div>
+                                </m.div>
                             </div>
 
                             <AnimatePresence initial={false}>
                                 {expandedMobileId === feature.id && (
-                                    <motion.div
+                                    <m.div
                                         initial={{ height: 0, opacity: 0 }}
                                         animate={{ height: "auto", opacity: 1 }}
                                         exit={{ height: 0, opacity: 0 }}
@@ -194,7 +194,7 @@ export default function Architecture() {
                                         <div className="pt-8 pb-4 flex items-center justify-center min-h-[250px]">
                                             <feature.Visual />
                                         </div>
-                                    </motion.div>
+                                    </m.div>
                                 )}
                             </AnimatePresence>
                         </button>
@@ -204,7 +204,7 @@ export default function Architecture() {
                 {/* Mobile Fallback Slider */}
                 <AnimatePresence>
                     {!expandedMobileId && (
-                        <motion.div
+                        <m.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             className="mt-8 glass p-8 rounded-3xl border border-border overflow-hidden relative"
@@ -220,7 +220,7 @@ export default function Architecture() {
                                 </div>
                                 <div className="min-h-[250px] flex items-center justify-center bg-white/5 rounded-2xl border border-white/5 p-4">
                                     <AnimatePresence mode="wait">
-                                        <motion.div
+                                        <m.div
                                             key={currentSlide}
                                             initial={{ opacity: 0, x: 20 }}
                                             animate={{ opacity: 1, x: 0 }}
@@ -228,14 +228,14 @@ export default function Architecture() {
                                             className="w-full flex justify-center"
                                         >
                                             {React.createElement(architectureFeatures[currentSlide].Visual)}
-                                        </motion.div>
+                                        </m.div>
                                     </AnimatePresence>
                                 </div>
                                 <p className="text-[10px] text-center text-muted-foreground italic uppercase tracking-widest opacity-80">
                                     {architectureFeatures[currentSlide].title}
                                 </p>
                             </div>
-                        </motion.div>
+                        </m.div>
                     )}
                 </AnimatePresence>
             </div>

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { Database, ExternalLink, Github, Globe, Package, ShieldCheck, Zap } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { useTranslations } from 'next-intl';
@@ -120,7 +120,7 @@ export default function Projects() {
                 </div>
             </div>
 
-            <motion.div
+            <m.div
                 layout
                 className="flex flex-wrap justify-center gap-8"
                 role="tabpanel"
@@ -128,7 +128,7 @@ export default function Projects() {
             >
                 <AnimatePresence mode="popLayout">
                     {filteredProjects.map((project) => (
-                        <motion.div
+                        <m.div
                             key={project.title}
                             layout
                             initial={{ opacity: 0, scale: 0.9 }}
@@ -206,10 +206,10 @@ export default function Projects() {
                                     </a>
                                 </div>
                             </div>
-                        </motion.div>
+                        </m.div>
                     ))}
                 </AnimatePresence>
-            </motion.div>
+            </m.div>
         </section>
     );
 }

@@ -76,7 +76,7 @@ export default function Hero() {
                     transition={{ duration: 1, delay: 0.8 }}
                     className="mb-10"
                 >
-                    <blockquote className="text-sm italic text-indigo-400/80 font-medium">
+                    <blockquote className="text-sm italic text-indigo-300 font-medium">
                         {t('quote')}
                     </blockquote>
                 </motion.div>

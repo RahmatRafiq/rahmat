@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Github, Linkedin, Languages } from 'lucide-react';
+import { Menu, X, Github, Linkedin } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { useTranslations, useLocale } from 'next-intl';
 import { usePathname, useRouter } from '../i18n/routing';
@@ -78,33 +78,33 @@ export default function Navbar() {
     }, [isOpen]);
 
     useEffect(() => {
-        resetHideTimer();
+        const timer = setTimeout(resetHideTimer, 0);
         const events = ['touchstart', 'touchmove', 'scroll', 'pointermove'];
         events.forEach((e) => window.addEventListener(e, resetHideTimer, { passive: true }));
         return () => {
+            clearTimeout(timer);
             events.forEach((e) => window.removeEventListener(e, resetHideTimer));
             if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
         };
     }, [resetHideTimer]);
 
     useEffect(() => {
-        if (isOpen) {
-            if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
-            setMobileVisible(true);
-        } else {
-            resetHideTimer();
-        }
+        const timer = setTimeout(() => {
+            if (isOpen) {
+                if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
+                setMobileVisible(true);
+            } else {
+                resetHideTimer();
+            }
+        }, 0);
+        return () => clearTimeout(timer);
     }, [isOpen, resetHideTimer]);
 
-    // Shared link styles — diperbesar (px-4 py-2, text-[13px])
     const linkCls = 'px-4 py-2 rounded-full text-[13px] font-semibold tracking-wide text-white/80 hover:text-white hover:bg-white/10 active:bg-white/15 transition-all duration-150';
     const iconCls = 'p-2.5 rounded-full text-white/80 hover:text-white hover:bg-white/10 transition-all duration-150';
 
     return (
         <>
-            {/* ══════════════════════════════════════════════════════
-                DESKTOP — centered floating pill, fixed top (Enlarged)
-            ══════════════════════════════════════════════════════ */}
             <nav className="hidden md:flex fixed top-6 left-1/2 -translate-x-1/2 z-50">
                 <GlassPill className="px-3 py-2 gap-1.5 rounded-full">
                     <Link
@@ -173,9 +173,6 @@ export default function Navbar() {
                 )}
             </AnimatePresence>
 
-            {/* ══════════════════════════════════════════════════════
-                MOBILE — floating button (closed) / menu (expanded) di BAWAH
-            ══════════════════════════════════════════════════════ */}
             <AnimatePresence>
                 {mobileVisible && (
                     <motion.nav

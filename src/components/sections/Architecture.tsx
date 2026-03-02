@@ -73,7 +73,7 @@ export default function Architecture() {
             }, 6000);
             return () => clearInterval(timer);
         }
-    }, [expandedMobileId]);
+    }, [expandedMobileId, architectureFeatures.length]);
 
     const toggleMobileExpand = (id: string) => {
         setExpandedMobileId(expandedMobileId === id ? null : id);
@@ -147,7 +147,7 @@ export default function Architecture() {
                         </AnimatePresence>
                     </div>
                     {/* Integrated background label for aesthetic */}
-                    <div className="absolute bottom-8 right-12 opacity-10 select-none pointer-events-none">
+                    <div aria-hidden="true" className="absolute bottom-8 right-12 opacity-10 select-none pointer-events-none">
                         <span className="text-4xl font-black italic tracking-tighter uppercase">ARCHIVE_01</span>
                     </div>
                 </div>

@@ -78,7 +78,7 @@ export default function Footer() {
                                 <span className="text-sm font-bold text-muted-foreground group-hover:text-foreground">{siteConfig.email}</span>
                             </a>
                         </div>
-                        <p className="text-[10px] text-muted-foreground leading-relaxed uppercase tracking-widest font-bold pt-4 opacity-70">
+                        <p className="text-[10px] text-muted-foreground leading-relaxed uppercase tracking-widest font-bold pt-4">
                             {t('basedIn')}
                         </p>
                     </div>
@@ -86,7 +86,7 @@ export default function Footer() {
 
                 {/* Bottom Bar */}
                 <div className="pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-6">
-                    <p className="text-[10px] uppercase font-bold tracking-widest text-muted-foreground/80">
+                    <p className="text-[10px] uppercase font-bold tracking-widest text-muted-foreground">
                         {t('copyright', { year: new Date().getFullYear() })}
                     </p>
 

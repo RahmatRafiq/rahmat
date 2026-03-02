@@ -1,8 +1,7 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
-import { Mail, Linkedin, Github, Send, MessageSquare } from 'lucide-react';
+import { Mail, Linkedin, Send, MessageSquare } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { siteConfig } from '../../config/site';
 

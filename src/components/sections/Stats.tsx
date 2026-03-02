@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Github, Code2, Flame, Timer, BarChart3, GitPullRequest, GitMerge, Zap, Loader2 } from 'lucide-react';
+import { Code2, Flame, Timer, BarChart3, GitPullRequest, GitMerge, Zap, Loader2 } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { useTranslations } from 'next-intl';
 
@@ -17,7 +17,7 @@ export default function Stats() {
     const t = useTranslations('Stats');
     const [stats, setStats] = useState<WakaStats | null>(null);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(false);
+
 
     useEffect(() => {
         async function fetchStats() {
@@ -28,7 +28,7 @@ export default function Stats() {
                 setStats(data);
             } catch (err) {
                 console.error('Failed to fetch stats:', err);
-                setError(true);
+
             } finally {
                 setLoading(false);
             }

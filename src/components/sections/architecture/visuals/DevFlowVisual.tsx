@@ -11,7 +11,7 @@ export default function DevFlowVisual() {
     return (
         <div className="w-full flex flex-col gap-8 relative">
             <div className="flex justify-center">
-                <span className="text-[10px] font-black tracking-widest text-indigo-400 opacity-50 uppercase">{t('title')}</span>
+                <span className="text-[10px] font-black tracking-widest text-muted-foreground uppercase">{t('title')}</span>
             </div>
 
             <div className="w-full flex flex-col items-center justify-center scale-[0.8] md:scale-100 origin-center">
@@ -28,7 +28,7 @@ export default function DevFlowVisual() {
                                 <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg md:rounded-xl bg-background border border-border flex items-center justify-center shadow-lg group-hover:border-primary transition-colors">
                                     <actor.icon className="w-4 h-4 md:w-5 md:h-5 text-indigo-400" />
                                 </div>
-                                <span className="text-[7px] md:text-[8px] uppercase font-bold text-foreground opacity-80">{actor.name}</span>
+                                <span className="text-[7px] md:text-[8px] uppercase font-bold text-muted-foreground">{actor.name}</span>
                                 {/* Vertical Centered Line */}
                                 <div className="absolute top-10 md:top-12 bottom-[-220px] w-px bg-primary/10 border-l border-dashed border-primary/20 left-1/2 -translate-x-1/2" />
                             </div>
@@ -63,7 +63,7 @@ export default function DevFlowVisual() {
                 </div>
             </div>
 
-            <p className="text-[8px] text-center text-muted-foreground italic -mt-4 uppercase tracking-widest opacity-50">{t('footer')}</p>
+            <p className="text-[8px] text-center text-muted-foreground italic -mt-4 uppercase tracking-widest">{t('footer')}</p>
         </div>
     );
 }

@@ -7,20 +7,16 @@ import {
     Layers,
     Share2,
     ClipboardList,
-    Database,
-    Server,
-    Globe,
     ChevronDown,
-    ArrowRight,
-    Code,
-    User,
-    ShieldCheck,
-    Cpu,
-    Webhook,
-    Box,
     LucideIcon
 } from 'lucide-react';
 import { cn } from '../../lib/utils';
+
+// Sliced Visual Components
+import DevFlowVisual from './architecture/visuals/DevFlowVisual';
+import ModularVisual from './architecture/visuals/ModularVisual';
+import DatabaseVisual from './architecture/visuals/DatabaseVisual';
+import APIVisual from './architecture/visuals/APIVisual';
 
 interface ArchitectureFeature {
     id: string;
@@ -175,7 +171,7 @@ export default function Architecture() {
                                         <feature.icon className="w-5 h-5" />
                                     </div>
                                     <div>
-                                        <h3 className="font-bold text-sm">{feature.title}</h3>
+                                        <h3 className="font-bold text-sm tracking-tight">{feature.title}</h3>
                                         <p className="text-[10px] text-muted-foreground line-clamp-1">{feature.desc}</p>
                                     </div>
                                 </div>
@@ -232,8 +228,8 @@ export default function Architecture() {
                                         </motion.div>
                                     </AnimatePresence>
                                 </div>
-                                <p className="text-[10px] text-center text-muted-foreground italic">
-                                    {architectureFeatures[currentSlide].title}: {architectureFeatures[currentSlide].desc}
+                                <p className="text-[10px] text-center text-muted-foreground italic uppercase tracking-widest opacity-80">
+                                    {architectureFeatures[currentSlide].title}
                                 </p>
                             </div>
                         </motion.div>
@@ -241,171 +237,5 @@ export default function Architecture() {
                 </AnimatePresence>
             </div>
         </section>
-    );
-}
-
-// Visual components (Integrated labels, no separate header containers)
-function DevFlowVisual() {
-    return (
-        <div className="w-full flex flex-col gap-8 relative overflow-hidden">
-            <div className="absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap">
-                <span className="text-[10px] font-black tracking-widest text-primary opacity-50 uppercase">SYSTEM DEVELOPMENT LIFECYCLE</span>
-            </div>
-
-            {/* Visual Scaling for Mobile */}
-            <div className="w-full flex flex-col items-center justify-center scale-[0.85] md:scale-100 origin-center">
-                <div className="w-full max-w-[500px] md:max-w-full flex flex-col">
-                    <div className="flex justify-between relative px-2">
-                        {[
-                            { name: 'Client', icon: User, label: 'Req' },
-                            { name: 'Design', icon: ClipboardList, label: 'Arch' },
-                            { name: 'Code', icon: Code, label: 'Dev' },
-                            { name: 'QA', icon: ShieldCheck, label: 'Test' },
-                            { name: 'Prod', icon: Globe, label: 'Live' }
-                        ].map((actor, idx) => (
-                            <div key={idx} className="flex flex-col items-center gap-2 relative z-10 w-14 md:w-20">
-                                <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg md:rounded-xl bg-background border border-border flex items-center justify-center shadow-lg group-hover:border-primary transition-colors">
-                                    <actor.icon className="w-4 h-4 md:w-5 md:h-5 text-primary" />
-                                </div>
-                                <span className="text-[7px] md:text-[8px] uppercase font-bold text-foreground">{actor.name}</span>
-                                <div className="absolute top-10 md:top-12 bottom-[-180px] w-px bg-primary/5 border-l border-dashed border-primary/20" />
-                            </div>
-                        ))}
-                    </div>
-
-                    <div className="relative h-[180px] w-full mt-4">
-                        {/* ALT Box for Conditional Logic */}
-                        <div className="absolute top-[100px] left-[35%] right-[5%] bottom-[10px] border border-red-500/20 bg-red-500/5 rounded-md z-0">
-                            <div className="absolute -top-2 left-2 bg-background border border-red-500/20 px-1.5 py-0.5 rounded text-[6px] font-bold text-red-400 uppercase">alt [error]</div>
-                        </div>
-
-                        <SequenceLine delay={0.2} top={20} left="10%" width="20%" label="REQUIREMENTS" color="text-primary" arrow="right" />
-                        <SequenceLine delay={1.2} top={50} left="30%" width="20%" label="ARCHITECT" color="text-indigo-400" arrow="right" />
-                        <SequenceLine delay={2.2} top={80} left="50%" width="20%" label="IMPLEMENT" color="text-violet-400" arrow="right" />
-                        <SequenceLine delay={3.2} top={110} left="70%" width="20%" label="VALIDATE" color="text-emerald-400" arrow="right" />
-
-                        {/* Error / Feedback Loops */}
-                        <SequenceLine delay={4.5} top={140} right="30%" width="20%" label="FIX / RETRY" color="text-red-400" arrow="left" dashed />
-                        <SequenceLine delay={5.5} top={170} right="10%" width="80%" label="DELIVERY" color="text-primary" arrow="left" dashed />
-                    </div>
-                </div>
-            </div>
-
-            <p className="text-[8px] text-center text-muted-foreground italic -mt-4 uppercase tracking-widest opacity-50">End-to-end flow sequence</p>
-        </div>
-    );
-}
-
-function ModularVisual() {
-    return (
-        <div className="flex flex-col items-center gap-4 w-full max-w-[280px] relative">
-            <div className="absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap">
-                <span className="text-[10px] font-black tracking-widest text-primary opacity-50 uppercase">MODULAR LAYERS</span>
-            </div>
-            {[
-                { name: 'Interface (HTTP)', icon: Globe, color: 'text-indigo-400' },
-                { name: 'Service (Logic)', icon: Cpu, color: 'text-violet-400' },
-                { name: 'Repository (Data)', icon: Box, color: 'text-emerald-400' },
-                { name: 'Database (MySQL)', icon: Database, color: 'text-blue-400' }
-            ].map((layer, i) => (
-                <React.Fragment key={i}>
-                    <div className="p-3 bg-background/50 backdrop-blur-md rounded-xl border border-border w-full flex items-center gap-3 group transition-all shadow-sm">
-                        <div className={cn("p-1.5 rounded-lg bg-white/5", layer.color)}>
-                            <layer.icon className="w-4 h-4" />
-                        </div>
-                        <span className="text-[10px] font-mono font-bold tracking-tight">{layer.name}</span>
-                    </div>
-                    {i < 3 && (
-                        <div className="w-px h-4 bg-gradient-to-b from-primary/50 to-transparent border-l border-dashed border-primary/20" />
-                    )}
-                </React.Fragment>
-            ))}
-        </div>
-    );
-}
-
-function DatabaseVisual() {
-    return (
-        <div className="relative w-full aspect-square max-w-[300px] scale-90 md:scale-100">
-            <div className="absolute -top-6 left-1/2 -translate-x-1/2 whitespace-nowrap">
-                <span className="text-[10px] font-black tracking-widest text-primary opacity-50 uppercase">SCHEMA MODELING</span>
-            </div>
-            <Table title="users" fields={['id', 'email', 'pwd']} top="5%" left="0%" />
-            <Table title="orders" fields={['id', 'user_id', 'total']} top="60%" left="45%" />
-            <Table title="products" fields={['id', 'name', 'price', 'cat_id']} top="10%" left="55%" />
-            <Table title="categories" fields={['id', 'name']} top="45%" left="-5%" />
-            <Table title="payments" fields={['id', 'order_id', 'status']} top="80%" left="5%" />
-
-            <svg className="absolute inset-0 w-full h-full -z-10" viewBox="0 0 300 300">
-                {/* Users -> Orders */}
-                <motion.path d="M 80 50 Q 150 120 180 180" fill="none" stroke="rgba(99, 102, 241, 0.2)" strokeWidth="1" strokeDasharray="4 4" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} />
-                {/* Products -> Orders */}
-                <motion.path d="M 220 100 Q 200 140 190 180" fill="none" stroke="rgba(99, 102, 241, 0.2)" strokeWidth="1" strokeDasharray="4 4" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ delay: 0.3 }} />
-                {/* Categories -> Products */}
-                <motion.path d="M 40 140 Q 150 100 220 50" fill="none" stroke="rgba(99, 102, 241, 0.2)" strokeWidth="1" strokeDasharray="4 4" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ delay: 0.6 }} />
-                {/* Orders -> Payments */}
-                <motion.path d="M 180 220 V 260" fill="none" stroke="rgba(99, 102, 241, 0.2)" strokeWidth="1" strokeDasharray="4 4" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ delay: 0.9 }} />
-            </svg>
-        </div>
-    );
-}
-
-function APIVisual() {
-    return (
-        <div className="flex flex-col items-center gap-8 w-full max-w-sm relative">
-            <div className="absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap">
-                <span className="text-[10px] font-black tracking-widest text-primary opacity-50 uppercase">API ORCHESTRATION</span>
-            </div>
-            <div className="flex items-center gap-4 scale-90 md:scale-100">
-                <div className="p-4 bg-background border border-border rounded-full shadow-lg">
-                    <User className="w-6 h-6 text-primary" />
-                </div>
-                <div className="w-8 h-px bg-gradient-to-r from-primary to-transparent dashed-line" />
-                <div className="p-5 bg-primary text-white rounded-2xl shadow-xl shadow-primary/20">
-                    <Webhook className="w-8 h-8" />
-                </div>
-                <div className="w-8 h-px bg-gradient-to-r from-transparent to-primary dashed-line" />
-                <div className="flex flex-col gap-2">
-                    <ServiceMini name="AUTH" />
-                    <ServiceMini name="CORE" />
-                </div>
-            </div>
-        </div>
-    );
-}
-
-// Shared Helpers
-function SequenceLine({ delay, top, left, right, width, label, color, arrow, dashed = false }: any) {
-    return (
-        <motion.div initial={{ width: 0 }} animate={{ width }} transition={{ duration: 0.8, delay }} className={cn("absolute h-[1.5px]", dashed ? "border-t border-dashed border-current" : "bg-current", color)} style={{ top, left, right }}>
-            <div className={cn("absolute top-1/2 -translate-y-1/2 border-y-[4px] border-y-transparent", arrow === 'right' ? "right-0 border-l-[6px] border-l-current" : "left-0 border-r-[6px] border-r-current")} />
-            <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 text-[7px] md:text-[8px] font-mono font-bold whitespace-nowrap opacity-60">{label}</span>
-        </motion.div>
-    );
-}
-
-function Table({ title, fields, top, left }: any) {
-    return (
-        <div className="absolute glass border border-border rounded-lg overflow-hidden w-28 md:w-32 shadow-xl" style={{ top, left }}>
-            <div className="bg-primary/10 px-2 py-1 border-b border-border">
-                <span className="text-[8px] font-black font-mono text-primary uppercase">{title}</span>
-            </div>
-            <div className="flex flex-col p-1.5 gap-1 bg-background/20">
-                {fields.map((f: string) => (
-                    <span key={f} className="text-[7px] font-mono text-muted-foreground flex items-center gap-1.5">
-                        <div className="w-0.5 h-0.5 rounded-full bg-primary/30" /> {f}
-                    </span>
-                ))}
-            </div>
-        </div>
-    );
-}
-
-function ServiceMini({ name }: { name: string }) {
-    return (
-        <div className="px-3 py-1.5 glass rounded-lg border border-border flex items-center gap-2 group hover:border-primary/50 transition-all">
-            <Server className="w-2.5 h-2.5 text-primary" />
-            <span className="text-[8px] font-black tracking-widest">{name}</span>
-        </div>
     );
 }

@@ -67,7 +67,7 @@ export default function Architecture() {
         if (!expandedMobileId) {
             const timer = setInterval(() => {
                 setCurrentSlide((prev) => (prev + 1) % architectureFeatures.length);
-            }, 5000);
+            }, 6000);
             return () => clearInterval(timer);
         }
     }, [expandedMobileId]);

@@ -1,16 +1,21 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { Server } from 'lucide-react';
 import { cn } from '../../../../lib/utils';
 
 export function SequenceLine({ delay, top, left, right, width, label, color, arrow, dashed = false }: any) {
+    const shouldReduce = useReducedMotion();
+
     return (
         <motion.div
             initial={{ width: 0 }}
             animate={{ width }}
-            transition={{ duration: 0.8, delay }}
+            transition={shouldReduce
+                ? { duration: 0, delay: 0 }
+                : { duration: 0.6, delay }
+            }
             className={cn("absolute h-[1.5px]", dashed ? "border-t border-dashed border-current" : "bg-current", color)}
             style={{ top, left, right }}
         >

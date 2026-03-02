@@ -20,7 +20,7 @@ export function SequenceLine({ delay, top, left, right, width, label, color, arr
             style={{ top, left, right }}
         >
             <div className={cn("absolute top-1/2 -translate-y-1/2 border-y-[4px] border-y-transparent", arrow === 'right' ? "right-0 border-l-[6px] border-l-current" : "left-0 border-r-[6px] border-r-current")} />
-            <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 text-[7px] md:text-[8px] font-mono font-bold whitespace-nowrap opacity-60 uppercase">{label}</span>
+            <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 text-[7px] md:text-[8px] font-mono font-bold whitespace-nowrap text-foreground/80 uppercase">{label}</span>
         </m.div>
     );
 }

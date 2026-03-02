@@ -13,18 +13,19 @@ import {
 import { cn } from '../../lib/utils';
 import { useTranslations } from 'next-intl';
 
-// Sliced Visual Components
-import DevFlowVisual from './architecture/visuals/DevFlowVisual';
-import ModularVisual from './architecture/visuals/ModularVisual';
-import DatabaseVisual from './architecture/visuals/DatabaseVisual';
-import APIVisual from './architecture/visuals/APIVisual';
+import dynamic from 'next/dynamic';
+
+const DevFlowVisual = dynamic(() => import('./architecture/visuals/DevFlowVisual'));
+const ModularVisual = dynamic(() => import('./architecture/visuals/ModularVisual'));
+const DatabaseVisual = dynamic(() => import('./architecture/visuals/DatabaseVisual'));
+const APIVisual = dynamic(() => import('./architecture/visuals/APIVisual'));
 
 interface ArchitectureFeature {
     id: string;
     title: string;
     desc: string;
     icon: LucideIcon;
-    Visual: React.FC;
+    Visual: React.ComponentType;
 }
 
 export default function Architecture() {
@@ -231,7 +232,7 @@ export default function Architecture() {
                                         </m.div>
                                     </AnimatePresence>
                                 </div>
-                                <p className="text-[10px] text-center text-muted-foreground italic uppercase tracking-widest opacity-80">
+                                <p className="text-[10px] text-center text-foreground font-bold italic uppercase tracking-widest">
                                     {architectureFeatures[currentSlide].title}
                                 </p>
                             </div>

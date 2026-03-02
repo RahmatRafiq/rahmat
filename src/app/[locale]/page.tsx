@@ -1,6 +1,7 @@
 import Hero from "../../components/sections/Hero";
 import dynamic from "next/dynamic";
 import { setRequestLocale } from 'next-intl/server';
+import ViewportLazy from "../../components/ViewportLazy";
 
 const SkeletonSection = () => (
   <div className="w-full h-[400px] animate-pulse bg-muted/20 rounded-3xl border border-border/50" />
@@ -49,15 +50,23 @@ export default async function Home({
         <Architecture />
       </div>
       <div id="experience">
-        <Experience />
+        <ViewportLazy fallback={<SkeletonSection />}>
+          <Experience />
+        </ViewportLazy>
       </div>
       <div id="stats">
-        <Stats />
+        <ViewportLazy fallback={<SkeletonSection />}>
+          <Stats />
+        </ViewportLazy>
       </div>
       <div id="projects">
-        <Projects />
+        <ViewportLazy fallback={<SkeletonSection />}>
+          <Projects />
+        </ViewportLazy>
       </div>
-      <Contact />
+      <ViewportLazy fallback={<div className="h-40" />}>
+        <Contact />
+      </ViewportLazy>
     </div>
   );
 }

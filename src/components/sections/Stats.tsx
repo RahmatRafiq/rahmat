@@ -148,6 +148,7 @@ export default function Stats() {
                                             style={{ backgroundColor: lang.color }}
                                             role="progressbar"
                                             aria-valuenow={lang.percent}
+                                            aria-label={lang.name}
                                         />
                                     </div>
                                 </div>

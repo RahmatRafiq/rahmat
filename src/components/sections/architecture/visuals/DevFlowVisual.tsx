@@ -38,12 +38,12 @@ export default function DevFlowVisual() {
                     <div className="relative h-[240px] w-full mt-4">
                         {/* ALT Box for Design Feedback - Precise alignment */}
                         <div className="absolute top-[35px] left-[10.1%] bottom-[125px] right-[70.1%] border border-primary/20 bg-primary/5 rounded-lg z-0">
-                            <div className="absolute -top-2 left-1 bg-background border border-primary/20 px-1 py-0.5 rounded text-[5px] font-bold text-indigo-400 uppercase">{t('loop')}</div>
+                            <div className="absolute -top-2 left-1 bg-background border border-primary/40 px-1 py-0.5 rounded text-[5px] font-bold text-indigo-500 uppercase">{t('loop')}</div>
                         </div>
 
                         {/* ALT Box for Error Handling */}
                         <div className="absolute top-[145px] left-[50.1%] bottom-[45px] right-[10.1%] border border-red-500/20 bg-red-500/5 rounded-lg z-0">
-                            <div className="absolute -top-2 left-1 bg-background border border-red-500/20 px-1 py-0.5 rounded text-[5px] font-bold text-red-400 uppercase">{t('alt')}</div>
+                            <div className="absolute -top-2 left-1 bg-background border border-red-500/40 px-1 py-0.5 rounded text-[5px] font-bold text-red-500 uppercase">{t('alt')}</div>
                         </div>
 
                         {/* Flow: Client <-> Design */}

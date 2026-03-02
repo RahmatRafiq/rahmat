@@ -3,18 +3,10 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Github, Linkedin } from 'lucide-react';
+import { Menu, X, Github, Linkedin, Languages } from 'lucide-react';
 import { cn } from '../lib/utils';
-
-const navLinks = [
-    { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Architecture', href: '#architecture' },
-    { name: 'Experience', href: '#experience' },
-    { name: 'Metrics', href: '#stats' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Contact', href: '#contact' },
-];
+import { useTranslations, useLocale } from 'next-intl';
+import { usePathname, useRouter } from '../i18n/routing';
 
 const glassStyle: React.CSSProperties = {
     background: 'rgba(255, 255, 255, 0.08)',
@@ -58,9 +50,23 @@ function GlassPill({
 }
 
 export default function Navbar() {
+    const t = useTranslations('Navbar');
+    const locale = useLocale();
+    const router = useRouter();
+    const pathname = usePathname();
     const [isOpen, setIsOpen] = useState(false);
     const [mobileVisible, setMobileVisible] = useState(true);
     const hideTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+    const navLinks = [
+        { name: t('about'), href: '#about' },
+        { name: t('skills'), href: '#skills' },
+        { name: t('architecture'), href: '#architecture' },
+        { name: t('experience'), href: '#experience' },
+        { name: t('metrics'), href: '#stats' },
+        { name: t('projects'), href: '#projects' },
+        { name: t('contact'), href: '#contact' },
+    ];
 
     const resetHideTimer = useCallback(() => {
         setMobileVisible(true);
@@ -123,6 +129,32 @@ export default function Navbar() {
                     <Link href="https://www.linkedin.com/in/rahmat-r-079209247/" target="_blank" className={iconCls}>
                         <Linkedin size={16} />
                     </Link>
+
+                    <div className="w-px h-6 mx-2 bg-white/10" />
+
+                    {/* Language Switcher */}
+                    <div className="flex items-center bg-white/5 border border-white/10 rounded-full p-0.5">
+                        <button
+                            onClick={() => router.replace(pathname, { locale: 'id', scroll: false })}
+                            className={cn(
+                                "px-2.5 py-1 text-[11px] font-bold rounded-full transition-all",
+                                locale === 'id' ? "bg-primary text-white shadow-md" : "text-white/50 hover:text-white"
+                            )}
+                            aria-label="Switch to Indonesian"
+                        >
+                            ID
+                        </button>
+                        <button
+                            onClick={() => router.replace(pathname, { locale: 'en', scroll: false })}
+                            className={cn(
+                                "px-2.5 py-1 text-[11px] font-bold rounded-full transition-all",
+                                locale === 'en' ? "bg-primary text-white shadow-md" : "text-white/50 hover:text-white"
+                            )}
+                            aria-label="Switch to English"
+                        >
+                            EN
+                        </button>
+                    </div>
                 </GlassPill>
             </nav>
 
@@ -162,13 +194,36 @@ export default function Navbar() {
                                     animate={{ scale: 1, opacity: 1 }}
                                     exit={{ scale: 0.8, opacity: 0 }}
                                 >
-                                    <GlassPill className="p-1.5 px-2 rounded-full">
+                                    <GlassPill className="p-1.5 px-2 rounded-full flex items-center">
+                                        <div className="flex items-center bg-white/5 border border-white/10 rounded-full p-0.5 mr-1">
+                                            <button
+                                                onClick={(e) => { e.stopPropagation(); router.replace(pathname, { locale: 'id', scroll: false }); }}
+                                                className={cn(
+                                                    "px-2 py-1 text-[10px] w-6 text-center font-bold rounded-full transition-all",
+                                                    locale === 'id' ? "bg-primary text-white shadow-md" : "text-white/50 hover:text-white"
+                                                )}
+                                                aria-label="Switch to Indonesian"
+                                            >
+                                                ID
+                                            </button>
+                                            <button
+                                                onClick={(e) => { e.stopPropagation(); router.replace(pathname, { locale: 'en', scroll: false }); }}
+                                                className={cn(
+                                                    "px-2 py-1 text-[10px] w-6 text-center font-bold rounded-full transition-all",
+                                                    locale === 'en' ? "bg-primary text-white shadow-md" : "text-white/50 hover:text-white"
+                                                )}
+                                                aria-label="Switch to English"
+                                            >
+                                                EN
+                                            </button>
+                                        </div>
+                                        <div className="w-[1px] h-4 mx-1 bg-white/10" />
                                         <button
                                             onClick={() => setIsOpen(true)}
                                             className="px-4 py-2.5 rounded-full text-[14px] font-semibold text-white/90 hover:bg-white/10 transition-all flex items-center justify-center gap-2"
                                         >
                                             <Menu size={20} className="stroke-[2.5px]" />
-                                            Menu
+                                            {t('menu')}
                                         </button>
                                     </GlassPill>
                                 </motion.div>

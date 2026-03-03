@@ -153,7 +153,7 @@
         "layer1": "Interface (HTTP)",
         "layer2": "Service (Logic)",
         "layer3": "Repository (Data)",
-        "layer4": "Database (MySQL)"
+        "layer4": "Database"
     },
     "DatabaseVisual": {
         "title": "SCHEMA MODELING",

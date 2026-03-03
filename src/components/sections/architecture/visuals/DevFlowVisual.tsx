@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { User, ClipboardList, Code, ShieldCheck, Globe } from 'lucide-react';
+import { m } from 'framer-motion';
 import { SequenceLine } from './SharedVisuals';
 import { useTranslations } from 'next-intl';
 
@@ -9,12 +10,9 @@ export default function DevFlowVisual() {
     const t = useTranslations('DevFlowVisual');
 
     return (
-        <div className="w-full flex flex-col gap-8 relative">
-            <div className="flex justify-center">
-                <span className="text-[10px] font-black tracking-widest text-muted-foreground uppercase">{t('title')}</span>
-            </div>
+        <div className="w-full h-full flex flex-col gap-8 relative mt-8">
 
-            <div className="w-full flex flex-col items-center justify-center scale-[0.8] md:scale-100 origin-center">
+            <div className="w-full flex flex-col items-center justify-center scale-90 sm:scale-100 md:scale-105 origin-center">
                 <div className="w-full max-w-[650px] md:max-w-full flex flex-col items-center">
                     <div className="flex w-full relative">
                         {[
@@ -25,10 +23,28 @@ export default function DevFlowVisual() {
                             { name: t('actor5'), icon: Globe }
                         ].map((actor, idx) => (
                             <div key={idx} className="flex flex-col items-center gap-2 relative z-10 w-[20%] group text-center">
-                                <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg md:rounded-xl bg-background border border-border flex items-center justify-center shadow-lg group-hover:border-primary transition-colors">
-                                    <actor.icon className="w-4 h-4 md:w-5 md:h-5 text-indigo-400" />
-                                </div>
-                                <span className="text-[7px] md:text-[8px] uppercase font-bold text-muted-foreground">{actor.name}</span>
+                                <m.div
+                                    initial={{ y: -20, opacity: 0 }}
+                                    animate={{ y: 0, opacity: 1 }}
+                                    transition={{ duration: 0.5, delay: idx * 0.15 }}
+                                    className="relative"
+                                >
+                                    <m.div
+                                        animate={{ boxShadow: ["0px 0px 0px rgba(99,102,241,0)", "0px 0px 15px rgba(99,102,241,0.4)", "0px 0px 0px rgba(99,102,241,0)"] }}
+                                        transition={{ duration: 2.5, repeat: Infinity, delay: idx * 0.2 }}
+                                        className="w-8 h-8 md:w-10 md:h-10 rounded-lg md:rounded-xl bg-background border border-border flex items-center justify-center shadow-lg group-hover:border-primary transition-colors relative z-10"
+                                    >
+                                        <actor.icon className="w-4 h-4 md:w-5 md:h-5 text-indigo-400" />
+                                    </m.div>
+                                </m.div>
+                                <m.span
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ delay: 0.5 + (idx * 0.1) }}
+                                    className="text-[7px] md:text-[8px] uppercase font-bold text-muted-foreground"
+                                >
+                                    {actor.name}
+                                </m.span>
                                 {/* Vertical Centered Line */}
                                 <div className="absolute top-10 md:top-12 bottom-[-220px] w-px bg-primary/10 border-l border-dashed border-primary/20 left-1/2 -translate-x-1/2" />
                             </div>

@@ -13,12 +13,10 @@ import {
 import { cn } from '../../lib/utils';
 import { useTranslations } from 'next-intl';
 
-import dynamic from 'next/dynamic';
-
-const DevFlowVisual = dynamic(() => import('./architecture/visuals/DevFlowVisual'));
-const ModularVisual = dynamic(() => import('./architecture/visuals/ModularVisual'));
-const DatabaseVisual = dynamic(() => import('./architecture/visuals/DatabaseVisual'));
-const APIVisual = dynamic(() => import('./architecture/visuals/APIVisual'));
+import DevFlowVisual from './architecture/visuals/DevFlowVisual';
+import ModularVisual from './architecture/visuals/ModularVisual';
+import DatabaseVisual from './architecture/visuals/DatabaseVisual';
+import APIVisual from './architecture/visuals/APIVisual';
 
 interface ArchitectureFeature {
     id: string;
@@ -66,20 +64,19 @@ export default function Architecture() {
     const [expandedMobileId, setExpandedMobileId] = useState<string | null>(null);
     const [currentSlide, setCurrentSlide] = useState(0);
 
-    // Auto-slider for mobile default state
+    // Auto-slider for mobile default state (only when no accordion is open)
     useEffect(() => {
-        if (!expandedMobileId) {
-            const timer = setInterval(() => {
-                setCurrentSlide((prev) => (prev + 1) % architectureFeatures.length);
-            }, 6000);
-            return () => clearInterval(timer);
-        }
+        if (expandedMobileId !== null) return;
+        const timer = setInterval(() => {
+            setCurrentSlide((prev) => (prev + 1) % architectureFeatures.length);
+        }, 6000);
+        return () => clearInterval(timer);
     }, [expandedMobileId, architectureFeatures.length]);
 
     const toggleMobileExpand = (id: string) => {
-        const nextId = expandedMobileId === id ? null : id;
-        setExpandedMobileId(nextId);
-        if (nextId) setActiveTab(nextId);
+        // If same item clicked → close it, else open new one (closes previous)
+        setExpandedMobileId((prev) => (prev === id ? null : id));
+        setActiveTab(id);
     };
 
     return (

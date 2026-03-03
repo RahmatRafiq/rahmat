@@ -17,7 +17,7 @@ export default function Hero() {
 
             <div className="max-w-4xl mx-auto text-center">
                 <div
-                    className="relative mb-8 inline-block opacity-0 animate-scale-fade duration-300"
+                    className="relative mb-8 inline-block animate-scale-fade"
                 >
                     <div className="absolute inset-0 bg-primary blur-[40px] animate-pulse-slow rounded-full" aria-hidden="true" />
                     <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full border-2 border-primary/20 p-2 glass overflow-hidden">
@@ -33,7 +33,7 @@ export default function Hero() {
                 </div>
 
                 <div
-                    className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-muted border border-border text-xs font-medium text-muted-foreground mb-8 opacity-0 animate-fade-in-up [animation-delay:100ms]"
+                    className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-muted border border-border text-xs font-medium text-muted-foreground mb-8 animate-fade-in-up"
                 >
                     <span className="relative flex h-2 w-2">
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
@@ -43,20 +43,20 @@ export default function Hero() {
                 </div>
 
                 <h1
-                    className="text-4xl md:text-7xl font-bold tracking-tight mb-6 opacity-0 animate-fade-in-up [animation-delay:200ms]"
+                    className="text-4xl md:text-7xl font-bold tracking-tight mb-6 animate-fade-in-up"
                 >
                     {t('title_crafting')} <span className="text-gradient">{t('title_scalable')}</span> <br />
                     {t('title_seamless')}
                 </h1>
 
                 <p
-                    className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed opacity-0 animate-fade-in-up [animation-delay:300ms]"
+                    className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-in-up"
                 >
                     {t.rich('subtitle', { b: (chunks) => <span className="text-foreground font-bold">{chunks}</span> })}
                 </p>
 
                 <div
-                    className="mb-10 opacity-0 animate-fade-in-up [animation-delay:400ms]"
+                    className="mb-10 animate-fade-in-up"
                 >
                     <blockquote className="text-sm italic text-indigo-300 font-medium">
                         {t('quote')}
@@ -64,7 +64,7 @@ export default function Hero() {
                 </div>
 
                 <div
-                    className="flex flex-col md:flex-row items-center justify-center gap-4 opacity-0 animate-fade-in-up [animation-delay:500ms]"
+                    className="flex flex-col md:flex-row items-center justify-center gap-4 animate-fade-in-up"
                 >
                     <Link
                         href="#projects"
@@ -88,7 +88,7 @@ export default function Hero() {
 
                 {/* Feature Tags */}
                 <div
-                    className="mt-20 grid grid-cols-2 md:grid-cols-3 gap-8 border-t border-border pt-12 opacity-0 animate-fade-in-up [animation-delay:600ms]"
+                    className="mt-20 grid grid-cols-2 md:grid-cols-3 gap-8 border-t border-border pt-12 animate-fade-in-up"
                 >
                     {[
                         { icon: Terminal, title: t('feature1_title'), desc: t('feature1_desc') },

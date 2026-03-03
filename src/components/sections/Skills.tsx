@@ -35,7 +35,7 @@ export default function Skills() {
 
     return (
         <section id="skills" className="px-6 max-w-7xl mx-auto py-20 w-full" aria-label="Technical Skills">
-            <div className="mb-16 flex flex-col items-center">
+            <div className="mb-16 flex flex-col items-center text-center">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('title')}</h2>
                 <div className="h-1 w-20 bg-primary rounded-full" aria-hidden="true" />
             </div>

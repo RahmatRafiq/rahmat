@@ -82,7 +82,6 @@ export default function Projects() {
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('title')}</h2>
                 <div className="h-1 w-20 bg-primary rounded-full mb-10" aria-hidden="true" />
 
-                {/* Tabs centered */}
                 <div
                     className="flex flex-wrap items-center justify-center gap-2 p-1 bg-secondary/50 rounded-xl border border-border"
                     role="tablist"
@@ -145,14 +144,16 @@ export default function Projects() {
                             </div>
 
                             <div className="p-6 flex flex-col flex-grow">
-                                <h3 className="text-xl font-bold mb-2 group-hover:text-indigo-400 transition-colors">
-                                    {project.title}
-                                </h3>
-                                <p className="text-sm text-muted-foreground mb-6 line-clamp-3 leading-relaxed">
-                                    {project.description}
-                                </p>
+                                <div className="flex flex-col flex-grow mb-5">
+                                    <h3 className="text-xl font-bold mb-2 group-hover:text-indigo-400 transition-colors">
+                                        {project.title}
+                                    </h3>
+                                    <p className="text-sm text-muted-foreground line-clamp-3 leading-relaxed">
+                                        {project.description}
+                                    </p>
+                                </div>
 
-                                <div className="flex flex-wrap gap-2 mb-8 mt-auto" aria-label="Technologies Used">
+                                <div className="flex flex-wrap gap-2 mb-4" aria-label="Technologies Used">
                                     {project.tags.map((tag) => (
                                         <span
                                             key={tag}
@@ -163,7 +164,7 @@ export default function Projects() {
                                     ))}
                                 </div>
 
-                                <div className="flex items-center justify-between">
+                                <div className="flex items-center justify-between pt-4 border-t border-border/40">
                                     <div className="flex items-center gap-3">
                                         <a
                                             href={project.links.github}

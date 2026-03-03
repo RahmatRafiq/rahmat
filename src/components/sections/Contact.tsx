@@ -8,31 +8,31 @@ import { siteConfig } from '../../config/site';
 export default function Contact() {
     const t = useTranslations('Contact');
     return (
-        <section id="contact" className="px-6 max-w-7xl mx-auto py-24 w-full relative overflow-hidden">
+        <section id="contact" className="px-4 md:px-6 max-w-7xl mx-auto py-24 w-full relative overflow-hidden">
             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-primary/10 rounded-full blur-[120px] -z-10" />
 
-            <div className="glass p-8 md:p-16 rounded-[2.5rem] border border-border relative overflow-hidden">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="glass p-5 sm:p-8 md:p-16 rounded-[2rem] sm:rounded-[2.5rem] border border-border relative overflow-hidden">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-center">
                     <div>
-                        <h2 className="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight">
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6 tracking-tight">
                             {t('title1')} <br />
                             <span className="text-indigo-400 italic">{t('title2')}</span> {t('title3')}
                         </h2>
-                        <p className="text-lg text-muted-foreground mb-10 leading-relaxed max-w-md">
+                        <p className="text-base sm:text-lg text-muted-foreground mb-8 sm:mb-10 leading-relaxed max-w-md">
                             {t('description')}
                         </p>
 
                         <div className="space-y-4">
                             <a
                                 href={`mailto:${siteConfig.email}`}
-                                className="flex items-center gap-4 group hover:text-indigo-400 transition-colors p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-primary/20"
+                                className="flex items-center gap-3 sm:gap-4 group hover:text-indigo-400 transition-colors p-3 sm:p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-primary/20 w-full overflow-hidden"
                             >
-                                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all">
-                                    <Mail className="w-5 h-5" />
+                                <div className="w-10 h-10 sm:w-12 sm:h-12 shrink-0 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all">
+                                    <Mail className="w-4 h-4 sm:w-5 sm:h-5" />
                                 </div>
-                                <div>
-                                    <div className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">{t('emailLabel')}</div>
-                                    <div className="text-sm font-bold">{siteConfig.email}</div>
+                                <div className="min-w-0 flex-1">
+                                    <div className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest truncate">{t('emailLabel')}</div>
+                                    <div className="text-sm font-bold truncate">{siteConfig.email}</div>
                                 </div>
                             </a>
 
@@ -40,21 +40,21 @@ export default function Contact() {
                                 href={siteConfig.links.linkedin}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center gap-4 group hover:text-indigo-400 transition-colors p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-primary/20"
+                                className="flex items-center gap-3 sm:gap-4 group hover:text-indigo-400 transition-colors p-3 sm:p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-primary/20 w-full overflow-hidden"
                             >
-                                <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all">
-                                    <Linkedin className="w-5 h-5" />
+                                <div className="w-10 h-10 sm:w-12 sm:h-12 shrink-0 rounded-xl bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all">
+                                    <Linkedin className="w-4 h-4 sm:w-5 sm:h-5" />
                                 </div>
-                                <div>
-                                    <div className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">{t('connectLabel')}</div>
-                                    <div className="text-sm font-bold">{siteConfig.links.linkedin.replace('https://www.', '')}</div>
+                                <div className="min-w-0 flex-1">
+                                    <div className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest truncate">{t('connectLabel')}</div>
+                                    <div className="text-sm font-bold truncate">{siteConfig.links.linkedin.replace('https://www.', '')}</div>
                                 </div>
                             </a>
                         </div>
                     </div>
 
-                    <div className="relative">
-                        <div className="glass p-8 rounded-3xl border border-border bg-white/[0.02] relative z-10">
+                    <div className="relative w-full">
+                        <div className="glass p-6 sm:p-8 rounded-3xl border border-border bg-white/[0.02] relative z-10 w-full">
                             <div className="flex items-center gap-3 mb-8">
                                 <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                                 <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">{t('available')}</span>

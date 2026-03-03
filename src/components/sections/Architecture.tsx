@@ -84,9 +84,9 @@ export default function Architecture() {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -z-10" />
 
             <div className="mb-16 flex flex-col items-center text-center">
-                <h2 className="text-3xl md:text-5xl font-bold mb-6 tracking-tight">{t('title')}</h2>
-                <div className="h-1.5 w-24 bg-primary rounded-full mb-8 shadow-[0_0_15px_rgba(99,102,241,0.5)]" aria-hidden="true" />
-                <p className="text-muted-foreground max-w-2xl text-lg">
+                <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('title')}</h2>
+                <div className="h-1 w-20 bg-primary rounded-full" aria-hidden="true" />
+                <p className="text-muted-foreground max-w-2xl text-lg mt-6">
                     {t('description')}
                 </p>
             </div>

@@ -97,10 +97,12 @@ export default function Stats() {
     return (
         <section id="stats" className="px-4 md:px-6 max-w-7xl mx-auto py-20 w-full">
             {/* Header */}
-            <div className="mb-12 flex flex-col items-center text-center">
-                <h2 className="text-3xl md:text-5xl font-bold mb-4 tracking-tight">{t('title')}</h2>
-                <div className="h-1.5 w-24 bg-primary rounded-full mb-6 shadow-[0_0_15px_rgba(99,102,241,0.5)]" />
-                <p className="text-muted-foreground max-w-2xl text-lg">{t('description')}</p>
+            <div className="mb-16 flex flex-col items-center text-center">
+                <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('title')}</h2>
+                <div className="h-1 w-20 bg-primary rounded-full" aria-hidden="true" />
+                <p className="text-muted-foreground max-w-2xl text-lg mt-6">
+                    {t('description')}
+                </p>
             </div>
 
             {/* ─── UNIFIED MASONRY GRID ─── */}

@@ -43,6 +43,16 @@ export default async function Home({
   return (
     <div className="flex flex-col gap-20 pb-20">
       <Hero />
+      <div id="experience" className="min-h-[800px]">
+        <ViewportLazy fallback={<div className="w-full h-[800px] animate-pulse bg-muted/20 rounded-3xl" />}>
+          <Experience />
+        </ViewportLazy>
+      </div>
+      <div id="projects" className="min-h-[1000px]">
+        <ViewportLazy fallback={<div className="w-full h-[1000px] animate-pulse bg-muted/20 rounded-3xl" />}>
+          <Projects />
+        </ViewportLazy>
+      </div>
       <div id="skills" className="min-h-[600px]">
         <ViewportLazy fallback={<div className="w-full h-[600px] animate-pulse bg-muted/20 rounded-3xl" />}>
           <Skills />
@@ -53,19 +63,9 @@ export default async function Home({
           <Architecture />
         </ViewportLazy>
       </div>
-      <div id="experience" className="min-h-[800px]">
-        <ViewportLazy fallback={<div className="w-full h-[800px] animate-pulse bg-muted/20 rounded-3xl" />}>
-          <Experience />
-        </ViewportLazy>
-      </div>
       <div id="stats" className="min-h-[400px]">
         <ViewportLazy fallback={<div className="w-full h-[400px] animate-pulse bg-muted/20 rounded-3xl" />}>
           <Stats />
-        </ViewportLazy>
-      </div>
-      <div id="projects" className="min-h-[1000px]">
-        <ViewportLazy fallback={<div className="w-full h-[1000px] animate-pulse bg-muted/20 rounded-3xl" />}>
-          <Projects />
         </ViewportLazy>
       </div>
       <ViewportLazy fallback={<div className="w-full h-80 animate-pulse bg-muted/20 rounded-3xl" />}>

@@ -1,7 +1,4 @@
-'use client';
-
 import React from 'react';
-import { m } from 'framer-motion';
 import { ArrowRight, Terminal, Database, Code } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -19,13 +16,10 @@ export default function Hero() {
             <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-violet-500/10 rounded-full blur-[120px] -z-10" aria-hidden="true" />
 
             <div className="max-w-4xl mx-auto text-center">
-                <m.div
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.4, type: 'spring', stiffness: 260, damping: 20 }}
-                    className="relative mb-8 inline-block"
+                <div
+                    className="relative mb-8 inline-block opacity-0 animate-scale-fade duration-300"
                 >
-                    <div className="absolute inset-0 bg-primary blur-[40px] opacity-20 animate-pulse rounded-full" aria-hidden="true" />
+                    <div className="absolute inset-0 bg-primary blur-[40px] animate-pulse-slow rounded-full" aria-hidden="true" />
                     <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full border-2 border-primary/20 p-2 glass overflow-hidden">
                         <Image
                             src="/rahmat.png"
@@ -36,56 +30,41 @@ export default function Hero() {
                             className="w-full h-full rounded-full object-cover"
                         />
                     </div>
-                </m.div>
+                </div>
 
-                <m.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: 0.1 }}
-                    className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-muted border border-border text-xs font-medium text-muted-foreground mb-8"
+                <div
+                    className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-muted border border-border text-xs font-medium text-muted-foreground mb-8 opacity-0 animate-fade-in-up [animation-delay:100ms]"
                 >
                     <span className="relative flex h-2 w-2">
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                         <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
                     </span>
                     <span>{t('available')}</span>
-                </m.div>
+                </div>
 
-                <m.h1
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: 0.2 }}
-                    className="text-4xl md:text-7xl font-bold tracking-tight mb-6"
+                <h1
+                    className="text-4xl md:text-7xl font-bold tracking-tight mb-6 opacity-0 animate-fade-in-up [animation-delay:200ms]"
                 >
                     {t('title_crafting')} <span className="text-gradient">{t('title_scalable')}</span> <br />
                     {t('title_seamless')}
-                </m.h1>
+                </h1>
 
-                <m.p
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: 0.3 }}
-                    className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed"
+                <p
+                    className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed opacity-0 animate-fade-in-up [animation-delay:300ms]"
                 >
                     {t.rich('subtitle', { b: (chunks) => <span className="text-foreground font-bold">{chunks}</span> })}
-                </m.p>
+                </p>
 
-                <m.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.8, delay: 0.4 }}
-                    className="mb-10"
+                <div
+                    className="mb-10 opacity-0 animate-fade-in-up [animation-delay:400ms]"
                 >
                     <blockquote className="text-sm italic text-indigo-300 font-medium">
                         {t('quote')}
                     </blockquote>
-                </m.div>
+                </div>
 
-                <m.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: 0.5 }}
-                    className="flex flex-col md:flex-row items-center justify-center gap-4"
+                <div
+                    className="flex flex-col md:flex-row items-center justify-center gap-4 opacity-0 animate-fade-in-up [animation-delay:500ms]"
                 >
                     <Link
                         href="#projects"
@@ -105,14 +84,11 @@ export default function Hero() {
                     >
                         {t('getInTouch')}
                     </Link>
-                </m.div>
+                </div>
 
                 {/* Feature Tags */}
-                <m.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.8, delay: 0.6 }}
-                    className="mt-20 grid grid-cols-2 md:grid-cols-3 gap-8 border-t border-border pt-12"
+                <div
+                    className="mt-20 grid grid-cols-2 md:grid-cols-3 gap-8 border-t border-border pt-12 opacity-0 animate-fade-in-up [animation-delay:600ms]"
                 >
                     {[
                         { icon: Terminal, title: t('feature1_title'), desc: t('feature1_desc') },
@@ -125,7 +101,7 @@ export default function Hero() {
                             <p className="text-xs text-muted-foreground">{item.desc}</p>
                         </div>
                     ))}
-                </m.div>
+                </div>
             </div>
         </section>
     );

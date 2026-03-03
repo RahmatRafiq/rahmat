@@ -44,3 +44,24 @@
     box-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
   }
 }
+
+@theme {
+  --animate-fade-in-up: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-scale-fade: scale-fade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-pulse-slow: pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+  @keyframes fade-in-up {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes scale-fade {
+    0% { opacity: 0; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+
+  @keyframes pulse-slow {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 0.35; }
+  }
+}

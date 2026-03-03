@@ -73,7 +73,7 @@
     },
     "Projects": {
         "title": "Selected Work",
-        "cat1": "Production",
+        "cat1": "Live Preview & Production",
         "cat2": "Starter Kits",
         "cat3": "Open Source",
         "p1_title": "Kemafar.org",
@@ -88,7 +88,11 @@
         "p5_desc": "Opinionated starter with React 19 (Inertia.js), Spatie roles, and media management.",
         "p6_title": "Golang Starter Kit",
         "p6_desc": "Production-grade backend scaffold with JWT auth, Swagger docs, and Dockerized multi-db support.",
+        "p7_title": "Bouquet Builder",
+        "p7_desc": "Interactive web application for designing and customizing flower bouquets in real-time.",
         "projects_count": "projects",
+        "collaborators": "Collaborators",
+        "present": "Present",
         "viewGithub": "View on GitHub",
         "viewNpm": "View on NPM",
         "livePreview": "Live Preview"

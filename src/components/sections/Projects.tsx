@@ -13,23 +13,36 @@ export default function Projects() {
     const [activeTab, setActiveTab] = useState(categories[0]);
     const projectsData = [
         {
+            title: t('p7_title'),
+            category: categories[0], // Live Production
+            year: `2026 - ${t('present')}`,
+            description: t('p7_desc'),
+            tags: ['React', 'Next.js', 'Vercel', 'Tailwind CSS'],
+            icon: Package,
+            links: { demo: 'https://bouquet-builder.vercel.app/bouquet-builder' },
+            color: 'from-pink-500/20 to-rose-500/20',
+        },
+        {
             title: t('p1_title'),
             category: categories[0], // Live Production
-            year: '2025',
+            year: `2026 - ${t('present')}`,
             description: t('p1_desc'),
             tags: ['Supabase', 'Next.js', 'Vercel CI/CD', 'RLS'],
             icon: Globe,
-            links: { github: 'https://github.com/RahmatRafiq/kemafar_supabase_nextjs', demo: 'https://kemafar.org/' },
+            links: { demo: 'https://kemafar.org/' },
             color: 'from-blue-600/20 to-indigo-600/20',
         },
         {
             title: t('p2_title'),
             category: categories[0], // Live Production
-            year: '2025',
+            year: `2026 - ${t('present')}`,
             description: t('p2_desc'),
             tags: ['React', 'Next.js', 'Vercel'],
             icon: Zap,
-            links: { github: 'https://github.com/RahmatRafiq/typing-test-nextjs', demo: 'https://typingtest-olive.vercel.app/' },
+            links: { demo: 'https://typingtest-olive.vercel.app/' },
+            collaborators: [
+                { name: 'gendonholaholo', link: 'https://github.com/gendonholaholo' }
+            ],
             color: 'from-amber-500/20 to-orange-500/20',
         },
         {
@@ -45,7 +58,7 @@ export default function Projects() {
         {
             title: t('p4_title'),
             category: categories[1], // Starter Kits
-            year: '2025',
+            year: '2026',
             description: t('p4_desc'),
             tags: ['Next.js', 'Supabase', 'TypeScript'],
             icon: Package,
@@ -55,7 +68,7 @@ export default function Projects() {
         {
             title: t('p5_title'),
             category: categories[1], // Starter Kits
-            year: '2025',
+            year: `2025 - ${t('present')}`,
             description: t('p5_desc'),
             tags: ['Laravel 12', 'React 19', 'Inertia'],
             icon: Database,
@@ -65,7 +78,7 @@ export default function Projects() {
         {
             title: t('p6_title'),
             category: categories[1], // Starter Kits
-            year: '2025',
+            year: `2025 - ${t('present')}`,
             description: t('p6_desc'),
             tags: ['Golang', 'Gin', 'GORM', 'Docker'],
             icon: ShieldCheck,
@@ -138,17 +151,44 @@ export default function Projects() {
                         >
                             <div className={cn('h-40 w-full bg-gradient-to-br flex items-center justify-center relative', project.color)}>
                                 <project.icon className="w-16 h-16 text-foreground/20 group-hover:scale-110 transition-transform duration-500" aria-hidden="true" />
-                                <div className="absolute top-4 right-4 bg-background/50 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">
+
+                                {project.collaborators && project.collaborators.length > 0 && (
+                                    <div className="absolute top-4 left-4 flex flex-col gap-1.5 z-10 w-[calc(100%-80px)]">
+                                        <span className="text-[9px] uppercase tracking-widest font-bold text-foreground/60 drop-shadow-sm px-1">
+                                            {t('collaborators')}
+                                        </span>
+                                        <div className="flex flex-wrap gap-1.5">
+                                            {project.collaborators.map((collab) => (
+                                                <a
+                                                    key={collab.name}
+                                                    href={collab.link}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="text-[10px] font-semibold text-foreground/80 hover:text-foreground transition-colors bg-background/50 hover:bg-background/80 backdrop-blur-md px-2 py-1 rounded-md flex items-center gap-1.5 border border-white/10 shadow-sm"
+                                                    aria-label={`Collaborator ${collab.name}`}
+                                                    title={`Collaborator: ${collab.name}`}
+                                                >
+                                                    <Github size={12} className="opacity-70" />
+                                                    {collab.name}
+                                                </a>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
+
+                                <div className="absolute top-4 right-4 bg-background/50 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase border border-white/10 shadow-sm z-10">
                                     {project.year}
                                 </div>
                             </div>
 
                             <div className="p-6 flex flex-col flex-grow">
                                 <div className="flex flex-col flex-grow mb-5">
-                                    <h3 className="text-xl font-bold mb-2 group-hover:text-indigo-400 transition-colors">
-                                        {project.title}
-                                    </h3>
-                                    <p className="text-sm text-muted-foreground line-clamp-3 leading-relaxed">
+                                    <div className="flex items-start justify-between mb-2">
+                                        <h3 className="text-xl font-bold group-hover:text-indigo-400 transition-colors">
+                                            {project.title}
+                                        </h3>
+                                    </div>
+                                    <p className="text-sm text-muted-foreground line-clamp-3 leading-relaxed mt-1">
                                         {project.description}
                                     </p>
                                 </div>

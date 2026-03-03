@@ -73,7 +73,7 @@
     },
     "Projects": {
         "title": "Karya Pilihan",
-        "cat1": "Produksi",
+        "cat1": "Live Preview & Produksi",
         "cat2": "Starter Kit",
         "cat3": "Open Source",
         "p1_title": "Kemafar.org",
@@ -88,7 +88,11 @@
         "p5_desc": "Starter opinionated dengan React 19 (Inertia.js), Spatie roles, dan manajemen media.",
         "p6_title": "Golang Starter Kit",
         "p6_desc": "Scaffold backend production-grade dengan autentikasi JWT, dokumentasi Swagger, dan dukungan multi-db ter-docker.",
+        "p7_title": "Bouquet Builder",
+        "p7_desc": "Aplikasi web interaktif untuk merancang dan menyesuaikan buket bunga secara real-time.",
         "projects_count": "projects",
+        "collaborators": "Kolaborator",
+        "present": "Sekarang",
         "viewGithub": "Lihat di GitHub",
         "viewNpm": "Lihat di NPM",
         "livePreview": "Pratinjau Langsung"

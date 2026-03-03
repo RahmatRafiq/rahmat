@@ -18,10 +18,8 @@ export default function DatabaseVisual() {
     });
 
     return (
-        <div className="relative w-full aspect-square max-w-[300px] scale-90 md:scale-100">
-            <div className="absolute -top-6 left-1/2 -translate-x-1/2 whitespace-nowrap">
-                <span className="text-[10px] font-black tracking-widest text-indigo-400 opacity-50 uppercase">{t('title')}</span>
-            </div>
+        <div className="relative w-full max-w-[320px] sm:max-w-[400px] aspect-square shrink-0 origin-center mt-4 scale-90 sm:scale-100">
+
             <Table title={t('tbl1')} fields={['id', 'email', 'pwd']} top="5%" left="0%" />
             <Table title={t('tbl2')} fields={['id', 'user_id', 'total']} top="60%" left="45%" />
             <Table title={t('tbl3')} fields={['id', 'name', 'price', 'cat_id']} top="10%" left="55%" />
@@ -29,10 +27,40 @@ export default function DatabaseVisual() {
             <Table title={t('tbl5')} fields={['id', 'order_id', 'status']} top="80%" left="5%" />
 
             <svg className="absolute inset-0 w-full h-full -z-10" viewBox="0 0 300 300">
-                <m.path d="M 80 50 Q 150 120 180 180" fill="none" stroke="rgba(99, 102, 241, 0.2)" strokeWidth="1" strokeDasharray="4 4" {...pathProps(0)} />
-                <m.path d="M 220 100 Q 200 140 190 180" fill="none" stroke="rgba(99, 102, 241, 0.2)" strokeWidth="1" strokeDasharray="4 4" {...pathProps(0.3)} />
+                <defs>
+                    {/* Path Definitions */}
+                    <path id="path1" d="M 120 40 Q 150 120 200 190" fill="none" />
+                    <path id="path2" d="M 230 110 Q 200 140 190 180" fill="none" />
+                    <path id="path3" d="M 40 140 Q 150 100 220 50" fill="none" />
+                    <path id="path4" d="M 150 200 Q 150 220 100 250" fill="none" />
+                </defs>
+
+                {/* Visible Paths */}
+                <m.path d="M 120 40 Q 150 120 200 190" fill="none" stroke="rgba(99, 102, 241, 0.2)" strokeWidth="1" strokeDasharray="4 4" {...pathProps(0)} />
+                <m.path d="M 230 110 Q 200 140 190 180" fill="none" stroke="rgba(99, 102, 241, 0.2)" strokeWidth="1" strokeDasharray="4 4" {...pathProps(0.3)} />
                 <m.path d="M 40 140 Q 150 100 220 50" fill="none" stroke="rgba(99, 102, 241, 0.2)" strokeWidth="1" strokeDasharray="4 4" {...pathProps(0.6)} />
-                <m.path d="M 180 220 V 260" fill="none" stroke="rgba(99, 102, 241, 0.2)" strokeWidth="1" strokeDasharray="4 4" {...pathProps(0.9)} />
+                <m.path d="M 150 200 Q 150 220 100 250" fill="none" stroke="rgba(99, 102, 241, 0.2)" strokeWidth="1" strokeDasharray="4 4" {...pathProps(0.9)} />
+
+                {/* Animated Data Dots */}
+                <circle r="3" fill="#6366f1" className="shadow-[0_0_8px_rgba(99,102,241,0.8)] filter drop-shadow-lg">
+                    <animateMotion dur="3s" repeatCount="indefinite" rotate="auto" path="M 120 40 Q 150 120 200 190" />
+                    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="3s" repeatCount="indefinite" />
+                </circle>
+
+                <circle r="2" fill="#8b5cf6" className="shadow-[0_0_8px_rgba(139,92,246,0.8)] filter drop-shadow-lg">
+                    <animateMotion dur="2.5s" repeatCount="indefinite" rotate="auto" path="M 230 110 Q 200 140 190 180" />
+                    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="2.5s" repeatCount="indefinite" begin="1s" />
+                </circle>
+
+                <circle r="3" fill="#14b8a6" className="shadow-[0_0_8px_rgba(20,184,166,0.8)] filter drop-shadow-lg">
+                    <animateMotion dur="4s" repeatCount="indefinite" rotate="auto" path="M 40 140 Q 150 100 220 50" />
+                    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="4s" repeatCount="indefinite" />
+                </circle>
+
+                <circle r="2" fill="#6366f1" className="shadow-[0_0_8px_rgba(99,102,241,0.8)] filter drop-shadow-lg">
+                    <animateMotion dur="2s" repeatCount="indefinite" rotate="auto" path="M 150 200 Q 150 220 100 250" />
+                    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="2s" repeatCount="indefinite" begin="1.5s" />
+                </circle>
             </svg>
         </div>
     );

@@ -2,255 +2,351 @@
 
 import React, { useState } from 'react';
 import { m, AnimatePresence } from 'framer-motion';
-import { Database, ExternalLink, Github, Globe, Package, ShieldCheck, Zap } from 'lucide-react';
+import {
+    Database,
+    ExternalLink,
+    Github,
+    Globe,
+    Package,
+    ShieldCheck,
+    Zap,
+    ArrowUpRight,
+    X,
+    ChevronRight,
+    LucideIcon
+} from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { useTranslations } from 'next-intl';
 
+interface Project {
+    title: string;
+    category: string;
+    year: string;
+    description: string;
+    tags: string[];
+    icon: LucideIcon;
+    image?: string;
+    links: { demo?: string; github?: string; npm?: string };
+    color: string;
+    span?: string;
+}
+
 export default function Projects() {
     const t = useTranslations('Projects');
+    const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
     const categories = [t('cat1'), t('cat2'), t('cat3')];
     const [activeTab, setActiveTab] = useState(categories[0]);
-    const projectsData = [
+
+    React.useEffect(() => {
+        if (selectedProject) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+        return () => { document.body.style.overflow = 'unset'; };
+    }, [selectedProject]);
+
+    const projectsData: Project[] = [
         {
             title: t('p7_title'),
-            category: categories[0], // Live Production
-            year: `2026 - ${t('present')}`,
+            category: categories[0],
+            year: '2026',
             description: t('p7_desc'),
-            tags: ['React', 'Next.js', 'Vercel', 'Tailwind CSS'],
+            tags: ['React', 'Next.js', 'Vercel'],
             icon: Package,
+            image: '/projects/bouquet.png',
             links: { demo: 'https://bouquet-builder.vercel.app/bouquet-builder' },
             color: 'from-pink-500/20 to-rose-500/20',
+            span: 'lg:col-span-8 lg:row-span-2',
         },
         {
             title: t('p1_title'),
-            category: categories[0], // Live Production
-            year: `2026 - ${t('present')}`,
+            category: categories[0],
+            year: '2026',
             description: t('p1_desc'),
-            tags: ['Supabase', 'Next.js', 'Vercel CI/CD', 'RLS'],
+            tags: ['Supabase', 'Next.js', 'RLS'],
             icon: Globe,
-            links: { demo: 'https://kemafar.org/' },
+            image: '/projects/kemafar.png',
+            links: { demo: 'http://kemafar.org/' },
             color: 'from-blue-600/20 to-indigo-600/20',
+            span: 'lg:col-span-4 lg:row-span-1',
         },
         {
             title: t('p2_title'),
-            category: categories[0], // Live Production
-            year: `2026 - ${t('present')}`,
+            category: categories[0],
+            year: '2026',
             description: t('p2_desc'),
-            tags: ['React', 'Next.js', 'Vercel'],
+            tags: ['React', 'Next.js'],
             icon: Zap,
+            image: '/projects/typingtest.png',
             links: { demo: 'https://typingtest-olive.vercel.app/' },
-            collaborators: [
-                { name: 'gendonholaholo', link: 'https://github.com/gendonholaholo' }
-            ],
-            color: 'from-amber-500/20 to-orange-500/20',
+            color: 'from-amber-500/20 to-orange-600/20',
+            span: 'lg:col-span-4 lg:row-span-1',
         },
         {
             title: t('p3_title'),
-            category: categories[2], // Open Source
+            category: categories[2],
             year: '2025',
             description: t('p3_desc'),
             tags: ['React', 'TypeScript', 'NPM'],
             icon: ShieldCheck,
-            links: { github: 'https://github.com/RahmatRafiq/react-vehicle-seatpicker', demo: 'https://react-vehicle-seatpicker-demo.vercel.app/', npm: 'https://www.npmjs.com/package/react-vehicle-seatpicker' },
+            image: '/projects/bangbeli.png',
+            links: { github: 'https://github.com/RahmatRafiq/react-vehicle-seatpicker', npm: 'https://www.npmjs.com/package/react-vehicle-seatpicker' },
             color: 'from-blue-500/20 to-cyan-500/20',
+            span: 'lg:col-span-6 lg:row-span-1',
         },
         {
             title: t('p4_title'),
-            category: categories[1], // Starter Kits
+            category: categories[1],
             year: '2026',
             description: t('p4_desc'),
-            tags: ['Next.js', 'Supabase', 'TypeScript'],
+            tags: ['Next.js', 'Supabase'],
             icon: Package,
-            links: { github: 'https://github.com/RahmatRafiq/nextjs-supabase-starter', demo: '#' },
+            links: { github: 'https://github.com/RahmatRafiq/nextjs-supabase-starter' },
             color: 'from-emerald-500/20 to-teal-500/20',
+            span: 'lg:col-span-6 lg:row-span-1',
         },
         {
             title: t('p5_title'),
-            category: categories[1], // Starter Kits
-            year: `2025 - ${t('present')}`,
+            category: categories[1],
+            year: '2025',
             description: t('p5_desc'),
             tags: ['Laravel 12', 'React 19', 'Inertia'],
             icon: Database,
-            links: { github: 'https://github.com/RahmatRafiq/laravel-12-spattie-media-and-roles', demo: '#' },
+            links: { github: 'https://github.com/RahmatRafiq/laravel-12-spattie-media-and-roles' },
             color: 'from-orange-500/20 to-red-500/20',
+            span: 'lg:col-span-4 lg:row-span-1',
         },
         {
             title: t('p6_title'),
-            category: categories[1], // Starter Kits
-            year: `2025 - ${t('present')}`,
+            category: categories[1],
+            year: '2025',
             description: t('p6_desc'),
-            tags: ['Golang', 'Gin', 'GORM', 'Docker'],
+            tags: ['Golang', 'Gin', 'GORM'],
             icon: ShieldCheck,
-            links: { github: 'https://github.com/RahmatRafiq/golang_strarter_kit_2025', demo: '#' },
+            links: { github: 'https://github.com/RahmatRafiq/golang_strarter_kit_2025' },
             color: 'from-blue-500/20 to-violet-500/20',
+            span: 'lg:col-span-8 lg:row-span-1',
         },
     ];
 
     const filteredProjects = projectsData.filter(project => project.category === activeTab);
 
     return (
-        <section className="px-6 max-w-7xl mx-auto py-20 w-full">
-            <div className="mb-12 flex flex-col items-center">
-                <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('title')}</h2>
-                <div className="h-1 w-20 bg-primary rounded-full mb-10" aria-hidden="true" />
+        <section className="px-6 max-w-7xl mx-auto py-32 w-full relative">
+            <div className="mb-20 flex flex-col items-start">
+                <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter">{t('title')}</h2>
 
                 <div
-                    className="flex flex-wrap items-center justify-center gap-2 p-1 bg-secondary/50 rounded-xl border border-border"
+                    className="flex flex-wrap items-center gap-3 p-1.5 bg-white/5 rounded-2xl border border-white/5"
                     role="tablist"
-                    aria-label="Project Categories"
                 >
-                    {categories.map((cat) => {
-                        const count = projectsData.filter(p => p.category === cat).length;
-                        return (
-                            <button
-                                key={cat}
-                                onClick={() => setActiveTab(cat)}
-                                role="tab"
-                                aria-selected={activeTab === cat}
-                                aria-controls={`${cat.replace(/\s+/g, '-').toLowerCase()}-panel`}
-                                className={cn(
-                                    'px-4 md:px-6 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-2',
-                                    activeTab === cat
-                                        ? 'bg-indigo-600 text-white shadow-lg'
-                                        : 'text-muted-foreground hover:text-foreground hover:bg-muted'
-                                )}
-                            >
-                                {cat}
-                                <span
-                                    className={cn(
-                                        "px-1.5 py-0.5 rounded-md text-[10px] font-bold",
-                                        activeTab === cat ? "bg-white/20 text-white" : "bg-muted text-muted-foreground"
-                                    )}
-                                    aria-label={`${count} ${t('projects_count')}`}
-                                >
-                                    {count}
-                                </span>
-                            </button>
-                        );
-                    })}
+                    {categories.map((cat) => (
+                        <button
+                            key={cat}
+                            onClick={() => setActiveTab(cat)}
+                            role="tab"
+                            aria-selected={activeTab === cat}
+                            className={cn(
+                                'px-6 py-2.5 rounded-xl text-xs font-bold tracking-widest uppercase transition-all',
+                                activeTab === cat
+                                    ? 'bg-indigo-600 text-white shadow-xl scale-105'
+                                    : 'text-white/40 hover:text-white hover:bg-white/5'
+                            )}
+                        >
+                            {cat}
+                        </button>
+                    ))}
                 </div>
             </div>
 
             <m.div
                 layout
-                className="flex flex-wrap justify-center gap-8"
-                role="tabpanel"
-                id={`${activeTab.replace(/\s+/g, '-').toLowerCase()}-panel`}
+                className="grid grid-cols-1 lg:grid-cols-12 gap-6 auto-rows-[300px]"
             >
                 <AnimatePresence mode="popLayout">
-                    {filteredProjects.map((project) => (
+                    {filteredProjects.map((project, index) => (
                         <m.div
                             key={project.title}
                             layout
                             initial={{ opacity: 0, scale: 0.9 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            exit={{ opacity: 0, scale: 0.9 }}
-                            transition={{ duration: 0.3 }}
-                            className="group glass rounded-2xl overflow-hidden border border-border hover:border-primary/30 transition-all flex flex-col h-full w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.35rem)] min-h-[450px]"
+                            exit={{ opacity: 0, scale: 0.95 }}
+                            transition={{ duration: 0.5, delay: index * 0.05 }}
+                            onClick={() => setSelectedProject(project)}
+                            className={cn(
+                                "group glass-premium rounded-[2.5rem] overflow-hidden flex flex-col relative cursor-pointer hover:border-indigo-500/50 transition-colors",
+                                project.span || "lg:col-span-4"
+                            )}
                         >
-                            <div className={cn('h-40 w-full bg-gradient-to-br flex items-center justify-center relative', project.color)}>
-                                <project.icon className="w-16 h-16 text-foreground/20 group-hover:scale-110 transition-transform duration-500" aria-hidden="true" />
+                            <div className={cn('absolute inset-0 bg-gradient-to-br opacity-40 group-hover:opacity-60 transition-opacity duration-500', project.color)} />
 
-                                {project.collaborators && project.collaborators.length > 0 && (
-                                    <div className="absolute top-4 left-4 flex flex-col gap-1.5 z-10 w-[calc(100%-80px)]">
-                                        <span className="text-[9px] uppercase tracking-widest font-bold text-foreground/60 drop-shadow-sm px-1">
-                                            {t('collaborators')}
-                                        </span>
-                                        <div className="flex flex-wrap gap-1.5">
-                                            {project.collaborators.map((collab) => (
-                                                <a
-                                                    key={collab.name}
-                                                    href={collab.link}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="text-[10px] font-semibold text-foreground/80 hover:text-foreground transition-colors bg-background/50 hover:bg-background/80 backdrop-blur-md px-2 py-1 rounded-md flex items-center gap-1.5 border border-white/10 shadow-sm"
-                                                    aria-label={`Collaborator ${collab.name}`}
-                                                    title={`Collaborator: ${collab.name}`}
-                                                >
-                                                    <Github size={12} className="opacity-70" />
-                                                    {collab.name}
-                                                </a>
-                                            ))}
-                                        </div>
-                                    </div>
-                                )}
-
-                                <div className="absolute top-4 right-4 bg-background/50 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase border border-white/10 shadow-sm z-10">
-                                    {project.year}
+                            {/* Visual Mockup Layer - Refined for better visibility */}
+                            {project.image && (
+                                <div className="absolute top-0 right-0 w-2/3 h-full opacity-30 group-hover:opacity-50 group-hover:scale-105 transition-all duration-700 pointer-events-none overflow-hidden">
+                                    <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-[#060311]/80 z-10" />
+                                    <img
+                                        src={project.image}
+                                        alt=""
+                                        className="w-full h-full object-cover object-left-top translate-x-8 translate-y-8 rotate-[-2deg]"
+                                    />
                                 </div>
-                            </div>
+                            )}
 
-                            <div className="p-6 flex flex-col flex-grow">
-                                <div className="flex flex-col flex-grow mb-5">
-                                    <div className="flex items-start justify-between mb-2">
-                                        <h3 className="text-xl font-bold group-hover:text-indigo-400 transition-colors">
-                                            {project.title}
-                                        </h3>
+                            <div className="relative p-10 flex flex-col h-full z-20">
+                                <div className="flex justify-between items-start mb-6">
+                                    <div className="p-4 rounded-3xl bg-white/5 border border-white/10 group-hover:scale-110 group-hover:bg-indigo-500/20 transition-all duration-500">
+                                        <project.icon className="w-8 h-8 text-white group-hover:text-indigo-300 transition-colors" />
                                     </div>
-                                    <p className="text-sm text-muted-foreground line-clamp-3 leading-relaxed mt-1">
-                                        {project.description}
-                                    </p>
+                                    <span className="text-[11px] font-black tracking-widest uppercase bg-white/10 px-4 py-1.5 rounded-full border border-white/5">
+                                        {project.year}
+                                    </span>
                                 </div>
 
-                                <div className="flex flex-wrap gap-2 mb-4" aria-label="Technologies Used">
-                                    {project.tags.map((tag) => (
-                                        <span
-                                            key={tag}
-                                            className="text-[10px] uppercase tracking-wider font-bold bg-muted px-2 py-0.5 rounded text-muted-foreground"
-                                        >
-                                            {tag}
-                                        </span>
-                                    ))}
-                                </div>
-
-                                <div className="flex items-center justify-between pt-4 border-t border-border/40">
-                                    <div className="flex items-center gap-3">
-                                        <a
-                                            href={project.links.github}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className={cn(
-                                                "p-2 rounded-full bg-secondary hover:bg-primary transition-colors text-muted-foreground hover:text-white",
-                                                project.links.github === '#' && "opacity-20 cursor-not-allowed pointer-events-none"
-                                            )}
-                                            title={t('viewGithub')}
-                                            aria-label={`${t('viewGithub')} ${project.title}`}
-                                        >
-                                            <Github size={18} />
-                                        </a>
-                                        {project.links.npm && (
-                                            <a
-                                                href={project.links.npm}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="flex items-center text-[10px] font-bold bg-[#CB3837]/10 text-[#CB3837] px-2 py-1 rounded hover:bg-[#CB3837]/20 transition-colors"
-                                                title={t('viewNpm')}
-                                                aria-label={`${t('viewNpm')} ${project.title}`}
-                                            >
-                                                NPM
-                                            </a>
-                                        )}
+                                <div className="mt-auto max-w-[60%]">
+                                    <h3 className="text-2xl md:text-3xl font-black mb-3 tracking-tight group-hover:text-indigo-400 transition-colors">
+                                        {project.title}
+                                    </h3>
+                                    <div className="flex flex-wrap gap-2 mb-4">
+                                        {project.tags.slice(0, 3).map((tag) => (
+                                            <span key={tag} className="text-[9px] font-black uppercase tracking-widest text-white/40">
+                                                {tag}
+                                            </span>
+                                        ))}
                                     </div>
-                                    <a
-                                        href={project.links.demo}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className={cn(
-                                            "flex items-center text-sm font-semibold text-indigo-400 hover:underline",
-                                            project.links.demo === '#' && "opacity-20 cursor-not-allowed pointer-events-none"
-                                        )}
-                                        aria-label={`${t('livePreview')} ${project.title}`}
-                                    >
-                                        {t('livePreview')}
-                                        <ExternalLink size={14} className="ml-1" />
-                                    </a>
+                                    <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-indigo-400 group-hover:gap-3 transition-all">
+                                        {t('viewDetails')} <ChevronRight size={12} />
+                                    </div>
                                 </div>
                             </div>
                         </m.div>
                     ))}
                 </AnimatePresence>
             </m.div>
+
+            {/* Project Detail Drawer */}
+            <AnimatePresence>
+                {selectedProject && (
+                    <>
+                        {/* Backdrop */}
+                        <m.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            onClick={() => setSelectedProject(null)}
+                            className="fixed inset-0 bg-[#060311]/80 backdrop-blur-xl z-[100]"
+                        />
+
+                        {/* Drawer content */}
+                        <m.div
+                            initial={{ x: '100%' }}
+                            animate={{ x: 0 }}
+                            exit={{ x: '100%' }}
+                            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+                            className="fixed inset-0 bg-[#060311] z-[101] overflow-y-auto"
+                        >
+                            <div className="max-w-7xl mx-auto min-h-screen relative flex flex-col">
+                                {/* Close Button */}
+                                <button
+                                    onClick={() => setSelectedProject(null)}
+                                    className="absolute top-8 right-8 p-4 rounded-full bg-white/5 border border-white/10 text-white hover:bg-white/10 active:scale-95 transition-all z-[110]"
+                                >
+                                    <X size={24} />
+                                </button>
+
+                                {/* Project Image - FULL VIEW */}
+                                <div className="relative w-full aspect-video md:aspect-[21/9] overflow-hidden bg-gradient-to-b from-indigo-500/10 to-transparent">
+                                    <div className={cn('absolute inset-0 bg-gradient-to-br opacity-40', selectedProject.color)} />
+                                    {selectedProject.image ? (
+                                        <m.img
+                                            initial={{ opacity: 0, scale: 1.05 }}
+                                            animate={{ opacity: 1, scale: 1 }}
+                                            transition={{ duration: 0.8 }}
+                                            src={selectedProject.image}
+                                            alt={selectedProject.title}
+                                            className="w-full h-full object-cover object-center"
+                                        />
+                                    ) : (
+                                        <div className="w-full h-full flex items-center justify-center">
+                                            <selectedProject.icon size={120} className="text-white/10" />
+                                        </div>
+                                    )}
+                                    <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#060311] to-transparent" />
+                                </div>
+
+                                <div className="px-8 md:px-24 py-20 flex-grow">
+                                    <div className="flex items-center gap-6 mb-10">
+                                        <span className="text-[10px] font-black tracking-[0.2em] uppercase px-6 py-2 rounded-full bg-indigo-500/20 text-indigo-400 border border-indigo-500/20">
+                                            {selectedProject.category}
+                                        </span>
+                                        <span className="text-[10px] font-black tracking-[0.2em] uppercase text-white/30 border-l border-white/10 pl-6">
+                                            {selectedProject.year}
+                                        </span>
+                                    </div>
+
+                                    <h2 className="text-5xl md:text-8xl font-black mb-12 tracking-tighter leading-none">
+                                        {selectedProject.title}
+                                    </h2>
+
+                                    <div className="flex flex-wrap gap-4 mb-16">
+                                        {selectedProject.tags.map(tag => (
+                                            <span key={tag} className="px-6 py-3 rounded-full bg-white/5 border border-white/10 text-[10px] font-black uppercase tracking-widest text-white/60">
+                                                {tag}
+                                            </span>
+                                        ))}
+                                    </div>
+
+                                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+                                        <div className="lg:col-span-8 prose prose-invert prose-2xl max-w-none">
+                                            <p className="text-xl md:text-3xl text-white/70 leading-[1.6] font-medium mb-12 italic">
+                                                {selectedProject.description}
+                                            </p>
+                                        </div>
+
+                                        <div className="lg:col-span-4 flex flex-col gap-6">
+                                            <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-white/20 mb-4">Project Actions</h4>
+                                            {selectedProject.links.demo && (
+                                                <a
+                                                    href={selectedProject.links.demo}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="w-full py-6 rounded-full bg-indigo-600 text-white font-black text-xs tracking-[0.2em] uppercase hover:bg-indigo-700 transition-all flex items-center justify-center gap-4 shadow-2xl shadow-indigo-500/40 group/btn"
+                                                >
+                                                    {t('livePreview')}
+                                                    <ArrowUpRight size={20} className="group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
+                                                </a>
+                                            )}
+                                            {selectedProject.links.github && (
+                                                <a
+                                                    href={selectedProject.links.github}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="w-full py-6 rounded-full bg-white/5 border border-white/10 text-white font-black text-xs tracking-[0.2em] uppercase hover:bg-white/10 transition-all flex items-center justify-center gap-4"
+                                                >
+                                                    <Github size={20} />
+                                                    GitHub Repository
+                                                </a>
+                                            )}
+                                            {selectedProject.links.npm && (
+                                                <a
+                                                    href={selectedProject.links.npm}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="w-full py-6 rounded-full bg-[#CB3837]/20 border border-[#CB3837]/30 text-[#CB3837] font-black text-xs tracking-[0.2em] uppercase hover:bg-[#CB3837]/30 transition-all flex items-center justify-center gap-4"
+                                                >
+                                                    <Package size={20} />
+                                                    NPM Package
+                                                </a>
+                                            )}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </m.div>
+                    </>
+                )}
+            </AnimatePresence>
         </section>
     );
 }

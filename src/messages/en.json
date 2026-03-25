@@ -95,7 +95,8 @@
         "present": "Present",
         "viewGithub": "View on GitHub",
         "viewNpm": "View on NPM",
-        "livePreview": "Live Preview"
+        "livePreview": "Live Preview",
+        "viewDetails": "View Details"
     },
     "Contact": {
         "title1": "Let's Build Together",

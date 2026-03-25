@@ -95,7 +95,8 @@
         "present": "Sekarang",
         "viewGithub": "Lihat di GitHub",
         "viewNpm": "Lihat di NPM",
-        "livePreview": "Pratinjau Langsung"
+        "livePreview": "Pratinjau Langsung",
+        "viewDetails": "Lihat Detail"
     },
     "Contact": {
         "title1": "Mari Membangun Bersama",

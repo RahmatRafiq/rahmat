@@ -24,6 +24,7 @@ interface ArchitectureFeature {
     desc: string;
     icon: LucideIcon;
     Visual: React.ComponentType;
+    color: string;
 }
 
 export default function Architecture() {
@@ -36,6 +37,7 @@ export default function Architecture() {
             desc: t('f1_desc'),
             icon: ClipboardList,
             Visual: DevFlowVisual,
+            color: 'from-blue-600/20 to-indigo-600/20',
         },
         {
             id: 'modular',
@@ -43,6 +45,7 @@ export default function Architecture() {
             desc: t('f2_desc'),
             icon: Layers,
             Visual: ModularVisual,
+            color: 'from-emerald-600/20 to-teal-600/20',
         },
         {
             id: 'database',
@@ -50,6 +53,7 @@ export default function Architecture() {
             desc: t('f3_desc'),
             icon: Network,
             Visual: DatabaseVisual,
+            color: 'from-violet-600/20 to-purple-600/20',
         },
         {
             id: 'api',
@@ -57,198 +61,87 @@ export default function Architecture() {
             desc: t('f4_desc'),
             icon: Share2,
             Visual: APIVisual,
+            color: 'from-amber-600/20 to-orange-600/20',
         },
     ];
 
     const [activeTab, setActiveTab] = useState('uml');
-    const [expandedMobileId, setExpandedMobileId] = useState<string | null>(null);
-    const [currentSlide, setCurrentSlide] = useState(0);
-
-    // Auto-slider for mobile default state (only when no accordion is open)
-    useEffect(() => {
-        if (expandedMobileId !== null) return;
-        const timer = setInterval(() => {
-            setCurrentSlide((prev) => (prev + 1) % architectureFeatures.length);
-        }, 6000);
-        return () => clearInterval(timer);
-    }, [expandedMobileId, architectureFeatures.length]);
-
-    const toggleMobileExpand = (id: string) => {
-        // If same item clicked → close it, else open new one (closes previous)
-        setExpandedMobileId((prev) => (prev === id ? null : id));
-        setActiveTab(id);
-    };
+    const activeFeature = architectureFeatures.find(f => f.id === activeTab)!;
 
     return (
-        <section id="architecture" className="px-4 md:px-6 max-w-7xl mx-auto py-24 w-full relative overflow-hidden">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -z-10" />
-
-            <div className="mb-16 flex flex-col items-center text-center">
-                <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('title')}</h2>
-                <div className="h-1 w-20 bg-primary rounded-full" aria-hidden="true" />
-                <p className="text-muted-foreground max-w-2xl text-lg mt-6">
-                    {t('description')}
-                </p>
+        <section id="architecture" className="px-6 max-w-7xl mx-auto py-32 w-full relative">
+            <div className="mb-20">
+                <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter">{t('title')}</h2>
             </div>
 
-            {/* Desktop Layout (Tabs) - Visible only on md and up */}
-            <div className="hidden lg:grid grid-cols-12 gap-8 items-stretch h-[550px]">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch min-h-[600px]">
                 {/* Control Panel */}
-                <div className="col-span-4 flex flex-col gap-4 h-full">
+                <div className="lg:col-span-4 flex flex-col gap-4">
                     {architectureFeatures.map((feature) => (
                         <button
                             key={feature.id}
                             onClick={() => setActiveTab(feature.id)}
                             className={cn(
-                                'w-full text-left p-6 rounded-2xl border transition-all duration-300 group relative overflow-hidden flex-1 flex flex-col justify-center',
+                                'w-full text-left p-8 rounded-[2rem] border transition-all duration-500 group relative overflow-hidden flex-1 flex flex-col justify-center',
                                 activeTab === feature.id
-                                    ? 'bg-primary/10 border-primary shadow-[0_0_20px_rgba(99,102,241,0.15)] bg-white/5'
-                                    : 'bg-secondary/30 border-border hover:border-primary/50'
+                                    ? 'glass-premium border-indigo-500/50 shadow-2xl'
+                                    : 'bg-white/5 border-white/5 hover:border-white/10'
                             )}
                         >
-                            <div className="flex items-center gap-4 relative z-10 w-full">
+                            <div className={cn(
+                                'absolute inset-0 bg-gradient-to-br opacity-0 transition-opacity duration-500',
+                                feature.color,
+                                activeTab === feature.id ? 'opacity-30' : 'group-hover:opacity-10'
+                            )} />
+
+                            <div className="flex items-center gap-6 relative z-10">
                                 <div className={cn(
-                                    'p-3 rounded-xl transition-colors duration-300 shrink-0',
-                                    activeTab === feature.id ? 'bg-indigo-600 text-white' : 'bg-muted text-muted-foreground group-hover:bg-primary/20 group-hover:text-indigo-400'
+                                    'p-4 rounded-2xl transition-all duration-500',
+                                    activeTab === feature.id ? 'bg-indigo-600 text-white scale-110 shadow-lg' : 'bg-white/5 text-white/40'
                                 )}>
                                     <feature.icon className="w-6 h-6" />
                                 </div>
-                                <div className="flex-1 overflow-hidden">
+                                <div className="flex-1">
                                     <h3 className={cn(
-                                        'font-bold transition-colors truncate',
-                                        activeTab === feature.id ? 'text-foreground' : 'text-muted-foreground group-hover:text-foreground'
+                                        'text-lg font-black tracking-tight transition-colors',
+                                        activeTab === feature.id ? 'text-white' : 'text-white/40 group-hover:text-white/60'
                                     )}>
                                         {feature.title}
                                     </h3>
                                     <p className={cn(
-                                        "text-xs text-muted-foreground mt-1 transition-all duration-300",
-                                        activeTab === feature.id ? "" : "line-clamp-1 opacity-50"
+                                        "text-[10px] font-black uppercase tracking-widest mt-1 opacity-50",
+                                        activeTab === feature.id ? "text-indigo-300" : "text-white/40"
                                     )}>{feature.desc}</p>
                                 </div>
                             </div>
-                            {activeTab === feature.id && (
-                                <m.div layoutId="active-indicator" className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent -z-10" />
-                            )}
                         </button>
                     ))}
                 </div>
 
-                {/* Visualization Panel - Enlarged */}
-                <div className="col-span-8 glass rounded-[2.5rem] border border-border relative flex flex-col items-center justify-center overflow-hidden bg-white/[0.01] h-full">
-                    <div className="flex-grow flex items-center justify-center w-full scale-90 sm:scale-100 lg:scale-95 xl:scale-100 overflow-visible p-8">
+                {/* Visualization Panel */}
+                <div className="lg:col-span-8 glass-premium rounded-[3rem] p-12 relative flex flex-col items-center justify-center overflow-hidden min-h-[400px]">
+                    <div className={cn('absolute inset-0 bg-gradient-to-br opacity-20 transition-all duration-1000', activeFeature.color)} />
+
+                    <div className="relative z-10 w-full h-full flex items-center justify-center scale-90 md:scale-100">
                         <AnimatePresence mode="wait">
                             <m.div
                                 key={activeTab}
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 0.9 }}
-                                transition={{ duration: 0.3 }}
+                                initial={{ opacity: 0, scale: 0.9, filter: 'blur(20px)' }}
+                                animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+                                exit={{ opacity: 0, scale: 0.9, filter: 'blur(20px)' }}
+                                transition={{ duration: 0.5, ease: "circOut" }}
                                 className="w-full h-full flex items-center justify-center"
                             >
-                                {React.createElement(architectureFeatures.find(f => f.id === activeTab)!.Visual)}
+                                <activeFeature.Visual />
                             </m.div>
                         </AnimatePresence>
                     </div>
-                    {/* Integrated background label for aesthetic */}
-                    <div aria-hidden="true" className="absolute bottom-8 right-12 opacity-10 select-none pointer-events-none">
-                        <span className="text-4xl font-black italic tracking-tighter uppercase">ARCHIVE_01</span>
+
+                    <div className="absolute bottom-10 right-10 flex flex-col items-end opacity-20 pointer-events-none select-none">
+                        <div className="text-[10px] font-black uppercase tracking-[0.5em] mb-2">{activeFeature.id}</div>
+                        <div className="h-px w-20 bg-white/20" />
                     </div>
                 </div>
-            </div>
-
-            {/* Mobile Layout (Accordion) - Visible only on mobile/tablet */}
-            <div className="lg:hidden flex flex-col gap-4">
-                {architectureFeatures.map((feature) => (
-                    <div key={feature.id} className="relative">
-                        <button
-                            onClick={() => toggleMobileExpand(feature.id)}
-                            className={cn(
-                                "w-full text-left p-6 rounded-2xl border transition-all duration-300 relative",
-                                expandedMobileId === feature.id ? "bg-primary/5 border-primary/50" : "bg-secondary/20 border-border"
-                            )}
-                        >
-                            <div className="flex items-center justify-between">
-                                <div className="flex items-center gap-4">
-                                    <div className={cn(
-                                        "p-3 rounded-xl",
-                                        expandedMobileId === feature.id ? "bg-indigo-600 text-white" : "bg-muted text-muted-foreground"
-                                    )}>
-                                        <feature.icon className="w-5 h-5" />
-                                    </div>
-                                    <div>
-                                        <h3 className="font-bold text-sm tracking-tight">{feature.title}</h3>
-                                        <p className="text-[10px] text-muted-foreground line-clamp-1">{feature.desc}</p>
-                                    </div>
-                                </div>
-                                <m.div animate={{ rotate: expandedMobileId === feature.id ? 180 : 0 }}>
-                                    <ChevronDown className="w-4 h-4 text-muted-foreground" />
-                                </m.div>
-                            </div>
-                        </button>
-
-                        <AnimatePresence initial={false}>
-                            {expandedMobileId === feature.id && (
-                                <m.div
-                                    initial={{ height: 0, opacity: 0 }}
-                                    animate={{ height: "auto", opacity: 1 }}
-                                    exit={{ height: 0, opacity: 0 }}
-                                    transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
-                                    className="overflow-hidden bg-primary/5 border-x border-b border-primary/20 rounded-b-2xl -mt-2 relative z-0"
-                                >
-                                    <div className="pt-8 pb-4 flex items-center justify-center min-h-[250px] overflow-hidden">
-                                        <div className="scale-[0.85] origin-center flex items-center justify-center w-full">
-                                            <feature.Visual />
-                                        </div>
-                                    </div>
-                                </m.div>
-                            )}
-                        </AnimatePresence>
-                    </div>
-                ))}
-
-                {/* Mobile Fallback Slider */}
-                <AnimatePresence>
-                    {!expandedMobileId && (
-                        <m.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            className="mt-8 glass rounded-[2.5rem] border border-border relative flex flex-col overflow-hidden bg-white/[0.01] h-[400px] shrink-0"
-                        >
-                            <div className="absolute top-8 left-8 right-8 flex items-center justify-between z-10 pointer-events-none">
-                                <span className="text-xs font-bold text-foreground tracking-widest uppercase">
-                                    {architectureFeatures[currentSlide].title}
-                                </span>
-                                <div className="flex gap-1.5 shrink-0">
-                                    {architectureFeatures.map((_, idx) => (
-                                        <div key={idx} className={cn("h-1 rounded-full transition-all", currentSlide === idx ? "w-4 bg-primary" : "w-1.5 bg-secondary")} />
-                                    ))}
-                                </div>
-                            </div>
-
-                            <div className="flex-1 flex items-center justify-center w-full relative">
-                                <AnimatePresence mode="wait">
-                                    <m.div
-                                        key={currentSlide}
-                                        initial={{ opacity: 0, x: 40, scale: 0.9 }}
-                                        animate={{ opacity: 1, x: 0, scale: 1 }}
-                                        exit={{ opacity: 0, x: -40, scale: 0.9 }}
-                                        transition={{ duration: 0.6, ease: [0.2, 0.8, 0.2, 1] }}
-                                        className="absolute inset-0 flex items-center justify-center"
-                                    >
-                                        <div className="w-full h-full scale-90 sm:scale-100 flex items-center justify-center">
-                                            {React.createElement(architectureFeatures[currentSlide].Visual)}
-                                        </div>
-                                    </m.div>
-                                </AnimatePresence>
-                            </div>
-
-                            {/* Integrated background label for aesthetic */}
-                            <div aria-hidden="true" className="absolute bottom-6 right-6 opacity-10 select-none pointer-events-none">
-                                <span className="text-3xl sm:text-4xl font-black italic tracking-tighter uppercase">ARCHIVE_01</span>
-                            </div>
-                        </m.div>
-                    )}
-                </AnimatePresence>
             </div>
         </section>
     );

@@ -1,90 +1,112 @@
 'use client';
 
 import React from 'react';
-import { Mail, Linkedin, Send, MessageSquare } from 'lucide-react';
+import { Mail, Linkedin, Send, MessageSquare, ArrowUpRight } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { siteConfig } from '../../config/site';
+import { cn } from '../../lib/utils';
+import { m } from 'framer-motion';
 
 export default function Contact() {
     const t = useTranslations('Contact');
+
+    const contactLinks = [
+        {
+            label: t('emailLabel'),
+            value: siteConfig.email,
+            href: `mailto:${siteConfig.email}`,
+            icon: Mail,
+            color: 'from-blue-600/20 to-indigo-600/20',
+        },
+        {
+            label: t('connectLabel'),
+            value: siteConfig.links.linkedin.replace('https://www.', ''),
+            href: siteConfig.links.linkedin,
+            icon: Linkedin,
+            color: 'from-blue-400/20 to-sky-400/20',
+        }
+    ];
+
     return (
-        <section id="contact" className="px-4 md:px-6 max-w-7xl mx-auto py-24 w-full relative overflow-hidden">
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-primary/10 rounded-full blur-[120px] -z-10" />
+        <section id="contact" className="px-6 max-w-7xl mx-auto py-32 w-full relative">
+            <div className="mb-20">
+                <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter">
+                    {t('title1')} <br />
+                    <span className="text-indigo-500 italic">{t('title2')}</span> {t('title3')}
+                </h2>
+                <p className="text-xl text-white/50 max-w-2xl font-medium leading-relaxed">
+                    {t('description')}
+                </p>
+            </div>
 
-            <div className="glass p-5 sm:p-8 md:p-16 rounded-[2rem] sm:rounded-[2.5rem] border border-border relative overflow-hidden">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-center">
-                    <div>
-                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6 tracking-tight">
-                            {t('title1')} <br />
-                            <span className="text-indigo-400 italic">{t('title2')}</span> {t('title3')}
-                        </h2>
-                        <p className="text-base sm:text-lg text-muted-foreground mb-8 sm:mb-10 leading-relaxed max-w-md">
-                            {t('description')}
-                        </p>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                {/* Left: Contact Info */}
+                <div className="lg:col-span-5 flex flex-col gap-6">
+                    {contactLinks.map((link, i) => (
+                        <m.a
+                            key={i}
+                            href={link.href}
+                            target={link.icon === Linkedin ? "_blank" : undefined}
+                            rel={link.icon === Linkedin ? "noopener noreferrer" : undefined}
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: i * 0.1 }}
+                            className="group glass-premium p-8 rounded-[2rem] border border-white/5 hover:border-indigo-500/50 transition-all duration-500 relative overflow-hidden flex flex-col justify-between h-[200px]"
+                        >
+                            <div className={cn('absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-30 transition-opacity duration-500', link.color)} />
 
-                        <div className="space-y-4">
-                            <a
-                                href={`mailto:${siteConfig.email}`}
-                                className="flex items-center gap-3 sm:gap-4 group hover:text-indigo-400 transition-colors p-3 sm:p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-primary/20 w-full overflow-hidden"
-                            >
-                                <div className="w-10 h-10 sm:w-12 sm:h-12 shrink-0 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all">
-                                    <Mail className="w-4 h-4 sm:w-5 sm:h-5" />
+                            <div className="relative z-10 flex justify-between items-start">
+                                <div className="p-4 rounded-2xl bg-white/5 border border-white/10 group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-500">
+                                    <link.icon className="w-6 h-6 text-white" />
                                 </div>
-                                <div className="min-w-0 flex-1">
-                                    <div className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest truncate">{t('emailLabel')}</div>
-                                    <div className="text-sm font-bold truncate">{siteConfig.email}</div>
-                                </div>
-                            </a>
-
-                            <a
-                                href={siteConfig.links.linkedin}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-center gap-3 sm:gap-4 group hover:text-indigo-400 transition-colors p-3 sm:p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-primary/20 w-full overflow-hidden"
-                            >
-                                <div className="w-10 h-10 sm:w-12 sm:h-12 shrink-0 rounded-xl bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all">
-                                    <Linkedin className="w-4 h-4 sm:w-5 sm:h-5" />
-                                </div>
-                                <div className="min-w-0 flex-1">
-                                    <div className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest truncate">{t('connectLabel')}</div>
-                                    <div className="text-sm font-bold truncate">{siteConfig.links.linkedin.replace('https://www.', '')}</div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div className="relative w-full">
-                        <div className="glass p-6 sm:p-8 rounded-3xl border border-border bg-white/[0.02] relative z-10 w-full">
-                            <div className="flex items-center gap-3 mb-8">
-                                <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                                <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">{t('available')}</span>
+                                <ArrowUpRight className="w-6 h-6 text-white/20 group-hover:text-white/60 transition-colors" />
                             </div>
 
-                            <div className="space-y-6">
-                                <div className="space-y-2">
-                                    <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">{t('messageLabel')}</label>
-                                    <div className="relative">
-                                        <textarea
-                                            placeholder={t('messagePlaceholder')}
-                                            rows={4}
-                                            className="w-full bg-secondary/50 border border-border rounded-2xl p-4 text-sm focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-all resize-none"
-                                        />
-                                        <MessageSquare className="absolute right-4 top-4 w-4 h-4 text-muted-foreground opacity-50" />
-                                    </div>
+                            <div className="relative z-10">
+                                <div className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40 mb-1">{link.label}</div>
+                                <div className="text-xl font-black tracking-tight group-hover:text-indigo-400 transition-colors truncate">
+                                    {link.value}
                                 </div>
-
-                                <button className="w-full bg-indigo-600 hover:glow text-white font-bold py-4 rounded-2xl flex items-center justify-center gap-3 transition-all active:scale-[0.98]">
-                                    <span>{t('sendBtn')}</span>
-                                    <Send className="w-4 h-4" />
-                                </button>
                             </div>
-                        </div>
-
-                        {/* Background elements */}
-                        <div className="absolute -top-10 -right-10 w-40 h-40 bg-primary/20 rounded-full blur-[60px] animate-pulse" />
-                        <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-violet-500/20 rounded-full blur-[60px] animate-pulse" />
-                    </div>
+                        </m.a>
+                    ))}
                 </div>
+
+                {/* Right: Message Form */}
+                <m.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    className="lg:col-span-7 glass-premium p-12 rounded-[3rem] relative overflow-hidden flex flex-col justify-center"
+                >
+                    <div className="absolute top-0 right-0 p-12 opacity-5">
+                        <MessageSquare className="w-48 h-48 text-white" />
+                    </div>
+
+                    <div className="relative z-10">
+                        <div className="flex items-center gap-3 mb-10">
+                            <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-emerald-500/80">{t('available')}</span>
+                        </div>
+
+                        <div className="space-y-8">
+                            <div className="space-y-3">
+                                <label className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40 ml-1">{t('messageLabel')}</label>
+                                <textarea
+                                    placeholder={t('messagePlaceholder')}
+                                    rows={4}
+                                    className="w-full bg-white/5 border border-white/5 rounded-3xl p-6 text-lg font-medium text-white focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500/50 transition-all resize-none shadow-inner"
+                                />
+                            </div>
+
+                            <button className="w-full bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-black uppercase tracking-[0.4em] py-6 rounded-3xl flex items-center justify-center gap-4 transition-all active:scale-[0.98] shadow-2xl shadow-indigo-600/20">
+                                <span>{t('sendBtn')}</span>
+                                <Send className="w-4 h-4" />
+                            </button>
+                        </div>
+                    </div>
+                </m.div>
             </div>
         </section>
     );

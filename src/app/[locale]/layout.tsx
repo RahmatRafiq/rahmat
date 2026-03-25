@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "../globals.css";
 import Layout from "../../components/Layout";
 import { NextIntlClientProvider } from 'next-intl';
@@ -9,7 +9,7 @@ import { routing } from '../../i18n/routing';
 import { siteConfig } from '../../config/site';
 import { FramerProvider } from "../../components/FramerProvider";
 
-const inter = Inter({
+const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
   display: 'swap',
 });
@@ -105,7 +105,7 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} className="scroll-smooth">
-      <body className={`${inter.className} antialiased selection:bg-primary/30`}>
+      <body className={`${jakarta.className} antialiased selection:bg-primary/30`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

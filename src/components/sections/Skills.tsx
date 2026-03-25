@@ -1,129 +1,87 @@
 'use client';
 
-import React, { useState } from 'react';
-import { m, AnimatePresence } from 'framer-motion';
-import { Code2, Database, Webhook, Workflow, ChevronDown } from 'lucide-react';
+import React from 'react';
+import { m } from 'framer-motion';
+import { Code2, Database, Webhook, Workflow, Cpu, Layers, Terminal, Globe } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { useTranslations } from 'next-intl';
 
 export default function Skills() {
     const t = useTranslations('Skills');
-    const [openIdx, setOpenIdx] = useState<number | null>(null);
 
     const skillCategories = [
         {
             title: t('cat1_title'),
             icon: Code2,
-            skills: ['Golang (Gin, GORM)', 'PHP (Laravel)', 'TypeScript', 'React.js', 'Next.js', 'Inertia.js', 'Tailwind CSS'],
+            skills: ['Golang', 'Laravel', 'TypeScript', 'React.js', 'Next.js', 'Tailwind', 'Fiber'],
+            color: 'from-blue-600/20 to-indigo-600/20',
+            span: 'lg:col-span-8 lg:row-span-1',
         },
         {
             title: t('cat2_title'),
             icon: Database,
-            skills: ['PostgreSQL', 'MySQL', 'Supabase', 'Redis'],
+            skills: ['PostgreSQL', 'MySQL', 'Supabase', 'Redis', 'MongoDB'],
+            color: 'from-emerald-600/20 to-teal-600/20',
+            span: 'lg:col-span-4 lg:row-span-2',
         },
         {
             title: t('cat3_title'),
             icon: Webhook,
-            skills: ['REST API Design', 'Swagger/OpenAPI', 'Postman', 'JWT Auth', 'Spatie Packages'],
+            skills: ['REST API', 'Swagger', 'JWT', 'Spatie', 'Webhooks'],
+            color: 'from-violet-600/20 to-purple-600/20',
+            span: 'lg:col-span-4 lg:row-span-1',
         },
         {
             title: t('cat4_title'),
             icon: Workflow,
-            skills: ['Docker', 'Linux (Kubuntu)', 'GitHub Actions', 'Automated Pipelines', 'AI-assisted Workflows', 'Model Context Protocol (MCP)'],
+            skills: ['Docker', 'Linux', 'Github Actions', 'MCP', 'CI/CD'],
+            color: 'from-amber-600/20 to-orange-600/20',
+            span: 'lg:col-span-4 lg:row-span-1',
         },
     ];
 
     return (
-        <section id="skills" className="px-6 max-w-7xl mx-auto py-20 w-full" aria-label="Technical Skills">
-            <div className="mb-16 flex flex-col items-center text-center">
-                <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('title')}</h2>
-                <div className="h-1 w-20 bg-primary rounded-full" aria-hidden="true" />
+        <section id="skills" className="px-6 max-w-7xl mx-auto py-32 w-full">
+            <div className="mb-20">
+                <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter">{t('title')}</h2>
             </div>
 
-            {/* Desktop: 1x4 grid */}
-            <div className="hidden lg:grid grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 auto-rows-[280px]">
                 {skillCategories.map((category, idx) => (
                     <m.div
                         key={idx}
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.4, delay: idx * 0.1 }}
-                        className="glass p-8 rounded-2xl border border-border hover:border-primary/50 transition-colors group"
+                        transition={{ duration: 0.5, delay: idx * 0.1 }}
+                        className={cn(
+                            "group glass-premium rounded-[2.5rem] p-10 relative overflow-hidden flex flex-col justify-between",
+                            category.span
+                        )}
                     >
-                        <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-                            <category.icon className="w-6 h-6 text-indigo-400" />
+                        <div className={cn('absolute inset-0 bg-gradient-to-br opacity-30 group-hover:opacity-50 transition-opacity duration-500', category.color)} />
+
+                        <div className="relative z-10">
+                            <div className="flex justify-between items-start mb-6">
+                                <div className="p-4 rounded-3xl bg-white/5 border border-white/10 group-hover:bg-primary/20 transition-all duration-500">
+                                    <category.icon className="w-8 h-8 text-white" />
+                                </div>
+                            </div>
+                            <h3 className="text-2xl md:text-3xl font-black mb-4 tracking-tight group-hover:text-indigo-400 transition-colors">
+                                {category.title}
+                            </h3>
                         </div>
-                        <h3 className="text-base font-bold mb-4">{category.title}</h3>
-                        <div className="flex flex-wrap gap-2">
+
+                        <div className="relative z-10 flex flex-wrap gap-2">
                             {category.skills.map((skill, sIdx) => (
                                 <span
                                     key={sIdx}
-                                    className="px-3 py-1 rounded-full bg-secondary text-xs font-medium text-muted-foreground"
+                                    className="px-4 py-1.5 rounded-xl bg-white/5 border border-white/5 text-[10px] font-black uppercase tracking-widest text-white/40 group-hover:text-white/60 transition-colors"
                                 >
                                     {skill}
                                 </span>
                             ))}
                         </div>
-                    </m.div>
-                ))}
-            </div>
-
-            {/* Mobile: Accordion */}
-            <div className="lg:hidden flex flex-col gap-3">
-                {skillCategories.map((category, idx) => (
-                    <m.div
-                        key={idx}
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.3, delay: idx * 0.05 }}
-                        className={cn(
-                            "rounded-2xl border transition-colors overflow-hidden",
-                            openIdx === idx ? "border-primary/50 bg-primary/5" : "border-border bg-secondary/20"
-                        )}
-                    >
-                        <button
-                            onClick={() => setOpenIdx(openIdx === idx ? null : idx)}
-                            className="w-full flex items-center justify-between p-5 text-left"
-                            aria-expanded={openIdx === idx}
-                        >
-                            <div className="flex items-center gap-4">
-                                <div className={cn(
-                                    "w-10 h-10 rounded-xl flex items-center justify-center transition-colors",
-                                    openIdx === idx ? "bg-indigo-600 text-white" : "bg-muted text-muted-foreground"
-                                )}>
-                                    <category.icon className="w-5 h-5" />
-                                </div>
-                                <span className="font-bold text-sm">{category.title}</span>
-                            </div>
-                            <m.div animate={{ rotate: openIdx === idx ? 180 : 0 }} transition={{ duration: 0.2 }}>
-                                <ChevronDown className="w-4 h-4 text-muted-foreground" />
-                            </m.div>
-                        </button>
-
-                        <AnimatePresence>
-                            {openIdx === idx && (
-                                <m.div
-                                    initial={{ height: 0, opacity: 0 }}
-                                    animate={{ height: 'auto', opacity: 1 }}
-                                    exit={{ height: 0, opacity: 0 }}
-                                    transition={{ duration: 0.25 }}
-                                    className="overflow-hidden"
-                                >
-                                    <div className="px-5 pb-5 flex flex-wrap gap-2">
-                                        {category.skills.map((skill, sIdx) => (
-                                            <span
-                                                key={sIdx}
-                                                className="px-3 py-1 rounded-full bg-secondary text-xs font-medium text-muted-foreground"
-                                            >
-                                                {skill}
-                                            </span>
-                                        ))}
-                                    </div>
-                                </m.div>
-                            )}
-                        </AnimatePresence>
                     </m.div>
                 ))}
             </div>

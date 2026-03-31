@@ -280,9 +280,13 @@ export default function Projects() {
                                 animate={{ x: 0 }}
                                 exit={{ x: '100%' }}
                                 transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                                className="fixed inset-0 bg-[#060311] z-[101] overflow-y-auto"
+                                onClick={() => setSelectedProject(null)}
+                                className="fixed inset-0 bg-[#060311]/20 z-[101] overflow-y-auto"
                             >
-                                <div className="max-w-7xl mx-auto min-h-screen relative flex flex-col">
+                                <div 
+                                    onClick={(e) => e.stopPropagation()}
+                                    className="max-w-7xl mx-auto min-h-screen relative flex flex-col bg-[#060311] shadow-2xl"
+                                >
                                     {/* Close Button */}
                                     <button
                                         onClick={() => setSelectedProject(null)}

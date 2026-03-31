@@ -35,7 +35,7 @@ export default function Projects() {
     const t = useTranslations('Projects');
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
-    const categories = [t('cat1'), t('cat2'), t('cat3')];
+    const categories = [t('cat1'), t('cat2'), t('cat3'), t('cat4')];
     const [activeTab, setActiveTab] = useState(categories[0]);
 
     React.useEffect(() => {
@@ -128,6 +128,18 @@ export default function Projects() {
             links: { github: 'https://github.com/RahmatRafiq/golang_strarter_kit_2025' },
             color: 'from-blue-500/20 to-violet-500/20',
             span: 'lg:col-span-8 lg:row-span-1',
+        },
+        {
+            title: t('p8_title'),
+            category: categories[3],
+            year: '2026',
+            description: t('p8_desc'),
+            tags: ['Laravel', 'React', 'Machine Learning', 'API Safety'],
+            icon: ShieldCheck,
+            image: '/projects/youtube-guard-2.png',
+            links: {},
+            color: 'from-violet-600/20 to-indigo-600/20',
+            span: 'lg:col-span-12 lg:row-span-2',
         },
     ];
 

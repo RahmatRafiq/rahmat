@@ -26,6 +26,7 @@ interface Project {
     tags: string[];
     icon: LucideIcon;
     image?: string;
+    detailImages?: string[];
     links: { demo?: string; github?: string; npm?: string };
     color: string;
     span?: string;
@@ -49,6 +50,19 @@ export default function Projects() {
 
     const projectsData: Project[] = [
         {
+            title: t('p9_title'),
+            category: categories[0],
+            year: '2026',
+            description: t('p9_desc'),
+            tags: ['React', 'Next.js', 'Real-time Live Data'],
+            icon: Zap,
+            image: '/projects/justfun-tactical.png',
+            detailImages: ['/projects/justfungame.png'],
+            links: { demo: 'https://just-fun-makassar.vercel.app/' },
+            color: 'from-orange-500/20 to-red-600/20',
+            span: 'lg:col-span-8 lg:row-span-2',
+        },
+        {
             title: t('p7_title'),
             category: categories[0],
             year: '2026',
@@ -58,7 +72,7 @@ export default function Projects() {
             image: '/projects/bouquet.png',
             links: { demo: 'https://bouquet-builder.vercel.app/bouquet-builder' },
             color: 'from-pink-500/20 to-rose-500/20',
-            span: 'lg:col-span-8 lg:row-span-2',
+            span: 'lg:col-span-4 lg:row-span-1',
         },
         {
             title: t('p1_title'),
@@ -324,6 +338,16 @@ export default function Projects() {
                                                 <p className="text-xl md:text-3xl text-white/70 leading-[1.6] font-medium mb-12 italic">
                                                     {selectedProject.description}
                                                 </p>
+                                                
+                                                {selectedProject.detailImages && selectedProject.detailImages.length > 0 && (
+                                                    <div className="flex flex-col gap-8 mt-8 w-full">
+                                                        {selectedProject.detailImages.map((img, i) => (
+                                                            <div key={i} className="rounded-2xl overflow-hidden border border-white/10 group bg-white/5 relative w-full aspect-video shadow-2xl">
+                                                                <img src={img} alt={`${selectedProject.title} detailed screenshot ${i + 1}`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                )}
                                             </div>
 
                                             <div className="lg:col-span-4 flex flex-col gap-6">

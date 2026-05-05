@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { m, useScroll, useTransform } from 'framer-motion';
+import { InfiniteMovingCards } from '../ui/infinite-moving-cards';
 
 export default function Hero() {
     const t = useTranslations('Hero');
@@ -101,18 +102,22 @@ export default function Hero() {
 
             {/* Tech Tags - Now part of flow on desktop to avoid overlap */}
             <div className="hidden lg:block w-full px-6 md:px-16 lg:px-24 max-w-[1600px] mx-auto mt-20">
-                <div className="flex justify-between items-center border-t border-white/5 pt-12">
-                    {[
-                        { icon: Terminal, title: t('feature1_title'), desc: t('feature1_desc') },
-                        { icon: Code, title: t('feature2_title'), desc: t('feature2_desc') },
-                        { icon: Database, title: t('feature3_title'), desc: t('feature3_desc') },
-                    ].map((item, i) => (
-                        <div key={i} className="flex flex-col items-start max-w-[250px]">
-                            <item.icon className="w-5 h-5 text-indigo-400 mb-4" />
-                            <h2 className="font-bold text-sm mb-1 uppercase tracking-widest">{item.title}</h2>
-                            <p className="text-[11px] text-muted-foreground font-medium leading-relaxed">{item.desc}</p>
-                        </div>
-                    ))}
+                <div className="border-t border-white/5 pt-12">
+                    <InfiniteMovingCards
+                        items={[
+                            { icon: Terminal, title: t('feature1_title'), desc: t('feature1_desc') },
+                            { icon: Code, title: t('feature2_title'), desc: t('feature2_desc') },
+                            { icon: Database, title: t('feature3_title'), desc: t('feature3_desc') },
+                        ].map((item, i) => (
+                            <div key={i} className="flex flex-col items-start min-w-[300px]">
+                                <item.icon className="w-5 h-5 text-indigo-400 mb-4" />
+                                <h2 className="font-bold text-sm mb-1 uppercase tracking-widest text-white">{item.title}</h2>
+                                <p className="text-[11px] text-muted-foreground font-medium leading-relaxed max-w-[250px]">{item.desc}</p>
+                            </div>
+                        ))}
+                        direction="left"
+                        speed="slow"
+                    />
                 </div>
             </div>
         </section>

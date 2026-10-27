@@ -4,10 +4,24 @@ import {
     Package,
     ShieldCheck,
     Zap,
+    ChefHat,
+    ShoppingCart,
+    Wallet,
+    Users,
     type LucideIcon,
 } from 'lucide-react';
 
 export type ProjectLinks = { demo?: string; github?: string; npm?: string };
+
+/**
+ * A highlighted feature rendered with a lucide icon on the full page.
+ * `iconName` keys into PROJECT_ICONS; `titleKey`/`textKey` are i18n keys.
+ */
+export interface ProjectFeature {
+    iconName: string;
+    titleKey: string;
+    textKey: string;
+}
 
 export interface ProjectMeta {
     slug: string;
@@ -16,6 +30,8 @@ export interface ProjectMeta {
     summaryKey: string;
     /** Full description in Markdown (full page). */
     descKey: string;
+    /** Optional structured feature list (icon + title + text) for the full page. */
+    features?: ProjectFeature[];
     categoryIndex: 0 | 1 | 2 | 3;
     year: string;
     tags: string[];
@@ -37,6 +53,10 @@ export const PROJECT_ICONS: Record<string, LucideIcon> = {
     Package,
     ShieldCheck,
     Zap,
+    ChefHat,
+    ShoppingCart,
+    Wallet,
+    Users,
 };
 
 /**
@@ -52,6 +72,14 @@ export const projects: ProjectMeta[] = [
         titleKey: 'p10_title',
         summaryKey: 'p10_summary',
         descKey: 'p10_desc',
+        features: [
+            { iconName: 'ChefHat', titleKey: 'p10_f1_t', textKey: 'p10_f1_d' },
+            { iconName: 'Package', titleKey: 'p10_f2_t', textKey: 'p10_f2_d' },
+            { iconName: 'ShoppingCart', titleKey: 'p10_f3_t', textKey: 'p10_f3_d' },
+            { iconName: 'Wallet', titleKey: 'p10_f4_t', textKey: 'p10_f4_d' },
+            { iconName: 'Users', titleKey: 'p10_f5_t', textKey: 'p10_f5_d' },
+            { iconName: 'ShieldCheck', titleKey: 'p10_f6_t', textKey: 'p10_f6_d' },
+        ],
         categoryIndex: 0,
         year: '2026',
         tags: ['Laravel 12', 'Inertia', 'React', 'TypeScript', 'Real-time KDS'],

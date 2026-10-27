@@ -54,14 +54,19 @@ export default function ProjectPanel({
                            inset-x-0 bottom-0 top-[12vh] rounded-t-3xl border-t border-white/10
                            md:inset-y-0 md:right-0 md:left-auto md:top-0 md:w-1/2 md:rounded-none md:rounded-l-3xl md:border-t-0 md:border-l md:shadow-2xl"
             >
-                <button
-                    onClick={onClose}
-                    className="absolute top-6 right-6 p-3 rounded-full bg-white/5 border border-white/10 text-white hover:bg-white/10 active:scale-95 transition-all z-[110]"
-                    aria-label="Close"
-                >
-                    <X size={22} />
-                </button>
-                <ProjectDetail project={project} variant="panel" />
+                {/* Sticky close button — stays visible while the panel scrolls */}
+                <div className="sticky top-0 z-[110] flex justify-end p-4 pointer-events-none">
+                    <button
+                        onClick={onClose}
+                        className="pointer-events-auto p-2.5 rounded-full bg-[#060311]/70 backdrop-blur-md border border-white/20 text-white hover:bg-[#060311]/90 active:scale-95 transition-all shadow-lg"
+                        aria-label="Close"
+                    >
+                        <X size={20} />
+                    </button>
+                </div>
+                <div className="-mt-[60px]">
+                    <ProjectDetail project={project} variant="panel" />
+                </div>
             </m.div>
         </>
     );

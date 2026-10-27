@@ -33,7 +33,7 @@ function ShareButton({ slug, label, copiedLabel }: { slug: string; label: string
     return (
         <button
             onClick={handleShare}
-            className="w-full py-6 rounded-full bg-white/5 border border-white/10 text-white font-black text-xs tracking-[0.2em] uppercase hover:bg-white/10 transition-all flex items-center justify-center gap-3"
+            className={cn(btnBase, btnSize(true), 'bg-white/5 border border-white/10 text-white hover:bg-white/10')}
         >
             {copied ? <Check size={16} className="text-emerald-400" /> : <Share2 size={16} />}
             {copied ? copiedLabel : label}
@@ -46,7 +46,12 @@ interface ProjectDetailProps {
     variant: 'page' | 'panel';
 }
 
-function ActionLinks({ project, t }: { project: ProjectMeta; t: ReturnType<typeof useTranslations> }) {
+/** Shared pill-button sizing — compact in the panel, roomy on the full page. */
+const btnBase = 'w-full rounded-full font-black tracking-[0.2em] uppercase transition-all flex items-center justify-center';
+const btnSize = (compact?: boolean) => (compact ? 'py-3.5 text-[10px] gap-2.5' : 'py-6 text-xs gap-4');
+
+function ActionLinks({ project, t, compact }: { project: ProjectMeta; t: ReturnType<typeof useTranslations>; compact?: boolean }) {
+    const iconSize = compact ? 16 : 20;
     return (
         <>
             {project.links.demo && (
@@ -54,10 +59,10 @@ function ActionLinks({ project, t }: { project: ProjectMeta; t: ReturnType<typeo
                     href={project.links.demo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full py-6 rounded-full bg-indigo-600 text-white font-black text-xs tracking-[0.2em] uppercase hover:bg-indigo-700 transition-all flex items-center justify-center gap-4 shadow-2xl shadow-indigo-500/40 group/btn"
+                    className={cn(btnBase, btnSize(compact), 'bg-indigo-600 text-white hover:bg-indigo-700 shadow-2xl shadow-indigo-500/40 group/btn')}
                 >
                     {t('livePreview')}
-                    <ArrowUpRight size={20} className="group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
+                    <ArrowUpRight size={iconSize} className="group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
                 </a>
             )}
             {project.links.github && (
@@ -65,9 +70,9 @@ function ActionLinks({ project, t }: { project: ProjectMeta; t: ReturnType<typeo
                     href={project.links.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full py-6 rounded-full bg-white/5 border border-white/10 text-white font-black text-xs tracking-[0.2em] uppercase hover:bg-white/10 transition-all flex items-center justify-center gap-4"
+                    className={cn(btnBase, btnSize(compact), 'bg-white/5 border border-white/10 text-white hover:bg-white/10')}
                 >
-                    <Github size={20} />
+                    <Github size={iconSize} />
                     GitHub Repository
                 </a>
             )}
@@ -76,9 +81,9 @@ function ActionLinks({ project, t }: { project: ProjectMeta; t: ReturnType<typeo
                     href={project.links.npm}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full py-6 rounded-full bg-[#CB3837]/20 border border-[#CB3837]/30 text-[#CB3837] font-black text-xs tracking-[0.2em] uppercase hover:bg-[#CB3837]/30 transition-all flex items-center justify-center gap-4"
+                    className={cn(btnBase, btnSize(compact), 'bg-[#CB3837]/20 border border-[#CB3837]/30 text-[#CB3837] hover:bg-[#CB3837]/30')}
                 >
-                    <Package size={20} />
+                    <Package size={iconSize} />
                     NPM Package
                 </a>
             )}
@@ -168,17 +173,17 @@ export default function ProjectDetail({ project, variant }: ProjectDetailProps) 
                     {/* Short summary (plain text) */}
                     <p className="text-base text-white/70 leading-[1.7] font-medium">{summary}</p>
 
-                    <div className="flex flex-col gap-4 pt-2">
+                    <div className="flex flex-col gap-3 pt-2">
                         {/* Primary CTA: go to the full detail page (real route w/ URL) */}
                         <Link
                             href={`/projects/${project.slug}`}
-                            className="w-full py-6 rounded-full bg-indigo-600 text-white font-black text-xs tracking-[0.2em] uppercase hover:bg-indigo-700 transition-all flex items-center justify-center gap-3 shadow-2xl shadow-indigo-500/40 group/cta"
+                            className={cn(btnBase, btnSize(true), 'bg-indigo-600 text-white hover:bg-indigo-700 shadow-2xl shadow-indigo-500/40 group/cta')}
                         >
                             {t('viewDetails')}
                             <ChevronRight size={16} className="group-hover/cta:translate-x-1 transition-transform" />
                         </Link>
                         <ShareButton slug={project.slug} label={t('share')} copiedLabel={t('shareCopied')} />
-                        <ActionLinks project={project} t={t} />
+                        <ActionLinks project={project} t={t} compact />
                     </div>
                 </div>
             </div>
@@ -230,6 +235,28 @@ export default function ProjectDetail({ project, variant }: ProjectDetailProps) 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
                     <div className="lg:col-span-8 max-w-none">
                         <MarkdownDescription markdown={description} size="page" />
+
+                        {project.features && project.features.length > 0 && (
+                            <div className="mt-14">
+                                <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-white/30 mb-8">{t('keyFeatures')}</h3>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                    {project.features.map((feat) => {
+                                        const FeatIcon = PROJECT_ICONS[feat.iconName];
+                                        return (
+                                            <div key={feat.titleKey} className="flex gap-4 p-5 rounded-2xl bg-white/5 border border-white/10">
+                                                <div className="p-3 rounded-xl bg-indigo-500/15 border border-indigo-500/20 h-fit">
+                                                    {FeatIcon && <FeatIcon className="w-5 h-5 text-indigo-300" />}
+                                                </div>
+                                                <div className="flex flex-col gap-1">
+                                                    <span className="text-white font-black text-sm">{t(feat.titleKey)}</span>
+                                                    <span className="text-white/60 text-sm leading-relaxed">{t(feat.textKey)}</span>
+                                                </div>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            </div>
+                        )}
 
                         {project.detailImages && project.detailImages.length > 0 && (
                             <div className="flex flex-col gap-8 mt-12 w-full">

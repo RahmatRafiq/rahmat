@@ -114,6 +114,8 @@
         "viewNpm": "View on NPM",
         "livePreview": "Live Preview",
         "viewDetails": "View Details",
+        "share": "Share",
+        "shareCopied": "Link copied",
         "backToProjects": "Back to Work"
     },
     "Contact": {

@@ -2,13 +2,44 @@
 
 import React from 'react';
 import { m } from 'framer-motion';
-import { ArrowUpRight, Github, Package, ChevronRight } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { ArrowUpRight, Github, Package, ChevronRight, Share2, Check } from 'lucide-react';
+import { useTranslations, useLocale } from 'next-intl';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { cn } from '../../lib/utils';
 import { Link } from '../../i18n/routing';
 import { PROJECT_ICONS, type ProjectMeta } from '../../data/projects';
+
+/** Share button: copies the project's full-page URL to the clipboard. */
+function ShareButton({ slug, label, copiedLabel }: { slug: string; label: string; copiedLabel: string }) {
+    const locale = useLocale();
+    const [copied, setCopied] = React.useState(false);
+
+    const handleShare = async () => {
+        const url =
+            typeof window !== 'undefined'
+                ? `${window.location.origin}/${locale}/projects/${slug}`
+                : `/${locale}/projects/${slug}`;
+        try {
+            await navigator.clipboard.writeText(url);
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000);
+        } catch {
+            // Clipboard blocked (e.g. insecure context) — select-free fallback.
+            window.prompt(copiedLabel, url);
+        }
+    };
+
+    return (
+        <button
+            onClick={handleShare}
+            className="w-full py-6 rounded-full bg-white/5 border border-white/10 text-white font-black text-xs tracking-[0.2em] uppercase hover:bg-white/10 transition-all flex items-center justify-center gap-3"
+        >
+            {copied ? <Check size={16} className="text-emerald-400" /> : <Share2 size={16} />}
+            {copied ? copiedLabel : label}
+        </button>
+    );
+}
 
 interface ProjectDetailProps {
     project: ProjectMeta;
@@ -138,14 +169,15 @@ export default function ProjectDetail({ project, variant }: ProjectDetailProps) 
                     <p className="text-base text-white/70 leading-[1.7] font-medium">{summary}</p>
 
                     <div className="flex flex-col gap-4 pt-2">
-                        {/* Primary CTA: go to full detail page */}
+                        {/* Primary CTA: go to the full detail page (real route w/ URL) */}
                         <Link
                             href={`/projects/${project.slug}`}
-                            className="w-full py-6 rounded-full bg-white/5 border border-white/10 text-white font-black text-xs tracking-[0.2em] uppercase hover:bg-white/10 transition-all flex items-center justify-center gap-3 group/cta"
+                            className="w-full py-6 rounded-full bg-indigo-600 text-white font-black text-xs tracking-[0.2em] uppercase hover:bg-indigo-700 transition-all flex items-center justify-center gap-3 shadow-2xl shadow-indigo-500/40 group/cta"
                         >
                             {t('viewDetails')}
                             <ChevronRight size={16} className="group-hover/cta:translate-x-1 transition-transform" />
                         </Link>
+                        <ShareButton slug={project.slug} label={t('share')} copiedLabel={t('shareCopied')} />
                         <ActionLinks project={project} t={t} />
                     </div>
                 </div>

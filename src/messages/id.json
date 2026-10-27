@@ -114,6 +114,8 @@
         "viewNpm": "Lihat di NPM",
         "livePreview": "Pratinjau Langsung",
         "viewDetails": "Lihat Detail",
+        "share": "Bagikan",
+        "shareCopied": "Link disalin",
         "backToProjects": "Kembali ke Karya"
     },
     "Contact": {

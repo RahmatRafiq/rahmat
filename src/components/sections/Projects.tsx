@@ -5,14 +5,15 @@ import { m, AnimatePresence } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { useTranslations } from 'next-intl';
-import { Link } from '../../i18n/routing';
-import { projects, PROJECT_ICONS } from '../../data/projects';
+import { projects, PROJECT_ICONS, type ProjectMeta } from '../../data/projects';
+import ProjectPanel from '../projects/ProjectPanel';
 
 export default function Projects() {
     const t = useTranslations('Projects');
 
     const categories = [t('cat1'), t('cat2'), t('cat3'), t('cat4')];
     const [activeTab, setActiveTab] = useState(categories[0]);
+    const [selected, setSelected] = useState<ProjectMeta | null>(null);
 
     const filteredProjects = projects.filter(
         (project) => categories[project.categoryIndex] === activeTab
@@ -76,9 +77,10 @@ export default function Projects() {
                                         project.span || "lg:col-span-4"
                                     )}
                                 >
-                                    <Link
-                                        href={`/projects/${project.slug}`}
-                                        className="absolute inset-0 z-30"
+                                    <button
+                                        type="button"
+                                        onClick={() => setSelected(project)}
+                                        className="absolute inset-0 z-30 cursor-pointer"
                                         aria-label={t(project.titleKey)}
                                     />
                                     <div className={cn('absolute inset-0 bg-gradient-to-br opacity-40 group-hover:opacity-60 transition-opacity duration-500', project.color)} />
@@ -127,6 +129,13 @@ export default function Projects() {
                     </AnimatePresence>
                 </m.div>
             </div>
+
+            {/* Half-screen summary drawer (local state, no URL change) */}
+            <AnimatePresence>
+                {selected && (
+                    <ProjectPanel project={selected} onClose={() => setSelected(null)} />
+                )}
+            </AnimatePresence>
         </section>
     );
 }

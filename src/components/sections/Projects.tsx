@@ -1,12 +1,16 @@
 'use client';
 
 import React, { useState } from 'react';
+import dynamic from 'next/dynamic';
 import { m, AnimatePresence } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { useTranslations } from 'next-intl';
 import { projects, PROJECT_ICONS, type ProjectMeta } from '../../data/projects';
-import ProjectPanel from '../projects/ProjectPanel';
+
+// Lazy-loaded: the panel (and its heavy react-markdown dependency) is only
+// fetched when a card is clicked, keeping the homepage bundle light.
+const ProjectPanel = dynamic(() => import('../projects/ProjectPanel'), { ssr: false });
 
 export default function Projects() {
     const t = useTranslations('Projects');

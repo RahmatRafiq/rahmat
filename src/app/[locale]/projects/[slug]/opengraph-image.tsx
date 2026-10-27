@@ -1,4 +1,5 @@
 import { ImageResponse } from 'next/og';
+import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 import { routing } from '../../../../i18n/routing';
 import { siteConfig } from '../../../../config/site';
@@ -8,6 +9,8 @@ export const alt = 'Project';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
+type Params = Promise<{ locale: string; slug: string }>;
+
 export function generateStaticParams() {
     const slugs = getAllSlugs();
     return routing.locales.flatMap((locale) =>
@@ -15,15 +18,12 @@ export function generateStaticParams() {
     );
 }
 
-export default async function Image({
-    params,
-}: {
-    params: { locale: string; slug: string };
-}) {
-    const { locale, slug } = params;
+export default async function Image({ params }: { params: Params }) {
+    const { locale, slug } = await params;
     const project = getProjectBySlug(slug);
+    if (!project) notFound();
     const t = await getTranslations({ locale, namespace: 'Projects' });
-    const title = project ? t(project.titleKey) : siteConfig.name;
+    const title = t(project.titleKey);
 
     return new ImageResponse(
         (
@@ -90,7 +90,7 @@ export default async function Image({
                         fontWeight: 700,
                     }}
                 >
-                    Selected Work · {project?.year ?? ''}
+                    Selected Work · {project.year}
                 </div>
             </div>
         ),

@@ -88,17 +88,37 @@ intercept hanya membuka panel pada lebar ≥ md via CSS/kondisi, atau pada
 ponsel membiarkan navigasi menuju halaman penuh). Yang mengikat: di
 ponsel hasil akhirnya halaman penuh, URL tetap `/projects/<slug>`.
 
-### 3. Bentuk panel (desktop): panel samping ramping
+### 3. Bentuk panel (desktop): panel SUMMARY samping ramping
 
-Berbeda dari drawer lebar `max-w-7xl` yang sekarang. Panel baru:
-- Ramping (~480–600px), menempel di kanan, slide-in dari kanan.
-- Backdrop blur di belakang; konten homepage masih samar terlihat.
-- Isi disusun **1 kolom vertikal**: gambar → kategori/tahun → judul →
-  tags → deskripsi → gambar detail → tombol aksi (demo/github/npm).
+**REVISI 2026-10-28 (setelah implementasi awal, disetujui owner):** panel
+BUKAN detail penuh, melainkan **ringkasan/summary** dengan tombol ajakan
+ke halaman penuh. Alur jadi dua tingkat:
 
-Halaman penuh `/projects/<slug>` memakai layout **2 kolom lebar** (mirip
-drawer besar yang ada sekarang: deskripsi + kolom aksi), yang jadi
-tampilan untuk ponsel, share, dan crawler.
+1. Klik kartu → **panel slide summary** (gambar hero → kategori/tahun →
+   judul → tags → **deskripsi SINGKAT 1–2 kalimat** → tombol **"Lihat
+   Detail Lengkap"** ke `/projects/<slug>` + tombol demo/github/npm).
+2. Klik "Lihat Detail Lengkap" → **halaman penuh** detail lengkap.
+
+Panel: ramping (~480–560px), menempel di kanan, slide-in dari kanan,
+backdrop blur (≥md). Full-screen di <768px (lihat §2).
+
+Halaman penuh `/projects/<slug>` = **detail lengkap**: layout 2 kolom
+lebar, deskripsi **Markdown kaya** (paragraf + bullet list + bold +
+emoji), semua gambar detail, kolom aksi. Ini tampilan untuk ponsel,
+share, dan crawler.
+
+### 3b. Deskripsi: ringkas + Markdown (REVISI 2026-10-28)
+
+Tiap project punya DUA teks di catalog i18n:
+- `pN_summary` — 1–2 kalimat untuk panel & meta description.
+- `pN_desc` — deskripsi lengkap dalam **Markdown** untuk full page
+  (paragraf, `-` bullet list, `**bold**`, emoji).
+
+Render Markdown pakai **`react-markdown` + `remark-gfm`** (dependency
+baru, disetujui owner), di-style untuk tema gelap. Berlaku untuk **semua
+10 project** (konten disusun dari deskripsi yang ada; Husnul dari teks
+berpoin asli owner). Meta description/OG pakai `summary` (teks polos),
+bukan Markdown.
 
 ### 4. Data project dipindah ke modul bersama
 

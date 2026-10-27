@@ -12,6 +12,9 @@ export type ProjectLinks = { demo?: string; github?: string; npm?: string };
 export interface ProjectMeta {
     slug: string;
     titleKey: string;
+    /** Short plain-text summary (panel + meta description). */
+    summaryKey: string;
+    /** Full description in Markdown (full page). */
     descKey: string;
     categoryIndex: 0 | 1 | 2 | 3;
     year: string;
@@ -47,6 +50,7 @@ export const projects: ProjectMeta[] = [
     {
         slug: 'husnul-bakery-erp',
         titleKey: 'p10_title',
+        summaryKey: 'p10_summary',
         descKey: 'p10_desc',
         categoryIndex: 0,
         year: '2026',
@@ -61,6 +65,7 @@ export const projects: ProjectMeta[] = [
     {
         slug: 'just-fun-tournament',
         titleKey: 'p9_title',
+        summaryKey: 'p9_summary',
         descKey: 'p9_desc',
         categoryIndex: 0,
         year: '2026',
@@ -75,6 +80,7 @@ export const projects: ProjectMeta[] = [
     {
         slug: 'bouquet-builder',
         titleKey: 'p7_title',
+        summaryKey: 'p7_summary',
         descKey: 'p7_desc',
         categoryIndex: 0,
         year: '2026',
@@ -88,6 +94,7 @@ export const projects: ProjectMeta[] = [
     {
         slug: 'kemafar',
         titleKey: 'p1_title',
+        summaryKey: 'p1_summary',
         descKey: 'p1_desc',
         categoryIndex: 0,
         year: '2026',
@@ -101,6 +108,7 @@ export const projects: ProjectMeta[] = [
     {
         slug: 'typing-test',
         titleKey: 'p2_title',
+        summaryKey: 'p2_summary',
         descKey: 'p2_desc',
         categoryIndex: 0,
         year: '2026',
@@ -114,6 +122,7 @@ export const projects: ProjectMeta[] = [
     {
         slug: 'vehicle-seatpicker',
         titleKey: 'p3_title',
+        summaryKey: 'p3_summary',
         descKey: 'p3_desc',
         categoryIndex: 2,
         year: '2025',
@@ -130,6 +139,7 @@ export const projects: ProjectMeta[] = [
     {
         slug: 'nextjs-supabase-starter',
         titleKey: 'p4_title',
+        summaryKey: 'p4_summary',
         descKey: 'p4_desc',
         categoryIndex: 1,
         year: '2026',
@@ -142,6 +152,7 @@ export const projects: ProjectMeta[] = [
     {
         slug: 'laravel-12-starter-kit',
         titleKey: 'p5_title',
+        summaryKey: 'p5_summary',
         descKey: 'p5_desc',
         categoryIndex: 1,
         year: '2025',
@@ -154,6 +165,7 @@ export const projects: ProjectMeta[] = [
     {
         slug: 'golang-starter-kit',
         titleKey: 'p6_title',
+        summaryKey: 'p6_summary',
         descKey: 'p6_desc',
         categoryIndex: 1,
         year: '2025',
@@ -166,6 +178,7 @@ export const projects: ProjectMeta[] = [
     {
         slug: 'comment-spam-detection',
         titleKey: 'p8_title',
+        summaryKey: 'p8_summary',
         descKey: 'p8_desc',
         categoryIndex: 3,
         year: '2026',

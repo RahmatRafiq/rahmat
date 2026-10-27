@@ -47,6 +47,32 @@ export default function Navbar() {
         };
     }, [resetHideTimer]);
 
+    // Scroll to an in-page section. Sections below the fold are lazy-mounted,
+    // so after the first scroll their real height appears and shifts layout;
+    // we re-scroll once more after a short delay to land on the settled target.
+    const scrollToSection = useCallback((hash: string) => {
+        const id = hash.replace(/^#/, '');
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // Re-align after lazy content below has expanded the layout.
+        window.setTimeout(() => {
+            document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 450);
+    }, []);
+
+    const handleNavClick = useCallback(
+        (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+            if (!href.startsWith('#')) return;
+            e.preventDefault();
+            setIsOpen(false);
+            scrollToSection(href);
+            // Keep the URL hash shareable without a native jump.
+            history.replaceState(null, '', href);
+        },
+        [scrollToSection]
+    );
+
     const linkCls = 'px-4 py-2 rounded-full text-[12px] font-bold tracking-tight text-white/70 hover:text-white hover:bg-white/5 active:bg-white/10 transition-all duration-200';
     const iconCls = 'p-2 rounded-full text-white/70 hover:text-white hover:bg-white/5 transition-all duration-200';
 
@@ -78,7 +104,7 @@ export default function Navbar() {
 
                     <div className="flex items-center gap-0.5">
                         {navLinks.map((link) => (
-                            <Link key={link.name} href={link.href} className={linkCls}>
+                            <Link key={link.name} href={link.href} className={linkCls} onClick={(e) => handleNavClick(e, link.href)}>
                                 {link.name}
                             </Link>
                         ))}
@@ -176,7 +202,7 @@ export default function Navbar() {
                                         <Link
                                             key={link.name}
                                             href={link.href}
-                                            onClick={() => setIsOpen(false)}
+                                            onClick={(e) => handleNavClick(e, link.href)}
                                             className="px-4 py-3 rounded-2xl text-[13px] font-bold text-white/70 hover:text-white hover:bg-white/5 transition-all flex items-center justify-between"
                                         >
                                             {link.name}

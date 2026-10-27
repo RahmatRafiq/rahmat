@@ -104,7 +104,7 @@ export default async function RootLayout({
   };
 
   return (
-    <html lang={locale} className="scroll-smooth">
+    <html lang={locale} className="scroll-smooth" style={{ scrollPaddingTop: '7rem' }}>
       <body className={`${jakarta.className} antialiased selection:bg-primary/30`}>
         <script
           type="application/ld+json"

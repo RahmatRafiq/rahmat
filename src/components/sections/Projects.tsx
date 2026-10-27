@@ -50,6 +50,19 @@ export default function Projects() {
 
     const projectsData: Project[] = [
         {
+            title: t('p10_title'),
+            category: categories[0],
+            year: '2026',
+            description: t('p10_desc'),
+            tags: ['Laravel 12', 'Inertia', 'React', 'TypeScript', 'Real-time KDS'],
+            icon: Database,
+            image: '/projects/husnul-dashboard.png',
+            detailImages: ['/projects/husnul-landing.png'],
+            links: { demo: 'https://husnulbakery.id/' },
+            color: 'from-amber-600/20 to-orange-700/20',
+            span: 'lg:col-span-12 lg:row-span-2',
+        },
+        {
             title: t('p9_title'),
             category: categories[0],
             year: '2026',

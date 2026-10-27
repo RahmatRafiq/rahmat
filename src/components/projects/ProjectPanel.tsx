@@ -26,13 +26,14 @@ export default function ProjectPanel({ project }: { project: ProjectMeta }) {
 
     return (
         <>
-            {/* Backdrop */}
+            {/* Backdrop — only meaningful on >=md where the panel is slim;
+                on mobile the panel fills the screen, so skip the blur work. */}
             <m.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 onClick={close}
-                className="fixed inset-0 bg-[#060311]/80 backdrop-blur-xl z-[100]"
+                className="fixed inset-0 z-[100] hidden md:block bg-[#060311]/80 backdrop-blur-xl"
             />
 
             {/* Panel: full-screen on mobile, slim side panel on >=md */}

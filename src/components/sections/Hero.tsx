@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { m, useScroll, useTransform } from 'framer-motion';
 import { InfiniteMovingCards } from '../ui/infinite-moving-cards';
+import { siteConfig } from '../../config/site';
 
 export default function Hero() {
     const t = useTranslations('Hero');
@@ -83,7 +84,7 @@ export default function Hero() {
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6">
                     <Link
                         href="#projects"
-                        className="w-full sm:w-auto group relative px-10 py-4 bg-indigo-600 text-white rounded-full font-bold overflow-hidden transition-all hover:scale-105 active:scale-95 glow"
+                        className="w-full sm:w-auto group relative px-10 py-4 bg-indigo-700 text-white rounded-full font-bold overflow-hidden transition-all hover:scale-105 active:scale-95"
                     >
                         <span className="relative z-10 flex items-center justify-center">
                             {t('viewWork')}
@@ -91,12 +92,12 @@ export default function Hero() {
                         </span>
                         <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-violet-600 opacity-0 group-hover:opacity-100 transition-opacity" />
                     </Link>
-                    <Link
-                        href="#contact"
+                    <a
+                        href={`mailto:${siteConfig.email}`}
                         className="w-full sm:w-auto px-10 py-4 glass-premium text-foreground rounded-full font-bold border border-white/10 hover:bg-white/5 transition-all hover:scale-105 active:scale-95"
                     >
                         {t('getInTouch')}
-                    </Link>
+                    </a>
                 </div>
             </m.div>
 

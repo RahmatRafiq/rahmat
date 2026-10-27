@@ -272,7 +272,7 @@ export default function Stats() {
                                             <div className="absolute inset-x-0 top-0 h-1 bg-white/30 rounded-t-2xl" />
                                         </m.div>
 
-                                        <div className="absolute -top-12 left-1/2 -translate-x-1/2 opacity-0 group-hover/bar:opacity-100 transition-all duration-500 bg-indigo-600 text-white text-[10px] px-4 py-1.5 rounded-full font-black whitespace-nowrap z-20 pointer-events-none group-hover/bar:-translate-y-2 shadow-2xl">
+                                        <div className="absolute -top-12 left-1/2 -translate-x-1/2 opacity-0 group-hover/bar:opacity-100 transition-all duration-500 bg-indigo-700 text-white text-[10px] px-4 py-1.5 rounded-full font-black whitespace-nowrap z-20 pointer-events-none group-hover/bar:-translate-y-2 shadow-2xl">
                                             {chartHours[i]} HRS
                                         </div>
                                     </div>

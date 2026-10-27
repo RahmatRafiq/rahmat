@@ -44,7 +44,7 @@ export default function Projects() {
                                     className={cn(
                                         'px-4 md:px-6 py-2.5 rounded-xl text-[10px] md:text-xs font-bold tracking-widest uppercase transition-all flex items-center gap-2',
                                         activeTab === cat
-                                            ? 'bg-indigo-600 text-white shadow-xl scale-105'
+                                            ? 'bg-indigo-700 text-white shadow-xl scale-105'
                                             : 'text-white/40 hover:text-white hover:bg-white/5'
                                     )}
                                 >

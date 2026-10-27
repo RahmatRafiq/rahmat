@@ -103,7 +103,7 @@ export default function Navbar() {
                             onClick={() => router.replace(pathname, { locale: 'id', scroll: false })}
                             className={cn(
                                 "px-3 py-1 text-[10px] font-black rounded-full transition-all",
-                                locale === 'id' ? "bg-indigo-600 text-white shadow-lg" : "text-white/50 hover:text-white"
+                                locale === 'id' ? "bg-indigo-700 text-white shadow-lg" : "text-white/50 hover:text-white"
                             )}
                         >
                             ID
@@ -112,7 +112,7 @@ export default function Navbar() {
                             onClick={() => router.replace(pathname, { locale: 'en', scroll: false })}
                             className={cn(
                                 "px-3 py-1 text-[10px] font-black rounded-full transition-all",
-                                locale === 'en' ? "bg-indigo-600 text-white shadow-lg" : "text-white/50 hover:text-white"
+                                locale === 'en' ? "bg-indigo-700 text-white shadow-lg" : "text-white/50 hover:text-white"
                             )}
                         >
                             EN
@@ -199,11 +199,11 @@ export default function Navbar() {
                                     <div className="flex bg-white/5 rounded-2xl p-1 border border-white/5">
                                         <button
                                             onClick={() => router.replace(pathname, { locale: 'id', scroll: false })}
-                                            className={cn("px-3 py-1 text-[10px] font-black rounded-xl transition-all", locale === 'id' ? "bg-indigo-600 text-white" : "text-white/40")}
+                                            className={cn("px-3 py-1 text-[10px] font-black rounded-xl transition-all", locale === 'id' ? "bg-indigo-700 text-white" : "text-white/40")}
                                         >ID</button>
                                         <button
                                             onClick={() => router.replace(pathname, { locale: 'en', scroll: false })}
-                                            className={cn("px-3 py-1 text-[10px] font-black rounded-xl transition-all", locale === 'en' ? "bg-indigo-600 text-white" : "text-white/40")}
+                                            className={cn("px-3 py-1 text-[10px] font-black rounded-xl transition-all", locale === 'en' ? "bg-indigo-700 text-white" : "text-white/40")}
                                         >EN</button>
                                     </div>
                                 </div>

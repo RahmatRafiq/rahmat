@@ -101,7 +101,7 @@ export default function Contact() {
                                     />
                                 </div>
 
-                                <button className="w-full bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-black uppercase tracking-[0.4em] py-6 rounded-3xl flex items-center justify-center gap-4 transition-all active:scale-[0.98] shadow-2xl shadow-indigo-600/20">
+                                <button className="w-full bg-indigo-700 hover:bg-indigo-600 text-white text-xs font-black uppercase tracking-[0.4em] py-6 rounded-3xl flex items-center justify-center gap-4 transition-all active:scale-[0.98] shadow-2xl shadow-indigo-600/20">
                                     <span>{t('sendBtn')}</span>
                                     <Send className="w-4 h-4" />
                                 </button>

@@ -32,7 +32,7 @@ export default function APIVisual() {
                     <m.div
                         animate={{ boxShadow: ["0px 0px 0px rgba(99,102,241,0)", "0px 0px 30px rgba(99,102,241,0.5)", "0px 0px 0px rgba(99,102,241,0)"] }}
                         transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                        className="p-5 bg-indigo-600 text-white rounded-2xl shadow-xl"
+                        className="p-5 bg-indigo-700 text-white rounded-2xl shadow-xl"
                     >
                         <Webhook className="w-8 h-8" />
                     </m.div>

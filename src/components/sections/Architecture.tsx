@@ -98,7 +98,7 @@ export default function Architecture() {
                                     <div className="flex items-center gap-6 relative z-10">
                                         <div className={cn(
                                             'p-3 md:p-4 rounded-2xl transition-all duration-500',
-                                            activeTab === feature.id ? 'bg-indigo-600 text-white scale-110 shadow-lg' : 'bg-white/5 text-white/40'
+                                            activeTab === feature.id ? 'bg-indigo-700 text-white scale-110 shadow-lg' : 'bg-white/5 text-white/40'
                                         )}>
                                             <feature.icon className="w-5 h-5 md:w-6 md:h-6" />
                                         </div>

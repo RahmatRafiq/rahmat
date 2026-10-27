@@ -10,7 +10,6 @@ import { cn } from '../../lib/utils';
 import { Link } from '../../i18n/routing';
 import { PROJECT_ICONS, type ProjectMeta } from '../../data/projects';
 
-/** Share button: copies the project's full-page URL to the clipboard. */
 /** Icon-only share button: copies the project's full-page URL to the clipboard. */
 function ShareIconButton({ slug, copiedLabel }: { slug: string; copiedLabel: string }) {
     const locale = useLocale();
@@ -61,7 +60,7 @@ function ActionLinks({ project, t, compact }: { project: ProjectMeta; t: ReturnT
                     href={project.links.demo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={cn(btnBase, btnSize(compact), 'bg-indigo-600 text-white hover:bg-indigo-700 shadow-2xl shadow-indigo-500/40 group/btn')}
+                    className={cn(btnBase, btnSize(compact), 'bg-indigo-700 text-white hover:bg-indigo-600 shadow-2xl shadow-indigo-500/40 group/btn')}
                 >
                     {t('livePreview')}
                     <ArrowUpRight size={iconSize} className="group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
@@ -101,7 +100,7 @@ function IconActionLinks({ project }: { project: ProjectMeta }) {
         <>
             {project.links.demo && (
                 <a href={project.links.demo} target="_blank" rel="noopener noreferrer" aria-label="Live preview"
-                    className={cn(iconBtn, 'bg-indigo-600/90 border-indigo-500/40 text-white hover:bg-indigo-600')}>
+                    className={cn(iconBtn, 'bg-indigo-700 border-indigo-500/40 text-white hover:bg-indigo-600')}>
                     <ArrowUpRight size={18} />
                 </a>
             )}
@@ -207,7 +206,7 @@ export default function ProjectDetail({ project, variant }: ProjectDetailProps) 
                         {/* Primary CTA: go to the full detail page (real route w/ URL) */}
                         <Link
                             href={`/projects/${project.slug}`}
-                            className={cn(btnBase, btnSize(true), 'bg-indigo-600 text-white hover:bg-indigo-700 shadow-2xl shadow-indigo-500/40 group/cta')}
+                            className={cn(btnBase, btnSize(true), 'bg-indigo-700 text-white hover:bg-indigo-600 shadow-2xl shadow-indigo-500/40 group/cta')}
                         >
                             {t('viewDetails')}
                             <ChevronRight size={16} className="group-hover/cta:translate-x-1 transition-transform" />

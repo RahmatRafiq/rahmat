@@ -11,7 +11,8 @@ import { Link } from '../../i18n/routing';
 import { PROJECT_ICONS, type ProjectMeta } from '../../data/projects';
 
 /** Share button: copies the project's full-page URL to the clipboard. */
-function ShareButton({ slug, label, copiedLabel }: { slug: string; label: string; copiedLabel: string }) {
+/** Icon-only share button: copies the project's full-page URL to the clipboard. */
+function ShareIconButton({ slug, copiedLabel }: { slug: string; copiedLabel: string }) {
     const locale = useLocale();
     const [copied, setCopied] = React.useState(false);
 
@@ -33,10 +34,11 @@ function ShareButton({ slug, label, copiedLabel }: { slug: string; label: string
     return (
         <button
             onClick={handleShare}
-            className={cn(btnBase, btnSize(true), 'bg-white/5 border border-white/10 text-white hover:bg-white/10')}
+            aria-label={copied ? copiedLabel : 'Share'}
+            title={copied ? copiedLabel : 'Share'}
+            className={cn(iconBtn, copied ? 'bg-emerald-500/15 border-emerald-500/30 text-emerald-400' : 'bg-white/5 border-white/10 text-white hover:bg-white/10')}
         >
-            {copied ? <Check size={16} className="text-emerald-400" /> : <Share2 size={16} />}
-            {copied ? copiedLabel : label}
+            {copied ? <Check size={18} /> : <Share2 size={18} />}
         </button>
     );
 }
@@ -85,6 +87,34 @@ function ActionLinks({ project, t, compact }: { project: ProjectMeta; t: ReturnT
                 >
                     <Package size={iconSize} />
                     NPM Package
+                </a>
+            )}
+        </>
+    );
+}
+
+/** Secondary actions as small round icon buttons (used in the compact panel). */
+const iconBtn = 'h-12 w-12 rounded-full flex items-center justify-center border transition-all active:scale-95';
+
+function IconActionLinks({ project }: { project: ProjectMeta }) {
+    return (
+        <>
+            {project.links.demo && (
+                <a href={project.links.demo} target="_blank" rel="noopener noreferrer" aria-label="Live preview"
+                    className={cn(iconBtn, 'bg-indigo-600/90 border-indigo-500/40 text-white hover:bg-indigo-600')}>
+                    <ArrowUpRight size={18} />
+                </a>
+            )}
+            {project.links.github && (
+                <a href={project.links.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub repository"
+                    className={cn(iconBtn, 'bg-white/5 border-white/10 text-white hover:bg-white/10')}>
+                    <Github size={18} />
+                </a>
+            )}
+            {project.links.npm && (
+                <a href={project.links.npm} target="_blank" rel="noopener noreferrer" aria-label="NPM package"
+                    className={cn(iconBtn, 'bg-[#CB3837]/20 border-[#CB3837]/30 text-[#CB3837] hover:bg-[#CB3837]/30')}>
+                    <Package size={18} />
                 </a>
             )}
         </>
@@ -182,8 +212,11 @@ export default function ProjectDetail({ project, variant }: ProjectDetailProps) 
                             {t('viewDetails')}
                             <ChevronRight size={16} className="group-hover/cta:translate-x-1 transition-transform" />
                         </Link>
-                        <ShareButton slug={project.slug} label={t('share')} copiedLabel={t('shareCopied')} />
-                        <ActionLinks project={project} t={t} compact />
+                        {/* Secondary actions as small icon buttons */}
+                        <div className="flex items-center gap-3">
+                            <ShareIconButton slug={project.slug} copiedLabel={t('shareCopied')} />
+                            <IconActionLinks project={project} />
+                        </div>
                     </div>
                 </div>
             </div>

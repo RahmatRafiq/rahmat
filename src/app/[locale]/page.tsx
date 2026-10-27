@@ -68,9 +68,11 @@ export default async function Home({
           <Stats />
         </ViewportLazy>
       </div>
-      <ViewportLazy fallback={<div className="w-full h-80 animate-pulse bg-muted/20 rounded-3xl" />}>
-        <Contact />
-      </ViewportLazy>
+      <div id="contact">
+        <ViewportLazy fallback={<div className="w-full h-80 animate-pulse bg-muted/20 rounded-3xl" />}>
+          <Contact />
+        </ViewportLazy>
+      </div>
     </div>
   );
 }

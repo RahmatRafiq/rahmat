@@ -7,7 +7,6 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { m, useScroll, useTransform } from 'framer-motion';
 import { InfiniteMovingCards } from '../ui/infinite-moving-cards';
-import { siteConfig } from '../../config/site';
 
 export default function Hero() {
     const t = useTranslations('Hero');
@@ -25,6 +24,7 @@ export default function Hero() {
 
     return (
         <section
+            id="about"
             ref={containerRef}
             className="relative min-h-screen flex flex-col items-center pt-32 md:pt-48 pb-20 overflow-hidden mesh-gradient w-full"
             aria-label="Introduction"
@@ -92,12 +92,12 @@ export default function Hero() {
                         </span>
                         <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-violet-600 opacity-0 group-hover:opacity-100 transition-opacity" />
                     </Link>
-                    <a
-                        href={`mailto:${siteConfig.email}`}
+                    <Link
+                        href="#contact"
                         className="w-full sm:w-auto px-10 py-4 glass-premium text-foreground rounded-full font-bold border border-white/10 hover:bg-white/5 transition-all hover:scale-105 active:scale-95"
                     >
                         {t('getInTouch')}
-                    </a>
+                    </Link>
                 </div>
             </m.div>
 

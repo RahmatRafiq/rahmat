@@ -17,8 +17,6 @@ export default function Hero() {
         offset: ["start start", "end start"]
     });
 
-    const y1 = useTransform(scrollYProgress, [0, 1], [0, 100]); // Reduced for mobile/desktop damping
-    const y2 = useTransform(scrollYProgress, [0, 1], [0, -75]); // Reduced for mobile/desktop damping
     const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
     const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.9]);
 
@@ -29,18 +27,15 @@ export default function Hero() {
             className="relative min-h-screen flex flex-col items-center pt-32 md:pt-48 pb-20 overflow-hidden mesh-gradient w-full"
             aria-label="Introduction"
         >
-            {/* Background Decorative Elements with Parallax.
-                initial={{ y: 0 }} + willChange keep the transform on the GPU and
-                defined from first paint, so hydration doesn't register as CLS. */}
-            <m.div
-                initial={{ y: 0 }}
-                style={{ y: y1, opacity, willChange: 'transform, opacity' }}
+            {/* Background Decorative Elements — static (no framer motion values).
+                These are purely decorative; keeping them as plain divs avoids the
+                SSR→hydration transform jump that framer caused, which Lighthouse
+                counted as CLS. */}
+            <div
                 className="absolute top-20 left-1/4 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-primary/20 rounded-full blur-[80px] md:blur-[120px] -z-10"
                 aria-hidden="true"
             />
-            <m.div
-                initial={{ y: 0 }}
-                style={{ y: y2, opacity, willChange: 'transform, opacity' }}
+            <div
                 className="absolute bottom-20 right-1/4 w-[350px] h-[350px] md:w-[600px] md:h-[600px] bg-violet-500/10 rounded-full blur-[100px] md:blur-[150px] -z-10"
                 aria-hidden="true"
             />

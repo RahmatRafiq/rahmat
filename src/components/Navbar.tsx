@@ -58,7 +58,9 @@ export default function Navbar() {
         const go = () => {
             const el = document.getElementById(id);
             if (!el) return;
-            const offset = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
+            // Desktop clears the fixed top navbar pill (~128px); mobile has no
+            // top navbar (menu floats at the bottom) so only a little padding.
+            const offset = window.innerWidth >= 768 ? 128 : 24;
             const top = el.getBoundingClientRect().top + window.scrollY - offset;
             window.scrollTo({ top, behavior: 'smooth' });
         };

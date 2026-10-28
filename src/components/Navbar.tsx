@@ -58,6 +58,11 @@ export default function Navbar() {
     const scrollToSection = useCallback((hash: string) => {
         const id = hash.replace(/^#/, '');
         const go = () => {
+            // Hero (#about) is the top of the page — scroll all the way up.
+            if (id === 'about') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                return;
+            }
             const section = document.getElementById(id);
             if (!section) return;
             const heading = section.querySelector('h1, h2') ?? section;

@@ -8,7 +8,7 @@
    so only a little breathing room is needed; desktop must clear the fixed
    top navbar pill (top-8 + its height). */
 html {
-  scroll-padding-top: 1.5rem;
+  scroll-padding-top: 1rem;
 }
 @media (min-width: 768px) {
   html {

@@ -23,7 +23,11 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     if (!project) return {};
 
     const t = await getTranslations({ locale, namespace: 'Projects' });
-    const title = t(project.titleKey);
+    const name = t(project.titleKey);
+    // Richer SEO title: project name + its key tech tags, so with the layout
+    // template ("… | Rahmat Rafiq") it fills the 50–60 char SERP title space.
+    // The bare name still drives OG/Twitter (cleaner for share cards).
+    const title = `${name} · ${project.tags.slice(0, 3).join(', ')}`;
     // Meta description uses the plain-text summary, not the Markdown body.
     const description = t(project.summaryKey);
     const url = `${siteConfig.url}/${locale}/projects/${slug}`;
@@ -36,7 +40,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
               url: `${siteConfig.url}${project.image.replace(/\.webp$/, '.jpg')}`,
               width: 1200,
               height: 630,
-              alt: title,
+              alt: name,
           }
         : undefined;
 
@@ -53,7 +57,8 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
         openGraph: {
             type: 'article',
             url,
-            title,
+            // Clean project name for share cards (the SERP title keeps the tags).
+            title: name,
             description,
             // Projects with a screenshot use the JPG; screenshot-less projects
             // fall back to the generated opengraph-image route (omit images).
@@ -61,7 +66,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
         },
         twitter: {
             card: 'summary_large_image',
-            title,
+            title: name,
             description,
             ...(ogImage ? { images: [ogImage.url] } : {}),
         },

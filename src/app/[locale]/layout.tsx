@@ -19,8 +19,9 @@ const appUrl = siteConfig.url;
 export const metadata: Metadata = {
   metadataBase: new URL(appUrl),
   title: {
-    default: `${siteConfig.name} | ${siteConfig.role}`,
-    template: `%s | ${siteConfig.name}`
+    // ~52 chars — fills the SERP title space (50–60) with full name + stack.
+    default: `${siteConfig.fullName} | ${siteConfig.role}, Golang`,
+    template: `%s | ${siteConfig.fullName}`
   },
   description: siteConfig.description,
   keywords: siteConfig.keywords,

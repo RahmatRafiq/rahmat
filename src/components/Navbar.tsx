@@ -61,7 +61,7 @@ export default function Navbar() {
             const section = document.getElementById(id);
             if (!section) return;
             const heading = section.querySelector('h1, h2') ?? section;
-            const offset = window.innerWidth >= 768 ? 88 : 20;
+            const offset = window.innerWidth >= 768 ? 112 : 20;
             const top = heading.getBoundingClientRect().top + window.scrollY - offset;
             window.scrollTo({ top, behavior: 'smooth' });
         };

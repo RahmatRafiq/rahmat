@@ -12,7 +12,7 @@ html {
 }
 @media (min-width: 768px) {
   html {
-    scroll-padding-top: 8rem;
+    scroll-padding-top: 6rem;
   }
 }
 

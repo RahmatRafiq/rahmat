@@ -8,6 +8,10 @@ import { cn } from '../lib/utils';
 import { useTranslations, useLocale } from 'next-intl';
 import { usePathname, useRouter } from '../i18n/routing';
 import { siteConfig } from '../config/site';
+import { LiquidGlass } from './ui/liquid-glass';
+
+const GLASS_SHADOW =
+    'shadow-[0_10px_40px_rgb(0_0_0/0.18),inset_0_1px_0_rgb(255_255_255/0.45)]';
 
 export default function Navbar() {
     const t = useTranslations('Navbar');
@@ -105,8 +109,14 @@ export default function Navbar() {
                 <m.div
                     initial={{ y: -20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
-                    className="glass-premium px-2 py-2 flex items-center gap-1 rounded-full overflow-hidden"
                 >
+                    <LiquidGlass
+                        tint={0.1}
+                        scale={28}
+                        bevelDepth={12}
+                        className={GLASS_SHADOW}
+                        contentClassName="px-2 py-2 flex items-center gap-1"
+                    >
                     <Link
                         href="/"
                         className="px-5 py-2 text-sm font-black tracking-tighter text-white hover:text-indigo-400 transition-colors select-none"
@@ -158,6 +168,7 @@ export default function Navbar() {
                             EN
                         </button>
                     </div>
+                    </LiquidGlass>
                 </m.div>
             </nav>
 
@@ -185,19 +196,33 @@ export default function Navbar() {
                         className="md:hidden fixed bottom-8 left-1/2 -translate-x-1/2 z-[50]"
                     >
                         {!isOpen ? (
-                            <button
+                            <LiquidGlass
+                                role="button"
+                                tabIndex={0}
                                 onClick={() => setIsOpen(true)}
-                                className="glass-premium px-6 py-3.5 rounded-full flex items-center justify-center gap-3 text-sm font-bold text-white shadow-2xl hover:scale-105 active:scale-95 transition-all"
+                                tint={0.12}
+                                scale={24}
+                                bevelDepth={10}
+                                className={`cursor-pointer ${GLASS_SHADOW} hover:scale-105 active:scale-95 transition-transform`}
+                                contentClassName="px-6 py-3.5 flex items-center justify-center gap-3 text-sm font-bold text-white"
                             >
                                 <Menu size={18} className="stroke-[3px]" />
                                 {t('menu')}
-                            </button>
+                            </LiquidGlass>
                         ) : (
                             <m.div
                                 initial={{ opacity: 0, scale: 0.9, y: 20 }}
                                 animate={{ opacity: 1, scale: 1, y: 0 }}
                                 exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                                className="glass-premium flex flex-col p-4 w-[280px] rounded-[2rem] gap-2 mb-2"
+                                className="w-[280px] mb-2"
+                            >
+                            <LiquidGlass
+                                radius={32}
+                                tint={0.12}
+                                scale={24}
+                                bevelDepth={12}
+                                className={GLASS_SHADOW}
+                                contentClassName="flex flex-col p-4 gap-2"
                             >
                                 <div className="flex items-center justify-between px-3 py-2">
                                     <span className="text-lg font-black tracking-tighter text-white">
@@ -247,6 +272,7 @@ export default function Navbar() {
                                         >EN</button>
                                     </div>
                                 </div>
+                            </LiquidGlass>
                             </m.div>
                         )}
                     </m.nav>

@@ -35,6 +35,11 @@
     },
     "Experience": {
         "title": "Pengalaman Profesional",
+        "job0_role": "SOC Analyst",
+        "job0_period": "Jun 2025 – Sekarang",
+        "job0_desc1": "Memantau dan menganalisis alert keamanan dari lingkungan klien menggunakan FortiSIEM untuk deteksi ancaman secara real-time.",
+        "job0_desc2": "Melakukan triase insiden dan incident response untuk memitigasi ancaman serta meminimalkan dampak terhadap klien.",
+        "job0_desc3": "Melakukan threat hunting dan analisis log/korelasi event untuk mengidentifikasi aktivitas mencurigakan.",
         "job1_role": "Full Stack Engineer",
         "job1_period": "Okt 2025 – Jan 2026",
         "job1_desc1": "Memelihara dan mengembangkan platform agregator logistik digital, menghadirkan rilis fitur dan perbaikan sistem untuk mendukung pertumbuhan.",

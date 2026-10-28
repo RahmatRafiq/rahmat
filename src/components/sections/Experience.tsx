@@ -11,6 +11,14 @@ export default function Experience() {
 
     const experiences = [
         {
+            company: 'Cybersecurity Company',
+            role: t('job0_role'),
+            location: 'Cimanggis, Depok, ID',
+            period: t('job0_period'),
+            color: 'from-rose-600/20 to-red-600/20',
+            description: [t('job0_desc1'), t('job0_desc2'), t('job0_desc3')],
+        },
+        {
             company: 'Logistics Tech Company',
             role: t('job1_role'),
             location: 'Yogyakarta, ID',

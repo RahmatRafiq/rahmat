@@ -35,6 +35,11 @@
     },
     "Experience": {
         "title": "Professional Experience",
+        "job0_role": "SOC Analyst",
+        "job0_period": "Jun 2025 – Present",
+        "job0_desc1": "Monitor and analyze security alerts across client environments using FortiSIEM for real-time threat detection.",
+        "job0_desc2": "Perform incident triage and response to mitigate threats and minimize impact on clients.",
+        "job0_desc3": "Conduct threat hunting and log/event correlation analysis to surface suspicious activity.",
         "job1_role": "Full Stack Engineer",
         "job1_period": "Oct 2025 – Jan 2026",
         "job1_desc1": "Maintained and evolved a digital logistics aggregator, delivering feature releases and system improvements to support growth.",

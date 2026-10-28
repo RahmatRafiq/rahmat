@@ -6,9 +6,16 @@ import { m, AnimatePresence, useScroll } from 'framer-motion';
 import { Menu, X, Github, Linkedin } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { useTranslations, useLocale } from 'next-intl';
+import dynamic from 'next/dynamic';
 import { usePathname, useRouter } from '../i18n/routing';
 import { siteConfig } from '../config/site';
-import { LiquidGlass } from './ui/liquid-glass';
+
+// Desktop-only liquid glass. Lazy-loaded so the ~54KB component + its runtime
+// never reach mobile, where the navbar uses plain CSS frosted glass instead.
+const LiquidGlass = dynamic(
+    () => import('./ui/liquid-glass').then((m) => m.LiquidGlass),
+    { ssr: false }
+);
 
 const GLASS_SHADOW =
     'shadow-[0_10px_40px_rgb(0_0_0/0.18),inset_0_1px_0_rgb(255_255_255/0.45)]';
@@ -20,6 +27,16 @@ export default function Navbar() {
     const pathname = usePathname();
     const [isOpen, setIsOpen] = useState(false);
     const [mobileVisible, setMobileVisible] = useState(true);
+    // Only mount the desktop navbar (and its lazy LiquidGlass chunk) at md+.
+    const [isDesktop, setIsDesktop] = useState(false);
+
+    useEffect(() => {
+        const mq = window.matchMedia('(min-width: 768px)');
+        const update = () => setIsDesktop(mq.matches);
+        update();
+        mq.addEventListener('change', update);
+        return () => mq.removeEventListener('change', update);
+    }, []);
     const hideTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
     // Order mirrors the section order on the page:
@@ -104,7 +121,8 @@ export default function Navbar() {
                 style={{ scaleX: scrollYProgress }}
             />
 
-            {/* Desktop Navbar */}
+            {/* Desktop Navbar — mounted only at md+ so mobile never loads LiquidGlass */}
+            {isDesktop && (
             <nav className="hidden md:flex fixed top-8 left-1/2 -translate-x-1/2 z-50">
                 <m.div
                     initial={{ y: -20, opacity: 0 }}
@@ -171,6 +189,7 @@ export default function Navbar() {
                     </LiquidGlass>
                 </m.div>
             </nav>
+            )}
 
             {/* Mobile Navbar Overlay */}
             <AnimatePresence>
@@ -196,33 +215,19 @@ export default function Navbar() {
                         className="md:hidden fixed bottom-8 left-1/2 -translate-x-1/2 z-[50]"
                     >
                         {!isOpen ? (
-                            <LiquidGlass
-                                role="button"
-                                tabIndex={0}
+                            <button
                                 onClick={() => setIsOpen(true)}
-                                tint={0.12}
-                                scale={24}
-                                bevelDepth={10}
-                                className={`cursor-pointer ${GLASS_SHADOW} hover:scale-105 active:scale-95 transition-transform`}
-                                contentClassName="px-6 py-3.5 flex items-center justify-center gap-3 text-sm font-bold text-white"
+                                className={`glass-premium px-6 py-3.5 rounded-full flex items-center justify-center gap-3 text-sm font-bold text-white shadow-2xl hover:scale-105 active:scale-95 transition-all ${GLASS_SHADOW}`}
                             >
                                 <Menu size={18} className="stroke-[3px]" />
                                 {t('menu')}
-                            </LiquidGlass>
+                            </button>
                         ) : (
                             <m.div
                                 initial={{ opacity: 0, scale: 0.9, y: 20 }}
                                 animate={{ opacity: 1, scale: 1, y: 0 }}
                                 exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                                className="w-[280px] mb-2"
-                            >
-                            <LiquidGlass
-                                radius={32}
-                                tint={0.12}
-                                scale={24}
-                                bevelDepth={12}
-                                className={GLASS_SHADOW}
-                                contentClassName="flex flex-col p-4 gap-2"
+                                className={`glass-premium flex flex-col p-4 w-[280px] rounded-[2rem] gap-2 mb-2 ${GLASS_SHADOW}`}
                             >
                                 <div className="flex items-center justify-between px-3 py-2">
                                     <span className="text-lg font-black tracking-tighter text-white">
@@ -272,7 +277,6 @@ export default function Navbar() {
                                         >EN</button>
                                     </div>
                                 </div>
-                            </LiquidGlass>
                             </m.div>
                         )}
                     </m.nav>

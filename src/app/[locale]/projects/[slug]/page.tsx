@@ -28,6 +28,18 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     const description = t(project.summaryKey);
     const url = `${siteConfig.url}/${locale}/projects/${slug}`;
 
+    // OG/Twitter previews need a JPG/PNG (WhatsApp & others don't render WebP).
+    // The page uses the .webp for speed; share previews use a .jpg sibling with
+    // an absolute URL and explicit dimensions so crawlers always render it.
+    const ogImage = project.image
+        ? {
+              url: `${siteConfig.url}${project.image.replace(/\.webp$/, '.jpg')}`,
+              width: 1200,
+              height: 630,
+              alt: title,
+          }
+        : undefined;
+
     return {
         title,
         description,
@@ -43,15 +55,15 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
             url,
             title,
             description,
-            // Projects with a screenshot use it; screenshot-less projects fall
-            // back to the generated opengraph-image route automatically (omit images).
-            ...(project.image ? { images: [{ url: project.image, alt: title }] } : {}),
+            // Projects with a screenshot use the JPG; screenshot-less projects
+            // fall back to the generated opengraph-image route (omit images).
+            ...(ogImage ? { images: [ogImage] } : {}),
         },
         twitter: {
             card: 'summary_large_image',
             title,
             description,
-            ...(project.image ? { images: [project.image] } : {}),
+            ...(ogImage ? { images: [ogImage.url] } : {}),
         },
     };
 }

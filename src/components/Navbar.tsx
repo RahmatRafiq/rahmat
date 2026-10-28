@@ -49,20 +49,20 @@ export default function Navbar() {
         };
     }, [resetHideTimer]);
 
-    // Scroll to an in-page section, honouring the top offset.
-    // scrollIntoView() ignores CSS scroll-padding-top, so we read that value
-    // and scroll manually to the element's top minus the offset. Sections below
-    // the fold are lazy-mounted, so we re-scroll once after they expand.
+    // Scroll so the section's HEADING lands near the top of the viewport.
+    // We target the section's first <h1>/<h2> (not the wrapper div) so the
+    // section's own top padding (py-32 etc.) doesn't leave a big empty gap
+    // above the heading. A small offset leaves breathing room — desktop clears
+    // the translucent floating top navbar, mobile has no top navbar.
+    // Sections below the fold are lazy-mounted, so we re-scroll after they expand.
     const scrollToSection = useCallback((hash: string) => {
         const id = hash.replace(/^#/, '');
         const go = () => {
-            const el = document.getElementById(id);
-            if (!el) return;
-            // Scroll the section to the very top of the viewport (the big
-            // headings are designed to sit near / behind the translucent top
-            // navbar). No offset on either breakpoint.
-            const offset = 0;
-            const top = el.getBoundingClientRect().top + window.scrollY - offset;
+            const section = document.getElementById(id);
+            if (!section) return;
+            const heading = section.querySelector('h1, h2') ?? section;
+            const offset = window.innerWidth >= 768 ? 88 : 20;
+            const top = heading.getBoundingClientRect().top + window.scrollY - offset;
             window.scrollTo({ top, behavior: 'smooth' });
         };
         go();

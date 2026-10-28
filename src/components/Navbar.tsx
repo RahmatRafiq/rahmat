@@ -18,13 +18,15 @@ export default function Navbar() {
     const [mobileVisible, setMobileVisible] = useState(true);
     const hideTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+    // Order mirrors the section order on the page:
+    // Hero(about) → Experience → Projects → Skills → Architecture → Stats → Contact
     const navLinks = [
         { name: t('about'), href: '#about' },
+        { name: t('experience'), href: '#experience' },
+        { name: t('projects'), href: '#projects' },
         { name: t('skills'), href: '#skills' },
         { name: t('architecture'), href: '#architecture' },
-        { name: t('experience'), href: '#experience' },
         { name: t('metrics'), href: '#stats' },
-        { name: t('projects'), href: '#projects' },
         { name: t('contact'), href: '#contact' },
     ];
 
@@ -47,18 +49,22 @@ export default function Navbar() {
         };
     }, [resetHideTimer]);
 
-    // Scroll to an in-page section. Sections below the fold are lazy-mounted,
-    // so after the first scroll their real height appears and shifts layout;
-    // we re-scroll once more after a short delay to land on the settled target.
+    // Scroll to an in-page section, honouring the top offset.
+    // scrollIntoView() ignores CSS scroll-padding-top, so we read that value
+    // and scroll manually to the element's top minus the offset. Sections below
+    // the fold are lazy-mounted, so we re-scroll once after they expand.
     const scrollToSection = useCallback((hash: string) => {
         const id = hash.replace(/^#/, '');
-        const el = document.getElementById(id);
-        if (!el) return;
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const go = () => {
+            const el = document.getElementById(id);
+            if (!el) return;
+            const offset = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
+            const top = el.getBoundingClientRect().top + window.scrollY - offset;
+            window.scrollTo({ top, behavior: 'smooth' });
+        };
+        go();
         // Re-align after lazy content below has expanded the layout.
-        window.setTimeout(() => {
-            document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 450);
+        window.setTimeout(go, 450);
     }, []);
 
     const handleNavClick = useCallback(

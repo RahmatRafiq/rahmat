@@ -35,6 +35,9 @@
     },
     "Experience": {
         "title": "Professional Experience",
+        "subtitle": "Over {duration} building backend, full-stack, and cybersecurity systems, from 2023 to present.",
+        "year": "years",
+        "month": "months",
         "job0_role": "SOC Analyst",
         "job0_period": "Jun 2025 – Present",
         "job0_desc1": "Monitor and analyze security alerts across client environments using FortiSIEM for real-time threat detection.",

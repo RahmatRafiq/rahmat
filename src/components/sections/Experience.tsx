@@ -6,8 +6,29 @@ import { useTranslations } from 'next-intl';
 import { cn } from '../../lib/utils';
 import { Timeline } from '../ui/timeline';
 
+// Career start — the earliest role (bangbeli, Feb 2023). Used to auto-compute
+// the total years/months of experience so the subheading never goes stale.
+const CAREER_START = new Date(2023, 1, 1); // month is 0-indexed: 1 = February
+
+function formatDuration(from: Date, to: Date): { years: number; months: number } {
+    let months = (to.getFullYear() - from.getFullYear()) * 12 + (to.getMonth() - from.getMonth());
+    if (to.getDate() < from.getDate()) months -= 1;
+    if (months < 0) months = 0;
+    return { years: Math.floor(months / 12), months: months % 12 };
+}
+
 export default function Experience() {
     const t = useTranslations('Experience');
+
+    const { years, months } = formatDuration(CAREER_START, new Date());
+    // Localized "X tahun Y bulan" / "X years Y months", dropping a zero part.
+    // Built as a plain string (no nested ICU) so it interpolates reliably.
+    const yearWord = t('year');
+    const monthWord = t('month');
+    const durationText = [
+        years > 0 ? `${years} ${yearWord}` : '',
+        months > 0 ? `${months} ${monthWord}` : '',
+    ].filter(Boolean).join(' ');
 
     const experiences = [
         {
@@ -92,7 +113,10 @@ export default function Experience() {
         <section id="experience" className="w-full py-20 md:py-32 relative overflow-hidden">
             <div className="px-6 md:px-16 lg:px-24 max-w-[1800px] mx-auto">
                 <div className="mb-16 md:mb-24 flex flex-col items-center md:items-start w-full max-w-[1600px] mx-auto">
-                    <h2 className="text-4xl sm:text-5xl md:text-8xl font-black mb-8 tracking-tighter text-center md:text-left w-full leading-[0.8]">{t('title')}</h2>
+                    <h2 className="text-4xl sm:text-5xl md:text-8xl font-black mb-6 md:mb-8 tracking-tighter text-center md:text-left w-full leading-[0.8]">{t('title')}</h2>
+                    <p className="text-lg md:text-xl text-white/50 max-w-3xl font-medium leading-relaxed text-center md:text-left">
+                        {t('subtitle', { duration: durationText })}
+                    </p>
                 </div>
 
                 <div className="w-full">

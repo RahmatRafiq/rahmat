@@ -180,7 +180,7 @@ export default function Navbar() {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         onClick={() => setIsOpen(false)}
-                        className="md:hidden fixed inset-0 z-[40] bg-[#060311]/80 backdrop-blur-md"
+                        className="md:hidden fixed inset-0 z-[40] bg-[#060311]/40 backdrop-blur-sm"
                     />
                 )}
             </AnimatePresence>

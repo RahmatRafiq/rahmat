@@ -14,7 +14,7 @@ export default function Skills() {
             title: t('cat1_title'),
             icon: Code2,
             skills: ['Golang', 'Laravel', 'TypeScript', 'React.js', 'Next.js', 'Tailwind', 'Fiber'],
-            color: 'from-blue-600/20 to-indigo-600/20',
+            color: 'from-blue-600/20 to-primary/20',
             span: 'lg:col-span-8 lg:row-span-1',
         },
         {
@@ -28,7 +28,7 @@ export default function Skills() {
             title: t('cat3_title'),
             icon: Webhook,
             skills: ['REST API', 'Swagger', 'JWT', 'Spatie', 'Webhooks'],
-            color: 'from-violet-600/20 to-purple-600/20',
+            color: 'from-primary/5 to-transparent',
             span: 'lg:col-span-4 lg:row-span-1',
         },
         {
@@ -64,11 +64,11 @@ export default function Skills() {
 
                             <div className="relative z-10">
                                 <div className="flex justify-between items-start mb-6">
-                                    <div className="p-4 rounded-3xl bg-white/5 border border-white/10 group-hover:bg-primary/20 transition-all duration-500">
-                                        <category.icon className="w-8 h-8 text-white" />
+                                    <div className="p-4 rounded-3xl bg-secondary border border-border group-hover:bg-primary/20 transition-all duration-500">
+                                        <category.icon className="w-8 h-8 text-foreground" />
                                     </div>
                                 </div>
-                                <h3 className="text-2xl md:text-3xl font-black mb-4 tracking-tight group-hover:text-indigo-400 transition-colors">
+                                <h3 className="text-2xl md:text-3xl font-black mb-4 tracking-tight group-hover:text-primary transition-colors">
                                     {category.title}
                                 </h3>
                             </div>
@@ -77,7 +77,7 @@ export default function Skills() {
                                 {category.skills.map((skill, sIdx) => (
                                     <span
                                         key={sIdx}
-                                        className="px-4 py-1.5 rounded-xl bg-white/5 border border-white/5 text-[10px] font-black uppercase tracking-widest text-white/40 group-hover:text-white/60 transition-colors"
+                                        className="px-4 py-1.5 rounded-xl bg-secondary border border-border text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 group-hover:text-muted-foreground transition-colors"
                                     >
                                         {skill}
                                     </span>

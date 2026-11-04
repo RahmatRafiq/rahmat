@@ -16,7 +16,7 @@ export default function Contact() {
             value: siteConfig.email,
             href: `mailto:${siteConfig.email}`,
             icon: Mail,
-            color: 'from-blue-600/20 to-indigo-600/20',
+            color: 'from-blue-600/20 to-primary/20',
         },
         {
             label: t('connectLabel'),
@@ -33,9 +33,9 @@ export default function Contact() {
                 <div className="mb-16 md:mb-24 max-w-[1600px] mx-auto">
                     <h2 className="text-4xl sm:text-5xl md:text-8xl font-black mb-8 tracking-tighter leading-[0.8]">
                         {t('title1')} <br />
-                        <span className="text-indigo-500 italic">{t('title2')}</span> {t('title3')}
+                        <span className="text-primary italic">{t('title2')}</span> {t('title3')}
                     </h2>
-                    <p className="text-lg md:text-xl text-white/50 max-w-3xl font-medium leading-relaxed">
+                    <p className="text-lg md:text-xl text-muted-foreground max-w-3xl font-medium leading-relaxed">
                         {t('description')}
                     </p>
                 </div>
@@ -53,20 +53,20 @@ export default function Contact() {
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: i * 0.1 }}
-                                className="group glass-premium p-8 rounded-[2rem] border border-white/5 hover:border-indigo-500/50 transition-all duration-500 relative overflow-hidden flex flex-col justify-between h-[200px]"
+                                className="group glass-premium p-8 rounded-[2rem] border border-border hover:border-primary/50 transition-all duration-500 relative overflow-hidden flex flex-col justify-between h-[200px]"
                             >
                                 <div className={cn('absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-30 transition-opacity duration-500', link.color)} />
 
                                 <div className="relative z-10 flex justify-between items-start">
-                                    <div className="p-4 rounded-2xl bg-white/5 border border-white/10 group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-500">
-                                        <link.icon className="w-6 h-6 text-white" />
+                                    <div className="p-4 rounded-2xl bg-secondary border border-border group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-500">
+                                        <link.icon className="w-6 h-6 text-foreground" />
                                     </div>
-                                    <ArrowUpRight className="w-6 h-6 text-white/20 group-hover:text-white/60 transition-colors" />
+                                    <ArrowUpRight className="w-6 h-6 text-muted-foreground/60 group-hover:text-muted-foreground transition-colors" />
                                 </div>
 
                                 <div className="relative z-10">
-                                    <div className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40 mb-1">{link.label}</div>
-                                    <div className="text-xl font-black tracking-tight group-hover:text-indigo-400 transition-colors truncate">
+                                    <div className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground/60 mb-1">{link.label}</div>
+                                    <div className="text-xl font-black tracking-tight group-hover:text-primary transition-colors truncate">
                                         {link.value}
                                     </div>
                                 </div>
@@ -82,7 +82,7 @@ export default function Contact() {
                         className="lg:col-span-7 glass-premium p-12 rounded-[3rem] relative overflow-hidden flex flex-col justify-center"
                     >
                         <div className="absolute top-0 right-0 p-12 opacity-5">
-                            <MessageSquare className="w-48 h-48 text-white" />
+                            <MessageSquare className="w-48 h-48 text-foreground" />
                         </div>
 
                         <div className="relative z-10">
@@ -93,15 +93,15 @@ export default function Contact() {
 
                             <div className="space-y-8">
                                 <div className="space-y-3">
-                                    <label className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40 ml-1">{t('messageLabel')}</label>
+                                    <label className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground/60 ml-1">{t('messageLabel')}</label>
                                     <textarea
                                         placeholder={t('messagePlaceholder')}
                                         rows={4}
-                                        className="w-full bg-white/5 border border-white/5 rounded-3xl p-6 text-lg font-medium text-white focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500/50 transition-all resize-none shadow-inner"
+                                        className="w-full bg-secondary border border-border rounded-3xl p-6 text-lg font-medium text-foreground focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary/50 transition-all resize-none shadow-inner"
                                     />
                                 </div>
 
-                                <button className="w-full bg-indigo-700 hover:bg-indigo-600 text-white text-xs font-black uppercase tracking-[0.4em] py-6 rounded-3xl flex items-center justify-center gap-4 transition-all active:scale-[0.98] shadow-2xl shadow-indigo-600/20">
+                                <button className="w-full bg-primary hover:bg-accent text-foreground text-xs font-black uppercase tracking-[0.4em] py-6 rounded-3xl flex items-center justify-center gap-4 transition-all active:scale-[0.98] shadow-2xl shadow-black/20">
                                     <span>{t('sendBtn')}</span>
                                     <Send className="w-4 h-4" />
                                 </button>

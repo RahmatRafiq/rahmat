@@ -35,7 +35,7 @@ function ShareIconButton({ slug, copiedLabel }: { slug: string; copiedLabel: str
             onClick={handleShare}
             aria-label={copied ? copiedLabel : 'Share'}
             title={copied ? copiedLabel : 'Share'}
-            className={cn(iconBtn, copied ? 'bg-emerald-500/15 border-emerald-500/30 text-emerald-400' : 'bg-white/5 border-white/10 text-white hover:bg-white/10')}
+            className={cn(iconBtn, copied ? 'bg-emerald-500/15 border-emerald-500/30 text-emerald-400' : 'bg-secondary border-border text-foreground hover:bg-muted')}
         >
             {copied ? <Check size={18} /> : <Share2 size={18} />}
         </button>
@@ -60,7 +60,7 @@ function ActionLinks({ project, t, compact }: { project: ProjectMeta; t: ReturnT
                     href={project.links.demo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={cn(btnBase, btnSize(compact), 'bg-indigo-700 text-white hover:bg-indigo-600 shadow-2xl shadow-indigo-500/40 group/btn')}
+                    className={cn(btnBase, btnSize(compact), 'bg-primary text-foreground hover:bg-accent shadow-2xl shadow-black/20 group/btn')}
                 >
                     {t('livePreview')}
                     <ArrowUpRight size={iconSize} className="group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
@@ -71,7 +71,7 @@ function ActionLinks({ project, t, compact }: { project: ProjectMeta; t: ReturnT
                     href={project.links.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={cn(btnBase, btnSize(compact), 'bg-white/5 border border-white/10 text-white hover:bg-white/10')}
+                    className={cn(btnBase, btnSize(compact), 'bg-secondary border border-border text-foreground hover:bg-muted')}
                 >
                     <Github size={iconSize} />
                     GitHub Repository
@@ -100,13 +100,13 @@ function IconActionLinks({ project }: { project: ProjectMeta }) {
         <>
             {project.links.demo && (
                 <a href={project.links.demo} target="_blank" rel="noopener noreferrer" aria-label="Live preview"
-                    className={cn(iconBtn, 'bg-indigo-700 border-indigo-500/40 text-white hover:bg-indigo-600')}>
+                    className={cn(iconBtn, 'bg-primary border-primary/40 text-foreground hover:bg-accent')}>
                     <ArrowUpRight size={18} />
                 </a>
             )}
             {project.links.github && (
                 <a href={project.links.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub repository"
-                    className={cn(iconBtn, 'bg-white/5 border-white/10 text-white hover:bg-white/10')}>
+                    className={cn(iconBtn, 'bg-secondary border-border text-foreground hover:bg-muted')}>
                     <Github size={18} />
                 </a>
             )}
@@ -124,27 +124,27 @@ function IconActionLinks({ project }: { project: ProjectMeta }) {
 function MarkdownDescription({ markdown, size }: { markdown: string; size: 'panel' | 'page' }) {
     const base = size === 'page' ? 'text-lg md:text-xl' : 'text-sm';
     return (
-        <div className={cn('flex flex-col gap-5 text-white/70 font-medium leading-[1.7]', base)}>
+        <div className={cn('flex flex-col gap-5 text-muted-foreground font-medium leading-[1.7]', base)}>
             <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
                 components={{
-                    p: ({ children }) => <p className="text-white/70">{children}</p>,
-                    strong: ({ children }) => <strong className="text-white font-bold">{children}</strong>,
+                    p: ({ children }) => <p className="text-muted-foreground">{children}</p>,
+                    strong: ({ children }) => <strong className="text-foreground font-bold">{children}</strong>,
                     ul: ({ children }) => <ul className="flex flex-col gap-3 list-none">{children}</ul>,
                     ol: ({ children }) => <ol className="flex flex-col gap-3 list-decimal pl-5">{children}</ol>,
                     li: ({ children }) => (
                         <li className="flex gap-3 items-start">
-                            <span className="mt-[0.6em] h-1.5 w-1.5 rounded-full bg-indigo-400 shrink-0" />
+                            <span className="mt-[0.6em] h-1.5 w-1.5 rounded-full bg-primary shrink-0" />
                             <span className="flex-1">{children}</span>
                         </li>
                     ),
                     a: ({ children, href }) => (
-                        <a href={href} target="_blank" rel="noopener noreferrer" className="text-indigo-400 underline underline-offset-4 hover:text-indigo-300">
+                        <a href={href} target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-4 hover:text-primary">
                             {children}
                         </a>
                     ),
-                    h2: ({ children }) => <h2 className="text-white font-black text-2xl mt-4">{children}</h2>,
-                    h3: ({ children }) => <h3 className="text-white font-black text-xl mt-2">{children}</h3>,
+                    h2: ({ children }) => <h2 className="text-foreground font-black text-2xl mt-4">{children}</h2>,
+                    h3: ({ children }) => <h3 className="text-foreground font-black text-xl mt-2">{children}</h3>,
                 }}
             >
                 {markdown}
@@ -167,24 +167,24 @@ export default function ProjectDetail({ project, variant }: ProjectDetailProps) 
         return (
             <div className="flex flex-col">
                 {/* Hero image */}
-                <div className="relative w-full aspect-video overflow-hidden bg-gradient-to-b from-indigo-500/10 to-transparent shrink-0">
+                <div className="relative w-full aspect-video overflow-hidden bg-gradient-to-b from-primary/10 to-transparent shrink-0">
                     <div className={cn('absolute inset-0 bg-gradient-to-br opacity-40', project.color)} />
                     {project.image ? (
                         <img src={project.image} alt={title} className="w-full h-full object-cover object-center" />
                     ) : (
                         <div className="w-full h-full flex items-center justify-center">
-                            {Icon && <Icon size={80} className="text-white/10" />}
+                            {Icon && <Icon size={80} className="text-muted-foreground/60" />}
                         </div>
                     )}
-                    <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#060311] to-transparent" />
+                    <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background to-transparent" />
                 </div>
 
                 <div className="px-8 py-10 flex flex-col gap-8">
                     <div className="flex items-center gap-4">
-                        <span className="text-[9px] font-black tracking-[0.2em] uppercase px-4 py-1.5 rounded-full bg-indigo-500/20 text-indigo-400 border border-indigo-500/20">
+                        <span className="text-[9px] font-black tracking-[0.2em] uppercase px-4 py-1.5 rounded-full bg-primary/20 text-primary border border-primary/20">
                             {category}
                         </span>
-                        <span className="text-[9px] font-black tracking-[0.2em] uppercase text-white/30 border-l border-white/10 pl-4">
+                        <span className="text-[9px] font-black tracking-[0.2em] uppercase text-muted-foreground/60 border-l border-border pl-4">
                             {project.year}
                         </span>
                     </div>
@@ -193,20 +193,20 @@ export default function ProjectDetail({ project, variant }: ProjectDetailProps) 
 
                     <div className="flex flex-wrap gap-2">
                         {project.tags.map((tag) => (
-                            <span key={tag} className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-[9px] font-black uppercase tracking-widest text-white/60">
+                            <span key={tag} className="px-4 py-2 rounded-full bg-secondary border border-border text-[9px] font-black uppercase tracking-widest text-muted-foreground">
                                 {tag}
                             </span>
                         ))}
                     </div>
 
                     {/* Short summary (plain text) */}
-                    <p className="text-base text-white/70 leading-[1.7] font-medium">{summary}</p>
+                    <p className="text-base text-muted-foreground leading-[1.7] font-medium">{summary}</p>
 
                     <div className="flex flex-col gap-3 pt-2">
                         {/* Primary CTA: go to the full detail page (real route w/ URL) */}
                         <Link
                             href={`/projects/${project.slug}`}
-                            className={cn(btnBase, btnSize(true), 'bg-indigo-700 text-white hover:bg-indigo-600 shadow-2xl shadow-indigo-500/40 group/cta')}
+                            className={cn(btnBase, btnSize(true), 'bg-primary text-foreground hover:bg-accent shadow-2xl shadow-black/20 group/cta')}
                         >
                             {t('viewDetails')}
                             <ChevronRight size={16} className="group-hover/cta:translate-x-1 transition-transform" />
@@ -225,7 +225,7 @@ export default function ProjectDetail({ project, variant }: ProjectDetailProps) 
     // variant === 'page' — wide 2-column layout, full Markdown description
     return (
         <div className="flex flex-col">
-            <div className="relative w-full aspect-video md:aspect-[21/9] overflow-hidden bg-gradient-to-b from-indigo-500/10 to-transparent">
+            <div className="relative w-full aspect-video md:aspect-[21/9] overflow-hidden bg-gradient-to-b from-primary/10 to-transparent">
                 <div className={cn('absolute inset-0 bg-gradient-to-br opacity-40', project.color)} />
                 {project.image ? (
                     <m.img
@@ -238,18 +238,18 @@ export default function ProjectDetail({ project, variant }: ProjectDetailProps) 
                     />
                 ) : (
                     <div className="w-full h-full flex items-center justify-center">
-                        {Icon && <Icon size={120} className="text-white/10" />}
+                        {Icon && <Icon size={120} className="text-muted-foreground/60" />}
                     </div>
                 )}
-                <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#060311] to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-background to-transparent" />
             </div>
 
             <div className="px-8 md:px-24 py-20">
                 <div className="flex items-center gap-6 mb-10">
-                    <span className="text-[10px] font-black tracking-[0.2em] uppercase px-6 py-2 rounded-full bg-indigo-500/20 text-indigo-400 border border-indigo-500/20">
+                    <span className="text-[10px] font-black tracking-[0.2em] uppercase px-6 py-2 rounded-full bg-primary/20 text-primary border border-primary/20">
                         {category}
                     </span>
-                    <span className="text-[10px] font-black tracking-[0.2em] uppercase text-white/30 border-l border-white/10 pl-6">
+                    <span className="text-[10px] font-black tracking-[0.2em] uppercase text-muted-foreground/60 border-l border-border pl-6">
                         {project.year}
                     </span>
                 </div>
@@ -258,7 +258,7 @@ export default function ProjectDetail({ project, variant }: ProjectDetailProps) 
 
                 <div className="flex flex-wrap gap-4 mb-16">
                     {project.tags.map((tag) => (
-                        <span key={tag} className="px-6 py-3 rounded-full bg-white/5 border border-white/10 text-[10px] font-black uppercase tracking-widest text-white/60">
+                        <span key={tag} className="px-6 py-3 rounded-full bg-secondary border border-border text-[10px] font-black uppercase tracking-widest text-muted-foreground">
                             {tag}
                         </span>
                     ))}
@@ -270,18 +270,18 @@ export default function ProjectDetail({ project, variant }: ProjectDetailProps) 
 
                         {project.features && project.features.length > 0 && (
                             <div className="mt-14">
-                                <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-white/30 mb-8">{t('keyFeatures')}</h3>
+                                <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground/60 mb-8">{t('keyFeatures')}</h3>
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                                     {project.features.map((feat) => {
                                         const FeatIcon = PROJECT_ICONS[feat.iconName];
                                         return (
-                                            <div key={feat.titleKey} className="flex gap-4 p-5 rounded-2xl bg-white/5 border border-white/10">
-                                                <div className="p-3 rounded-xl bg-indigo-500/15 border border-indigo-500/20 h-fit">
-                                                    {FeatIcon && <FeatIcon className="w-5 h-5 text-indigo-300" />}
+                                            <div key={feat.titleKey} className="flex gap-4 p-5 rounded-2xl bg-secondary border border-border">
+                                                <div className="p-3 rounded-xl bg-primary/15 border border-primary/20 h-fit">
+                                                    {FeatIcon && <FeatIcon className="w-5 h-5 text-primary" />}
                                                 </div>
                                                 <div className="flex flex-col gap-1">
-                                                    <span className="text-white font-black text-sm">{t(feat.titleKey)}</span>
-                                                    <span className="text-white/60 text-sm leading-relaxed">{t(feat.textKey)}</span>
+                                                    <span className="text-foreground font-black text-sm">{t(feat.titleKey)}</span>
+                                                    <span className="text-muted-foreground text-sm leading-relaxed">{t(feat.textKey)}</span>
                                                 </div>
                                             </div>
                                         );
@@ -293,7 +293,7 @@ export default function ProjectDetail({ project, variant }: ProjectDetailProps) 
                         {project.detailImages && project.detailImages.length > 0 && (
                             <div className="flex flex-col gap-8 mt-12 w-full">
                                 {project.detailImages.map((img, i) => (
-                                    <div key={i} className="rounded-2xl overflow-hidden border border-white/10 group bg-white/5 relative w-full aspect-video shadow-2xl">
+                                    <div key={i} className="rounded-2xl overflow-hidden border border-border group bg-secondary relative w-full aspect-video shadow-2xl">
                                         <img src={img} alt={`${title} detailed screenshot ${i + 1}`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                                     </div>
                                 ))}
@@ -302,7 +302,7 @@ export default function ProjectDetail({ project, variant }: ProjectDetailProps) 
                     </div>
 
                     <div className="lg:col-span-4 flex flex-col gap-6">
-                        <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-white/20 mb-4">Project Actions</h4>
+                        <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground/60 mb-4">Project Actions</h4>
                         <ActionLinks project={project} t={t} />
                     </div>
                 </div>

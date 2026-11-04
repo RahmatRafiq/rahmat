@@ -14,7 +14,7 @@ export default function APIVisual() {
 
                 {/* User Node */}
                 <div className="p-4 bg-background border border-border rounded-full shadow-lg relative z-10">
-                    <User className="w-6 h-6 text-indigo-400" />
+                    <User className="w-6 h-6 text-primary" />
                 </div>
 
                 {/* Connecting Path 1 */}
@@ -23,16 +23,16 @@ export default function APIVisual() {
                         initial={{ left: 0, opacity: 0 }}
                         animate={{ left: "100%", opacity: [0, 1, 0] }}
                         transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-                        className="absolute top-1/2 -translate-y-1/2 w-3 h-1 bg-indigo-500 rounded-full shadow-[0_0_8px_rgba(99,102,241,0.8)]"
+                        className="absolute top-1/2 -translate-y-1/2 w-3 h-1 bg-primary rounded-full shadow-[0_0_8px_rgba(90,159,212,0.8)]"
                     />
                 </div>
 
                 {/* Core Webhook Node */}
                 <div className="relative z-10">
                     <m.div
-                        animate={{ boxShadow: ["0px 0px 0px rgba(99,102,241,0)", "0px 0px 30px rgba(99,102,241,0.5)", "0px 0px 0px rgba(99,102,241,0)"] }}
+                        animate={{ boxShadow: ["0px 0px 0px rgba(90,159,212,0)", "0px 0px 30px rgba(90,159,212,0.5)", "0px 0px 0px rgba(90,159,212,0)"] }}
                         transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                        className="p-5 bg-indigo-700 text-white rounded-2xl shadow-xl"
+                        className="p-5 bg-primary text-foreground rounded-2xl shadow-xl"
                     >
                         <Webhook className="w-8 h-8" />
                     </m.div>
@@ -44,7 +44,7 @@ export default function APIVisual() {
                         initial={{ left: 0, opacity: 0 }}
                         animate={{ left: "100%", opacity: [0, 1, 0] }}
                         transition={{ duration: 1.5, repeat: Infinity, ease: "linear", delay: 0.75 }}
-                        className="absolute top-1/2 -translate-y-1/2 w-3 h-1 bg-violet-500 rounded-full shadow-[0_0_8px_rgba(139,92,246,0.8)]"
+                        className="absolute top-1/2 -translate-y-1/2 w-3 h-1 bg-primary rounded-full shadow-[0_0_8px_rgba(123,182,232,0.8)]"
                     />
                 </div>
 

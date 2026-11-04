@@ -83,10 +83,10 @@ export default async function ProjectPage({ params }: { params: Params }) {
     const t = await getTranslations({ locale, namespace: 'Projects' });
 
     return (
-        <div className="min-h-screen bg-[#060311] relative">
+        <div className="min-h-screen bg-background relative">
             <Link
                 href="/#projects"
-                className="absolute top-8 left-8 z-50 flex items-center gap-3 px-6 py-3 rounded-full bg-white/5 border border-white/10 text-white hover:bg-white/10 active:scale-95 transition-all text-[10px] font-black tracking-[0.2em] uppercase"
+                className="absolute top-8 left-8 z-50 flex items-center gap-3 px-6 py-3 rounded-full bg-secondary border border-border text-foreground hover:bg-muted active:scale-95 transition-all text-[10px] font-black tracking-[0.2em] uppercase"
             >
                 <ArrowLeft size={16} />
                 {t('backToProjects')}

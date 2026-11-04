@@ -27,7 +27,7 @@ export default function Projects() {
         <section id="projects" className="w-full py-32 relative overflow-hidden">
             <div className="px-6 md:px-16 lg:px-24 max-w-[1800px] mx-auto">
                 <div className="mb-16 md:mb-24 flex flex-col items-center w-full max-w-[1600px] mx-auto">
-                    <h2 className="text-4xl sm:text-5xl md:text-8xl font-black mb-10 md:mb-12 tracking-tighter text-center w-full leading-[0.8]">{t('title')}</h2>
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-10 md:mb-12 tracking-tight text-center w-full leading-[1.05]">{t('title')}</h2>
 
                     <div
                         className="flex flex-wrap items-center justify-center gap-3 p-1.5 bg-white/5 rounded-2xl border border-white/5"

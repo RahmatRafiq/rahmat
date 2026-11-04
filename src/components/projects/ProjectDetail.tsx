@@ -254,7 +254,7 @@ export default function ProjectDetail({ project, variant }: ProjectDetailProps) 
                     </span>
                 </div>
 
-                <h1 className="text-5xl md:text-8xl font-black mb-12 tracking-tighter leading-none">{title}</h1>
+                <h1 className="text-4xl md:text-6xl font-bold mb-12 tracking-tight leading-[1.05]">{title}</h1>
 
                 <div className="flex flex-wrap gap-4 mb-16">
                     {project.tags.map((tag) => (

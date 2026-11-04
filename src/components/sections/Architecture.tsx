@@ -72,7 +72,7 @@ export default function Architecture() {
         <section id="architecture" className="w-full py-32 relative overflow-hidden">
             <div className="px-6 md:px-16 lg:px-24 max-w-[1800px] mx-auto">
                 <div className="mb-16 md:mb-24 max-w-[1600px] mx-auto">
-                    <h2 className="text-4xl sm:text-5xl md:text-8xl font-black mb-8 tracking-tighter leading-[0.8]">{t('title')}</h2>
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 tracking-tight leading-[1.05]">{t('title')}</h2>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch min-h-[600px] max-w-[1600px] mx-auto">

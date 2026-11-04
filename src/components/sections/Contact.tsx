@@ -53,7 +53,7 @@ export default function Contact() {
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: i * 0.1 }}
-                                className="group glass-premium p-8 rounded-[2rem] border border-white/5 hover:border-primary/50 transition-all duration-500 relative overflow-hidden flex flex-col justify-between h-[200px]"
+                                className="group glass-premium p-8 rounded-xl border border-white/5 hover:border-primary/50 transition-all duration-500 relative overflow-hidden flex flex-col justify-between h-[200px]"
                             >
                                 <div className={cn('absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-30 transition-opacity duration-500', link.color)} />
 
@@ -97,11 +97,11 @@ export default function Contact() {
                                     <textarea
                                         placeholder={t('messagePlaceholder')}
                                         rows={4}
-                                        className="w-full bg-white/5 border border-white/5 rounded-3xl p-6 text-lg font-medium text-white focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary/50 transition-all resize-none shadow-inner"
+                                        className="w-full bg-white/5 border border-white/5 rounded-lg p-6 text-lg font-medium text-white focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary/50 transition-all resize-none shadow-inner"
                                     />
                                 </div>
 
-                                <button className="w-full bg-primary hover:bg-accent text-white text-xs font-black uppercase tracking-[0.4em] py-6 rounded-3xl flex items-center justify-center gap-4 transition-all active:scale-[0.98] shadow-2xl shadow-black/20">
+                                <button className="w-full bg-primary hover:bg-accent text-white text-xs font-black uppercase tracking-[0.4em] py-6 rounded-lg flex items-center justify-center gap-4 transition-all active:scale-[0.98] shadow-2xl shadow-black/20">
                                     <span>{t('sendBtn')}</span>
                                     <Send className="w-4 h-4" />
                                 </button>

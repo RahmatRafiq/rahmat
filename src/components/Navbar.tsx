@@ -227,7 +227,7 @@ export default function Navbar() {
                                 initial={{ opacity: 0, scale: 0.9, y: 20 }}
                                 animate={{ opacity: 1, scale: 1, y: 0 }}
                                 exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                                className={`glass-premium flex flex-col p-4 w-[280px] rounded-[2rem] gap-2 mb-2 ${GLASS_SHADOW}`}
+                                className={`glass-premium flex flex-col p-4 w-[280px] rounded-xl gap-2 mb-2 ${GLASS_SHADOW}`}
                             >
                                 <div className="flex items-center justify-between px-3 py-2">
                                     <span className="text-lg font-black tracking-tighter text-white">

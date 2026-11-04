@@ -48,7 +48,7 @@ interface ProjectDetailProps {
 }
 
 /** Shared pill-button sizing — compact in the panel, roomy on the full page. */
-const btnBase = 'w-full rounded-full font-black tracking-[0.2em] uppercase transition-all flex items-center justify-center';
+const btnBase = 'w-full rounded-md font-black tracking-[0.2em] uppercase transition-all flex items-center justify-center';
 const btnSize = (compact?: boolean) => (compact ? 'py-3.5 text-[10px] gap-2.5' : 'py-6 text-xs gap-4');
 
 function ActionLinks({ project, t, compact }: { project: ProjectMeta; t: ReturnType<typeof useTranslations>; compact?: boolean }) {

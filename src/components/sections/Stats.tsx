@@ -44,14 +44,14 @@ function MetricCard({
             viewport={{ once: true }}
             transition={{ delay, duration: 0.5 }}
             className={cn(
-                "glass-premium rounded-[2.5rem] p-10 flex flex-col justify-between relative overflow-hidden group hover:border-primary/40 transition-all duration-500",
+                "glass-premium rounded-xl p-10 flex flex-col justify-between relative overflow-hidden group hover:border-primary/40 transition-all duration-500",
                 className
             )}
         >
             <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
             <div className="relative z-10 flex justify-between items-start mb-12">
-                <div className="p-4 rounded-3xl bg-white/5 border border-white/10 group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-500">
+                <div className="p-4 rounded-lg bg-white/5 border border-white/10 group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-500">
                     <Icon className={cn("w-7 h-7", iconColor)} />
                 </div>
             </div>
@@ -122,7 +122,7 @@ export default function Stats() {
 
                         <div className="relative z-10">
                             <div className="flex items-center gap-4 mb-10">
-                                <div className="p-4 rounded-3xl bg-white/5 border border-white/10 group-hover:bg-primary/20 transition-all duration-500">
+                                <div className="p-4 rounded-lg bg-white/5 border border-white/10 group-hover:bg-primary/20 transition-all duration-500">
                                     <Code2 className="text-primary w-7 h-7" />
                                 </div>
                                 <h3 className="text-xl font-bold tracking-tight">{t('languagePulse')}</h3>
@@ -164,7 +164,7 @@ export default function Stats() {
                         </div>
 
                         <div className="mt-auto relative z-10 flex flex-col gap-10">
-                            <div className="flex items-start gap-4 p-6 bg-white/5 rounded-[2rem] border border-white/5">
+                            <div className="flex items-start gap-4 p-6 bg-white/5 rounded-xl border border-white/5">
                                 <Zap className="w-5 h-5 text-yellow-500 shrink-0 mt-0.5" />
                                 <p className="text-xs font-bold text-white/50 leading-relaxed tracking-tight">
                                     {t.rich('focus', { b: (c) => <span className="text-white font-black">{c}</span> })}
@@ -176,7 +176,7 @@ export default function Stats() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 whileHover={{ y: -4 }}
-                                className="flex items-center justify-between p-6 rounded-[2rem] border border-white/10 hover:border-primary/40 hover:bg-white/5 transition-all group"
+                                className="flex items-center justify-between p-6 rounded-xl border border-white/10 hover:border-primary/40 hover:bg-white/5 transition-all group"
                             >
                                 <div>
                                     <div className="text-[9px] font-black text-white/30 uppercase tracking-[0.2em] mb-1">{t('deepDive')}</div>
@@ -242,7 +242,7 @@ export default function Stats() {
 
                         <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between mb-16 gap-6">
                             <div className="flex items-center gap-4">
-                                <div className="p-4 rounded-3xl bg-white/5 border border-white/10 group-hover:bg-primary/20 transition-all duration-500">
+                                <div className="p-4 rounded-lg bg-white/5 border border-white/10 group-hover:bg-primary/20 transition-all duration-500">
                                     <BarChart3 className="w-7 h-7 text-primary" />
                                 </div>
                                 <h3 className="text-xl font-black uppercase tracking-widest">{t('activityPulse')}</h3>

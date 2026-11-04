@@ -56,7 +56,7 @@ export default function Skills() {
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: idx * 0.1 }}
                             className={cn(
-                                "group glass-premium rounded-[2.5rem] p-10 relative overflow-hidden flex flex-col justify-between",
+                                "group glass-premium rounded-xl p-10 relative overflow-hidden flex flex-col justify-between",
                                 category.span
                             )}
                         >
@@ -64,7 +64,7 @@ export default function Skills() {
 
                             <div className="relative z-10">
                                 <div className="flex justify-between items-start mb-6">
-                                    <div className="p-4 rounded-3xl bg-white/5 border border-white/10 group-hover:bg-primary/20 transition-all duration-500">
+                                    <div className="p-4 rounded-lg bg-white/5 border border-white/10 group-hover:bg-primary/20 transition-all duration-500">
                                         <category.icon className="w-8 h-8 text-white" />
                                     </div>
                                 </div>

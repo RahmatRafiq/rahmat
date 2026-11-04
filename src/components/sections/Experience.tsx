@@ -76,7 +76,7 @@ export default function Experience() {
     const timelineData = experiences.map((exp) => ({
         content: (
             <div className="w-full">
-                <div className="glass-premium rounded-[1.5rem] md:rounded-[2.5rem] p-6 md:p-10 relative overflow-hidden group hover:border-primary/40 transition-all duration-500">
+                <div className="glass-premium rounded-[1.5rem] md:rounded-xl p-6 md:p-10 relative overflow-hidden group hover:border-primary/40 transition-all duration-500">
                     <div className={cn('absolute inset-0 bg-gradient-to-br opacity-10 md:opacity-20 group-hover:opacity-40 transition-opacity duration-700', exp.color)} />
 
                     <div className="relative z-10">

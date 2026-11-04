@@ -77,7 +77,7 @@ export default function Projects() {
                                     exit={{ opacity: 0, scale: 0.95 }}
                                     transition={{ duration: 0.5, delay: index * 0.05 }}
                                     className={cn(
-                                        "group glass-premium rounded-[2.5rem] overflow-hidden flex flex-col relative hover:border-primary/50 transition-colors",
+                                        "group glass-premium rounded-xl overflow-hidden flex flex-col relative hover:border-primary/50 transition-colors",
                                         project.span || "lg:col-span-4"
                                     )}
                                 >
@@ -87,23 +87,22 @@ export default function Projects() {
                                         className="absolute inset-0 z-30 cursor-pointer"
                                         aria-label={t(project.titleKey)}
                                     />
-                                    <div className={cn('absolute inset-0 bg-gradient-to-br opacity-40 group-hover:opacity-60 transition-opacity duration-500', project.color)} />
-
-                                    {/* Visual Mockup Layer */}
+                                    {/* Project image — clearly visible by default; a gradient scrim
+                                        keeps the text readable over the lower-left area. */}
                                     {project.image && (
-                                        <div className="absolute top-0 right-0 w-2/3 h-full opacity-30 group-hover:opacity-50 group-hover:scale-105 transition-all duration-700 pointer-events-none overflow-hidden">
-                                            <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-background/80 z-10" />
+                                        <div className="absolute inset-0 pointer-events-none overflow-hidden">
                                             <img
                                                 src={project.image}
                                                 alt=""
-                                                className="w-full h-full object-cover object-left-top translate-x-8 translate-y-8 rotate-[-2deg]"
+                                                className="w-full h-full object-cover object-center opacity-100 group-hover:scale-[1.03] transition-transform duration-700"
                                             />
+                                            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/20" />
                                         </div>
                                     )}
 
                                     <div className="relative p-10 flex flex-col h-full z-20 pointer-events-none">
                                         <div className="flex justify-between items-start mb-6">
-                                            <div className="p-4 rounded-3xl bg-white/5 border border-white/10 group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-500">
+                                            <div className="p-4 rounded-lg bg-white/5 border border-white/10 group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-500">
                                                 {Icon && <Icon className="w-8 h-8 text-white group-hover:text-primary transition-colors" />}
                                             </div>
                                             <span className="text-[11px] font-black tracking-widest uppercase bg-white/10 px-4 py-1.5 rounded-full border border-white/5">

@@ -83,7 +83,7 @@ export default function Architecture() {
                                 <button
                                     onClick={() => setActiveTab(feature.id)}
                                     className={cn(
-                                        'w-full text-left p-6 md:p-8 rounded-[2rem] border transition-all duration-500 group relative overflow-hidden flex-1 flex flex-col justify-center',
+                                        'w-full text-left p-6 md:p-8 rounded-xl border transition-all duration-500 group relative overflow-hidden flex-1 flex flex-col justify-center',
                                         activeTab === feature.id
                                             ? 'glass-premium border-primary/50 shadow-2xl'
                                             : 'bg-white/5 border-white/5 hover:border-white/10'
@@ -133,7 +133,7 @@ export default function Architecture() {
                                             animate={{ height: 'auto', opacity: 1 }}
                                             exit={{ height: 0, opacity: 0 }}
                                             transition={{ duration: 0.5, ease: "circOut" }}
-                                            className="lg:hidden glass-premium rounded-[2rem] overflow-hidden"
+                                            className="lg:hidden glass-premium rounded-xl overflow-hidden"
                                         >
                                             <div className="p-8 flex flex-col items-center justify-center min-h-[300px] relative">
                                                 <div className={cn('absolute inset-0 bg-gradient-to-br opacity-20', feature.color)} />

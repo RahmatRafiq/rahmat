@@ -4,7 +4,7 @@ import { setRequestLocale } from 'next-intl/server';
 import ViewportLazy from "../../components/ViewportLazy";
 
 const SkeletonSection = () => (
-  <div className="w-full h-[400px] animate-pulse bg-muted/20 rounded-3xl border border-border/50" />
+  <div className="w-full h-[400px] animate-pulse bg-muted/20 rounded-lg border border-border/50" />
 );
 
 const Skills = dynamic(() => import("../../components/sections/Skills"), {
@@ -44,32 +44,32 @@ export default async function Home({
     <div className="flex flex-col gap-20 pb-20">
       <Hero />
       <div id="experience" className="min-h-[800px]">
-        <ViewportLazy fallback={<div className="w-full h-[800px] animate-pulse bg-muted/20 rounded-3xl" />}>
+        <ViewportLazy fallback={<div className="w-full h-[800px] animate-pulse bg-muted/20 rounded-lg" />}>
           <Experience />
         </ViewportLazy>
       </div>
       <div id="projects" className="min-h-[1000px]">
-        <ViewportLazy fallback={<div className="w-full h-[1000px] animate-pulse bg-muted/20 rounded-3xl" />}>
+        <ViewportLazy fallback={<div className="w-full h-[1000px] animate-pulse bg-muted/20 rounded-lg" />}>
           <Projects />
         </ViewportLazy>
       </div>
       <div id="skills" className="min-h-[600px]">
-        <ViewportLazy fallback={<div className="w-full h-[600px] animate-pulse bg-muted/20 rounded-3xl" />}>
+        <ViewportLazy fallback={<div className="w-full h-[600px] animate-pulse bg-muted/20 rounded-lg" />}>
           <Skills />
         </ViewportLazy>
       </div>
       <div id="architecture" className="min-h-[850px]">
-        <ViewportLazy fallback={<div className="w-full h-[850px] animate-pulse bg-muted/20 rounded-3xl" />}>
+        <ViewportLazy fallback={<div className="w-full h-[850px] animate-pulse bg-muted/20 rounded-lg" />}>
           <Architecture />
         </ViewportLazy>
       </div>
       <div id="stats" className="min-h-[400px]">
-        <ViewportLazy fallback={<div className="w-full h-[400px] animate-pulse bg-muted/20 rounded-3xl" />}>
+        <ViewportLazy fallback={<div className="w-full h-[400px] animate-pulse bg-muted/20 rounded-lg" />}>
           <Stats />
         </ViewportLazy>
       </div>
       <div id="contact" className="min-h-[600px]">
-        <ViewportLazy fallback={<div className="w-full h-[600px] animate-pulse bg-muted/20 rounded-3xl" />}>
+        <ViewportLazy fallback={<div className="w-full h-[600px] animate-pulse bg-muted/20 rounded-lg" />}>
           <Contact />
         </ViewportLazy>
       </div>

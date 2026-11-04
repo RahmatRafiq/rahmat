@@ -77,7 +77,7 @@ export default function Skills() {
                                 {category.skills.map((skill, sIdx) => (
                                     <span
                                         key={sIdx}
-                                        className="px-4 py-1.5 rounded-xl bg-secondary border border-border text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 group-hover:text-muted-foreground transition-colors"
+                                        className="px-4 py-1.5 rounded-xl bg-secondary border border-border text-[10px] font-black uppercase tracking-widest text-muted-foreground group-hover:text-muted-foreground transition-colors"
                                     >
                                         {skill}
                                     </span>

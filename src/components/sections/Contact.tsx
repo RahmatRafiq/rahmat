@@ -61,11 +61,11 @@ export default function Contact() {
                                     <div className="p-4 rounded-lg bg-secondary border border-border group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-500">
                                         <link.icon className="w-6 h-6 text-foreground" />
                                     </div>
-                                    <ArrowUpRight className="w-6 h-6 text-muted-foreground/60 group-hover:text-muted-foreground transition-colors" />
+                                    <ArrowUpRight className="w-6 h-6 text-muted-foreground group-hover:text-muted-foreground transition-colors" />
                                 </div>
 
                                 <div className="relative z-10">
-                                    <div className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground/60 mb-1">{link.label}</div>
+                                    <div className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground mb-1">{link.label}</div>
                                     <div className="text-xl font-black tracking-tight group-hover:text-primary transition-colors truncate">
                                         {link.value}
                                     </div>
@@ -93,7 +93,7 @@ export default function Contact() {
 
                             <div className="space-y-8">
                                 <div className="space-y-3">
-                                    <label className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground/60 ml-1">{t('messageLabel')}</label>
+                                    <label className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground ml-1">{t('messageLabel')}</label>
                                     <textarea
                                         placeholder={t('messagePlaceholder')}
                                         rows={4}

@@ -102,7 +102,7 @@ export default function Experience() {
                                 <Building2 className="w-5 h-5 md:w-7 md:h-7 text-foreground" />
                             </div>
                             <div className="text-left md:text-right">
-                                <div className="text-[10px] md:text-xs font-black uppercase tracking-widest text-muted-foreground/60 mb-1">{exp.period}</div>
+                                <div className="text-[10px] md:text-xs font-black uppercase tracking-widest text-muted-foreground mb-1">{exp.period}</div>
                                 <div className="text-[10px] md:text-xs font-black uppercase tracking-widest text-primary">{exp.location}</div>
                             </div>
                         </div>

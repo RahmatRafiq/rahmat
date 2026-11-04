@@ -64,7 +64,7 @@ function MetricCard({
                         {value ?? '—'}
                     </div>
                 )}
-                <div className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 group-hover:text-muted-foreground transition-colors">
+                <div className="text-[10px] font-black uppercase tracking-widest text-muted-foreground group-hover:text-muted-foreground transition-colors">
                     {label}
                 </div>
             </div>
@@ -179,7 +179,7 @@ export default function Stats() {
                                 className="flex items-center justify-between p-6 rounded-lg border border-border hover:border-primary/40 hover:bg-secondary transition-all group"
                             >
                                 <div>
-                                    <div className="text-[9px] font-black text-muted-foreground/60 uppercase tracking-[0.2em] mb-1">{t('deepDive')}</div>
+                                    <div className="text-[9px] font-black text-muted-foreground uppercase tracking-[0.2em] mb-1">{t('deepDive')}</div>
                                     <div className="text-base font-black tracking-tight group-hover:text-primary transition-colors uppercase">{t('fullProfile')}</div>
                                 </div>
                                 <div className="p-3 bg-secondary rounded-lg group-hover:bg-primary/20 transition-all">
@@ -282,7 +282,7 @@ export default function Stats() {
 
                         <div className="flex mt-8 justify-between px-2 relative z-10">
                             {DAY_LABELS.map(d => (
-                                <span key={d} className="flex-1 text-center text-[10px] font-black text-muted-foreground/60 uppercase tracking-[0.2em]">{d}</span>
+                                <span key={d} className="flex-1 text-center text-[10px] font-black text-muted-foreground uppercase tracking-[0.2em]">{d}</span>
                             ))}
                         </div>
 

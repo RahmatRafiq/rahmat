@@ -98,27 +98,27 @@ export default function Architecture() {
                                     <div className="flex items-center gap-6 relative z-10">
                                         <div className={cn(
                                             'p-3 md:p-4 rounded-lg transition-all duration-500',
-                                            activeTab === feature.id ? 'bg-primary text-primary-foreground scale-110 shadow-lg' : 'bg-secondary text-muted-foreground/60'
+                                            activeTab === feature.id ? 'bg-primary text-primary-foreground scale-110 shadow-lg' : 'bg-secondary text-muted-foreground'
                                         )}>
                                             <feature.icon className="w-5 h-5 md:w-6 md:h-6" />
                                         </div>
                                         <div className="flex-1">
                                             <h3 className={cn(
                                                 'text-base md:text-lg font-black tracking-tight transition-colors',
-                                                activeTab === feature.id ? 'text-foreground' : 'text-muted-foreground/60 group-hover:text-muted-foreground'
+                                                activeTab === feature.id ? 'text-foreground' : 'text-muted-foreground group-hover:text-muted-foreground'
                                             )}>
                                                 {feature.title}
                                             </h3>
                                             <p className={cn(
                                                 "text-[9px] md:text-[10px] font-black uppercase tracking-widest mt-1 opacity-50",
-                                                activeTab === feature.id ? "text-primary" : "text-muted-foreground/60"
+                                                activeTab === feature.id ? "text-primary" : "text-muted-foreground"
                                             )}>{feature.desc}</p>
                                         </div>
                                         {/* Chevron indicator for mobile accordion */}
                                         <ChevronDown
                                             size={20}
                                             className={cn(
-                                                'md:hidden transition-transform duration-500 text-muted-foreground/60',
+                                                'md:hidden transition-transform duration-500 text-muted-foreground',
                                                 activeTab === feature.id && 'rotate-180 text-foreground'
                                             )}
                                         />

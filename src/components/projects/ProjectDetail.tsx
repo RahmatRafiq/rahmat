@@ -173,7 +173,7 @@ export default function ProjectDetail({ project, variant }: ProjectDetailProps) 
                         <img src={project.image} alt={title} className="w-full h-full object-cover object-center" />
                     ) : (
                         <div className="w-full h-full flex items-center justify-center">
-                            {Icon && <Icon size={64} className="text-muted-foreground/60" />}
+                            {Icon && <Icon size={64} className="text-muted-foreground" />}
                         </div>
                     )}
                     <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-background to-transparent" />
@@ -184,7 +184,7 @@ export default function ProjectDetail({ project, variant }: ProjectDetailProps) 
                         <span className="text-[9px] font-bold tracking-[0.2em] uppercase px-3 py-1 rounded bg-primary/15 text-primary border border-primary/20">
                             {category}
                         </span>
-                        <span className="text-[9px] font-bold tracking-[0.2em] uppercase text-muted-foreground/60 border-l border-border pl-3">
+                        <span className="text-[9px] font-bold tracking-[0.2em] uppercase text-muted-foreground border-l border-border pl-3">
                             {project.year}
                         </span>
                     </div>
@@ -238,7 +238,7 @@ export default function ProjectDetail({ project, variant }: ProjectDetailProps) 
                     />
                 ) : (
                     <div className="w-full h-full flex items-center justify-center">
-                        {Icon && <Icon size={120} className="text-muted-foreground/60" />}
+                        {Icon && <Icon size={120} className="text-muted-foreground" />}
                     </div>
                 )}
                 <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-background to-transparent" />
@@ -249,7 +249,7 @@ export default function ProjectDetail({ project, variant }: ProjectDetailProps) 
                     <span className="text-[10px] font-black tracking-[0.2em] uppercase px-6 py-2 rounded-full bg-primary/20 text-primary border border-primary/20">
                         {category}
                     </span>
-                    <span className="text-[10px] font-black tracking-[0.2em] uppercase text-muted-foreground/60 border-l border-border pl-6">
+                    <span className="text-[10px] font-black tracking-[0.2em] uppercase text-muted-foreground border-l border-border pl-6">
                         {project.year}
                     </span>
                 </div>
@@ -270,7 +270,7 @@ export default function ProjectDetail({ project, variant }: ProjectDetailProps) 
 
                         {project.features && project.features.length > 0 && (
                             <div className="mt-14">
-                                <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground/60 mb-8">{t('keyFeatures')}</h3>
+                                <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground mb-8">{t('keyFeatures')}</h3>
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                                     {project.features.map((feat) => {
                                         const FeatIcon = PROJECT_ICONS[feat.iconName];
@@ -302,7 +302,7 @@ export default function ProjectDetail({ project, variant }: ProjectDetailProps) 
                     </div>
 
                     <div className="lg:col-span-4 flex flex-col gap-6">
-                        <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground/60 mb-4">Project Actions</h4>
+                        <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground mb-4">Project Actions</h4>
                         <ActionLinks project={project} t={t} />
                     </div>
                 </div>

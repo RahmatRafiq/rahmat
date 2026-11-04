@@ -45,13 +45,13 @@ export default function Projects() {
                                         'px-4 md:px-6 py-2.5 rounded-xl text-[10px] md:text-xs font-bold tracking-widest uppercase transition-all flex items-center gap-2',
                                         activeTab === cat
                                             ? 'bg-primary text-primary-foreground shadow-xl scale-105'
-                                            : 'text-muted-foreground/60 hover:text-foreground hover:bg-secondary'
+                                            : 'text-muted-foreground hover:text-foreground hover:bg-secondary'
                                     )}
                                 >
                                     <span>{cat}</span>
                                     <span className={cn(
                                         'px-2 py-0.5 rounded-full text-[9px] font-black',
-                                        activeTab === cat ? 'bg-muted text-foreground' : 'bg-secondary text-muted-foreground/60'
+                                        activeTab === cat ? 'bg-muted text-foreground' : 'bg-secondary text-muted-foreground'
                                     )}>
                                         {count}
                                     </span>
@@ -117,7 +117,7 @@ export default function Projects() {
                                             </h3>
                                             <div className="flex flex-wrap gap-2 mb-4">
                                                 {project.tags.slice(0, 3).map((tag) => (
-                                                    <span key={tag} className="text-[9px] font-black uppercase tracking-widest text-muted-foreground/60">
+                                                    <span key={tag} className="text-[9px] font-black uppercase tracking-widest text-muted-foreground">
                                                         {tag}
                                                     </span>
                                                 ))}

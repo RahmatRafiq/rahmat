@@ -269,11 +269,11 @@ export default function Navbar() {
                                     <div className="flex bg-secondary rounded-lg p-1 border border-border">
                                         <button
                                             onClick={() => router.replace(pathname, { locale: 'id', scroll: false })}
-                                            className={cn("px-3 py-1 text-[10px] font-black rounded-xl transition-all", locale === 'id' ? "bg-primary text-primary-foreground" : "text-muted-foreground/60")}
+                                            className={cn("px-3 py-1 text-[10px] font-black rounded-xl transition-all", locale === 'id' ? "bg-primary text-primary-foreground" : "text-muted-foreground")}
                                         >ID</button>
                                         <button
                                             onClick={() => router.replace(pathname, { locale: 'en', scroll: false })}
-                                            className={cn("px-3 py-1 text-[10px] font-black rounded-xl transition-all", locale === 'en' ? "bg-primary text-primary-foreground" : "text-muted-foreground/60")}
+                                            className={cn("px-3 py-1 text-[10px] font-black rounded-xl transition-all", locale === 'en' ? "bg-primary text-primary-foreground" : "text-muted-foreground")}
                                         >EN</button>
                                     </div>
                                 </div>

@@ -12,32 +12,23 @@ html {
 }
 
 @theme {
-  /* Neutral dark base + one calm, confident steel-blue accent.
-     Surfaces sit clearly above the base; text stays crisp (no washed-out look).
-     All component colours flow from these tokens. */
-  --color-background: #0b0b0d;
-  --color-foreground: #f5f5f6;
+  /* Original palette, restored. All component colours flow from these tokens. */
+  --color-background: #060311;
+  --color-foreground: #fafafa;
 
-  --color-primary: #5a9fd4;
-  --color-primary-foreground: #0b0b0d;
+  --color-primary: #6366f1;
+  --color-primary-foreground: #ffffff;
 
-  /* Card/panel surface — raised above the near-black base so cards read as
-     lifted off the page, not a flat continuation of it. Kept just dark enough
-     that body text stays AAA and the accent stays AA on top. */
-  --color-secondary: #30303a;
-  --color-secondary-foreground: #f5f5f6;
+  --color-secondary: #0b0b1e;
+  --color-secondary-foreground: #fafafa;
 
-  --color-muted: #3a3a44;
-  --color-muted-foreground: #b4b4ba;
+  --color-muted: #13132b;
+  --color-muted-foreground: #94a3b8;
 
-  --color-accent: #7bb6e8;
-  --color-accent-foreground: #0b0b0d;
+  --color-accent: #818cf8;
+  --color-accent-foreground: #ffffff;
 
-  /* Border carries the card/panel definition now that surfaces are flat and
-     kept deliberately close in tone. Raised so the edge reads clearly against
-     both the base and the raised surface (border/surface ~2.15) without
-     becoming a loud light frame. */
-  --color-border: #5a5a63;
+  --color-border: #1e1e3f;
 
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
 
@@ -103,9 +94,8 @@ html {
 }
 
 :root {
-  --background: #0b0b0d;
-  --foreground: #f5f5f6;
-  --color-background: #0b0b0d;
+  --background: var(--color-background);
+  --foreground: var(--color-foreground);
 }
 
 @layer base {
@@ -115,8 +105,8 @@ html {
   }
 
   body {
-    background-color: #0b0b0d;
-    color: #f5f5f6;
+    background-color: var(--color-background);
+    color: var(--color-foreground);
     font-family: var(--font-sans);
   }
 }

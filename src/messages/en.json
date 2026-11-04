@@ -35,7 +35,7 @@
     },
     "Experience": {
         "title": "Professional Experience",
-        "subtitle": "Over {duration} building backend, full-stack, and cybersecurity systems, from 2023 to present.",
+        "subtitle": "{duration} of combined experience building backend, full-stack, and cybersecurity systems.",
         "year": "years",
         "month": "months",
         "job0_role": "SOC Analyst",

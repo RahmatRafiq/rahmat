@@ -35,7 +35,7 @@
     },
     "Experience": {
         "title": "Pengalaman Profesional",
-        "subtitle": "Lebih dari {duration} membangun sistem backend, full-stack, dan keamanan siber, dari 2023 hingga sekarang.",
+        "subtitle": "Total {duration} pengalaman membangun sistem backend, full-stack, dan keamanan siber.",
         "year": "tahun",
         "month": "bulan",
         "job0_role": "SOC Analyst",

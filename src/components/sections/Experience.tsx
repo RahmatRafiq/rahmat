@@ -6,21 +6,38 @@ import { useTranslations } from 'next-intl';
 import { cn } from '../../lib/utils';
 import { Timeline } from '../ui/timeline';
 
-// Career start — the earliest role (bangbeli, Feb 2023). Used to auto-compute
-// the total years/months of experience so the subheading never goes stale.
-const CAREER_START = new Date(2023, 1, 1); // month is 0-indexed: 1 = February
+// Actual roles as [startYear, startMonth1Indexed, endYearOrNull, endMonth1Indexed].
+// end === null means ongoing (counts up to today). We sum the UNION of active
+// months so overlapping roles are counted once — this is real accumulated
+// experience, not the calendar span (which would include the gaps between jobs).
+// Keep this list in sync with the job periods below.
+const ROLE_SPANS: Array<[number, number, number | null, number | null]> = [
+    [2023, 2, 2023, 6],   // bangbeli.id       (Feb 2023 – Jun 2023)
+    [2024, 8, 2024, 10],  // Project Based     (Aug 2024 – Oct 2024)
+    [2024, 5, 2025, 8],   // Yayasan Gunungsari (May 2024 – Aug 2025)
+    [2025, 10, 2026, 1],  // Logistics Tech    (Oct 2025 – Jan 2026)
+    [2025, 6, null, null], // Cybersecurity    (Jun 2025 – Present)
+];
 
-function formatDuration(from: Date, to: Date): { years: number; months: number } {
-    let months = (to.getFullYear() - from.getFullYear()) * 12 + (to.getMonth() - from.getMonth());
-    if (to.getDate() < from.getDate()) months -= 1;
-    if (months < 0) months = 0;
-    return { years: Math.floor(months / 12), months: months % 12 };
+// Count distinct active months across all roles (overlap counted once).
+function accumulatedDuration(spans: typeof ROLE_SPANS, now: Date): { years: number; months: number } {
+    const monthIndex = (y: number, m1: number) => y * 12 + (m1 - 1); // 1-indexed month
+    const active = new Set<number>();
+    const nowIdx = monthIndex(now.getFullYear(), now.getMonth() + 1); // current month, inclusive
+    for (const [sy, sm, ey, em] of spans) {
+        const start = monthIndex(sy, sm);
+        // Ongoing role ends at the current month (inclusive); fixed role end is exclusive.
+        const end = ey === null ? nowIdx + 1 : monthIndex(ey, em as number);
+        for (let i = start; i < end; i++) active.add(i);
+    }
+    const total = active.size;
+    return { years: Math.floor(total / 12), months: total % 12 };
 }
 
 export default function Experience() {
     const t = useTranslations('Experience');
 
-    const { years, months } = formatDuration(CAREER_START, new Date());
+    const { years, months } = accumulatedDuration(ROLE_SPANS, new Date());
     // Localized "X tahun Y bulan" / "X years Y months", dropping a zero part.
     // Built as a plain string (no nested ICU) so it interpolates reliably.
     const yearWord = t('year');

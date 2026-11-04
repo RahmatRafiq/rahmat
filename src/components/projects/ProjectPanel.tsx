@@ -45,17 +45,17 @@ export default function ProjectPanel({
                 className="fixed inset-0 z-[100] bg-background/80 backdrop-blur-xl"
             />
 
-            {/* Mobile: bottom sheet. Desktop: slim panel that fits its content,
-                vertically centred near the right edge. */}
+            {/* Full-height side drawer (desktop) / bottom sheet (mobile). Its
+                content is compact enough to show everything without scrolling. */}
             <m.div
                 initial={{ opacity: 0, scale: 0.98 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.98 }}
                 transition={{ type: 'spring', damping: 30, stiffness: 300 }}
-                className="fixed z-[101] bg-background overflow-y-auto border border-border shadow-2xl
-                           inset-x-0 bottom-0 top-[14vh] rounded-t-lg
-                           md:inset-x-auto md:bottom-auto md:top-1/2 md:-translate-y-1/2 md:right-6
-                           md:w-[440px] md:h-auto md:max-h-[88vh] md:rounded-lg"
+                className="fixed z-[101] bg-background overflow-y-auto
+                           inset-x-0 bottom-0 top-[12vh] rounded-t-lg border-t border-border
+                           md:inset-y-0 md:right-0 md:left-auto md:top-0 md:w-1/2 md:rounded-none md:rounded-l-lg md:border-t-0 md:border-l md:shadow-2xl
+                           flex flex-col justify-center"
             >
                 {/* Close button pinned to the panel corner */}
                 <button

@@ -11,8 +11,9 @@ import ProjectDetail from './ProjectDetail';
  * The URL stays on the homepage; the panel is a quick peek with a CTA to the
  * real full page (/projects/<slug>) and a share button.
  *
- * Desktop (>=md): half-width panel docked to the right.
- * Mobile (<md): bottom sheet, nearly full height.
+ * Desktop (>=md): a slim panel (~440px) that sizes to its content and sits
+ *   vertically centred near the right edge — no empty half-screen.
+ * Mobile (<md): bottom sheet.
  */
 export default function ProjectPanel({
     project,
@@ -44,29 +45,27 @@ export default function ProjectPanel({
                 className="fixed inset-0 z-[100] bg-background/80 backdrop-blur-xl"
             />
 
-            {/* Desktop: half-screen right panel. Mobile: bottom sheet (~88vh). */}
+            {/* Mobile: bottom sheet. Desktop: slim panel that fits its content,
+                vertically centred near the right edge. */}
             <m.div
                 initial={{ opacity: 0, scale: 0.98 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.98 }}
                 transition={{ type: 'spring', damping: 30, stiffness: 300 }}
-                className="fixed z-[101] bg-background overflow-y-auto
-                           inset-x-0 bottom-0 top-[12vh] rounded-t-3xl border-t border-border
-                           md:inset-y-0 md:right-0 md:left-auto md:top-0 md:w-1/2 md:rounded-none md:rounded-l-3xl md:border-t-0 md:border-l md:shadow-2xl"
+                className="fixed z-[101] bg-background overflow-y-auto border border-border shadow-2xl
+                           inset-x-0 bottom-0 top-[14vh] rounded-t-lg
+                           md:inset-x-auto md:bottom-auto md:top-1/2 md:-translate-y-1/2 md:right-6
+                           md:w-[440px] md:h-auto md:max-h-[88vh] md:rounded-lg"
             >
-                {/* Sticky close button — stays visible while the panel scrolls */}
-                <div className="sticky top-0 z-[110] flex justify-end p-4 pointer-events-none">
-                    <button
-                        onClick={onClose}
-                        className="pointer-events-auto p-2.5 rounded-full bg-background/70 backdrop-blur-md border border-border text-foreground hover:bg-background/90 active:scale-95 transition-all shadow-lg"
-                        aria-label="Close"
-                    >
-                        <X size={20} />
-                    </button>
-                </div>
-                <div className="-mt-[60px]">
-                    <ProjectDetail project={project} variant="panel" />
-                </div>
+                {/* Close button pinned to the panel corner */}
+                <button
+                    onClick={onClose}
+                    className="absolute top-3 right-3 z-[110] p-2 rounded-full bg-background/70 backdrop-blur-md border border-border text-foreground hover:bg-background/90 active:scale-95 transition-all shadow-lg"
+                    aria-label="Close"
+                >
+                    <X size={18} />
+                </button>
+                <ProjectDetail project={project} variant="panel" />
             </m.div>
         </>
     );

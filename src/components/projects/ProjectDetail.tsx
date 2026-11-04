@@ -166,41 +166,41 @@ export default function ProjectDetail({ project, variant }: ProjectDetailProps) 
         // Panel = SUMMARY only, with a CTA to the full detail page.
         return (
             <div className="flex flex-col">
-                {/* Hero image */}
-                <div className="relative w-full aspect-video overflow-hidden bg-gradient-to-b from-primary/10 to-transparent shrink-0">
-                    <div className={cn('absolute inset-0 bg-gradient-to-br opacity-40', project.color)} />
+                {/* Hero image — fixed short height so the whole summary + actions
+                    fit the slim panel without scrolling. */}
+                <div className="relative w-full h-40 overflow-hidden bg-secondary shrink-0">
                     {project.image ? (
                         <img src={project.image} alt={title} className="w-full h-full object-cover object-center" />
                     ) : (
                         <div className="w-full h-full flex items-center justify-center">
-                            {Icon && <Icon size={80} className="text-muted-foreground/60" />}
+                            {Icon && <Icon size={64} className="text-muted-foreground/60" />}
                         </div>
                     )}
-                    <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background to-transparent" />
+                    <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-background to-transparent" />
                 </div>
 
-                <div className="px-8 py-10 flex flex-col gap-8">
-                    <div className="flex items-center gap-4">
-                        <span className="text-[9px] font-black tracking-[0.2em] uppercase px-4 py-1.5 rounded-full bg-primary/20 text-primary border border-primary/20">
+                <div className="px-6 py-6 flex flex-col gap-4">
+                    <div className="flex items-center gap-3">
+                        <span className="text-[9px] font-bold tracking-[0.2em] uppercase px-3 py-1 rounded bg-primary/15 text-primary border border-primary/20">
                             {category}
                         </span>
-                        <span className="text-[9px] font-black tracking-[0.2em] uppercase text-muted-foreground/60 border-l border-border pl-4">
+                        <span className="text-[9px] font-bold tracking-[0.2em] uppercase text-muted-foreground/60 border-l border-border pl-3">
                             {project.year}
                         </span>
                     </div>
 
-                    <h2 className="text-4xl font-black tracking-tighter leading-none">{title}</h2>
+                    <h2 className="text-2xl font-bold tracking-tight leading-tight break-words">{title}</h2>
 
                     <div className="flex flex-wrap gap-2">
                         {project.tags.map((tag) => (
-                            <span key={tag} className="px-4 py-2 rounded-full bg-secondary border border-border text-[9px] font-black uppercase tracking-widest text-muted-foreground">
+                            <span key={tag} className="px-2.5 py-1 rounded bg-secondary border border-border text-[9px] font-bold uppercase tracking-widest text-muted-foreground">
                                 {tag}
                             </span>
                         ))}
                     </div>
 
                     {/* Short summary (plain text) */}
-                    <p className="text-base text-muted-foreground leading-[1.7] font-medium">{summary}</p>
+                    <p className="text-sm text-muted-foreground leading-relaxed font-medium">{summary}</p>
 
                     <div className="flex flex-col gap-3 pt-2">
                         {/* Primary CTA: go to the full detail page (real route w/ URL) */}

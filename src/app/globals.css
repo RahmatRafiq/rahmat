@@ -21,10 +21,13 @@ html {
   --color-primary: #5a9fd4;
   --color-primary-foreground: #0b0b0d;
 
-  --color-secondary: #28282e;
+  /* Card/panel surface — raised above the near-black base so cards read as
+     lifted off the page, not a flat continuation of it. Kept just dark enough
+     that body text stays AAA and the accent stays AA on top. */
+  --color-secondary: #30303a;
   --color-secondary-foreground: #f5f5f6;
 
-  --color-muted: #323239;
+  --color-muted: #3a3a44;
   --color-muted-foreground: #b4b4ba;
 
   --color-accent: #7bb6e8;

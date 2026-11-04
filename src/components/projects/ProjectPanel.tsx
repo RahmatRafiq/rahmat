@@ -41,7 +41,7 @@ export default function ProjectPanel({
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 onClick={onClose}
-                className="fixed inset-0 z-[100] bg-[#060311]/80 backdrop-blur-xl"
+                className="fixed inset-0 z-[100] bg-background/80 backdrop-blur-xl"
             />
 
             {/* Desktop: half-screen right panel. Mobile: bottom sheet (~88vh). */}
@@ -50,7 +50,7 @@ export default function ProjectPanel({
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.98 }}
                 transition={{ type: 'spring', damping: 30, stiffness: 300 }}
-                className="fixed z-[101] bg-[#060311] overflow-y-auto
+                className="fixed z-[101] bg-background overflow-y-auto
                            inset-x-0 bottom-0 top-[12vh] rounded-t-3xl border-t border-white/10
                            md:inset-y-0 md:right-0 md:left-auto md:top-0 md:w-1/2 md:rounded-none md:rounded-l-3xl md:border-t-0 md:border-l md:shadow-2xl"
             >
@@ -58,7 +58,7 @@ export default function ProjectPanel({
                 <div className="sticky top-0 z-[110] flex justify-end p-4 pointer-events-none">
                     <button
                         onClick={onClose}
-                        className="pointer-events-auto p-2.5 rounded-full bg-[#060311]/70 backdrop-blur-md border border-white/20 text-white hover:bg-[#060311]/90 active:scale-95 transition-all shadow-lg"
+                        className="pointer-events-auto p-2.5 rounded-full bg-background/70 backdrop-blur-md border border-white/20 text-white hover:bg-background/90 active:scale-95 transition-all shadow-lg"
                         aria-label="Close"
                     >
                         <X size={20} />

@@ -60,7 +60,7 @@ function ActionLinks({ project, t, compact }: { project: ProjectMeta; t: ReturnT
                     href={project.links.demo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={cn(btnBase, btnSize(compact), 'bg-indigo-700 text-white hover:bg-indigo-600 shadow-2xl shadow-indigo-500/40 group/btn')}
+                    className={cn(btnBase, btnSize(compact), 'bg-primary text-primary-foreground hover:bg-accent shadow-2xl shadow-black/20 group/btn')}
                 >
                     {t('livePreview')}
                     <ArrowUpRight size={iconSize} className="group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
@@ -100,7 +100,7 @@ function IconActionLinks({ project }: { project: ProjectMeta }) {
         <>
             {project.links.demo && (
                 <a href={project.links.demo} target="_blank" rel="noopener noreferrer" aria-label="Live preview"
-                    className={cn(iconBtn, 'bg-indigo-700 border-indigo-500/40 text-white hover:bg-indigo-600')}>
+                    className={cn(iconBtn, 'bg-primary border-primary/40 text-white hover:bg-accent')}>
                     <ArrowUpRight size={18} />
                 </a>
             )}
@@ -134,12 +134,12 @@ function MarkdownDescription({ markdown, size }: { markdown: string; size: 'pane
                     ol: ({ children }) => <ol className="flex flex-col gap-3 list-decimal pl-5">{children}</ol>,
                     li: ({ children }) => (
                         <li className="flex gap-3 items-start">
-                            <span className="mt-[0.6em] h-1.5 w-1.5 rounded-full bg-indigo-400 shrink-0" />
+                            <span className="mt-[0.6em] h-1.5 w-1.5 rounded-full bg-primary shrink-0" />
                             <span className="flex-1">{children}</span>
                         </li>
                     ),
                     a: ({ children, href }) => (
-                        <a href={href} target="_blank" rel="noopener noreferrer" className="text-indigo-400 underline underline-offset-4 hover:text-indigo-300">
+                        <a href={href} target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-4 hover:text-primary">
                             {children}
                         </a>
                     ),
@@ -167,7 +167,7 @@ export default function ProjectDetail({ project, variant }: ProjectDetailProps) 
         return (
             <div className="flex flex-col">
                 {/* Hero image */}
-                <div className="relative w-full aspect-video overflow-hidden bg-gradient-to-b from-indigo-500/10 to-transparent shrink-0">
+                <div className="relative w-full aspect-video overflow-hidden bg-gradient-to-b from-primary/10 to-transparent shrink-0">
                     <div className={cn('absolute inset-0 bg-gradient-to-br opacity-40', project.color)} />
                     {project.image ? (
                         <img src={project.image} alt={title} className="w-full h-full object-cover object-center" />
@@ -176,12 +176,12 @@ export default function ProjectDetail({ project, variant }: ProjectDetailProps) 
                             {Icon && <Icon size={80} className="text-white/10" />}
                         </div>
                     )}
-                    <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#060311] to-transparent" />
+                    <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background to-transparent" />
                 </div>
 
                 <div className="px-8 py-10 flex flex-col gap-8">
                     <div className="flex items-center gap-4">
-                        <span className="text-[9px] font-black tracking-[0.2em] uppercase px-4 py-1.5 rounded-full bg-indigo-500/20 text-indigo-400 border border-indigo-500/20">
+                        <span className="text-[9px] font-black tracking-[0.2em] uppercase px-4 py-1.5 rounded-full bg-primary/20 text-primary border border-primary/20">
                             {category}
                         </span>
                         <span className="text-[9px] font-black tracking-[0.2em] uppercase text-white/30 border-l border-white/10 pl-4">
@@ -206,7 +206,7 @@ export default function ProjectDetail({ project, variant }: ProjectDetailProps) 
                         {/* Primary CTA: go to the full detail page (real route w/ URL) */}
                         <Link
                             href={`/projects/${project.slug}`}
-                            className={cn(btnBase, btnSize(true), 'bg-indigo-700 text-white hover:bg-indigo-600 shadow-2xl shadow-indigo-500/40 group/cta')}
+                            className={cn(btnBase, btnSize(true), 'bg-primary text-primary-foreground hover:bg-accent shadow-2xl shadow-black/20 group/cta')}
                         >
                             {t('viewDetails')}
                             <ChevronRight size={16} className="group-hover/cta:translate-x-1 transition-transform" />
@@ -225,7 +225,7 @@ export default function ProjectDetail({ project, variant }: ProjectDetailProps) 
     // variant === 'page' — wide 2-column layout, full Markdown description
     return (
         <div className="flex flex-col">
-            <div className="relative w-full aspect-video md:aspect-[21/9] overflow-hidden bg-gradient-to-b from-indigo-500/10 to-transparent">
+            <div className="relative w-full aspect-video md:aspect-[21/9] overflow-hidden bg-gradient-to-b from-primary/10 to-transparent">
                 <div className={cn('absolute inset-0 bg-gradient-to-br opacity-40', project.color)} />
                 {project.image ? (
                     <m.img
@@ -241,12 +241,12 @@ export default function ProjectDetail({ project, variant }: ProjectDetailProps) 
                         {Icon && <Icon size={120} className="text-white/10" />}
                     </div>
                 )}
-                <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#060311] to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-background to-transparent" />
             </div>
 
             <div className="px-8 md:px-24 py-20">
                 <div className="flex items-center gap-6 mb-10">
-                    <span className="text-[10px] font-black tracking-[0.2em] uppercase px-6 py-2 rounded-full bg-indigo-500/20 text-indigo-400 border border-indigo-500/20">
+                    <span className="text-[10px] font-black tracking-[0.2em] uppercase px-6 py-2 rounded-full bg-primary/20 text-primary border border-primary/20">
                         {category}
                     </span>
                     <span className="text-[10px] font-black tracking-[0.2em] uppercase text-white/30 border-l border-white/10 pl-6">
@@ -276,8 +276,8 @@ export default function ProjectDetail({ project, variant }: ProjectDetailProps) 
                                         const FeatIcon = PROJECT_ICONS[feat.iconName];
                                         return (
                                             <div key={feat.titleKey} className="flex gap-4 p-5 rounded-2xl bg-white/5 border border-white/10">
-                                                <div className="p-3 rounded-xl bg-indigo-500/15 border border-indigo-500/20 h-fit">
-                                                    {FeatIcon && <FeatIcon className="w-5 h-5 text-indigo-300" />}
+                                                <div className="p-3 rounded-xl bg-primary/15 border border-primary/20 h-fit">
+                                                    {FeatIcon && <FeatIcon className="w-5 h-5 text-primary" />}
                                                 </div>
                                                 <div className="flex flex-col gap-1">
                                                     <span className="text-white font-black text-sm">{t(feat.titleKey)}</span>

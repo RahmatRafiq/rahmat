@@ -87,7 +87,7 @@ export const projects: ProjectMeta[] = [
         image: '/projects/husnul-dashboard.webp',
         detailImages: ['/projects/husnul-landing.webp'],
         links: { demo: 'https://husnulbakery.id/' },
-        color: 'from-amber-600/20 to-orange-700/20',
+        color: 'from-primary/5 to-transparent',
         span: 'lg:col-span-12 lg:row-span-2',
     },
     {
@@ -102,7 +102,7 @@ export const projects: ProjectMeta[] = [
         image: '/projects/justfun-tactical.webp',
         detailImages: ['/projects/justfungame.webp'],
         links: { demo: 'https://just-fun-makassar.vercel.app/' },
-        color: 'from-orange-500/20 to-red-600/20',
+        color: 'from-primary/5 to-transparent',
         span: 'lg:col-span-8 lg:row-span-2',
     },
     {
@@ -116,7 +116,7 @@ export const projects: ProjectMeta[] = [
         iconName: 'Package',
         image: '/projects/bouquet.webp',
         links: { demo: 'https://bouquet-builder.vercel.app/bouquet-builder' },
-        color: 'from-pink-500/20 to-rose-500/20',
+        color: 'from-primary/5 to-transparent',
         span: 'lg:col-span-4 lg:row-span-1',
     },
     {
@@ -130,7 +130,7 @@ export const projects: ProjectMeta[] = [
         iconName: 'Globe',
         image: '/projects/kemafar.webp',
         links: { demo: 'http://kemafar.org/' },
-        color: 'from-blue-600/20 to-indigo-600/20',
+        color: 'from-primary/5 to-transparent',
         span: 'lg:col-span-4 lg:row-span-1',
     },
     {
@@ -144,7 +144,7 @@ export const projects: ProjectMeta[] = [
         iconName: 'Zap',
         image: '/projects/typingtest.webp',
         links: { demo: 'https://typingtest-olive.vercel.app/' },
-        color: 'from-amber-500/20 to-orange-600/20',
+        color: 'from-primary/5 to-transparent',
         span: 'lg:col-span-4 lg:row-span-1',
     },
     {
@@ -161,7 +161,7 @@ export const projects: ProjectMeta[] = [
             github: 'https://github.com/RahmatRafiq/react-vehicle-seatpicker',
             npm: 'https://www.npmjs.com/package/react-vehicle-seatpicker',
         },
-        color: 'from-blue-500/20 to-cyan-500/20',
+        color: 'from-primary/5 to-transparent',
         span: 'lg:col-span-6 lg:row-span-1',
     },
     {
@@ -174,7 +174,7 @@ export const projects: ProjectMeta[] = [
         tags: ['Next.js', 'Supabase'],
         iconName: 'Package',
         links: { github: 'https://github.com/RahmatRafiq/nextjs-supabase-starter' },
-        color: 'from-emerald-500/20 to-teal-500/20',
+        color: 'from-primary/5 to-transparent',
         span: 'lg:col-span-6 lg:row-span-1',
     },
     {
@@ -187,7 +187,7 @@ export const projects: ProjectMeta[] = [
         tags: ['Laravel 12', 'React 19', 'Inertia'],
         iconName: 'Database',
         links: { github: 'https://github.com/RahmatRafiq/laravel-12-spattie-media-and-roles' },
-        color: 'from-orange-500/20 to-red-500/20',
+        color: 'from-primary/5 to-transparent',
         span: 'lg:col-span-4 lg:row-span-1',
     },
     {
@@ -200,7 +200,7 @@ export const projects: ProjectMeta[] = [
         tags: ['Golang', 'Gin', 'GORM'],
         iconName: 'ShieldCheck',
         links: { github: 'https://github.com/RahmatRafiq/golang_strarter_kit_2025' },
-        color: 'from-blue-500/20 to-violet-500/20',
+        color: 'from-primary/5 to-transparent',
         span: 'lg:col-span-8 lg:row-span-1',
     },
     {
@@ -214,7 +214,7 @@ export const projects: ProjectMeta[] = [
         iconName: 'ShieldCheck',
         image: '/projects/youtube-guard-2.webp',
         links: {},
-        color: 'from-violet-600/20 to-indigo-600/20',
+        color: 'from-primary/5 to-transparent',
         span: 'lg:col-span-12 lg:row-span-2',
     },
 ];

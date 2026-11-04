@@ -44,14 +44,14 @@ function MetricCard({
             viewport={{ once: true }}
             transition={{ delay, duration: 0.5 }}
             className={cn(
-                "glass-premium rounded-[2.5rem] p-10 flex flex-col justify-between relative overflow-hidden group hover:border-indigo-500/40 transition-all duration-500",
+                "glass-premium rounded-[2.5rem] p-10 flex flex-col justify-between relative overflow-hidden group hover:border-primary/40 transition-all duration-500",
                 className
             )}
         >
-            <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
             <div className="relative z-10 flex justify-between items-start mb-12">
-                <div className="p-4 rounded-3xl bg-white/5 border border-white/10 group-hover:scale-110 group-hover:bg-indigo-500/20 transition-all duration-500">
+                <div className="p-4 rounded-3xl bg-white/5 border border-white/10 group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-500">
                     <Icon className={cn("w-7 h-7", iconColor)} />
                 </div>
             </div>
@@ -60,7 +60,7 @@ function MetricCard({
                 {loading ? (
                     <div className="h-12 w-24 bg-white/10 animate-pulse rounded-xl mb-3" />
                 ) : (
-                    <div className="text-4xl md:text-5xl font-black tracking-tighter mb-2 group-hover:text-indigo-400 transition-colors">
+                    <div className="text-4xl md:text-5xl font-black tracking-tighter mb-2 group-hover:text-primary transition-colors">
                         {value ?? '—'}
                     </div>
                 )}
@@ -118,12 +118,12 @@ export default function Stats() {
                         transition={{ duration: 0.8 }}
                         className="glass-premium rounded-[3rem] p-12 lg:col-span-4 lg:row-span-2 flex flex-col gap-10 group relative overflow-hidden"
                     >
-                        <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+                        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
 
                         <div className="relative z-10">
                             <div className="flex items-center gap-4 mb-10">
-                                <div className="p-4 rounded-3xl bg-white/5 border border-white/10 group-hover:bg-indigo-500/20 transition-all duration-500">
-                                    <Code2 className="text-indigo-400 w-7 h-7" />
+                                <div className="p-4 rounded-3xl bg-white/5 border border-white/10 group-hover:bg-primary/20 transition-all duration-500">
+                                    <Code2 className="text-primary w-7 h-7" />
                                 </div>
                                 <h3 className="text-xl font-bold tracking-tight">{t('languagePulse')}</h3>
                             </div>
@@ -176,14 +176,14 @@ export default function Stats() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 whileHover={{ y: -4 }}
-                                className="flex items-center justify-between p-6 rounded-[2rem] border border-white/10 hover:border-indigo-500/40 hover:bg-white/5 transition-all group"
+                                className="flex items-center justify-between p-6 rounded-[2rem] border border-white/10 hover:border-primary/40 hover:bg-white/5 transition-all group"
                             >
                                 <div>
                                     <div className="text-[9px] font-black text-white/30 uppercase tracking-[0.2em] mb-1">{t('deepDive')}</div>
-                                    <div className="text-base font-black tracking-tight group-hover:text-indigo-400 transition-colors uppercase">{t('fullProfile')}</div>
+                                    <div className="text-base font-black tracking-tight group-hover:text-primary transition-colors uppercase">{t('fullProfile')}</div>
                                 </div>
-                                <div className="p-3 bg-white/5 rounded-2xl group-hover:bg-indigo-500/20 transition-all">
-                                    <ExternalLink className="w-5 h-5 text-white group-hover:text-indigo-400 transition-colors" />
+                                <div className="p-3 bg-white/5 rounded-2xl group-hover:bg-primary/20 transition-all">
+                                    <ExternalLink className="w-5 h-5 text-white group-hover:text-primary transition-colors" />
                                 </div>
                             </m.a>
                         </div>
@@ -238,16 +238,16 @@ export default function Stats() {
                         transition={{ duration: 0.8, delay: 0.2 }}
                         className="glass-premium rounded-[3rem] p-12 lg:col-span-8 flex flex-col relative overflow-hidden group"
                     >
-                        <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+                        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
 
                         <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between mb-16 gap-6">
                             <div className="flex items-center gap-4">
-                                <div className="p-4 rounded-3xl bg-white/5 border border-white/10 group-hover:bg-indigo-500/20 transition-all duration-500">
-                                    <BarChart3 className="w-7 h-7 text-indigo-400" />
+                                <div className="p-4 rounded-3xl bg-white/5 border border-white/10 group-hover:bg-primary/20 transition-all duration-500">
+                                    <BarChart3 className="w-7 h-7 text-primary" />
                                 </div>
                                 <h3 className="text-xl font-black uppercase tracking-widest">{t('activityPulse')}</h3>
                             </div>
-                            <span className="text-[10px] font-black bg-indigo-500/20 px-6 py-2 rounded-full text-indigo-300 border border-indigo-500/20 uppercase tracking-[0.2em]">
+                            <span className="text-[10px] font-black bg-primary/20 px-6 py-2 rounded-full text-primary border border-primary/20 uppercase tracking-[0.2em]">
                                 {t('last7Days')}
                             </span>
                         </div>
@@ -267,12 +267,12 @@ export default function Stats() {
                                             whileInView={{ height: `${Math.max(h, 8)}%` }}
                                             viewport={{ once: true }}
                                             transition={{ duration: 1, delay: 0.3 + i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                                            className="w-full bg-gradient-to-t from-indigo-600/40 to-indigo-400 rounded-t-2xl group-hover/bar:from-indigo-600 group-hover/bar:to-indigo-300 transition-all duration-500 shadow-[0_0_30px_rgba(99,102,241,0.1)] relative"
+                                            className="w-full bg-gradient-to-t from-primary/40 to-primary rounded-t-2xl group-hover/bar:from-primary group-hover/bar:to-primary transition-all duration-500 shadow-[0_0_30px_rgba(99,102,241,0.1)] relative"
                                         >
                                             <div className="absolute inset-x-0 top-0 h-1 bg-white/30 rounded-t-2xl" />
                                         </m.div>
 
-                                        <div className="absolute -top-12 left-1/2 -translate-x-1/2 opacity-0 group-hover/bar:opacity-100 transition-all duration-500 bg-indigo-700 text-white text-[10px] px-4 py-1.5 rounded-full font-black whitespace-nowrap z-20 pointer-events-none group-hover/bar:-translate-y-2 shadow-2xl">
+                                        <div className="absolute -top-12 left-1/2 -translate-x-1/2 opacity-0 group-hover/bar:opacity-100 transition-all duration-500 bg-primary text-primary-foreground text-[10px] px-4 py-1.5 rounded-full font-black whitespace-nowrap z-20 pointer-events-none group-hover/bar:-translate-y-2 shadow-2xl">
                                             {chartHours[i]} HRS
                                         </div>
                                     </div>

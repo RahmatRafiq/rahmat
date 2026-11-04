@@ -12,8 +12,8 @@ export default function ModularVisual() {
         <div className="flex flex-col items-center gap-4 w-full max-w-[280px] relative mt-8 scale-90 sm:scale-100 md:scale-110 origin-center">
 
             {[
-                { name: t('layer1'), icon: Globe, color: 'text-indigo-400' },
-                { name: t('layer2'), icon: Cpu, color: 'text-violet-400' },
+                { name: t('layer1'), icon: Globe, color: 'text-primary' },
+                { name: t('layer2'), icon: Cpu, color: 'text-primary' },
                 { name: t('layer3'), icon: Box, color: 'text-emerald-400' },
                 { name: t('layer4'), icon: Database, color: 'text-blue-400' }
             ].map((layer, i) => (

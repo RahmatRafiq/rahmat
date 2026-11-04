@@ -36,7 +36,7 @@ export default function Hero() {
                 aria-hidden="true"
             />
             <div
-                className="absolute bottom-20 right-1/4 w-[350px] h-[350px] md:w-[600px] md:h-[600px] bg-violet-500/10 rounded-full blur-[100px] md:blur-[150px] -z-10"
+                className="absolute bottom-20 right-1/4 w-[350px] h-[350px] md:w-[600px] md:h-[600px] bg-primary0/10 rounded-full blur-[100px] md:blur-[150px] -z-10"
                 aria-hidden="true"
             />
 
@@ -60,7 +60,7 @@ export default function Hero() {
                 </div>
 
                 <div
-                    className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-indigo-300 mb-8 md:mb-10"
+                    className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-primary mb-8 md:mb-10"
                 >
                     <span className="relative flex h-2 w-2">
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
@@ -83,13 +83,13 @@ export default function Hero() {
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6">
                     <Link
                         href="#projects"
-                        className="w-full sm:w-auto group relative px-10 py-4 bg-indigo-700 text-white rounded-full font-bold overflow-hidden transition-all hover:scale-105 active:scale-95"
+                        className="w-full sm:w-auto group relative px-10 py-4 bg-primary text-primary-foreground rounded-full font-bold overflow-hidden transition-all hover:scale-105 active:scale-95"
                     >
                         <span className="relative z-10 flex items-center justify-center">
                             {t('viewWork')}
                             <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
                         </span>
-                        <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-violet-600 opacity-0 group-hover:opacity-100 transition-opacity" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-primary to-primary opacity-0 group-hover:opacity-100 transition-opacity" />
                     </Link>
                     <Link
                         href="#contact"
@@ -110,7 +110,7 @@ export default function Hero() {
                             { icon: Database, title: t('feature3_title'), desc: t('feature3_desc') },
                         ].map((item, i) => (
                             <div key={i} className="flex flex-col items-start min-w-[300px]">
-                                <item.icon className="w-5 h-5 text-indigo-400 mb-4" />
+                                <item.icon className="w-5 h-5 text-primary mb-4" />
                                 <h2 className="font-bold text-sm mb-1 uppercase tracking-widest text-white">{item.title}</h2>
                                 <p className="text-[11px] text-muted-foreground font-medium leading-relaxed max-w-[250px]">{item.desc}</p>
                             </div>

@@ -37,7 +37,7 @@ export default function Architecture() {
             desc: t('f1_desc'),
             icon: ClipboardList,
             Visual: DevFlowVisual,
-            color: 'from-blue-600/20 to-indigo-600/20',
+            color: 'from-primary/5 to-transparent',
         },
         {
             id: 'modular',
@@ -45,7 +45,7 @@ export default function Architecture() {
             desc: t('f2_desc'),
             icon: Layers,
             Visual: ModularVisual,
-            color: 'from-emerald-600/20 to-teal-600/20',
+            color: 'from-primary/5 to-transparent',
         },
         {
             id: 'database',
@@ -53,7 +53,7 @@ export default function Architecture() {
             desc: t('f3_desc'),
             icon: Network,
             Visual: DatabaseVisual,
-            color: 'from-violet-600/20 to-purple-600/20',
+            color: 'from-primary/5 to-transparent',
         },
         {
             id: 'api',
@@ -61,7 +61,7 @@ export default function Architecture() {
             desc: t('f4_desc'),
             icon: Share2,
             Visual: APIVisual,
-            color: 'from-amber-600/20 to-orange-600/20',
+            color: 'from-primary/5 to-transparent',
         },
     ];
 
@@ -85,7 +85,7 @@ export default function Architecture() {
                                     className={cn(
                                         'w-full text-left p-6 md:p-8 rounded-[2rem] border transition-all duration-500 group relative overflow-hidden flex-1 flex flex-col justify-center',
                                         activeTab === feature.id
-                                            ? 'glass-premium border-indigo-500/50 shadow-2xl'
+                                            ? 'glass-premium border-primary/50 shadow-2xl'
                                             : 'bg-white/5 border-white/5 hover:border-white/10'
                                     )}
                                 >
@@ -98,7 +98,7 @@ export default function Architecture() {
                                     <div className="flex items-center gap-6 relative z-10">
                                         <div className={cn(
                                             'p-3 md:p-4 rounded-2xl transition-all duration-500',
-                                            activeTab === feature.id ? 'bg-indigo-700 text-white scale-110 shadow-lg' : 'bg-white/5 text-white/40'
+                                            activeTab === feature.id ? 'bg-primary text-primary-foreground scale-110 shadow-lg' : 'bg-white/5 text-white/40'
                                         )}>
                                             <feature.icon className="w-5 h-5 md:w-6 md:h-6" />
                                         </div>
@@ -111,7 +111,7 @@ export default function Architecture() {
                                             </h3>
                                             <p className={cn(
                                                 "text-[9px] md:text-[10px] font-black uppercase tracking-widest mt-1 opacity-50",
-                                                activeTab === feature.id ? "text-indigo-300" : "text-white/40"
+                                                activeTab === feature.id ? "text-primary" : "text-white/40"
                                             )}>{feature.desc}</p>
                                         </div>
                                         {/* Chevron indicator for mobile accordion */}

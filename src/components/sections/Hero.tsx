@@ -70,7 +70,7 @@ export default function Hero() {
                 </div>
 
                 {/* Massive Typography Headline */}
-                <h1 className="text-5xl sm:text-6xl md:text-massive mb-6 md:mb-8 tracking-tighter leading-[1.1] md:leading-[0.9]">
+                <h1 className="text-4xl sm:text-5xl md:text-massive mb-6 md:mb-8 tracking-tight leading-[1.15]">
                     {t('title_crafting')} <br />
                     <span className="text-gradient">{t('title_scalable')}</span> <br />
                     {t('title_seamless')}

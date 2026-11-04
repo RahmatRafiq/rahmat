@@ -113,7 +113,7 @@ export default function Experience() {
         <section id="experience" className="w-full py-20 md:py-32 relative overflow-hidden">
             <div className="px-6 md:px-16 lg:px-24 max-w-[1800px] mx-auto">
                 <div className="mb-16 md:mb-24 flex flex-col items-center md:items-start w-full max-w-[1600px] mx-auto">
-                    <h2 className="text-4xl sm:text-5xl md:text-8xl font-black mb-6 md:mb-8 tracking-tighter text-center md:text-left w-full leading-[0.8]">{t('title')}</h2>
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 md:mb-8 tracking-tight text-center md:text-left w-full leading-[1.05]">{t('title')}</h2>
                     <p className="text-lg md:text-xl text-muted-foreground max-w-3xl font-medium leading-relaxed text-center md:text-left">
                         {t('subtitle', { duration: durationText })}
                     </p>

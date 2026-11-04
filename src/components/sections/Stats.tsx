@@ -103,7 +103,7 @@ export default function Stats() {
             <div className="px-6 md:px-16 lg:px-24 max-w-[1800px] mx-auto">
                 {/* Header */}
                 <div className="mb-16 md:mb-24 max-w-[1600px] mx-auto">
-                    <h2 className="text-4xl sm:text-5xl md:text-8xl font-black mb-8 tracking-tighter leading-[0.8]">{t('title')}</h2>
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 tracking-tight leading-[1.05]">{t('title')}</h2>
                     <p className="text-lg md:text-xl text-muted-foreground max-w-3xl font-medium leading-relaxed">
                         {t('description')}
                     </p>

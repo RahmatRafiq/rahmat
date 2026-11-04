@@ -24,7 +24,7 @@ export default function Hero() {
         <section
             id="about"
             ref={containerRef}
-            className="relative min-h-screen flex flex-col items-center pt-32 md:pt-48 pb-20 overflow-hidden mesh-gradient w-full"
+            className="relative min-h-screen flex flex-col items-center justify-center pt-28 md:pt-32 pb-20 overflow-hidden w-full"
             aria-label="Introduction"
         >
             {/* Background Decorative Elements — static (no framer motion values).
@@ -70,7 +70,7 @@ export default function Hero() {
                 </div>
 
                 {/* Massive Typography Headline */}
-                <h1 className="text-5xl sm:text-6xl md:text-massive mb-6 md:mb-8 tracking-tighter leading-[1.1] md:leading-[0.9]">
+                <h1 className="text-3xl sm:text-4xl md:text-massive mb-5 md:mb-6 tracking-tight leading-[1.2]">
                     {t('title_crafting')} <br />
                     <span className="text-gradient">{t('title_scalable')}</span> <br />
                     {t('title_seamless')}

@@ -30,7 +30,11 @@ html {
   --color-accent: #7bb6e8;
   --color-accent-foreground: #0b0b0d;
 
-  --color-border: #424249;
+  /* Border carries the card/panel definition now that surfaces are flat and
+     kept deliberately close in tone. Raised so the edge reads clearly against
+     both the base and the raised surface (border/surface ~2.15) without
+     becoming a loud light frame. */
+  --color-border: #5a5a63;
 
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
 

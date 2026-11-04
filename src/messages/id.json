@@ -10,15 +10,15 @@
         "menu": "Menu"
     },
     "Hero": {
-        "available": "Siap untuk peran",
-        "title_crafting": "Inovatif",
-        "title_scalable": "Skalabel",
-        "title_seamless": "Tanpa Hambatan",
+        "available": "Terbuka untuk peluang",
+        "title_crafting": "Saya membangun perangkat lunak",
+        "title_scalable": "yang bekerja dengan andal",
+        "title_seamless": "dan tetap aman.",
         "profile_picture_alt": "Foto Profil Rahmat",
-        "subtitle": "Full Stack Engineer yang membangun platform backend tangguh dengan <b>Golang</b> dan <b>Laravel</b>, serta menghadirkan antarmuka modern berbasis data dengan <b>React</b> dan <b>Next.js</b>.",
-        "quote": "“Kode yang bersih menghasilkan sistem yang tangguh.”",
-        "viewWork": "Jelajahi Karya Saya",
-        "getInTouch": "Mari Bicara",
+        "subtitle": "Full Stack Engineer dan SOC Analyst. Saya membangun aplikasi web dari ujung ke ujung — dari sistem di baliknya hingga tampilan yang digunakan orang — dan membantu menjaganya tetap aman.",
+        "quote": "Sistem yang andal dan tenang, dibangun untuk bertahan.",
+        "viewWork": "Lihat karya",
+        "getInTouch": "Kontak",
         "feature1_title": "Backend Engineering",
         "feature1_desc": "Golang, Laravel, Gin, GORM",
         "feature2_title": "Frontend Engineering",
@@ -27,7 +27,7 @@
         "feature3_desc": "PostgreSQL, Docker, CI/CD"
     },
     "Skills": {
-        "title": "Kompetensi Inti",
+        "title": "Keahlian & alat",
         "cat1_title": "Bahasa & Framework",
         "cat2_title": "Database & Penyimpanan",
         "cat3_title": "API & Tooling",
@@ -66,9 +66,9 @@
     },
     "Stats": {
         "title": "Metrik Pengembang",
-        "description": "Metrik live yang menggambarkan ritme coding, area fokus, dan rekam jejak pengiriman saya.",
+        "description": "Gambaran langsung dari yang sedang saya kerjakan — bahasa utama dan aktivitas terkini.",
         "languagePulse": "Distribusi Bahasa",
-        "focus": "Fokus utama: <b>Golang</b> & <b>Clean Architecture</b> (2025).",
+        "focus": "Terutama bekerja dengan <b>Golang</b> dan sistem yang bersih serta mudah dirawat (2025).",
         "metric_time": "Total Waktu Dev Mingguan",
         "metric_daily": "Rata-rata Harian",
         "metric_best_day": "Hari Terbaik",
@@ -140,19 +140,19 @@
         "backToProjects": "Kembali ke Karya"
     },
     "Contact": {
-        "title1": "Mari Membangun Bersama",
-        "title2": "Sesuatu yang Luar Biasa",
-        "title3": "Proyek Hebat",
-        "description": "Punya tantangan backend kompleks atau ide produk? Mari diskusi dan eksplorasi solusi yang tepat bersama.",
+        "title1": "Mari bicara.",
+        "title2": "Ceritakan",
+        "title3": "proyek Anda.",
+        "description": "Punya proyek, posisi, atau masalah yang perlu diselesaikan? Kirim pesan dan saya akan membalas.",
         "emailLabel": "Kirim Email",
         "connectLabel": "Terhubung",
         "available": "Tersedia untuk proyek dan kolaborasi baru",
         "messageLabel": "Pesan Anda",
         "messagePlaceholder": "Jelaskan singkat proyek atau tantangan Anda...",
-        "sendBtn": "Kirim Pesan"
+        "sendBtn": "Kirim pesan"
     },
     "Footer": {
-        "description": "Membangun sistem yang tangguh dan pengalaman digital berperforma tinggi dengan fokus pada Clean Architecture dan keandalan operasional.",
+        "description": "Saya membangun aplikasi web yang andal dan membantu menjaganya tetap aman — dari sistem di belakang hingga antarmuka pengguna.",
         "navTitle": "Navigasi",
         "navAbout": "Tentang",
         "navSkills": "Keahlian",
@@ -165,16 +165,16 @@
         "backToTop": "Kembali ke Atas"
     },
     "Architecture": {
-        "title": "Arsitektur & Desain Sistem",
-        "description": "Lebih dari sekadar kode: sistem dirancang modular, ter-observasi, dan skalabel, mulai dari UML hingga orkestrasi API.",
+        "title": "Cara saya membangun",
+        "description": "Saya merancang sistem agar jelas, dapat diandalkan, dan mudah dikembangkan — direncanakan di awal, lalu dibangun agar kuat saat dipakai.",
         "f1_title": "UML & Diagram",
         "f1_desc": "Mengubah aturan bisnis menjadi diagram kelas, urutan, dan alur yang jelas untuk keselarasan engineering.",
         "f2_title": "Arsitektur Modular",
-        "f2_desc": "Membangun sistem ter-decouple menggunakan Clean Architecture dan batas layer yang jelas.",
+        "f2_desc": "Membangun sistem dalam bagian-bagian yang bersih dan mandiri, sehingga setiap bagian mudah diubah dan diuji tanpa merusak yang lain.",
         "f3_title": "Strategi Database",
-        "f3_desc": "Merancang skema, indeks, dan strategi multi-db untuk performa dan keandalan.",
+        "f3_desc": "Merancang cara data disimpan dan diindeks agar aplikasi tetap cepat dan andal saat berkembang.",
         "f4_title": "Orkestrasi API",
-        "f4_desc": "Menyusun API yang tangguh dengan alur autentikasi aman dan dokumentasi menyeluruh."
+        "f4_desc": "Menghubungkan layanan dengan autentikasi yang aman dan dokumentasi yang jelas, sehingga semuanya bekerja bersama dengan aman."
     },
     "DevFlowVisual": {
         "title": "SISTEM DEVELOPMENT LIFECYCLE",

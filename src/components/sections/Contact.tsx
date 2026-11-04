@@ -53,12 +53,12 @@ export default function Contact() {
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: i * 0.1 }}
-                                className="group glass-premium p-8 rounded-[2rem] border border-border hover:border-primary/50 transition-all duration-500 relative overflow-hidden flex flex-col justify-between h-[200px]"
+                                className="group glass-premium p-8 rounded-lg border border-border hover:border-primary/50 transition-all duration-500 relative overflow-hidden flex flex-col justify-between h-[200px]"
                             >
                                 <div className={cn('absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-30 transition-opacity duration-500', link.color)} />
 
                                 <div className="relative z-10 flex justify-between items-start">
-                                    <div className="p-4 rounded-2xl bg-secondary border border-border group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-500">
+                                    <div className="p-4 rounded-lg bg-secondary border border-border group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-500">
                                         <link.icon className="w-6 h-6 text-foreground" />
                                     </div>
                                     <ArrowUpRight className="w-6 h-6 text-muted-foreground/60 group-hover:text-muted-foreground transition-colors" />
@@ -79,7 +79,7 @@ export default function Contact() {
                         initial={{ opacity: 0, scale: 0.95 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
-                        className="lg:col-span-7 glass-premium p-12 rounded-[3rem] relative overflow-hidden flex flex-col justify-center"
+                        className="lg:col-span-7 glass-premium p-12 rounded-lg relative overflow-hidden flex flex-col justify-center"
                     >
                         <div className="absolute top-0 right-0 p-12 opacity-5">
                             <MessageSquare className="w-48 h-48 text-foreground" />
@@ -97,11 +97,11 @@ export default function Contact() {
                                     <textarea
                                         placeholder={t('messagePlaceholder')}
                                         rows={4}
-                                        className="w-full bg-secondary border border-border rounded-3xl p-6 text-lg font-medium text-foreground focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary/50 transition-all resize-none shadow-inner"
+                                        className="w-full bg-secondary border border-border rounded-lg p-6 text-lg font-medium text-foreground focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary/50 transition-all resize-none shadow-inner"
                                     />
                                 </div>
 
-                                <button className="w-full bg-primary hover:bg-accent text-foreground text-xs font-black uppercase tracking-[0.4em] py-6 rounded-3xl flex items-center justify-center gap-4 transition-all active:scale-[0.98] shadow-2xl shadow-black/20">
+                                <button className="w-full bg-primary hover:bg-accent text-foreground text-xs font-black uppercase tracking-[0.4em] py-6 rounded-lg flex items-center justify-center gap-4 transition-all active:scale-[0.98] shadow-2xl shadow-black/20">
                                     <span>{t('sendBtn')}</span>
                                     <Send className="w-4 h-4" />
                                 </button>

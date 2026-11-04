@@ -36,7 +36,7 @@ export default function Hero() {
                 aria-hidden="true"
             />
             <div
-                className="absolute bottom-20 right-1/4 w-[350px] h-[350px] md:w-[600px] md:h-[600px] bg-primary0/10 rounded-full blur-[100px] md:blur-[150px] -z-10"
+                className="absolute bottom-20 right-1/4 w-[350px] h-[350px] md:w-[600px] md:h-[600px] bg-primary/10 rounded-full blur-[100px] md:blur-[150px] -z-10"
                 aria-hidden="true"
             />
 
@@ -83,7 +83,7 @@ export default function Hero() {
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6">
                     <Link
                         href="#projects"
-                        className="w-full sm:w-auto group relative px-10 py-4 bg-primary text-foreground rounded-full font-bold overflow-hidden transition-all hover:scale-105 active:scale-95"
+                        className="w-full sm:w-auto group relative px-10 py-4 bg-primary text-primary-foreground rounded-md font-bold overflow-hidden transition-all hover:scale-105 active:scale-95"
                     >
                         <span className="relative z-10 flex items-center justify-center">
                             {t('viewWork')}
@@ -93,7 +93,7 @@ export default function Hero() {
                     </Link>
                     <Link
                         href="#contact"
-                        className="w-full sm:w-auto px-10 py-4 glass-premium text-foreground rounded-full font-bold border border-border hover:bg-secondary transition-all hover:scale-105 active:scale-95"
+                        className="w-full sm:w-auto px-10 py-4 glass-premium text-foreground rounded-md font-bold border border-border hover:bg-secondary transition-all hover:scale-105 active:scale-95"
                     >
                         {t('getInTouch')}
                     </Link>

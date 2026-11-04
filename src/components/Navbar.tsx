@@ -171,7 +171,7 @@ export default function Navbar() {
                             onClick={() => router.replace(pathname, { locale: 'id', scroll: false })}
                             className={cn(
                                 "px-3 py-1 text-[10px] font-black rounded-full transition-all",
-                                locale === 'id' ? "bg-primary text-foreground shadow-lg" : "text-muted-foreground hover:text-foreground"
+                                locale === 'id' ? "bg-primary text-primary-foreground shadow-lg" : "text-muted-foreground hover:text-foreground"
                             )}
                         >
                             ID
@@ -180,7 +180,7 @@ export default function Navbar() {
                             onClick={() => router.replace(pathname, { locale: 'en', scroll: false })}
                             className={cn(
                                 "px-3 py-1 text-[10px] font-black rounded-full transition-all",
-                                locale === 'en' ? "bg-primary text-foreground shadow-lg" : "text-muted-foreground hover:text-foreground"
+                                locale === 'en' ? "bg-primary text-primary-foreground shadow-lg" : "text-muted-foreground hover:text-foreground"
                             )}
                         >
                             EN
@@ -227,7 +227,7 @@ export default function Navbar() {
                                 initial={{ opacity: 0, scale: 0.9, y: 20 }}
                                 animate={{ opacity: 1, scale: 1, y: 0 }}
                                 exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                                className={`glass-premium flex flex-col p-4 w-[280px] rounded-[2rem] gap-2 mb-2 ${GLASS_SHADOW}`}
+                                className={`glass-premium flex flex-col p-4 w-[280px] rounded-lg gap-2 mb-2 ${GLASS_SHADOW}`}
                             >
                                 <div className="flex items-center justify-between px-3 py-2">
                                     <span className="text-lg font-black tracking-tighter text-foreground">
@@ -247,7 +247,7 @@ export default function Navbar() {
                                             key={link.name}
                                             href={link.href}
                                             onClick={(e) => handleNavClick(e, link.href)}
-                                            className="px-4 py-3 rounded-2xl text-[13px] font-bold text-muted-foreground hover:text-foreground hover:bg-secondary transition-all flex items-center justify-between"
+                                            className="px-4 py-3 rounded-lg text-[13px] font-bold text-muted-foreground hover:text-foreground hover:bg-secondary transition-all flex items-center justify-between"
                                         >
                                             {link.name}
                                             <div className="w-1.5 h-1.5 rounded-full bg-muted" />
@@ -259,21 +259,21 @@ export default function Navbar() {
 
                                 <div className="flex items-center justify-between gap-2 px-2">
                                     <div className="flex gap-2">
-                                        <Link href={siteConfig.links.github} target="_blank" className="p-3 bg-secondary rounded-2xl text-muted-foreground">
+                                        <Link href={siteConfig.links.github} target="_blank" className="p-3 bg-secondary rounded-lg text-muted-foreground">
                                             <Github size={18} />
                                         </Link>
-                                        <Link href={siteConfig.links.linkedin} target="_blank" className="p-3 bg-secondary rounded-2xl text-muted-foreground">
+                                        <Link href={siteConfig.links.linkedin} target="_blank" className="p-3 bg-secondary rounded-lg text-muted-foreground">
                                             <Linkedin size={18} />
                                         </Link>
                                     </div>
-                                    <div className="flex bg-secondary rounded-2xl p-1 border border-border">
+                                    <div className="flex bg-secondary rounded-lg p-1 border border-border">
                                         <button
                                             onClick={() => router.replace(pathname, { locale: 'id', scroll: false })}
-                                            className={cn("px-3 py-1 text-[10px] font-black rounded-xl transition-all", locale === 'id' ? "bg-primary text-foreground" : "text-muted-foreground/60")}
+                                            className={cn("px-3 py-1 text-[10px] font-black rounded-xl transition-all", locale === 'id' ? "bg-primary text-primary-foreground" : "text-muted-foreground/60")}
                                         >ID</button>
                                         <button
                                             onClick={() => router.replace(pathname, { locale: 'en', scroll: false })}
-                                            className={cn("px-3 py-1 text-[10px] font-black rounded-xl transition-all", locale === 'en' ? "bg-primary text-foreground" : "text-muted-foreground/60")}
+                                            className={cn("px-3 py-1 text-[10px] font-black rounded-xl transition-all", locale === 'en' ? "bg-primary text-primary-foreground" : "text-muted-foreground/60")}
                                         >EN</button>
                                     </div>
                                 </div>

@@ -76,12 +76,12 @@ export default function Experience() {
     const timelineData = experiences.map((exp) => ({
         content: (
             <div className="w-full">
-                <div className="glass-premium rounded-[1.5rem] md:rounded-[2.5rem] p-6 md:p-10 relative overflow-hidden group hover:border-primary/40 transition-all duration-500">
+                <div className="glass-premium rounded-[1.5rem] md:rounded-lg p-6 md:p-10 relative overflow-hidden group hover:border-primary/40 transition-all duration-500">
                     <div className={cn('absolute inset-0 bg-gradient-to-br opacity-10 md:opacity-20 group-hover:opacity-40 transition-opacity duration-700', exp.color)} />
 
                     <div className="relative z-10">
                         <div className="flex flex-col md:flex-row justify-between items-start gap-4 mb-6 md:mb-8">
-                            <div className="hidden sm:block p-3 md:p-4 rounded-2xl bg-secondary border border-border group-hover:bg-primary/20 transition-all duration-500">
+                            <div className="hidden sm:block p-3 md:p-4 rounded-lg bg-secondary border border-border group-hover:bg-primary/20 transition-all duration-500">
                                 <Building2 className="w-5 h-5 md:w-7 md:h-7 text-foreground" />
                             </div>
                             <div className="text-left md:text-right">

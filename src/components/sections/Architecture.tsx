@@ -83,7 +83,7 @@ export default function Architecture() {
                                 <button
                                     onClick={() => setActiveTab(feature.id)}
                                     className={cn(
-                                        'w-full text-left p-6 md:p-8 rounded-[2rem] border transition-all duration-500 group relative overflow-hidden flex-1 flex flex-col justify-center',
+                                        'w-full text-left p-6 md:p-8 rounded-lg border transition-all duration-500 group relative overflow-hidden flex-1 flex flex-col justify-center',
                                         activeTab === feature.id
                                             ? 'glass-premium border-primary/50 shadow-2xl'
                                             : 'bg-secondary border-border hover:border-border'
@@ -97,8 +97,8 @@ export default function Architecture() {
 
                                     <div className="flex items-center gap-6 relative z-10">
                                         <div className={cn(
-                                            'p-3 md:p-4 rounded-2xl transition-all duration-500',
-                                            activeTab === feature.id ? 'bg-primary text-foreground scale-110 shadow-lg' : 'bg-secondary text-muted-foreground/60'
+                                            'p-3 md:p-4 rounded-lg transition-all duration-500',
+                                            activeTab === feature.id ? 'bg-primary text-primary-foreground scale-110 shadow-lg' : 'bg-secondary text-muted-foreground/60'
                                         )}>
                                             <feature.icon className="w-5 h-5 md:w-6 md:h-6" />
                                         </div>
@@ -133,7 +133,7 @@ export default function Architecture() {
                                             animate={{ height: 'auto', opacity: 1 }}
                                             exit={{ height: 0, opacity: 0 }}
                                             transition={{ duration: 0.5, ease: "circOut" }}
-                                            className="lg:hidden glass-premium rounded-[2rem] overflow-hidden"
+                                            className="lg:hidden glass-premium rounded-lg overflow-hidden"
                                         >
                                             <div className="p-8 flex flex-col items-center justify-center min-h-[300px] relative">
                                                 <div className={cn('absolute inset-0 bg-gradient-to-br opacity-20', feature.color)} />
@@ -149,7 +149,7 @@ export default function Architecture() {
                     </div>
 
                     {/* Visualization Panel - Desktop Only */}
-                    <div className="hidden lg:flex lg:col-span-8 glass-premium rounded-[3rem] p-12 relative flex-col items-center justify-center overflow-hidden min-h-[400px]">
+                    <div className="hidden lg:flex lg:col-span-8 glass-premium rounded-lg p-12 relative flex-col items-center justify-center overflow-hidden min-h-[400px]">
                         <div className={cn('absolute inset-0 bg-gradient-to-br opacity-20 transition-all duration-1000', activeFeature.color)} />
 
                         <div className="relative z-10 w-full h-full flex items-center justify-center scale-90 md:scale-100">

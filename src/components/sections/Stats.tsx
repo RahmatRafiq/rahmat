@@ -44,14 +44,14 @@ function MetricCard({
             viewport={{ once: true }}
             transition={{ delay, duration: 0.5 }}
             className={cn(
-                "glass-premium rounded-[2.5rem] p-10 flex flex-col justify-between relative overflow-hidden group hover:border-primary/40 transition-all duration-500",
+                "glass-premium rounded-lg p-10 flex flex-col justify-between relative overflow-hidden group hover:border-primary/40 transition-all duration-500",
                 className
             )}
         >
             <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
             <div className="relative z-10 flex justify-between items-start mb-12">
-                <div className="p-4 rounded-3xl bg-secondary border border-border group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-500">
+                <div className="p-4 rounded-lg bg-secondary border border-border group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-500">
                     <Icon className={cn("w-7 h-7", iconColor)} />
                 </div>
             </div>
@@ -116,13 +116,13 @@ export default function Stats() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
-                        className="glass-premium rounded-[3rem] p-12 lg:col-span-4 lg:row-span-2 flex flex-col gap-10 group relative overflow-hidden"
+                        className="glass-premium rounded-lg p-12 lg:col-span-4 lg:row-span-2 flex flex-col gap-10 group relative overflow-hidden"
                     >
                         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
 
                         <div className="relative z-10">
                             <div className="flex items-center gap-4 mb-10">
-                                <div className="p-4 rounded-3xl bg-secondary border border-border group-hover:bg-primary/20 transition-all duration-500">
+                                <div className="p-4 rounded-lg bg-secondary border border-border group-hover:bg-primary/20 transition-all duration-500">
                                     <Code2 className="text-primary w-7 h-7" />
                                 </div>
                                 <h3 className="text-xl font-bold tracking-tight">{t('languagePulse')}</h3>
@@ -164,7 +164,7 @@ export default function Stats() {
                         </div>
 
                         <div className="mt-auto relative z-10 flex flex-col gap-10">
-                            <div className="flex items-start gap-4 p-6 bg-secondary rounded-[2rem] border border-border">
+                            <div className="flex items-start gap-4 p-6 bg-secondary rounded-lg border border-border">
                                 <Zap className="w-5 h-5 text-yellow-500 shrink-0 mt-0.5" />
                                 <p className="text-xs font-bold text-muted-foreground leading-relaxed tracking-tight">
                                     {t.rich('focus', { b: (c) => <span className="text-foreground font-black">{c}</span> })}
@@ -176,13 +176,13 @@ export default function Stats() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 whileHover={{ y: -4 }}
-                                className="flex items-center justify-between p-6 rounded-[2rem] border border-border hover:border-primary/40 hover:bg-secondary transition-all group"
+                                className="flex items-center justify-between p-6 rounded-lg border border-border hover:border-primary/40 hover:bg-secondary transition-all group"
                             >
                                 <div>
                                     <div className="text-[9px] font-black text-muted-foreground/60 uppercase tracking-[0.2em] mb-1">{t('deepDive')}</div>
                                     <div className="text-base font-black tracking-tight group-hover:text-primary transition-colors uppercase">{t('fullProfile')}</div>
                                 </div>
-                                <div className="p-3 bg-secondary rounded-2xl group-hover:bg-primary/20 transition-all">
+                                <div className="p-3 bg-secondary rounded-lg group-hover:bg-primary/20 transition-all">
                                     <ExternalLink className="w-5 h-5 text-foreground group-hover:text-primary transition-colors" />
                                 </div>
                             </m.a>
@@ -236,13 +236,13 @@ export default function Stats() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8, delay: 0.2 }}
-                        className="glass-premium rounded-[3rem] p-12 lg:col-span-8 flex flex-col relative overflow-hidden group"
+                        className="glass-premium rounded-lg p-12 lg:col-span-8 flex flex-col relative overflow-hidden group"
                     >
                         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
 
                         <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between mb-16 gap-6">
                             <div className="flex items-center gap-4">
-                                <div className="p-4 rounded-3xl bg-secondary border border-border group-hover:bg-primary/20 transition-all duration-500">
+                                <div className="p-4 rounded-lg bg-secondary border border-border group-hover:bg-primary/20 transition-all duration-500">
                                     <BarChart3 className="w-7 h-7 text-primary" />
                                 </div>
                                 <h3 className="text-xl font-black uppercase tracking-widest">{t('activityPulse')}</h3>
@@ -272,7 +272,7 @@ export default function Stats() {
                                             <div className="absolute inset-x-0 top-0 h-1 bg-muted rounded-t-2xl" />
                                         </m.div>
 
-                                        <div className="absolute -top-12 left-1/2 -translate-x-1/2 opacity-0 group-hover/bar:opacity-100 transition-all duration-500 bg-primary text-foreground text-[10px] px-4 py-1.5 rounded-full font-black whitespace-nowrap z-20 pointer-events-none group-hover/bar:-translate-y-2 shadow-2xl">
+                                        <div className="absolute -top-12 left-1/2 -translate-x-1/2 opacity-0 group-hover/bar:opacity-100 transition-all duration-500 bg-primary text-primary-foreground text-[10px] px-4 py-1.5 rounded-full font-black whitespace-nowrap z-20 pointer-events-none group-hover/bar:-translate-y-2 shadow-2xl">
                                             {chartHours[i]} HRS
                                         </div>
                                     </div>

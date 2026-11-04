@@ -30,7 +30,7 @@ export default function Projects() {
                     <h2 className="text-4xl sm:text-5xl md:text-8xl font-black mb-10 md:mb-12 tracking-tighter text-center w-full leading-[0.8]">{t('title')}</h2>
 
                     <div
-                        className="flex flex-wrap items-center justify-center gap-3 p-1.5 bg-secondary rounded-2xl border border-border"
+                        className="flex flex-wrap items-center justify-center gap-3 p-1.5 bg-secondary rounded-lg border border-border"
                         role="tablist"
                     >
                         {categories.map((cat) => {
@@ -44,7 +44,7 @@ export default function Projects() {
                                     className={cn(
                                         'px-4 md:px-6 py-2.5 rounded-xl text-[10px] md:text-xs font-bold tracking-widest uppercase transition-all flex items-center gap-2',
                                         activeTab === cat
-                                            ? 'bg-primary text-foreground shadow-xl scale-105'
+                                            ? 'bg-primary text-primary-foreground shadow-xl scale-105'
                                             : 'text-muted-foreground/60 hover:text-foreground hover:bg-secondary'
                                     )}
                                 >
@@ -77,7 +77,7 @@ export default function Projects() {
                                     exit={{ opacity: 0, scale: 0.95 }}
                                     transition={{ duration: 0.5, delay: index * 0.05 }}
                                     className={cn(
-                                        "group glass-premium rounded-[2.5rem] overflow-hidden flex flex-col relative hover:border-primary/50 transition-colors",
+                                        "group glass-premium rounded-lg overflow-hidden flex flex-col relative hover:border-primary/50 transition-colors",
                                         project.span || "lg:col-span-4"
                                     )}
                                 >
@@ -103,7 +103,7 @@ export default function Projects() {
 
                                     <div className="relative p-10 flex flex-col h-full z-20 pointer-events-none">
                                         <div className="flex justify-between items-start mb-6">
-                                            <div className="p-4 rounded-3xl bg-secondary border border-border group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-500">
+                                            <div className="p-4 rounded-lg bg-secondary border border-border group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-500">
                                                 {Icon && <Icon className="w-8 h-8 text-foreground group-hover:text-primary transition-colors" />}
                                             </div>
                                             <span className="text-[11px] font-black tracking-widest uppercase bg-muted px-4 py-1.5 rounded-full border border-border">

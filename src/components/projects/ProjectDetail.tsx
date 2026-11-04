@@ -48,7 +48,7 @@ interface ProjectDetailProps {
 }
 
 /** Shared pill-button sizing — compact in the panel, roomy on the full page. */
-const btnBase = 'w-full rounded-full font-black tracking-[0.2em] uppercase transition-all flex items-center justify-center';
+const btnBase = 'w-full rounded-md font-black tracking-[0.2em] uppercase transition-all flex items-center justify-center';
 const btnSize = (compact?: boolean) => (compact ? 'py-3.5 text-[10px] gap-2.5' : 'py-6 text-xs gap-4');
 
 function ActionLinks({ project, t, compact }: { project: ProjectMeta; t: ReturnType<typeof useTranslations>; compact?: boolean }) {
@@ -60,7 +60,7 @@ function ActionLinks({ project, t, compact }: { project: ProjectMeta; t: ReturnT
                     href={project.links.demo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={cn(btnBase, btnSize(compact), 'bg-primary text-foreground hover:bg-accent shadow-2xl shadow-black/20 group/btn')}
+                    className={cn(btnBase, btnSize(compact), 'bg-primary text-primary-foreground hover:bg-accent shadow-2xl shadow-black/20 group/btn')}
                 >
                     {t('livePreview')}
                     <ArrowUpRight size={iconSize} className="group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
@@ -206,7 +206,7 @@ export default function ProjectDetail({ project, variant }: ProjectDetailProps) 
                         {/* Primary CTA: go to the full detail page (real route w/ URL) */}
                         <Link
                             href={`/projects/${project.slug}`}
-                            className={cn(btnBase, btnSize(true), 'bg-primary text-foreground hover:bg-accent shadow-2xl shadow-black/20 group/cta')}
+                            className={cn(btnBase, btnSize(true), 'bg-primary text-primary-foreground hover:bg-accent shadow-2xl shadow-black/20 group/cta')}
                         >
                             {t('viewDetails')}
                             <ChevronRight size={16} className="group-hover/cta:translate-x-1 transition-transform" />
@@ -275,7 +275,7 @@ export default function ProjectDetail({ project, variant }: ProjectDetailProps) 
                                     {project.features.map((feat) => {
                                         const FeatIcon = PROJECT_ICONS[feat.iconName];
                                         return (
-                                            <div key={feat.titleKey} className="flex gap-4 p-5 rounded-2xl bg-secondary border border-border">
+                                            <div key={feat.titleKey} className="flex gap-4 p-5 rounded-lg bg-secondary border border-border">
                                                 <div className="p-3 rounded-xl bg-primary/15 border border-primary/20 h-fit">
                                                     {FeatIcon && <FeatIcon className="w-5 h-5 text-primary" />}
                                                 </div>
@@ -293,7 +293,7 @@ export default function ProjectDetail({ project, variant }: ProjectDetailProps) 
                         {project.detailImages && project.detailImages.length > 0 && (
                             <div className="flex flex-col gap-8 mt-12 w-full">
                                 {project.detailImages.map((img, i) => (
-                                    <div key={i} className="rounded-2xl overflow-hidden border border-border group bg-secondary relative w-full aspect-video shadow-2xl">
+                                    <div key={i} className="rounded-lg overflow-hidden border border-border group bg-secondary relative w-full aspect-video shadow-2xl">
                                         <img src={img} alt={`${title} detailed screenshot ${i + 1}`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                                     </div>
                                 ))}

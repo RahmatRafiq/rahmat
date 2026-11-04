@@ -36,18 +36,18 @@ export default function DatabaseVisual() {
                 </defs>
 
                 {/* Visible Paths */}
-                <m.path d="M 120 40 Q 150 120 200 190" fill="none" stroke="rgba(99, 102, 241, 0.2)" strokeWidth="1" strokeDasharray="4 4" {...pathProps(0)} />
-                <m.path d="M 230 110 Q 200 140 190 180" fill="none" stroke="rgba(99, 102, 241, 0.2)" strokeWidth="1" strokeDasharray="4 4" {...pathProps(0.3)} />
-                <m.path d="M 40 140 Q 150 100 220 50" fill="none" stroke="rgba(99, 102, 241, 0.2)" strokeWidth="1" strokeDasharray="4 4" {...pathProps(0.6)} />
-                <m.path d="M 150 200 Q 150 220 100 250" fill="none" stroke="rgba(99, 102, 241, 0.2)" strokeWidth="1" strokeDasharray="4 4" {...pathProps(0.9)} />
+                <m.path d="M 120 40 Q 150 120 200 190" fill="none" stroke="rgba(90,159,212, 0.2)" strokeWidth="1" strokeDasharray="4 4" {...pathProps(0)} />
+                <m.path d="M 230 110 Q 200 140 190 180" fill="none" stroke="rgba(90,159,212, 0.2)" strokeWidth="1" strokeDasharray="4 4" {...pathProps(0.3)} />
+                <m.path d="M 40 140 Q 150 100 220 50" fill="none" stroke="rgba(90,159,212, 0.2)" strokeWidth="1" strokeDasharray="4 4" {...pathProps(0.6)} />
+                <m.path d="M 150 200 Q 150 220 100 250" fill="none" stroke="rgba(90,159,212, 0.2)" strokeWidth="1" strokeDasharray="4 4" {...pathProps(0.9)} />
 
                 {/* Animated Data Dots */}
-                <circle r="3" fill="#6366f1" className="shadow-[0_0_8px_rgba(99,102,241,0.8)] filter drop-shadow-lg">
+                <circle r="3" fill="#5a9fd4" className="shadow-[0_0_8px_rgba(90,159,212,0.8)] filter drop-shadow-lg">
                     <animateMotion dur="3s" repeatCount="indefinite" rotate="auto" path="M 120 40 Q 150 120 200 190" />
                     <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="3s" repeatCount="indefinite" />
                 </circle>
 
-                <circle r="2" fill="#8b5cf6" className="shadow-[0_0_8px_rgba(139,92,246,0.8)] filter drop-shadow-lg">
+                <circle r="2" fill="#8b5cf6" className="shadow-[0_0_8px_rgba(123,182,232,0.8)] filter drop-shadow-lg">
                     <animateMotion dur="2.5s" repeatCount="indefinite" rotate="auto" path="M 230 110 Q 200 140 190 180" />
                     <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="2.5s" repeatCount="indefinite" begin="1s" />
                 </circle>
@@ -57,7 +57,7 @@ export default function DatabaseVisual() {
                     <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="4s" repeatCount="indefinite" />
                 </circle>
 
-                <circle r="2" fill="#6366f1" className="shadow-[0_0_8px_rgba(99,102,241,0.8)] filter drop-shadow-lg">
+                <circle r="2" fill="#5a9fd4" className="shadow-[0_0_8px_rgba(90,159,212,0.8)] filter drop-shadow-lg">
                     <animateMotion dur="2s" repeatCount="indefinite" rotate="auto" path="M 150 200 Q 150 220 100 250" />
                     <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="2s" repeatCount="indefinite" begin="1.5s" />
                 </circle>

@@ -11,14 +11,14 @@
     },
     "Hero": {
         "available": "Open to roles",
-        "title_crafting": "Innovative",
-        "title_scalable": "Scalable",
-        "title_seamless": "Seamless",
+        "title_crafting": "I build software",
+        "title_scalable": "that works reliably",
+        "title_seamless": "and stays secure.",
         "profile_picture_alt": "Rahmat's Profile Picture",
-        "subtitle": "Full Stack Engineer building resilient backend platforms with <b>Golang</b> and <b>Laravel</b>, and delivering polished, data-driven frontends with <b>React</b> and <b>Next.js</b>.",
-        "quote": "“Clean code, resilient systems, product-ready by design.”",
-        "viewWork": "Explore My Work",
-        "getInTouch": "Let's Talk",
+        "subtitle": "Full Stack Engineer and SOC Analyst. I build web applications end to end — from the systems behind them to the screens people use — and help keep them running safely.",
+        "quote": "Quietly reliable systems, built to last.",
+        "viewWork": "View work",
+        "getInTouch": "Contact",
         "feature1_title": "Backend Engineering",
         "feature1_desc": "Golang, Laravel, Gin, GORM",
         "feature2_title": "Frontend Engineering",
@@ -27,7 +27,7 @@
         "feature3_desc": "PostgreSQL, Docker, CI/CD"
     },
     "Skills": {
-        "title": "Core Competencies",
+        "title": "Skills & tools",
         "cat1_title": "Languages & Frameworks",
         "cat2_title": "Database & Storage",
         "cat3_title": "API & Dev Tooling",
@@ -35,7 +35,7 @@
     },
     "Experience": {
         "title": "Professional Experience",
-        "subtitle": "Over {duration} building backend, full-stack, and cybersecurity systems, from 2023 to present.",
+        "subtitle": "{duration} of combined experience building backend, full-stack, and cybersecurity systems.",
         "year": "years",
         "month": "months",
         "job0_role": "SOC Analyst",
@@ -66,9 +66,9 @@
     },
     "Stats": {
         "title": "Developer Metrics",
-        "description": "Live-synced metrics that illustrate my coding cadence, focus areas, and delivery history.",
+        "description": "A live look at what I’ve been working on — my main languages and recent activity.",
         "languagePulse": "Language Pulse",
-        "focus": "Primary focus: <b>Golang</b> & <b>Clean Architecture</b> (2025).",
+        "focus": "Mainly working with <b>Golang</b> and clean, maintainable systems (2025).",
         "metric_time": "Weekly Total Dev Time",
         "metric_daily": "Daily Average",
         "metric_best_day": "Best Day",
@@ -140,19 +140,19 @@
         "backToProjects": "Back to Work"
     },
     "Contact": {
-        "title1": "Let's Build Together",
-        "title2": "Something Amazing",
-        "title3": "Great Projects",
-        "description": "Got a complex backend problem or product idea? Reach out and let's explore how to build something reliable together.",
+        "title1": "Let’s talk.",
+        "title2": "Tell me about",
+        "title3": "your project.",
+        "description": "Have a project, a role, or a problem to solve? Send a message and I’ll get back to you.",
         "emailLabel": "Email Me",
         "connectLabel": "Connect",
         "available": "Available for new projects and collaborations",
         "messageLabel": "Your Message",
         "messagePlaceholder": "Briefly describe your project or challenge...",
-        "sendBtn": "Send Inquiry"
+        "sendBtn": "Send message"
     },
     "Footer": {
-        "description": "Building resilient, scalable systems and high-performance experiences with a focus on Clean Architecture and operational reliability.",
+        "description": "I build reliable web applications and help keep them secure — from the backend systems to the user interface.",
         "navTitle": "Navigation",
         "navAbout": "About",
         "navSkills": "Skills",
@@ -165,16 +165,16 @@
         "backToTop": "Back to Top"
     },
     "Architecture": {
-        "title": "System Architecture & Design",
-        "description": "More than code: systems designed to be modular, observable, and scalable, from UML through to API orchestration.",
+        "title": "How I build",
+        "description": "I design systems to be clear, dependable, and easy to grow — planned up front, then built to hold up in production.",
         "f1_title": "UML & Diagrams",
         "f1_desc": "Convert business rules into clear class, sequence, and flow diagrams for engineering alignment.",
         "f2_title": "Modular Architecture",
-        "f2_desc": "Build decoupled systems using Clean Architecture and well-defined layer boundaries.",
+        "f2_desc": "Build systems in clean, independent parts, so each piece is easy to change and test without breaking the rest.",
         "f3_title": "Database Strategy",
-        "f3_desc": "Design schemas, indexes, and multi-db strategies for performance and reliability.",
+        "f3_desc": "Design how data is stored and indexed so the app stays fast and reliable as it grows.",
         "f4_title": "API Orchestration",
-        "f4_desc": "Compose resilient APIs with secure auth flows and comprehensive documentation."
+        "f4_desc": "Connect services with secure sign-in and clear documentation, so everything works together safely."
     },
     "DevFlowVisual": {
         "title": "SYSTEM DEVELOPMENT LIFECYCLE",

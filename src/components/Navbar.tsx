@@ -108,8 +108,8 @@ export default function Navbar() {
         [scrollToSection]
     );
 
-    const linkCls = 'px-4 py-2 rounded-full text-[12px] font-bold tracking-tight text-white/70 hover:text-white hover:bg-white/5 active:bg-white/10 transition-all duration-200';
-    const iconCls = 'p-2 rounded-full text-white/70 hover:text-white hover:bg-white/5 transition-all duration-200';
+    const linkCls = 'px-4 py-2 rounded-full text-[12px] font-bold tracking-tight text-muted-foreground hover:text-foreground hover:bg-secondary active:bg-muted transition-all duration-200';
+    const iconCls = 'p-2 rounded-full text-muted-foreground hover:text-foreground hover:bg-secondary transition-all duration-200';
 
     const { scrollYProgress } = useScroll();
 
@@ -117,7 +117,7 @@ export default function Navbar() {
         <>
             {/* Scroll Progress Bar */}
             <m.div
-                className="fixed top-0 left-0 right-0 h-1 bg-indigo-500 z-[60] origin-left"
+                className="fixed top-0 left-0 right-0 h-1 bg-primary z-[60] origin-left"
                 style={{ scaleX: scrollYProgress }}
             />
 
@@ -137,12 +137,12 @@ export default function Navbar() {
                     >
                     <Link
                         href="/"
-                        className="px-5 py-2 text-sm font-black tracking-tighter text-white hover:text-indigo-400 transition-colors select-none"
+                        className="px-5 py-2 text-sm font-black tracking-tighter text-foreground hover:text-primary transition-colors select-none"
                     >
-                        {siteConfig.name.toUpperCase()}<span className="text-indigo-400">.</span>
+                        {siteConfig.name.toUpperCase()}<span className="text-primary">.</span>
                     </Link>
 
-                    <div className="w-px h-4 mx-2 bg-white/10" />
+                    <div className="w-px h-4 mx-2 bg-muted" />
 
                     <div className="flex items-center gap-0.5">
                         {navLinks.map((link) => (
@@ -152,7 +152,7 @@ export default function Navbar() {
                         ))}
                     </div>
 
-                    <div className="w-px h-4 mx-2 bg-white/10" />
+                    <div className="w-px h-4 mx-2 bg-muted" />
 
                     <div className="flex items-center gap-1">
                         <Link href={siteConfig.links.github} target="_blank" className={iconCls} aria-label="GitHub Profile">
@@ -163,15 +163,15 @@ export default function Navbar() {
                         </Link>
                     </div>
 
-                    <div className="w-px h-4 mx-2 bg-white/10" />
+                    <div className="w-px h-4 mx-2 bg-muted" />
 
                     {/* Language Switcher */}
-                    <div className="flex items-center bg-white/5 rounded-full p-1 border border-white/5">
+                    <div className="flex items-center bg-secondary rounded-full p-1 border border-border">
                         <button
                             onClick={() => router.replace(pathname, { locale: 'id', scroll: false })}
                             className={cn(
                                 "px-3 py-1 text-[10px] font-black rounded-full transition-all",
-                                locale === 'id' ? "bg-indigo-700 text-white shadow-lg" : "text-white/50 hover:text-white"
+                                locale === 'id' ? "bg-primary text-primary-foreground shadow-lg" : "text-muted-foreground hover:text-foreground"
                             )}
                         >
                             ID
@@ -180,7 +180,7 @@ export default function Navbar() {
                             onClick={() => router.replace(pathname, { locale: 'en', scroll: false })}
                             className={cn(
                                 "px-3 py-1 text-[10px] font-black rounded-full transition-all",
-                                locale === 'en' ? "bg-indigo-700 text-white shadow-lg" : "text-white/50 hover:text-white"
+                                locale === 'en' ? "bg-primary text-primary-foreground shadow-lg" : "text-muted-foreground hover:text-foreground"
                             )}
                         >
                             EN
@@ -199,7 +199,7 @@ export default function Navbar() {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         onClick={() => setIsOpen(false)}
-                        className="md:hidden fixed inset-0 z-[40] bg-[#060311]/40 backdrop-blur-sm"
+                        className="md:hidden fixed inset-0 z-[40] bg-background/40 backdrop-blur-sm"
                     />
                 )}
             </AnimatePresence>
@@ -217,7 +217,7 @@ export default function Navbar() {
                         {!isOpen ? (
                             <button
                                 onClick={() => setIsOpen(true)}
-                                className={`glass-premium px-6 py-3.5 rounded-full flex items-center justify-center gap-3 text-sm font-bold text-white shadow-2xl hover:scale-105 active:scale-95 transition-all ${GLASS_SHADOW}`}
+                                className={`glass-premium px-6 py-3.5 rounded-full flex items-center justify-center gap-3 text-sm font-bold text-foreground shadow-2xl hover:scale-105 active:scale-95 transition-all ${GLASS_SHADOW}`}
                             >
                                 <Menu size={18} className="stroke-[3px]" />
                                 {t('menu')}
@@ -227,15 +227,15 @@ export default function Navbar() {
                                 initial={{ opacity: 0, scale: 0.9, y: 20 }}
                                 animate={{ opacity: 1, scale: 1, y: 0 }}
                                 exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                                className={`glass-premium flex flex-col p-4 w-[280px] rounded-[2rem] gap-2 mb-2 ${GLASS_SHADOW}`}
+                                className={`glass-premium flex flex-col p-4 w-[280px] rounded-lg gap-2 mb-2 ${GLASS_SHADOW}`}
                             >
                                 <div className="flex items-center justify-between px-3 py-2">
-                                    <span className="text-lg font-black tracking-tighter text-white">
-                                        {siteConfig.name.toUpperCase()}<span className="text-indigo-400">.</span>
+                                    <span className="text-lg font-black tracking-tighter text-foreground">
+                                        {siteConfig.name.toUpperCase()}<span className="text-primary">.</span>
                                     </span>
                                     <button
                                         onClick={() => setIsOpen(false)}
-                                        className="p-2 rounded-full bg-white/5 text-white/70 hover:text-white transition-colors"
+                                        className="p-2 rounded-full bg-secondary text-muted-foreground hover:text-foreground transition-colors"
                                     >
                                         <X size={18} />
                                     </button>
@@ -247,33 +247,33 @@ export default function Navbar() {
                                             key={link.name}
                                             href={link.href}
                                             onClick={(e) => handleNavClick(e, link.href)}
-                                            className="px-4 py-3 rounded-2xl text-[13px] font-bold text-white/70 hover:text-white hover:bg-white/5 transition-all flex items-center justify-between"
+                                            className="px-4 py-3 rounded-lg text-[13px] font-bold text-muted-foreground hover:text-foreground hover:bg-secondary transition-all flex items-center justify-between"
                                         >
                                             {link.name}
-                                            <div className="w-1.5 h-1.5 rounded-full bg-white/10" />
+                                            <div className="w-1.5 h-1.5 rounded-full bg-muted" />
                                         </Link>
                                     ))}
                                 </div>
 
-                                <div className="h-px bg-white/5 my-1" />
+                                <div className="h-px bg-secondary my-1" />
 
                                 <div className="flex items-center justify-between gap-2 px-2">
                                     <div className="flex gap-2">
-                                        <Link href={siteConfig.links.github} target="_blank" className="p-3 bg-white/5 rounded-2xl text-white/70">
+                                        <Link href={siteConfig.links.github} target="_blank" className="p-3 bg-secondary rounded-lg text-muted-foreground">
                                             <Github size={18} />
                                         </Link>
-                                        <Link href={siteConfig.links.linkedin} target="_blank" className="p-3 bg-white/5 rounded-2xl text-white/70">
+                                        <Link href={siteConfig.links.linkedin} target="_blank" className="p-3 bg-secondary rounded-lg text-muted-foreground">
                                             <Linkedin size={18} />
                                         </Link>
                                     </div>
-                                    <div className="flex bg-white/5 rounded-2xl p-1 border border-white/5">
+                                    <div className="flex bg-secondary rounded-lg p-1 border border-border">
                                         <button
                                             onClick={() => router.replace(pathname, { locale: 'id', scroll: false })}
-                                            className={cn("px-3 py-1 text-[10px] font-black rounded-xl transition-all", locale === 'id' ? "bg-indigo-700 text-white" : "text-white/40")}
+                                            className={cn("px-3 py-1 text-[10px] font-black rounded-xl transition-all", locale === 'id' ? "bg-primary text-primary-foreground" : "text-muted-foreground")}
                                         >ID</button>
                                         <button
                                             onClick={() => router.replace(pathname, { locale: 'en', scroll: false })}
-                                            className={cn("px-3 py-1 text-[10px] font-black rounded-xl transition-all", locale === 'en' ? "bg-indigo-700 text-white" : "text-white/40")}
+                                            className={cn("px-3 py-1 text-[10px] font-black rounded-xl transition-all", locale === 'en' ? "bg-primary text-primary-foreground" : "text-muted-foreground")}
                                         >EN</button>
                                     </div>
                                 </div>

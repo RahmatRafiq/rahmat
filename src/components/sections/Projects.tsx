@@ -27,10 +27,10 @@ export default function Projects() {
         <section id="projects" className="w-full py-32 relative overflow-hidden">
             <div className="px-6 md:px-16 lg:px-24 max-w-[1800px] mx-auto">
                 <div className="mb-16 md:mb-24 flex flex-col items-center w-full max-w-[1600px] mx-auto">
-                    <h2 className="text-4xl sm:text-5xl md:text-8xl font-black mb-10 md:mb-12 tracking-tighter text-center w-full leading-[0.8]">{t('title')}</h2>
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-10 md:mb-12 tracking-tight text-center w-full leading-[1.05]">{t('title')}</h2>
 
                     <div
-                        className="flex flex-wrap items-center justify-center gap-3 p-1.5 bg-white/5 rounded-2xl border border-white/5"
+                        className="flex flex-wrap items-center justify-center gap-3 p-1.5 bg-secondary rounded-lg border border-border"
                         role="tablist"
                     >
                         {categories.map((cat) => {
@@ -44,14 +44,14 @@ export default function Projects() {
                                     className={cn(
                                         'px-4 md:px-6 py-2.5 rounded-xl text-[10px] md:text-xs font-bold tracking-widest uppercase transition-all flex items-center gap-2',
                                         activeTab === cat
-                                            ? 'bg-indigo-700 text-white shadow-xl scale-105'
-                                            : 'text-white/40 hover:text-white hover:bg-white/5'
+                                            ? 'bg-primary text-primary-foreground shadow-xl scale-105'
+                                            : 'text-muted-foreground hover:text-foreground hover:bg-secondary'
                                     )}
                                 >
                                     <span>{cat}</span>
                                     <span className={cn(
                                         'px-2 py-0.5 rounded-full text-[9px] font-black',
-                                        activeTab === cat ? 'bg-white/20 text-white' : 'bg-white/5 text-white/20'
+                                        activeTab === cat ? 'bg-muted text-foreground' : 'bg-secondary text-muted-foreground'
                                     )}>
                                         {count}
                                     </span>
@@ -77,7 +77,7 @@ export default function Projects() {
                                     exit={{ opacity: 0, scale: 0.95 }}
                                     transition={{ duration: 0.5, delay: index * 0.05 }}
                                     className={cn(
-                                        "group glass-premium rounded-[2.5rem] overflow-hidden flex flex-col relative hover:border-indigo-500/50 transition-colors",
+                                        "group glass-premium rounded-lg overflow-hidden flex flex-col relative hover:border-primary/50 transition-colors",
                                         project.span || "lg:col-span-4"
                                     )}
                                 >
@@ -92,7 +92,7 @@ export default function Projects() {
                                     {/* Visual Mockup Layer */}
                                     {project.image && (
                                         <div className="absolute top-0 right-0 w-2/3 h-full opacity-30 group-hover:opacity-50 group-hover:scale-105 transition-all duration-700 pointer-events-none overflow-hidden">
-                                            <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-[#060311]/80 z-10" />
+                                            <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-background/80 z-10" />
                                             <img
                                                 src={project.image}
                                                 alt=""
@@ -103,26 +103,26 @@ export default function Projects() {
 
                                     <div className="relative p-10 flex flex-col h-full z-20 pointer-events-none">
                                         <div className="flex justify-between items-start mb-6">
-                                            <div className="p-4 rounded-3xl bg-white/5 border border-white/10 group-hover:scale-110 group-hover:bg-indigo-500/20 transition-all duration-500">
-                                                {Icon && <Icon className="w-8 h-8 text-white group-hover:text-indigo-300 transition-colors" />}
+                                            <div className="p-4 rounded-lg bg-secondary border border-border group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-500">
+                                                {Icon && <Icon className="w-8 h-8 text-foreground group-hover:text-primary transition-colors" />}
                                             </div>
-                                            <span className="text-[11px] font-black tracking-widest uppercase bg-white/10 px-4 py-1.5 rounded-full border border-white/5">
+                                            <span className="text-[11px] font-black tracking-widest uppercase bg-muted px-4 py-1.5 rounded-full border border-border">
                                                 {project.year}
                                             </span>
                                         </div>
 
                                         <div className="mt-auto max-w-[60%]">
-                                            <h3 className="text-2xl md:text-3xl font-black mb-3 tracking-tight group-hover:text-indigo-400 transition-colors">
+                                            <h3 className="text-2xl md:text-3xl font-black mb-3 tracking-tight group-hover:text-primary transition-colors">
                                                 {t(project.titleKey)}
                                             </h3>
                                             <div className="flex flex-wrap gap-2 mb-4">
                                                 {project.tags.slice(0, 3).map((tag) => (
-                                                    <span key={tag} className="text-[9px] font-black uppercase tracking-widest text-white/40">
+                                                    <span key={tag} className="text-[9px] font-black uppercase tracking-widest text-muted-foreground">
                                                         {tag}
                                                     </span>
                                                 ))}
                                             </div>
-                                            <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-indigo-400 group-hover:gap-3 transition-all">
+                                            <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-primary group-hover:gap-3 transition-all">
                                                 {t('viewDetails')} <ChevronRight size={12} />
                                             </div>
                                         </div>

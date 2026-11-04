@@ -165,10 +165,10 @@ export default function ProjectDetail({ project, variant }: ProjectDetailProps) 
     if (variant === 'panel') {
         // Panel = SUMMARY only, with a CTA to the full detail page.
         return (
-            <div className="flex flex-col">
-                {/* Hero image — fixed short height so the whole summary + actions
-                    fit the slim panel without scrolling. */}
-                <div className="relative w-full h-40 overflow-hidden bg-secondary shrink-0">
+            <div className="flex flex-col h-full min-h-full">
+                {/* Hero image grows to fill the drawer height so content fills the
+                    whole panel (no empty gap) and nothing needs scrolling. */}
+                <div className="relative w-full flex-1 min-h-[10rem] overflow-hidden bg-secondary">
                     {project.image ? (
                         <img src={project.image} alt={title} className="w-full h-full object-cover object-center" />
                     ) : (
@@ -179,7 +179,7 @@ export default function ProjectDetail({ project, variant }: ProjectDetailProps) 
                     <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-background to-transparent" />
                 </div>
 
-                <div className="px-6 py-6 flex flex-col gap-4">
+                <div className="px-6 py-6 flex flex-col gap-4 shrink-0">
                     <div className="flex items-center gap-3">
                         <span className="text-[9px] font-bold tracking-[0.2em] uppercase px-3 py-1 rounded bg-primary/15 text-primary border border-primary/20">
                             {category}

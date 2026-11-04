@@ -21,16 +21,16 @@ html {
   --color-primary: #5a9fd4;
   --color-primary-foreground: #0b0b0d;
 
-  --color-secondary: #1c1c20;
+  --color-secondary: #28282e;
   --color-secondary-foreground: #f5f5f6;
 
-  --color-muted: #202024;
+  --color-muted: #323239;
   --color-muted-foreground: #b4b4ba;
 
   --color-accent: #7bb6e8;
   --color-accent-foreground: #0b0b0d;
 
-  --color-border: #2e2e34;
+  --color-border: #424249;
 
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
 

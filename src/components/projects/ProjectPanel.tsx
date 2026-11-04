@@ -55,7 +55,7 @@ export default function ProjectPanel({
                 className="fixed z-[101] bg-background overflow-y-auto
                            inset-x-0 bottom-0 top-[12vh] rounded-t-lg border-t border-border
                            md:inset-y-0 md:right-0 md:left-auto md:top-0 md:w-1/2 md:rounded-none md:rounded-l-lg md:border-t-0 md:border-l md:shadow-2xl
-                           flex flex-col justify-center"
+                           flex flex-col"
             >
                 {/* Close button pinned to the panel corner */}
                 <button

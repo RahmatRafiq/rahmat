@@ -23,14 +23,14 @@ export default function APIVisual() {
                         initial={{ left: 0, opacity: 0 }}
                         animate={{ left: "100%", opacity: [0, 1, 0] }}
                         transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-                        className="absolute top-1/2 -translate-y-1/2 w-3 h-1 bg-primary rounded-full shadow-[0_0_8px_rgba(99,102,241,0.8)]"
+                        className="absolute top-1/2 -translate-y-1/2 w-3 h-1 bg-primary rounded-full shadow-[0_0_8px_rgba(125,163,201,0.8)]"
                     />
                 </div>
 
                 {/* Core Webhook Node */}
                 <div className="relative z-10">
                     <m.div
-                        animate={{ boxShadow: ["0px 0px 0px rgba(99,102,241,0)", "0px 0px 30px rgba(99,102,241,0.5)", "0px 0px 0px rgba(99,102,241,0)"] }}
+                        animate={{ boxShadow: ["0px 0px 0px rgba(125,163,201,0)", "0px 0px 30px rgba(125,163,201,0.5)", "0px 0px 0px rgba(125,163,201,0)"] }}
                         transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                         className="p-5 bg-primary text-primary-foreground rounded-2xl shadow-xl"
                     >

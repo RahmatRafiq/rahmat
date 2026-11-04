@@ -30,7 +30,7 @@ export default function DevFlowVisual() {
                                     className="relative"
                                 >
                                     <m.div
-                                        animate={{ boxShadow: ["0px 0px 0px rgba(99,102,241,0)", "0px 0px 15px rgba(99,102,241,0.4)", "0px 0px 0px rgba(99,102,241,0)"] }}
+                                        animate={{ boxShadow: ["0px 0px 0px rgba(125,163,201,0)", "0px 0px 15px rgba(125,163,201,0.4)", "0px 0px 0px rgba(125,163,201,0)"] }}
                                         transition={{ duration: 2.5, repeat: Infinity, delay: idx * 0.2 }}
                                         className="w-8 h-8 md:w-10 md:h-10 rounded-lg md:rounded-xl bg-background border border-border flex items-center justify-center shadow-lg group-hover:border-primary transition-colors relative z-10"
                                     >

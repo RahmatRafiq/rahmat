@@ -267,7 +267,7 @@ export default function Stats() {
                                             whileInView={{ height: `${Math.max(h, 8)}%` }}
                                             viewport={{ once: true }}
                                             transition={{ duration: 1, delay: 0.3 + i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                                            className="w-full bg-gradient-to-t from-primary/40 to-primary rounded-t-2xl group-hover/bar:from-primary group-hover/bar:to-primary transition-all duration-500 shadow-[0_0_30px_rgba(99,102,241,0.1)] relative"
+                                            className="w-full bg-gradient-to-t from-primary/40 to-primary rounded-t-2xl group-hover/bar:from-primary group-hover/bar:to-primary transition-all duration-500 shadow-[0_0_30px_rgba(125,163,201,0.1)] relative"
                                         >
                                             <div className="absolute inset-x-0 top-0 h-1 bg-white/30 rounded-t-2xl" />
                                         </m.div>

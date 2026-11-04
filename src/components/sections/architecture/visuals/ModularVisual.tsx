@@ -27,7 +27,7 @@ export default function ModularVisual() {
                         {/* Animated Border Glow */}
                         <m.div
                             className="absolute inset-0 rounded-xl border border-primary/20 pointer-events-none"
-                            animate={{ borderColor: ['rgba(99,102,241,0.2)', 'rgba(99,102,241,0.6)', 'rgba(99,102,241,0.2)'] }}
+                            animate={{ borderColor: ['rgba(125,163,201,0.2)', 'rgba(125,163,201,0.6)', 'rgba(125,163,201,0.2)'] }}
                             transition={{ duration: 3, repeat: Infinity, delay: i * 0.5 }}
                         />
                         <div className={cn("p-1.5 rounded-lg bg-white/5 relative z-10", layer.color)}>
@@ -42,7 +42,7 @@ export default function ModularVisual() {
                             <div className="absolute inset-0 border-l border-dashed border-primary/20 left-1/2 -translate-x-1/2" />
                             {/* Animated data drop */}
                             <m.div
-                                className="absolute left-1/2 -translate-x-1/2 w-0.5 h-3 bg-primary rounded-full shadow-[0_0_5px_rgba(99,102,241,0.8)]"
+                                className="absolute left-1/2 -translate-x-1/2 w-0.5 h-3 bg-primary rounded-full shadow-[0_0_5px_rgba(125,163,201,0.8)]"
                                 initial={{ top: "-100%", opacity: 0 }}
                                 animate={{ top: "100%", opacity: [0, 1, 0] }}
                                 transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.4, ease: "linear" }}
